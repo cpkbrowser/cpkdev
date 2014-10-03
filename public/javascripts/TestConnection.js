@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function() {
-	var test1 = callAjax('http://localhost:3000/', 'cpkstart?test=EN');
+	var test1 = callAjax('http://cpktestapp2.herokuapp.com/', 'cpkstart?test=EN');
 	document.getElementById('lblTest').innerHTML = test1;
 	//sleep(750);
 	//alert('Done');
