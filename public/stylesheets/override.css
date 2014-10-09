@@ -1,0 +1,27 @@
+.row {
+	margin: 0 !important;
+}
+
+select.season-select {
+	max-width: 70px;
+}
+
+select.episode-select {
+	max-width: 75px;
+	position: absolute;
+	right: -81px;
+	bottom: -24px;
+}
+
+select.source-select {
+	max-width: 75px;
+	position: absolute;
+	left: 98px;
+	bottom: -24px;
+}
+
+@media screen and (max-width: 480px) {
+	.detail-dropdown {
+	width: 337px;
+	}
+}

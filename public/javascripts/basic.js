@@ -1,9 +1,26 @@
 $(document).ready(function() {
-	$("#btnTestJS").click(function () {
-		if (document.getElementById('lblTest').innerHTML == "Hello World!") {
-			document.getElementById('lblTest').innerHTML = "Second Hello Message";
-		} else {
-			document.getElementById('lblTest').innerHTML = "Hello World!";
-		}
+	$('.season-select').click(function(e) {
+		e.stopPropagation();
+	});
+	$('.episode-select').click(function(e) {
+		e.stopPropagation();
+	});
+	$('.source-select').click(function(e) {
+		e.stopPropagation();
+	});
+	$("#user_username").click(function(e) {
+		e.stopPropagation();
+	});
+	$("#user_password").click(function(e) {
+		e.stopPropagation();
+	});
+	$("#user_remember_me").click(function(e) {
+		e.stopPropagation();
+	});
+	$("#frmUser").click(function(e) {
+		e.stopPropagation();
+	});
+	$("#ddlLogin").click(function(e) {
+		e.stopPropagation();
 	});
 });
