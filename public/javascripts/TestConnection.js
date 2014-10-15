@@ -2,18 +2,18 @@
  * 
  */
 $(document).ready(function() {
-	$("#btnSearch").bind('keypress', onEnter);	
+	$("#btnSearch").bind('keypress', onEnter_Search);	
 });
 
-function onEnter(e) {
+function onEnter_Search(e) {
 	if (e.keyCode == 13) {
 		var now = new Date();
 		var val = document.getElementById('btnSearch').value.trim().replace(' ', '+');
 		if (val == '') {
 			alert('Please enter a show you want to watch');
 		} else {
-			//var test1 = callAjax('http://localhost:3000/', 'getSK?srch=' + val + '&type=tv');
-			var test1 = callAjax('http://cpktestapp2.herokuapp.com/', 'getSK?srch=' + val + '&type=tv');
+			var test1 = callAjax('http://localhost:3000/', 'getSK?srch=' + val + '&type=tv');
+			//var test1 = callAjax('http://cpktestapp2.herokuapp.com/', 'getSK?srch=' + val + '&type=tv');
 			var then = new Date()
 			var dif = then - now;
 			var x = '';

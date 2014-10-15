@@ -5,9 +5,10 @@ var http = require("http");
 var cheerio = require("cheerio");
 
 router.get('/', function(req, res){
-  // Utility function that downloads a URL and invokes
-  // callback with the data.
+  
   function download(url, callback) {
+	// Utility function that downloads a URL and invokes
+	// callback with the data.
     http.get(url, function(res) {
       var data = "";
       res.on('data', function (chunk) {
@@ -52,19 +53,20 @@ router.get('/', function(req, res){
 		  item.each(function(i, e) {
 			table += '<tr>\n  ';
 			var title_year = String(h(e).find("h2")).replace('<h2>', '').replace('</h2>', '');
-			var title_split = title_year.split(' (');
-			table += '<td>' + title_split[0] + '</td>';
+			//var title_split = title_year.split(' (');
+			var title = title_year.substring(0, (title_year.length - 6));
+			var year = title_year.substring((title_year.length - 6));
+			table += '<td>' + title.trim() + '</td>';
 			table += '<td>' + '' + '</td>';
-			table += '<td>' + title_split[1].replace(')', '') + '</td>';
+			table += '<td>' + year.replace('(', '').replace(')', '') + '</td>';
 			table += '<td>' + String(h(e).find("img").attr('src')) + '</td>';
 		    table += '<td>' + String(h(e).find("a").attr('href')) + '</td>';
-			//var genres = h(e).children().last().find("a").text();
 			var genres = '';
 			var grpGenre = h('.item_categories', e).find("a");
 			grpGenre.each(function(i2, e2) {
 			  genres += String(h(e2).text()) + '; ';
 			});
-			table += '<td>' + genres + '</td>';
+			table += '<td>' + genres.trim() + '</td>';
 			table += '\n</tr>\n';
 		  });
 		  
@@ -74,8 +76,7 @@ router.get('/', function(req, res){
 		} else {
 		  res.end('nothing');
 		}
-	  });
-	  //res.end(key);
+	  });	  
 	} else {
 	  res.end('nothing');
 	}
