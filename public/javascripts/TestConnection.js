@@ -17,6 +17,11 @@ function onEnter_Search(e) {
 			var then = new Date()
 			var dif = then - now;
 			var x = '';
+			
+			var child = document.createElement('div');
+			child.innerHTML = test1;
+			child = child.firstChild;
+			document.getElementById('hdnValues').appendChild(child);
 		}
 	}
 }

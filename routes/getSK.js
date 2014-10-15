@@ -53,7 +53,6 @@ router.get('/', function(req, res){
 		  item.each(function(i, e) {
 			table += '<tr>\n  ';
 			var title_year = String(h(e).find("h2")).replace('<h2>', '').replace('</h2>', '');
-			//var title_split = title_year.split(' (');
 			var title = title_year.substring(0, (title_year.length - 6));
 			var year = title_year.substring((title_year.length - 6));
 			table += '<td>' + title.trim() + '</td>';
