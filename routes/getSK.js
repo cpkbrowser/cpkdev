@@ -35,16 +35,42 @@ router.get('/', function(req, res){
 	  
 	  if (type == 'movie') {
 	    getUrl = 'http://www.primewire.ag/index.php?search_keywords=' + srchKey.replace(" ", "+") + '&key=' + key + '&search_section=1'
-	  } else {
+	  } else if (type == 'tv') {
 	    getUrl = 'http://www.primewire.ag/index.php?search_keywords=' + srchKey.replace(" ", "+") + '&key=' + key + '&search_section=2'
 	  }
 	  
 	  download(getUrl, function(data2) {
 	    if (data) {
-		  var shows = '';
+		
 		  var h = cheerio.load(data2);
-		  var lngth = String(h('.index_item_ie').find("h2"));
-		  res.end(lngth);
+		  var item = h('.index_item_ie');		  
+		  
+		  var table = '<table id="showInfo" style="display: none;">\n';
+		  table += '<thead><tr><td>Name</td><td>Description</td><td>Year</td><td>Image</td><td>Link</td></tr></thead>\n';
+		  table += '<tbody>\n';
+		  
+		  item.each(function(i, e) {
+			table += '<tr>\n  ';
+			var title_year = String(h(e).find("h2")).replace('<h2>', '').replace('</h2>', '');
+			var title_split = title_year.split(' (');
+			table += '<td>' + title_split[0] + '</td>';
+			table += '<td>' + '' + '</td>';
+			table += '<td>' + title_split[1].replace(')', '') + '</td>';
+			table += '<td>' + String(h(e).find("img").attr('src')) + '</td>';
+		    table += '<td>' + String(h(e).find("a").attr('href')) + '</td>';
+			//var genres = h(e).children().last().find("a").text();
+			var genres = '';
+			var grpGenre = h('.item_categories', e).find("a");
+			grpGenre.each(function(i2, e2) {
+			  genres += String(h(e2).text()) + '; ';
+			});
+			table += '<td>' + genres + '</td>';
+			table += '\n</tr>\n';
+		  });
+		  
+		  table += '</tbody>\n</table>';
+		  res.end(String(table));
+		  
 		} else {
 		  res.end('nothing');
 		}
