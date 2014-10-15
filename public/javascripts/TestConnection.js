@@ -4,7 +4,8 @@
 $(document).ready(function() {
 	$("#btnTest1").click(function () {
 		var now = new Date();
-		var test1 = callAjax('http://localhost:3000/', 'getSK?srch=the+league&type=tv');
+		//var test1 = callAjax('http://localhost:3000/', 'getSK?srch=the+league&type=tv');
+		var test1 = callAjax('http://cpktestapp2.herokuapp.com/', 'getSK?srch=the+league&type=tv');
 		var then = new Date()
 		var dif = then - now;
 		var x = '';
