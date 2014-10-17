@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function() {
-	$("#btnSearch").bind('keypress', onEnter_Search);	
+	$("#btnSearch").bind('keypress', onEnter_Search);
 });
 
 function onEnter_Search(e) {
@@ -12,16 +12,56 @@ function onEnter_Search(e) {
 		if (val == '') {
 			alert('Please enter a show you want to watch');
 		} else {
-			//var test1 = callAjax('http://localhost:3000/', 'getSK?srch=' + val + '&type=tv');
-			var test1 = callAjax('http://cpktestapp2.herokuapp.com/', 'getSK?srch=' + val + '&type=tv');
-			var then = new Date()
-			var dif = then - now;
-			var x = '';
 			
-			var child = document.createElement('div');
-			child.innerHTML = test1;
-			child = child.firstChild;
-			document.getElementById('hdnValues').appendChild(child);
+			$("#grdSrchResults").slideDown(150);
+			
+			//var test1 = 'http://localhost:3000/getSK?srch=' + val + '&type=tv';
+			var test1 = 'http://cpktestapp2.herokuapp.com/getSK?srch=' + val + '&type=tv';
+			$.ajax({
+				url: test1,
+				success: function (rslt) {
+					var child = document.createElement('div');
+					child.innerHTML = String(rslt);
+					child = child.firstChild;
+					document.getElementById('hdnValues').appendChild(child);
+					
+					var shows = document.getElementById('showInfo').getElementsByTagName('tbody')[0].getElementsByTagName('td');
+					var itemCount = 0;
+					var counter = 1;
+					for (i = 0; i < shows.length; i++) {
+						var imgLink = '';
+						var sName = '';
+						switch (counter) {
+							case 1:
+								sName = shows[i].innerHTML;
+								document.getElementById('srchItem_n' + itemCount).innerHTML = sName;
+								break;
+							case 4:
+								imgLink = shows[i].innerHTML;
+								document.getElementById('srchItem_img' + itemCount).src = imgLink;
+								break;
+						}	
+						
+						if (counter == 6) {
+							counter = 1;
+							itemCount++;
+						} else {
+							counter++;
+						}
+						
+						if (itemCount == 6) {
+							i = shows.length;
+						}
+					}
+					
+					var then = new Date()
+					var dif = then - now;
+					var x = '';
+					
+					document.getElementById('srch_preLoader').style.display = "none";
+					$("#hdnLoadResults").fadeIn(100);
+				}
+			});
 		}
 	}
 }
