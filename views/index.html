@@ -22,8 +22,10 @@
 
         <!-- Latest compiled and minified JavaScript for bootstrap stuff -->
         <script src="/javascripts/scripts.min.js"></script>
-		<script src="/javascripts/basic.js"></script>
-		<script src="/javascripts/TestConnection.js"></script>
+
+        <!-- Kyle's JS code -->
+    		<script src="/javascripts/basic.js"></script>
+    		<script src="/javascripts/TestConnection.js"></script>
 
       <!-- Favicons for all devices -->
       <link rel="shortcut icon" href="/images/favicons/favicon.ico" type="image/x-icon">
@@ -50,7 +52,6 @@
 
         <header class="banner navbar navbar-default navbar-static-top" role="banner">
           <div class="container">
-              <!-- <a class="logo-link" href="<?php echo home_url(); ?>/"> <img class="logo" src="<?php echo get_template_directory_uri(); ?>//images//cpklogo.png"></a> -->
               <a href="<?php echo home_url(); ?>/">
               <div class="logo">
               </div>
@@ -129,537 +130,859 @@
 
         <!--Content Section-->
         <div class="vid-grid">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        <div class="col-md-3 col-sm-6">
-                    <div class="vid-hover">
-                        <div class="video-box">
-                            <a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
-                            </a>
-                            <div class="description">
-                                <h2 class="title">Title of Movie or Episode</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="dropdown btn-primary">
-                                      <button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <div class="btn-primary-txt">Info
-                                        </div>
-                                      </button>
-                                      <div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-                                        <h4 class="date" style="color:black;">May 2014</h4>
-                                        <p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div style="text-align:center;padding:2px;" class="btn-primary addtofav">
-                                        <a href="#">
-                                            +Favs
-                                        </a>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+			<!--SearchResults-->
+			<div id="grdSrchResults" style="display: none;">
+				<div id="srch_preLoader">
+					<img src="/img/350.gif" alt="img not found" id="loader1" height="80" width="80" style="display: block; margin-left: auto; margin-right: auto;" />
+				</div>
+				<div id="hdnLoadResults" style="display: none;">
+					<div class="section">
+						<h4 class="section-head">Search Results</h4>
+						<hr class="section">
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img0" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="srchItem_n0">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img1" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="srchItem_n1">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img2" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="srchItem_n2">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img3" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="srchItem_n3">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img4" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="srchItem_n4">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img5" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="srchItem_n5">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--end of row-->
+					<div class="more-arrow">
+						<a href="#">^</a>
+					</div>
+				</div>
 			</div>
-        <div class="bottom-section">
+		
+			<div id="binCategoryContainer" style="position: relative;">
+				<!--Favorites-->
+				<div id="grdFavorites">
+					<div class="section">
+						<h4 class="section-head">Favorites</h4>
+						<hr class="section">
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--end of row-->
+					<div class="more-arrow">
+						<a href="#">^</a>
+					</div>
+				</div>
+	
+				<!--RecentlyWatched-->
+				<div id="grdRecentlyWatched">
+					<div class="section">
+						<h4 class="section-head">Recently Watched</h4>
+						<hr class="section">
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--endofrow-->
+					<div class="more-arrow">
+						<a href="#">^</a>
+					</div>
+				</div>
+	
+				<!--PopularOnCPKBrowser-->
+				<div id="grdPopularOnCPK">
+					<div class="section">
+						<h4 class="section-head">Popular on CPK Browser</h4>
+						<hr class="section">
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title">Title of Movie or Episode</h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+												<div class="btn-primary-txt">Info
+												</div>
+											</button>
+											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
+												<h4 class="date" style="color:black;">May 2014</h4>
+												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+												</p>
+											</div>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--endofrow-->
+					<div class="more-arrow">
+						<a href="#">^</a>
+					</div>
+				</div>
+			</div>
+		</div><!--endofvidgrid-->
+
+		<div class="bottom-section">
             <div class="row row-reset">
                 <div class="col-sm-4">
                     <div class="makers">
