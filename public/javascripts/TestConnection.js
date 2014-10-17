@@ -20,6 +20,12 @@ function onEnter_Search(e) {
 			$.ajax({
 				url: test1,
 				success: function (rslt) {
+				
+					var oldList = document.getElementById('showInfo');
+					if (oldList != null) {
+						document.getElementById('hdnValues').removeChild(oldList);
+					}
+					
 					var child = document.createElement('div');
 					child.innerHTML = String(rslt);
 					child = child.firstChild;
