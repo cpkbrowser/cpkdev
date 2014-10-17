@@ -1,4 +1,15 @@
 
+.search-results {
+	width: 770px;
+	height: 438px;
+	background: black;
+	opacity: .9;
+	border: 5px solid red;
+	border-top: none;
+	position: absolute;
+	left: 159px;
+	display: none;
+}
 .more-arrow {
 	float: right;
 	background: black;
@@ -15,6 +26,17 @@
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
 }
+@media (max-width: 589px) {
+	.login-buttons {
+		margin-top: 83px;
+	}
+}
+@media (max-width: 480px) {
+	.login-buttons {
+		margin-top: 0px;
+	}
+}
+
 
 .more-arrow a {
 	text-decoration: none;
@@ -30,6 +52,44 @@
 .pageination-wrap {
 	width: 232px;
 }
+p.info {
+	padding-right: 150px;
+}
+@media screen and (max-width: 600px) {
+	p.info {
+		padding-right: 0px; 
+	}
+}
+
+/*modal*/
+.info-pic {
+	float: right;
+}
+@media screen and (max-width: 768px) {
+	.info-pic {
+		float:left;
+		padding-right: 10px;
+		margin-top: 10px;
+	}
+}
+@media screen and (max-width: 480px) {
+	.info-pic {
+		float:none;
+		margin: 0 auto;
+		display: block;
+		width: 100%;
+	}
+}
+
+.info-pane {
+	padding: 15px;
+	color: black;
+	background: white;
+	opacity: .96;
+	bottom: 0;
+	overflow-y: auto;
+}
+/*end of modalstuff*/
 
 div.section {
 	padding: 0 20px;
@@ -74,15 +134,16 @@ select.source-select {
 }
 @media screen and (max-width: 480px) {
 	.login {
-    		margin-top: -70px;
+    		margin-top: -68px;
     		right: 116px;
     		max-width: 200px;
 	}
 	form#frmUser input {
 		max-width: 170px;
 	}
-	input.search {
-   		 max-width: 170px;
+	.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+		padding-left: 4px;
+		padding-right: 4px;
 	}
 }
 @media screen and (max-width: 320px) {
@@ -139,11 +200,11 @@ select.source-select {
 
 @media screen and (max-width: 320px) {
 	input.search {
-		max-width: 180px;
+		max-width: 195px;
 	}
 	.login {
     		margin-top: -70px;
-    		right: 116px;
+    		right: 132px;
    		max-width: 178px !important;
 	}
 	form#frmUser input {
@@ -154,3 +215,4 @@ select.source-select {
     		padding: 6px 10px;
 	}
 }
+

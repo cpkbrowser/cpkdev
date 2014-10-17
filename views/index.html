@@ -21,34 +21,39 @@
         <link rel="stylesheet" href="/stylesheets/override.css">
 		
 		<link rel="stylesheet" href="/stylesheets/loader.css">
+		<link rel="stylesheet" href="/stylesheets/simplemodal.css">
 
         <!-- Latest compiled and minified JavaScript for bootstrap stuff -->
         <script src="/javascripts/scripts.min.js"></script>
 
         <!-- Kyle's JS code -->
-    		<script src="/javascripts/basic.js"></script>
-    		<script src="/javascripts/TestConnection.js"></script>
+		<script src="/javascripts/jquery.simplemodal.js"></script>
+		<script src="/javascripts/simplemodal-procs.js"></script>
+    	<script src="/javascripts/basic.js"></script>
+    	<script src="/javascripts/TestConnection.js"></script>
 
-      <!-- Favicons for all devices -->
-      <link rel="shortcut icon" href="/images/favicons/favicon.ico" type="image/x-icon">
-      <link rel="icon" href="/images/favicons/favicon.ico" type="image/x-icon">
-      <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
-      <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
-      <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
-      <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
-      <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
-      <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
-      <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
-      <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
-      <link rel="icon" type="image/png" href="/images/favicons/favicon-192x192.png" sizes="192x192">
-      <link rel="icon" type="image/png" href="/images/favicons/favicon-160x160.png" sizes="160x160">
-      <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
-      <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
-      <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
-      <meta name="msapplication-TileColor" content="#ff0000">
-      <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+		<!-- Favicons for all devices -->
+		<link rel="shortcut icon" href="/images/favicons/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/images/favicons/favicon.ico" type="image/x-icon">
+		<link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-160x160.png" sizes="160x160">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<meta name="msapplication-TileColor" content="#ff0000">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+		
 	</head>
+	
     <body>
         
 
@@ -155,15 +160,10 @@
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-											<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-												<div class="btn-primary-txt">Info
-												</div>
-											</button>
-											<div class="dropdown-menu detail-dropdown" style="padding:5px;" role="menu" aria-labelledby="dropdownMenu1">
-												<h4 class="date" style="color:black;">May 2014</h4>
-												<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-												</p>
-											</div>
+												<button class="btn-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+													<div id="srchResults_btnInfo0" class="btn-primary-txt">Info
+													</div>
+												</button>											
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -1022,6 +1022,24 @@
             </div>
         </div>
 		<div id="hdnValues"></div>
-		
+		<div id="basic-modal-content">
+			<div class="info-pane">
+				<div class="row">
+					<div class="col-sm-3">
+						<a class="info-pic" href="#"> <img class="info-thumb-img" src="/images//placeholder.png">
+						</a>
+					</div>
+					<div class="col-sm-9">
+						<div class="detail-wrap">
+						<h4 class="title-info-pane" style="color:black;">Title of Movie or Episode</h4>
+						<h6 class="date" style="color:black;">May 2014</h6>
+						<h6 class="tags" style="color:black;">Comedy, Action, Drama</h6>
+						<p class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+						</p>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
     </body>
 </html>

@@ -65,7 +65,7 @@ function onEnter_Search(e) {
 					var x = '';
 					
 					document.getElementById('srch_preLoader').style.display = "none";
-					$("#hdnLoadResults").fadeIn(100);
+					$("#hdnLoadResults").fadeIn(10);
 				}
 			});
 		}
