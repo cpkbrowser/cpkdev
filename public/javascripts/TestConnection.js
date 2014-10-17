@@ -15,8 +15,8 @@ function onEnter_Search(e) {
 			
 			$("#grdSrchResults").slideDown(150);
 			
-			var test1 = 'http://localhost:3000/getSK?srch=' + val + '&type=tv';
-			//var test1 = 'http://cpktestapp2.herokuapp.com/getSK?srch=' + val + '&type=tv';
+			//var test1 = 'http://localhost:3000/getSK?srch=' + val + '&type=tv';
+			var test1 = 'http://cpktestapp2.herokuapp.com/getSK?srch=' + val + '&type=tv';
 			$.ajax({
 				url: test1,
 				success: function (rslt) {
