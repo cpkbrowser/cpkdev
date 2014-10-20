@@ -24,20 +24,54 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
-	$("#srchResults_btnInfo0").click(function() {
+	/* $("#srchItem_btnInfo0").click(function() {
 		$("#basic-modal-content").modal();
-		/* $("#basic-modal-content").modal({
-			onClose: function(dialog) {
-				$("#simplemodal-container").fadeOut(50);
-				document.getElementById('mdlInfo').style.display = 'none';
-				$("#basic-modal-content").modal.close();
-			},
-			autoOpen: false,
-            position: 'center',
-            title: 'EDIT',
-            draggable: true,
-            resizable: true,
-            modal: true
-		}); */
-	});
+	}); */
 });
+
+function callAjax(webUrl, queryString) {
+    var xmlHttpObject = null;
+
+    try {
+        // Firefox, Opera 8.0+, Safari...
+
+        xmlHttpObject = new XMLHttpRequest();
+    }
+    catch (ex) {
+        // Internet Explorer...
+
+        try {
+            xmlHttpObject = new ActiveXObject('Msxml2.XMLHTTP');
+        }
+        catch (ex) {
+            xmlHttpObject = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    }
+
+    if (xmlHttpObject == null) {
+        window.alert('AJAX is not available in this browser');
+        return;
+    }
+
+    xmlHttpObject.open("GET", webUrl + queryString, false);
+    xmlHttpObject.send();
+
+    var valueSent = xmlHttpObject.responseText;
+
+    return valueSent;
+}
+
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
+}
+
+function clearSearchResults() {
+	for (var i = 0; i < 6; i++) {
+		document.getElementById('srchItem_container' + i).style.display = 'none';
+	}
+}

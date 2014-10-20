@@ -47,7 +47,7 @@ router.get('/', function(req, res){
 		  var item = h('.index_item_ie');		  
 		  
 		  var table = '<table id="showInfo" style="display: none;">\n';
-		  table += '<thead><tr><td>Name</td><td>Description</td><td>Year</td><td>Image</td><td>Link</td></tr></thead>\n';
+		  table += '<thead><tr><td>Name</td><td>Description</td><td>Year</td><td>Image</td><td>Link</td><td>Genre</td></tr></thead>\n';
 		  table += '<tbody>\n';
 		  
 		  item.each(function(i, e) {
