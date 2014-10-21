@@ -28,14 +28,11 @@ function onEnter_Search(e) {
 					if (oldList != null) {
 						document.getElementById('hdnValues').removeChild(oldList);
 					}
-					
-					var child = document.createElement('div');
-					child.innerHTML = String(rslt);
-					child = child.firstChild;
-					document.getElementById('hdnValues').appendChild(child);
+					$("#hdnValues").append(rslt.childNodes[0]);
 					clearSearchResults();
 					
-					var shows = document.getElementById('showInfo').getElementsByTagName('tbody')[0].getElementsByTagName('td');
+					var shows = document.getElementById('hdnValues').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('td');
+					//var shows = document.getElementById('showInfo').getElementsByTagName('tbody')[0].getElementsByTagName('td');
 					var itemCount = 0;
 					var counter = 1;
 					var imgLink = '';
@@ -48,6 +45,9 @@ function onEnter_Search(e) {
 						switch (counter) {
 							case 1:
 								sName = shows[i].innerHTML;
+								if (sName == undefined) {
+									sName = shows[i].textContent;
+								}
 								document.getElementById('srchItem_n' + itemCount).innerHTML = sName;
 								document.getElementById('srchItem_hdnName' + itemCount).innerHTML = sName;
 								break;
@@ -56,19 +56,31 @@ function onEnter_Search(e) {
 								break;
 							case 3:
 								sYear = shows[i].innerHTML;
+								if (sYear == undefined) {
+									sYear = shows[i].textContent;
+								}
 								document.getElementById('srchItem_hdnYear' + itemCount).innerHTML = sYear;
 								break;
 							case 4:
 								imgLink = shows[i].innerHTML;
+								if (imgLink == undefined) {
+									imgLink = shows[i].textContent;
+								}
 								document.getElementById('srchItem_img' + itemCount).src = imgLink;
 								document.getElementById('srchItem_hdnImg' + itemCount).innerHTML = imgLink;
 								break;
 							case 5:
 								sLink = shows[i].innerHTML;
+								if (sLink == undefined) {
+									sLink = shows[i].textContent;
+								}
 								document.getElementById('srchItem_hdnLink' + itemCount).innerHTML = sLink;
 								break;
 							case 6:
 								sGenre = shows[i].innerHTML;
+								if (sGenre == undefined) {
+									sGenre = shows[i].textContent;
+								}
 								document.getElementById('srchItem_hdnGenre' + itemCount).innerHTML = sGenre;
 								break;
 						}	
@@ -93,7 +105,7 @@ function onEnter_Search(e) {
 					
 					for (var i2 = 0; i2 < itemCount; i2++) {
 						document.getElementById('srchItem_container' + i2).style.display = 'block';	
-						$("#srchItem_btnInfo" + i2).click(function() { open_mdlInfo(this); } );
+						//$("#srchItem_btnInfo" + i2).click(function() { open_mdlInfo(this); } );
 					}
 					
 					document.getElementById('srch_preLoader').style.display = "none";
@@ -106,8 +118,7 @@ function onEnter_Search(e) {
 }
 
 function open_mdlInfo(t) {
-	var p_id = t.parentNode.id;
-	var info = document.getElementById(p_id).getElementsByTagName('div')[1].getElementsByTagName('p');
+	var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
 	
 	var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML));
 	var child = document.createElement('div');

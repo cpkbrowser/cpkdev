@@ -9,7 +9,9 @@
   		<title>CPK Browser</title>
   		<meta name="viewport" content="width=device-width, initial-scale=0">
 
-        <script>window.jQuery || document.write('<script src="/javascripts/jquery-1.11.0.min.js"><\/script>')</script>
+        <!--<script>window.jQuery || document.write('<script src="/javascripts/jquery-1.11.0.min.js"><\/script>')</script>-->
+		<!--<script src="/javascripts/jquery-1.11.0.min.js"></script>-->
+		<script src="/javascripts/jquery.js"></script>
 
         <!-- Latest compiled and minified CSS : Template CSS -->
         <link rel="stylesheet" href="/stylesheets/editor-style.css">
@@ -26,7 +28,7 @@
         <!-- Latest compiled and minified JavaScript for bootstrap stuff -->
         <script src="/javascripts/scripts.min.js"></script>
 
-        <!-- Kyle's JS code -->
+        <!-- Kyle's JS code -->		
 		<script src="/javascripts/jquery.simplemodal.js"></script>
 		<script src="/javascripts/simplemodal-procs.js"></script>
     	<script src="/javascripts/basic.js"></script>
@@ -155,12 +157,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img0" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="srchItem_n0">Title of Movie or Episode</h4>
+										<h2 class="title" id="srchItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="srch_dropdownMenu0">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu0">
 													<div id="srchItem_btnInfo0" class="btn-primary-txt">Info
 													</div>
 													<div id="srchItem_hdnDiv0" style="display: none;">
@@ -191,12 +193,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img1" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="srchItem_n1">Title of Movie or Episode</h4>
+										<h2 class="title" id="srchItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="srch_dropdownMenu1">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu1">
 													<div id="srchItem_btnInfo1" class="btn-primary-txt">Info
 													</div>
 													<div id="srchItem_hdnDiv1" style="display: none;">
@@ -227,12 +229,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img2" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="srchItem_n2">Title of Movie or Episode</h4>
+										<h2 class="title" id="srchItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="srch_dropdownMenu2">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu2">
 													<div id="srchItem_btnInfo2" class="btn-primary-txt">Info
 													</div>
 													<div id="srchItem_hdnDiv2" style="display: none;">
@@ -263,12 +265,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img3" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="srchItem_n3">Title of Movie or Episode</h4>
+										<h2 class="title" id="srchItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="srch_dropdownMenu3">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu3">
 													<div id="srchItem_btnInfo3" class="btn-primary-txt">Info
 													</div>
 													<div id="srchItem_hdnDiv3" style="display: none;">
@@ -299,12 +301,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img4" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="srchItem_n4">Title of Movie or Episode</h4>
+										<h2 class="title" id="srchItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="srch_dropdownMenu4">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu4">
 													<div id="srchItem_btnInfo4" class="btn-primary-txt">Info
 													</div>
 													<div id="srchItem_hdnDiv4" style="display: none;">
@@ -335,12 +337,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="srchItem_img5" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="srchItem_n5">Title of Movie or Episode</h4>
+										<h2 class="title" id="srchItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="srch_dropdownMenu5">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu5">
 													<div id="srchItem_btnInfo5" class="btn-primary-txt">Info
 													</div>
 													<div id="srchItem_hdnDiv5" style="display: none;">
@@ -386,12 +388,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="favItem_img0" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="favItem_n0">Title of Movie or Episode</h4>
+										<h2 class="title" id="favItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="fav_dropdownMenu0">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu0">
 													<div id="favItem_btnInfo0" class="btn-primary-txt">Info
 													</div>
 													<div id="favItem_hdnDiv0" style="display: none;">
@@ -422,12 +424,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="favItem_img1" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="favItem_n1">Title of Movie or Episode</h4>
+										<h2 class="title" id="favItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="fav_dropdownMenu1">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu1">
 													<div id="favItem_btnInfo1" class="btn-primary-txt">Info
 													</div>
 													<div id="favItem_hdnDiv1" style="display: none;">
@@ -458,12 +460,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="favItem_img2" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="favItem_n2">Title of Movie or Episode</h4>
+										<h2 class="title" id="favItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="fav_dropdownMenu2">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu2">
 													<div id="favItem_btnInfo2" class="btn-primary-txt">Info
 													</div>
 													<div id="favItem_hdnDiv2" style="display: none;">
@@ -494,12 +496,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="favItem_img3" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="favItem_n3">Title of Movie or Episode</h4>
+										<h2 class="title" id="favItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="fav_dropdownMenu3">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu3">
 													<div id="favItem_btnInfo3" class="btn-primary-txt">Info
 													</div>
 													<div id="favItem_hdnDiv3" style="display: none;">
@@ -530,12 +532,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="favItem_img4" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="favItem_n4">Title of Movie or Episode</h4>
+										<h2 class="title" id="favItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="fav_dropdownMenu4">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu4">
 													<div id="favItem_btnInfo4" class="btn-primary-txt">Info
 													</div>
 													<div id="favItem_hdnDiv4" style="display: none;">
@@ -566,12 +568,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="favItem_img5" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="favItem_n5">Title of Movie or Episode</h4>
+										<h2 class="title" id="favItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="fav_dropdownMenu5">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu5">
 													<div id="favItem_btnInfo5" class="btn-primary-txt">Info
 													</div>
 													<div id="favItem_hdnDiv5" style="display: none;">
@@ -615,12 +617,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="recItem_img0" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="recItem_n0">Title of Movie or Episode</h4>
+										<h2 class="title" id="recItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="rec_dropdownMenu0">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu0">
 													<div id="recItem_btnInfo0" class="btn-primary-txt">Info
 													</div>
 													<div id="recItem_hdnDiv0" style="display: none;">
@@ -651,12 +653,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="recItem_img1" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="recItem_n1">Title of Movie or Episode</h4>
+										<h2 class="title" id="recItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="rec_dropdownMenu1">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu1">
 													<div id="recItem_btnInfo1" class="btn-primary-txt">Info
 													</div>
 													<div id="recItem_hdnDiv1" style="display: none;">
@@ -687,12 +689,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="recItem_img2" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="recItem_n2">Title of Movie or Episode</h4>
+										<h2 class="title" id="recItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="rec_dropdownMenu2">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu2">
 													<div id="recItem_btnInfo2" class="btn-primary-txt">Info
 													</div>
 													<div id="recItem_hdnDiv2" style="display: none;">
@@ -723,12 +725,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="recItem_img3" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="recItem_n3">Title of Movie or Episode</h4>
+										<h2 class="title" id="recItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="rec_dropdownMenu3">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu3">
 													<div id="recItem_btnInfo3" class="btn-primary-txt">Info
 													</div>
 													<div id="recItem_hdnDiv3" style="display: none;">
@@ -759,12 +761,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="recItem_img4" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="recItem_n4">Title of Movie or Episode</h4>
+										<h2 class="title" id="recItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="rec_dropdownMenu4">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu4">
 													<div id="recItem_btnInfo4" class="btn-primary-txt">Info
 													</div>
 													<div id="recItem_hdnDiv4" style="display: none;">
@@ -795,12 +797,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="recItem_img5" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="recItem_n5">Title of Movie or Episode</h4>
+										<h2 class="title" id="recItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="rec_dropdownMenu5">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu5">
 													<div id="recItem_btnInfo5" class="btn-primary-txt">Info
 													</div>
 													<div id="recItem_hdnDiv5" style="display: none;">
@@ -844,12 +846,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img0" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="popItem_n0">Title of Movie or Episode</h4>
+										<h2 class="title" id="popItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="pop_dropdownMenu0">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu0">
 													<div id="popItem_btnInfo0" class="btn-primary-txt">Info
 													</div>
 													<div id="popItem_hdnDiv0" style="display: none;">
@@ -880,12 +882,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img1" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="popItem_n1">Title of Movie or Episode</h4>
+										<h2 class="title" id="popItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="pop_dropdownMenu1">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu1">
 													<div id="popItem_btnInfo1" class="btn-primary-txt">Info
 													</div>
 													<div id="popItem_hdnDiv1" style="display: none;">
@@ -916,12 +918,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img2" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="popItem_n2">Title of Movie or Episode</h4>
+										<h2 class="title" id="popItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="pop_dropdownMenu2">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu2">
 													<div id="popItem_btnInfo2" class="btn-primary-txt">Info
 													</div>
 													<div id="popItem_hdnDiv2" style="display: none;">
@@ -952,12 +954,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img3" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="popItem_n3">Title of Movie or Episode</h4>
+										<h2 class="title" id="popItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="pop_dropdownMenu3">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu3">
 													<div id="popItem_btnInfo3" class="btn-primary-txt">Info
 													</div>
 													<div id="popItem_hdnDiv3" style="display: none;">
@@ -988,12 +990,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img4" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="popItem_n4">Title of Movie or Episode</h4>
+										<h2 class="title" id="popItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="pop_dropdownMenu4">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu4">
 													<div id="popItem_btnInfo4" class="btn-primary-txt">Info
 													</div>
 													<div id="popItem_hdnDiv4" style="display: none;">
@@ -1024,12 +1026,12 @@
 									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img5" class="vid-thumb-img" src="/images//placeholder.png">
 									</a>
 									<div class="description">
-										<h2 class="title" id="popItem_n5">Title of Movie or Episode</h4>
+										<h2 class="title" id="popItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
 											<div class="dropdown btn-primary">
-												<button class="btn-toggle" type="button" id="pop_dropdownMenu5">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu5">
 													<div id="popItem_btnInfo5" class="btn-primary-txt">Info
 													</div>
 													<div id="popItem_hdnDiv5" style="display: none;">
