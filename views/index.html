@@ -9,7 +9,6 @@
   		<title>CPK Browser</title>
   		<meta name="viewport" content="width=device-width, initial-scale=0">
 
-        <!--<script>window.jQuery || document.write('<script src="/javascripts/jquery-1.11.0.min.js"><\/script>')</script>-->
 		<!--<script src="/javascripts/jquery-1.11.0.min.js"></script>-->
 		<script src="/javascripts/jquery.js"></script>
 
@@ -1103,19 +1102,31 @@
 		<div id="hdnValues">
 		</div>
 		<div id="basic-modal-content">
-			<div class="info-pane">
+			<div class="info-pane" id="mdlInfoPane">
 				<div class="row">
 					<div class="col-sm-3">
-						<a class="info-pic" href="#"> <img id="mdlInfo_Img" class="info-thumb-img" src="/images//placeholder.png">
+						<a class="info-pic" href="#"> <img id="mdlInfo_Img" class="info-thumb-img" src="../public/images//placeholder.png">
 						</a>
 					</div>
 					<div id="mdlInfo" class="col-sm-9">
 						<div class="detail-wrap">
-						<h4 id="mdlInfo_Name" class="title-info-pane" style="color:black;">Title of Movie or Episode</h4>
-						<h6 id="mdlInfo_Year" class="date" style="color:black;">May 2014</h6>
-						<h6 id="mdlInfo_Genre" class="tags" style="color:black;">Comedy, Action, Drama</h6>
-						<p id="mdlInfo_Desc" class="info" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-						</p>
+							<h4 id="mdlInfo_Name" class="title-info-pane" style="color:black;">Title of Movie or Episode</h4>
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs" role="tablist">
+								<li class="active"><a href="#main-details" style="color:black" role="tab" data-toggle="tab">Details</a></li>
+								<li><a href="#links" role="tab" style="color:black" data-toggle="tab">Links</a></li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div class="tab-pane active" id="main-details">
+										<h6 id="mdlInfo_Year" class="date" style="color:black;"></h6>
+										<h6 id="mdlInfo_Genre" class="tags" style="color:black;"></h6>
+										<p id="mdlInfo_Desc" class="info" style="color:black;"></p>
+								</div>
+								<div class="tab-pane" id="links">
+									This is where accordian links go.
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

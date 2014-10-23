@@ -37,7 +37,6 @@
 	}
 }
 
-
 .more-arrow a {
 	text-decoration: none;
 	color: white;
@@ -62,6 +61,17 @@ p.info {
 }
 
 /*modal*/
+#simplemodal-container {
+		top: 80px !important;
+	}
+
+@media (max-width: 480px) {
+	#simplemodal-container {
+		min-height: 486px !important;
+		height:auto;
+		position:absolute !important;
+	}
+}
 .info-pic {
 	float: right;
 }
@@ -87,6 +97,12 @@ p.info {
 	background: white;
 	opacity: .96;
 	bottom: 0;
+	min-height: 365px;
+	overflow-y: auto;
+}
+
+.detail-wrap {
+	float: left;
 	overflow-y: auto;
 }
 /*end of modalstuff*/
@@ -149,6 +165,7 @@ select.source-select {
 @media screen and (max-width: 320px) {
 	input.search {
 		max-width: 190px;
+		font-size: 34px; /*Fix for iPhone's*/
 	}
 }
 

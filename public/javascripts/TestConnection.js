@@ -1,8 +1,8 @@
 /**
  * 
  */
- //var static_url = 'http://localhost:3000/';
- var static_url = 'http://cpktestapp2.herokuapp.com/';
+ var static_url = 'http://localhost:3000/';
+ //var static_url = 'http://cpktestapp2.herokuapp.com/';
  var temp_url = ''; 
  
 $(document).ready(function() {
@@ -29,10 +29,9 @@ function onEnter_Search(e) {
 						document.getElementById('hdnValues').removeChild(oldList);
 					}
 					$("#hdnValues").append(rslt.childNodes[0]);
-					clearSearchResults();
-					
+					clearSearchResults();					
 					var shows = document.getElementById('hdnValues').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('td');
-					//var shows = document.getElementById('showInfo').getElementsByTagName('tbody')[0].getElementsByTagName('td');
+					
 					var itemCount = 0;
 					var counter = 1;
 					var imgLink = '';
@@ -105,7 +104,6 @@ function onEnter_Search(e) {
 					
 					for (var i2 = 0; i2 < itemCount; i2++) {
 						document.getElementById('srchItem_container' + i2).style.display = 'block';	
-						//$("#srchItem_btnInfo" + i2).click(function() { open_mdlInfo(this); } );
 					}
 					
 					document.getElementById('srch_preLoader').style.display = "none";
@@ -135,6 +133,9 @@ function open_mdlInfo(t) {
 	document.getElementById('mdlInfo_Year').innerHTML = info[4].innerHTML;
 	document.getElementById('mdlInfo_Genre').innerHTML = info[3].innerHTML;
 	$("#basic-modal-content").modal();
+	document.getElementById('simplemodal-container').style.width = '100%';
+	var hgt = document.getElementById('mdlInfoPane').offsetHeight + 10;
+	document.getElementById('simplemodal-container').style.height = String(hgt) + 'px';
 }
 
 
