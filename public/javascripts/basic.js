@@ -24,6 +24,8 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
+	//$("#lnkAccordion").accordion({heightStyle: 'panel'});
+	
 	/* $("#srchItem_btnInfo0").click(function() {
 		$("#basic-modal-content").modal();
 	}); */

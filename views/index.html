@@ -4,13 +4,13 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-  		<meta charset="utf-8">
-  		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
   		<title>CPK Browser</title>
   		<meta name="viewport" content="width=device-width, initial-scale=0">
 
 		<!--<script src="/javascripts/jquery-1.11.0.min.js"></script>-->
 		<script src="/javascripts/jquery.js"></script>
+		<script src="/javascripts/jquery-ui.js"></script>
 
         <!-- Latest compiled and minified CSS : Template CSS -->
         <link rel="stylesheet" href="/stylesheets/editor-style.css">
@@ -23,6 +23,8 @@
 		
 		<link rel="stylesheet" href="/stylesheets/loader.css">
 		<link rel="stylesheet" href="/stylesheets/simplemodal.css">
+		<link rel="stylesheet" href="/stylesheets/jquery-ui.css">
+		<link rel="stylesheet" href="/stylesheets/jquery-ui.theme.css">
 
         <!-- Latest compiled and minified JavaScript for bootstrap stuff -->
         <script src="/javascripts/scripts.min.js"></script>
@@ -1101,6 +1103,8 @@
         </div>
 		<div id="hdnValues">
 		</div>
+		<div id="hdnValues2">
+		</div>
 		<div id="basic-modal-content">
 			<div class="info-pane" id="mdlInfoPane">
 				<div class="row">
@@ -1121,10 +1125,12 @@
 								<div class="tab-pane active" id="main-details">
 										<h6 id="mdlInfo_Year" class="date" style="color:black;"></h6>
 										<h6 id="mdlInfo_Genre" class="tags" style="color:black;"></h6>
-										<p id="mdlInfo_Desc" class="info" style="color:black;"></p>
+										<p id="mdlInfo_Desc" class="info" style="color:black; max-width: 60%;"></p>
 								</div>
 								<div class="tab-pane" id="links">
-									This is where accordian links go.
+									<div id="lnkAccordion" style="width: 100%; max-height: 180px; overflow: auto;">
+										
+									</div>
 								</div>
 							</div>
 						</div>
