@@ -1,8 +1,8 @@
 /**
  * 
  */
- //var static_url = 'http://localhost:3000/';
- var static_url = 'http://cpktestapp2.herokuapp.com/';
+ var static_url = 'http://localhost:3000/';
+ //var static_url = 'http://cpktestapp2.herokuapp.com/';
  var temp_url = ''; 
  
 $(document).ready(function() {
@@ -137,7 +137,13 @@ function open_mdlInfo(t) {
 	document.getElementById('mdlInfo_Name').innerHTML = info[0].innerHTML;
 	document.getElementById('mdlInfo_Year').innerHTML = info[4].innerHTML;
 	document.getElementById('mdlInfo_Genre').innerHTML = info[3].innerHTML;
-	$("#basic-modal-content").modal();
+	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
+	$("#basic-modal-content").modal({
+		onClose: function(dialog) {
+			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
+			$.modal.close();
+		}
+	});	
 	document.getElementById('simplemodal-container').style.width = '100%';
 	var hgt = document.getElementById('mdlInfoPane').offsetHeight + 10;
 	document.getElementById('simplemodal-container').style.height = String(hgt) + 'px';
@@ -258,7 +264,6 @@ function build_lnkAccordion(ssnList) {
 	var lstItem;
 	var mxWidth = 1;
 	var currWidth;
-	var counter = 0;
 	
 	for (i = 0; i < ssnList.length; i++) {
 		for (j = 0; j < ssnList[i].length; j++) {
@@ -269,7 +274,7 @@ function build_lnkAccordion(ssnList) {
 		}
 	}
 	
-	for (x = 0; x < ssnList.length; x++) {
+	for (x = (ssnList.length - 1); x >= 0; x--) {
 	
 		xChild = document.createElement('h3');
 		xTextNode = document.createTextNode('Season ' + String(x + 1));
@@ -292,27 +297,16 @@ function build_lnkAccordion(ssnList) {
 		uList.style.width = String(mxWidth + 80) + 'px'; 
 		yChild.appendChild(uList);
 		document.getElementById('lnkAccordion').appendChild(yChild);
-		counter++;
 	}
-	//$("#lnkAccordion").accordion({heightStyle: 'panel', active: (counter - 1)});
-	$("#lnkAccordion").accordion({heightStyle: 'panel', active: (counter - 1), activate: function (event, ui) {
+	$("#lnkAccordion").accordion({heightStyle: 'panel', active: 0, activate: function (event, ui) {
             var scrollTop = $("#lnkAccordion").scrollTop();
             if(!ui.newHeader.length) return;
             var top = $(ui.newHeader).offset().top;
             $(this).animate({
                 scrollTop: scrollTop + top - 175
             }, "fast");
-        }});
-	/* $("#lnkAccordion").accordion({heightStyle: 'panel', active: (counter - 1), activate: function (event, ui) {
-        var scrollTop = $(".#lnkAccordion").scrollTop();
-        //if(!ui.newHeader.length) return;
-        var top = $(ui.newHeader).offset().top;
-        $("html,body").animate({
-            scrollTop: scrollTop + top - 35
-        }, "fast");
-    }}); */
-	//$.scrollTo('#acrdSsn_' + String(counter - 1));
-	//$('div#lnkAccordion').('#acrdSsn_' + String(counter - 1));
+        }
+	});
 }
 
 
