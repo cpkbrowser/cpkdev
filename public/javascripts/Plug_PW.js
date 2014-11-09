@@ -1,8 +1,8 @@
 /**
  * 
  */
- var static_url = 'http://localhost:3000/';
- //var static_url = 'http://cpktestapp2.herokuapp.com/';
+ //var static_url = 'http://localhost:3000/';
+ var static_url = 'http://cpktestapp2.herokuapp.com/';
  var temp_url = ''; 
  
 $(document).ready(function() {
