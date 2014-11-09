@@ -33,7 +33,7 @@
 		<script src="/javascripts/jquery.simplemodal.js"></script>
 		<script src="/javascripts/simplemodal-procs.js"></script>
     	<script src="/javascripts/basic.js"></script>
-    	<script src="/javascripts/TestConnection.js"></script>
+    	<script src="/javascripts/Plug_PW.js"></script>
 
 		<!-- Favicons for all devices -->
 		<link rel="shortcut icon" href="/images/favicons/favicon.ico" type="image/x-icon">
@@ -1101,9 +1101,13 @@
                 </div>
             </div>
         </div>
-		<div id="hdnValues">
+		<div id="hdnValues" style="display: none;">
 		</div>
 		<div id="hdnValues2" style="display: none;">
+		</div>
+		<div id="hdnValues3" style="display: none;">
+		</div>
+		<div id="hdnValues4" style="display: none;">
 		</div>
 		<div id="basic-modal-content">
 			<div class="info-pane" id="mdlInfoPane">
@@ -1126,6 +1130,7 @@
 										<h6 id="mdlInfo_Year" class="date" style="color:black;"></h6>
 										<h6 id="mdlInfo_Genre" class="tags" style="color:black;"></h6>
 										<p id="mdlInfo_Desc" class="info" style="color:black; max-width: 60%;"></p>
+										<p id="mdlInfo_Link" style="display: none;"></p>
 								</div>
 								<div class="tab-pane" id="links">
 									<div id="lnkAccordion" style="width: 100%; max-height: 180px; overflow: auto;">
@@ -1136,7 +1141,14 @@
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>	
+			<div id="mdlMoviePane" style="display: none;">
+				<!-- <iframe style="width: 100%; height: 800px;" src="about:blank" sandbox="allow-forms allow-same-origin allow-scripts allow-pointer-lock"></iframe>  -->
+				<div align="right" style="height: 25px; width: 100%;">
+					<p style="text-align: left; color: #ffffff; cursor: pointer;" onclick="loadNextLink(); return false;">Next Link</p>
+				</div>
+				<iframe id="mdlVideoFrame" style="width: 100%; height: 800px;" src="about:blank"></iframe>
+			</div>
 		</div>
     </body>
 </html>

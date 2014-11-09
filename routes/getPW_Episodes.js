@@ -30,9 +30,9 @@ router.get('/', function(req, res){
   download(x, function(data) {
     if (data) {
 	  var $ = cheerio.load(data);
-	  var links = $('.movie_version_link');
+	  var links = $('.tv_container');
 	  
-	  var table = '<div id="showLinks" style="display: none;">';  
+	  var table = '<div id="showEpisodes" style="display: none;">';  
 	  
 	  links.each(function(i, e) { 
 		table += String($(e));

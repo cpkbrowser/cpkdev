@@ -1,8 +1,8 @@
 /**
  * 
  */
- //var static_url = 'http://localhost:3000/';
- var static_url = 'http://cpktestapp2.herokuapp.com/';
+ var static_url = 'http://localhost:3000/';
+ //var static_url = 'http://cpktestapp2.herokuapp.com/';
  var temp_url = ''; 
  
 $(document).ready(function() {
@@ -137,7 +137,11 @@ function open_mdlInfo(t) {
 	document.getElementById('mdlInfo_Name').innerHTML = info[0].innerHTML;
 	document.getElementById('mdlInfo_Year').innerHTML = info[4].innerHTML;
 	document.getElementById('mdlInfo_Genre').innerHTML = info[3].innerHTML;
+	var newLink = info[5].innerHTML.replace('watch-', 'tv-');
+	document.getElementById('mdlInfo_Link').innerHTML = newLink;
 	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
+	document.getElementById('mdlInfoPane').style.display = 'block';
+	document.getElementsByTagName('iframe')[0].parentNode.style.display = 'none';
 	$("#basic-modal-content").modal({
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
@@ -148,25 +152,25 @@ function open_mdlInfo(t) {
 	var hgt = document.getElementById('mdlInfoPane').offsetHeight + 10;
 	document.getElementById('simplemodal-container').style.height = String(hgt) + 'px';
 	
-	getLinks(static_url + 'getPW_Links' + '?srch=' + info[5].innerHTML)
+	getEpisodes(static_url + 'getPW_Episodes' + '?srch=' + info[5].innerHTML)
 }
 
-function getLinks(src_url) {
+function getEpisodes(src_url) {
 	var now = new Date();
 	$.ajax({
 		url: src_url,
 		success: function(rslt2) {
-			var oldLinks = document.getElementById('showLinks');
-			var oldLinks2 = document.getElementById('hdnValues2').getElementsByTagName('div');
-			if (oldLinks != null) {
-				document.getElementById('hdnValues2').removeChild(oldLinks);
-			} else if (oldLinks2 != null) {
+			var oldEpisodes = document.getElementById('showEpisodes');
+			var oldEpisodes2 = document.getElementById('hdnValues2').getElementsByTagName('div');
+			if (oldEpisodes != null) {
+				document.getElementById('hdnValues2').removeChild(oldEpisodes);
+			} else if (oldEpisodes2 != null) {
 				//Internet Explorer Work-Around
 				$("#hdnValues2").empty();
 			}
 			$("#hdnValues2").append(rslt2.childNodes[0]);
 			
-			var containers = $("#showLinks .tv_container");
+			var containers = $("#showEpisodes .tv_container");
 			if (containers.length < 1) {
 				//Internet Explorer Work-Around
 				containers = document.getElementById('hdnValues2').getElementsByTagName('div')[0];
@@ -187,7 +191,11 @@ function getLinks(src_url) {
 					$.each(ep, function(i2, val2) {
 						try {
 							tempItem = val2.childNodes[1].childNodes[0].data.trim();
-							tempName = val2.childNodes[1].childNodes[1].innerHTML;
+							if (val2.childNodes[1].childNodes.length > 1) {
+								tempName = val2.childNodes[1].childNodes[1].innerHTML;
+							} else {
+								tempName = ' ';
+							}
 							if (tempName == null) {
 								//Internet Explorer Work-Around
 								tempName = val2.childNodes[1].childNodes[1].textContent;
@@ -218,7 +226,11 @@ function getLinks(src_url) {
 					$.each(ep, function(i3, val3) {
 						try {
 							tempItem = val3.childNodes[1].childNodes[0].data.trim();
-							tempName = val3.childNodes[1].childNodes[1].innerHTML;
+							if (val3.childNodes[1].childNodes.length > 1) {
+								tempName = val3.childNodes[1].childNodes[1].innerHTML;
+							} else {
+								tempName = ' ';
+							}
 							if (tempName == null) {
 								//Internet Explorer Work-Around							
 								tempName = val2.childNodes[1].childNodes[1].textContent;
@@ -264,6 +276,9 @@ function build_lnkAccordion(ssnList) {
 	var lstItem;
 	var mxWidth = 1;
 	var currWidth;
+	var tmpSsn;
+	var tmpEp;
+	var tmpLink;
 	
 	for (i = 0; i < ssnList.length; i++) {
 		for (j = 0; j < ssnList[i].length; j++) {
@@ -282,7 +297,7 @@ function build_lnkAccordion(ssnList) {
 		document.getElementById('lnkAccordion').appendChild(xChild);
 		
 		yChild = document.createElement('div');
-		yChild.id = 'acrdSsn_' + String(x);
+		yChild.id = 'acrdSsn_' + String(x + 1);
 		yChild.style.height= '100%';
 		uList = document.createElement('ul');
 		
@@ -290,6 +305,13 @@ function build_lnkAccordion(ssnList) {
 			lstItem = document.createElement('li');			
 			yTextNode = document.createTextNode(String(ssnList[x][y].Item) + String(ssnList[x][y].Name));
 			lstItem.style.minWidth = mxWidth + 'px';
+			$(lstItem).click(function() {
+				tmpSsn = this.parentNode.parentNode.id.replace('acrdSsn_', '');
+				tmpEp = this.innerHTML.substring(8, 9);
+				tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+				getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
+			});
+			$(lstItem).css('cursor', 'pointer');
 			lstItem.appendChild(yTextNode);
 			uList.appendChild(lstItem);	
 		}
@@ -308,5 +330,215 @@ function build_lnkAccordion(ssnList) {
         }
 	});
 }
+
+function getLinks(lnkUrl) {
+	var lnkList = {};
+	$.ajax({
+		url: lnkUrl,
+		success: function(rslt3) {
+			var oldLinks = document.getElementById('showLinks');
+			var oldLinks2 = document.getElementById('hdnValues3').getElementsByTagName('div');
+			if (oldLinks != null) {
+				document.getElementById('hdnValues3').removeChild(oldLinks);
+			} else if (oldLinks2 != null) {
+				//Internet Explorer Work-Around
+				$("#hdnValues3").empty();
+			}
+			$("#hdnValues3").append(rslt3.childNodes[0]);
+			
+			lnkList = getLinkArray();
+			var topLink = orderLinkList(lnkList);
+			
+			if (topLink != 'none') {
+				prepareMovieFrame(topLink);
+			} else {
+				alert('No Links Found.');
+			}
+		}
+	});	
+}
+
+function getLinkArray() {
+	var lnkList = {};
+	var containers = $("#showLinks .movie_version_link");
+    if (containers.length < 1) {
+    	//Internet Explorer Work-Around
+    	containers = document.getElementById('hdnValues3').getElementsByTagName('div')[0].getElementsByTagName('span');
+    	containers = $(containers);
+    }
+	var count = 0;
+    $.each(containers, function(i, val) {
+    	var x = val.getElementsByTagName('a')[0].getAttribute("href");
+    	lnkList[i] = x;
+		count++;
+    });
+	Object.defineProperty(lnkList, 'length', {
+		__proto__: null,
+		value: count
+	});
+	return lnkList;
+}
+
+function prepareMovieFrame(currLink) {
+	document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
+	$.modal.close();
+	document.getElementById('mdlInfoPane').style.display = 'none';
+	var frame = document.getElementsByTagName('iframe')[0];
+	frame.src = getVideo(currLink);
+	frame.height = ($(window).height()) - 175
+	frame.parentNode.style.display = 'block';
+	
+	
+	$($(frame)).load(function() {
+		var prevent_bust = 0  
+		window.onbeforeunload = function() { prevent_bust++ }  
+		setInterval(function() {  
+		  if (prevent_bust > 0) {  
+		    prevent_bust -= 2
+		    window.top.location = 'http://localhost:3000/getBlank'
+		  }  
+		}, 1);	
+	}); 
+	
+	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
+	$("#basic-modal-content").modal({
+		onClose: function(dialog) {
+			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
+			var frame = document.getElementsByTagName('iframe')[0];
+			frame.src = 'about:blank';
+			frame.parentNode.style.display = 'none';
+			document.getElementById('mdlInfoPane').style.display = 'block';
+			$.modal.close();
+		}
+	});	
+}
+
+function getVideo(lnkUrl) {
+	var rslt4 = callAjax(static_url + 'getPW_Video', '?srch=' + lnkUrl);
+	return rslt4;
+}
+
+function orderLinkList(lnkList) {
+	var authLinks = {};
+	var a_count = 0;
+	var unauthLinks = {};
+	var u_count = 0;
+	var tempLinks = {};
+	var finalList = {};
+	var tempItem = 0;
+	var tmpString = '';
+	
+	for (i = 0; i < lnkList.length; i++) {
+		tmpString = String(lnkList[i]);
+		if (tmpString.indexOf('Z29yaWxsYXZpZC5pbg') != -1) {
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 7;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('bm9zdmlkZW8uY29t') != -1) {
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 6;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('c29ja3NoYXJlLmNvbQ') != -1) {
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 5;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('cHJvbXB0ZmlsZS5jb20') != -1) {
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 4;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('bm93dmlkZW8uZXU') != -1) {
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 3;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('cHV0bG9ja2VyLmNvbQ') != -1) {
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 2;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('bm92YW1vdi5jb20') != -1) {
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 1;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else {
+			unauthLinks[u_count] = lnkList[i];
+			u_count++;
+		}
+	}
+	
+	var swapped;
+	do {
+		var swapped = false;
+		for (i = 0; i < (a_count - 1); i++) {
+			if (authLinks[i][0] < authLinks[i + 1][0]) {
+				tempItem = authLinks[i];
+				authLinks[i] = authLinks[i + 1];
+				authLinks[i + 1] = tempItem;
+				swapped = true;
+			}
+		}
+	} while (swapped)	
+	
+	var topLink;
+	if (a_count > 0) {
+		topLink = authLinks[0][1];
+	} else if (u_count > 0) {
+		topLink = unauthLinks[0];
+	} else {
+		topLink = 'none'
+	}
+	
+	Object.defineProperty(authLinks, 'length', {
+		__proto__: null,
+		value: a_count
+	});
+	Object.defineProperty(unauthLinks, 'length', {
+		__proto__: null,
+		value: u_count
+	});
+	
+	loadLinkResults(authLinks, unauthLinks);
+	
+	return topLink;
+}
+
+function loadLinkResults(authLinks, unauthLinks) {
+	
+	$("#hdnValues4").empty();
+
+	var table = '<ul>';
+	for (i = 0; i < authLinks.length; i++) {
+		table += ('<li>' + authLinks[i][1] + '</li>');
+	}
+	for (i = 0; i < unauthLinks.length; i++) {
+		table += ('<li>' + unauthLinks[i] + '</li>');
+	}
+	table += '</ul></div>';
+	
+	var div1 = document.createElement('div');
+	div1.id = 'LinkList';
+	div1.style.display = 'none';
+	div1.innerHTML = table;
+	div1 = div1.firstChild;
+	
+	var t1 = document.createTextNode('1');	
+	document.getElementById('hdnValues4').appendChild(div1);
+	document.getElementById('hdnValues4').appendChild(t1);
+}
+
+function loadNextLink() {
+	var x = document.getElementById('hdnValues4');
+	var y = x.childNodes[1].nodeValue;
+	var z = x.getElementsByTagName('li')[y];
+	x.childNodes[1].nodeValue = parseInt(y, 10) + 1;
+	var frame = document.getElementById('mdlVideoFrame');
+	frame.src = getVideo(z.innerText);
+}
+
 
 
