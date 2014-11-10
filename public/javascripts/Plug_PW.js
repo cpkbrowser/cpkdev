@@ -536,7 +536,19 @@ function loadNextLink() {
 	var y = x.childNodes[1].nodeValue;
 	var z = x.getElementsByTagName('li')[y];
 	x.childNodes[1].nodeValue = parseInt(y, 10) + 1;
+	
+	
 	var frame = document.getElementById('mdlVideoFrame');
+	$($(frame)).load(function() {
+		var prevent_bust = 0  
+		window.onbeforeunload = function() { prevent_bust++ }  
+		setInterval(function() {  
+		  if (prevent_bust > 0) {  
+		    prevent_bust -= 2
+		    window.top.location = 'http://localhost:3000/getBlank'
+		  }  
+		}, 1);	
+	}); 
 	frame.src = getVideo(z.innerText);
 }
 
