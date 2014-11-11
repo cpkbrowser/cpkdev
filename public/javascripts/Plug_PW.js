@@ -388,17 +388,17 @@ function prepareMovieFrame(currLink) {
 	frame.height = ($(window).height()) - 175
 	frame.parentNode.style.display = 'block';
 	
-	$($(frame)).load(function() {
+	/* $($(frame)).load(function() {
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
 		  if (prevent_bust > 0) {  
 		    prevent_bust -= 2
-		    //window.top.location = 'http://localhost:3000/getBlank'
-			window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
+		    window.top.location = 'http://localhost:3000/getBlank'
+			//window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
 		  }  
 		}, 1);	
-	});
+	}); */
 	
 	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
 	$("#basic-modal-content").modal({
@@ -538,17 +538,17 @@ function loadNextLink() {
 	x.childNodes[1].nodeValue = parseInt(y, 10) + 1;	
 	
 	var frame = document.getElementById('mdlVideoFrame');
-	$($(frame)).load(function() {
+	/* $($(frame)).load(function() {
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
 		  if (prevent_bust > 0) {  
 		    prevent_bust -= 2
-		    //window.top.location = 'http://localhost:3000/getBlank'
-			window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
+		    window.top.location = 'http://localhost:3000/getBlank'
+			//window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
 		  }  
 		}, 1);	
-	}); 
+	}); */ 
 	if (z.innerText == undefined) {
 		frame.src = getVideo(z.lastChild.nodeValue);
 	} else {
