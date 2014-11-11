@@ -388,7 +388,6 @@ function prepareMovieFrame(currLink) {
 	frame.height = ($(window).height()) - 175
 	frame.parentNode.style.display = 'block';
 	
-	
 	$($(frame)).load(function() {
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
@@ -536,8 +535,7 @@ function loadNextLink() {
 	var x = document.getElementById('hdnValues4');
 	var y = x.childNodes[1].nodeValue;
 	var z = x.getElementsByTagName('li')[y];
-	x.childNodes[1].nodeValue = parseInt(y, 10) + 1;
-	
+	x.childNodes[1].nodeValue = parseInt(y, 10) + 1;	
 	
 	var frame = document.getElementById('mdlVideoFrame');
 	$($(frame)).load(function() {
@@ -551,7 +549,11 @@ function loadNextLink() {
 		  }  
 		}, 1);	
 	}); 
-	frame.src = getVideo(z.innerText);
+	if (z.innerText == undefined) {
+		frame.src = getVideo(z.lastChild);
+	} else {
+		frame.src = getVideo(z.innerText);
+	}
 }
 
 
