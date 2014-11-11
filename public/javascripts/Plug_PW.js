@@ -550,7 +550,7 @@ function loadNextLink() {
 		}, 1);	
 	}); 
 	if (z.innerText == undefined) {
-		frame.src = getVideo(z.lastChild);
+		frame.src = getVideo(z.lastChild.nodeValue);
 	} else {
 		frame.src = getVideo(z.innerText);
 	}
