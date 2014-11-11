@@ -1101,14 +1101,12 @@
                 </div>
             </div>
         </div>
-		<div id="hdnValues" style="display: none;">
-		</div>
-		<div id="hdnValues2" style="display: none;">
-		</div>
-		<div id="hdnValues3" style="display: none;">
-		</div>
-		<div id="hdnValues4" style="display: none;">
-		</div>
+		<div id="hdnValues" style="display: none;"></div>
+		<div id="hdnValues2" style="display: none;"></div>
+		<div id="hdnValues3" style="display: none;"></div>
+		<div id="hdnValues4" style="display: none;"></div>
+		<div id="hdnValues5" style="display: none;"></div>
+		<div id="hdnValues6" style="display: none;"></div>
 		<div id="basic-modal-content">
 			<div class="info-pane" id="mdlInfoPane">
 				<div class="row">
@@ -1144,8 +1142,10 @@
 			</div>	
 			<div id="mdlMoviePane" style="display: none;">
 				<!-- <iframe style="width: 100%; height: 800px;" src="about:blank" sandbox="allow-forms allow-same-origin allow-scripts allow-pointer-lock"></iframe>  -->
-				<div align="right" style="height: 25px; width: 100%;">
-					<p style="text-align: left; color: #ffffff; cursor: pointer;" onclick="loadNextLink(); return false;">Next Link</p>
+				<div id="mdlNavButtons" align="left" style="height: 25px; width: 100%;">
+					<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextLink(); return false;">Next Link</p>
+					<p style="display: inline-block; color: #ffffff; padding-left: 10px; padding-right: 10px;">  |  </p>
+					<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextEpisode(); return false;">Next Episode</p>
 				</div>
 				<iframe id="mdlVideoFrame" style="width: 100%; height: 800px;" src="about:blank"></iframe>
 				

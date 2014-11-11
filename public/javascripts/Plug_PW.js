@@ -1,8 +1,10 @@
 /**
  * 
  */
- //var static_url = 'http://localhost:3000/';
- var static_url = 'http://cpktestapp2.herokuapp.com/';
+ var static_url = 'http://localhost:3000/';
+ var redir1 = 'http://localhost:3000/getBlank';
+ //var static_url = 'http://cpktestapp2.herokuapp.com/';
+ //var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
  var temp_url = ''; 
  
 $(document).ready(function() {
@@ -256,6 +258,7 @@ function getEpisodes(src_url) {
 			var dif = then - now;
 			var x1 = '';
 			build_lnkAccordion(ssnList);
+			loadSsnList(ssnList);
 		}
 	});
 }
@@ -305,12 +308,11 @@ function build_lnkAccordion(ssnList) {
 			lstItem = document.createElement('li');			
 			yTextNode = document.createTextNode(String(ssnList[x][y].Item) + String(ssnList[x][y].Name));
 			lstItem.style.minWidth = mxWidth + 'px';
-			$(lstItem).click(function() {
-				tmpSsn = this.parentNode.parentNode.id.replace('acrdSsn_', '');
-				tmpEp = this.innerHTML.substring(8, 9);
-				tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
-				getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
-			});
+			if (y > 8) {
+				$(lstItem).click(function() { onClick_Link(1, this); });
+			} else {
+				$(lstItem).click(function() { onClick_Link(0, this); });
+			}
 			$(lstItem).css('cursor', 'pointer');
 			lstItem.appendChild(yTextNode);
 			uList.appendChild(lstItem);	
@@ -331,24 +333,54 @@ function build_lnkAccordion(ssnList) {
 	});
 }
 
+function onClick_Link(flag1, obj1) {
+	if (flag1 == 0) {
+		tmpSsn = obj1.parentNode.parentNode.id.replace('acrdSsn_', '');
+		tmpEp = obj1.innerHTML.substring(8, 9);
+		tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+		getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
+		loadCurrentValues(tmpSsn, tmpEp);
+	} else {
+		tmpSsn = obj1.parentNode.parentNode.id.replace('acrdSsn_', '');
+		tmpEp = obj1.innerHTML.substring(8, 10);
+		tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+		getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
+		loadCurrentValues(tmpSsn, tmpEp);
+	}
+}
+
+function loadSsnList(ssnList) {
+	$("#hdnValues3").empty();	
+	var table = '<table><tbody><tr>';
+	for (i = 0; i < ssnList.length; i++) {
+		table += '<td>' + ssnList[i].length + '</td>';
+	}
+	table += '</tr></tbody></table>';
+	var div1 = document.getElementById('hdnValues3');
+	div1.innerHTML = table;
+}
+
 function getLinks(lnkUrl) {
 	var lnkList = {};
+	document.getElementById('mdlNavButtons').style.display = 'none';
 	$.ajax({
 		url: lnkUrl,
 		success: function(rslt3) {
 			var oldLinks = document.getElementById('showLinks');
-			var oldLinks2 = document.getElementById('hdnValues3').getElementsByTagName('div');
+			var oldLinks2 = document.getElementById('hdnValues4').getElementsByTagName('div');
 			if (oldLinks != null) {
-				document.getElementById('hdnValues3').removeChild(oldLinks);
+				document.getElementById('hdnValues4').removeChild(oldLinks);
 			} else if (oldLinks2 != null) {
 				//Internet Explorer Work-Around
-				$("#hdnValues3").empty();
+				$("#hdnValues4").empty();
 			}
-			$("#hdnValues3").append(rslt3.childNodes[0]);
+			$("#hdnValues4").append(rslt3.childNodes[0]);
 			
 			lnkList = getLinkArray();
 			var topLink = orderLinkList(lnkList);
 			
+			document.getElementById('mdlNavButtons').style.display = 'inline-block';
+			document.getElementById('simplemodal-container').childNodes[0].display = 'inline';
 			if (topLink != 'none') {
 				prepareMovieFrame(topLink);
 			} else {
@@ -363,7 +395,7 @@ function getLinkArray() {
 	var containers = $("#showLinks .movie_version_link");
     if (containers.length < 1) {
     	//Internet Explorer Work-Around
-    	containers = document.getElementById('hdnValues3').getElementsByTagName('div')[0].getElementsByTagName('span');
+    	containers = document.getElementById('hdnValues4').getElementsByTagName('div')[0].getElementsByTagName('span');
     	containers = $(containers);
     }
 	var count = 0;
@@ -388,17 +420,16 @@ function prepareMovieFrame(currLink) {
 	frame.height = ($(window).height()) - 175
 	frame.parentNode.style.display = 'block';
 	
-	/* $($(frame)).load(function() {
+	$($(frame)).load(function() {
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
 		  if (prevent_bust > 0) {  
 		    prevent_bust -= 2
-		    window.top.location = 'http://localhost:3000/getBlank'
-			//window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
+		    window.top.location = redir1
 		  }  
 		}, 1);	
-	}); */
+	});
 	
 	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
 	$("#basic-modal-content").modal({
@@ -509,7 +540,7 @@ function orderLinkList(lnkList) {
 
 function loadLinkResults(authLinks, unauthLinks) {
 	
-	$("#hdnValues4").empty();
+	$("#hdnValues6").empty();
 
 	var table = '<ul>';
 	for (i = 0; i < authLinks.length; i++) {
@@ -527,33 +558,73 @@ function loadLinkResults(authLinks, unauthLinks) {
 	div1 = div1.firstChild;
 	
 	var t1 = document.createTextNode('1');	
-	document.getElementById('hdnValues4').appendChild(div1);
-	document.getElementById('hdnValues4').appendChild(t1);
+	document.getElementById('hdnValues6').appendChild(div1);
+	document.getElementById('hdnValues6').appendChild(t1);
 }
 
 function loadNextLink() {
-	var x = document.getElementById('hdnValues4');
-	var y = x.childNodes[1].nodeValue;
-	var z = x.getElementsByTagName('li')[y];
-	x.childNodes[1].nodeValue = parseInt(y, 10) + 1;	
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	var div1 = document.getElementById('hdnValues6');
+	var lnkIndex = div1.childNodes[1].nodeValue;
+	var nextLink = div1.getElementsByTagName('li')[lnkIndex];
+	div1.childNodes[1].nodeValue = parseInt(lnkIndex, 10) + 1;	
 	
 	var frame = document.getElementById('mdlVideoFrame');
-	/* $($(frame)).load(function() {
+	
+	$($(frame)).load(function() {
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
 		  if (prevent_bust > 0) {  
 		    prevent_bust -= 2
-		    window.top.location = 'http://localhost:3000/getBlank'
-			//window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
+		    window.top.location = redir1
 		  }  
 		}, 1);	
-	}); */ 
-	if (z.innerText == undefined) {
-		frame.src = getVideo(z.lastChild.nodeValue);
+	});
+	
+	if (nextLink.innerText == undefined) {
+		frame.src = getVideo(nextLink.lastChild.nodeValue);
 	} else {
-		frame.src = getVideo(z.innerText);
+		frame.src = getVideo(nextLink.innerText);
 	}
+	document.getElementById('mdlNavButtons').style.display = 'inline-block';
+}
+
+function loadCurrentValues(ssn, ep) {	
+	$("#hdnValues5").empty();	
+	var t1 = document.createTextNode(ssn);	
+	var t2 = document.createTextNode(ep);	
+	document.getElementById('hdnValues5').appendChild(t1);
+	document.getElementById('hdnValues5').appendChild(t2);
+}
+
+function loadNextEpisode() {	
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	//document.getElementsByClassName('modalCloseImg simplemodal-close')[0].display = 'none';
+	document.getElementById('simplemodal-container').childNodes[0].display = 'none';
+	var div1 = document.getElementById('hdnValues5');	
+	var tmpSsn = div1.childNodes[0].nodeValue;
+	var ssn = parseInt(tmpSsn, 10);
+	var tmpEp = div1.childNodes[1].nodeValue;
+	var ep = parseInt(tmpEp, 10) + 1;
+	
+	var container = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
+	var tmpNum = container[(ssn - 1)].innerHTML;
+	var maxEpisode = parseInt(tmpNum, 10);
+	if (ep > maxEpisode) {
+		if (container.length <= ssn) {
+			alert('You have finished the series.');
+			return;
+		} else {
+			ssn++;
+			ep = 1;
+		}
+	}
+	
+	div1.childNodes[0].nodeValue = ssn;
+	div1.childNodes[1].nodeValue = ep;
+	tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+	getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + ssn + '-episode-' + ep);
 }
 
 
