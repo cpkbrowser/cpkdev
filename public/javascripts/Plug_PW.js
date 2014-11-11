@@ -389,7 +389,7 @@ function prepareMovieFrame(currLink) {
 	frame.parentNode.style.display = 'block';
 	
 	
-	$($(frame)).load(function() {
+	/* $($(frame)).load(function() {
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
@@ -398,7 +398,7 @@ function prepareMovieFrame(currLink) {
 		    window.top.location = 'http://localhost:3000/getBlank'
 		  }  
 		}, 1);	
-	}); 
+	});  */
 	
 	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
 	$("#basic-modal-content").modal({
@@ -539,7 +539,7 @@ function loadNextLink() {
 	
 	
 	var frame = document.getElementById('mdlVideoFrame');
-	$($(frame)).load(function() {
+	/* $($(frame)).load(function() {
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
@@ -548,7 +548,7 @@ function loadNextLink() {
 		    window.top.location = 'http://localhost:3000/getBlank'
 		  }  
 		}, 1);	
-	}); 
+	});  */
 	frame.src = getVideo(z.innerText);
 }
 

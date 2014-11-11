@@ -24,14 +24,16 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
-	var prevent_bust = 0  
+	var test = window;
+	
+	/* var prevent_bust = 0  
     window.onbeforeunload = function() { prevent_bust++ }  
     setInterval(function() {  
       if (prevent_bust > 0) {  
         prevent_bust -= 2
         window.top.location = 'http://localhost:3000/getBlank'
       }  
-    }, 1);	
+    }, 1); */	
 	
 });
 
