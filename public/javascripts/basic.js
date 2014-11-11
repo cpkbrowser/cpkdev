@@ -24,8 +24,6 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
-	var test = window;
-	
 	var prevent_bust = 0  
     window.onbeforeunload = function() { prevent_bust++ }  
     setInterval(function() {  
@@ -35,6 +33,12 @@ $(document).ready(function() {
 		window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
       }  
     }, 1);
+	
+	$(document).bind('keydown keyup', function(e) {
+		if(e.which === 116) {
+			window.onbeforeunload = function() {};
+		}
+	});
 	
 });
 
