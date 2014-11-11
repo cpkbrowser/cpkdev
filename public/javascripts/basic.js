@@ -26,14 +26,15 @@ $(document).ready(function() {
 	
 	var test = window;
 	
-	/* var prevent_bust = 0  
+	var prevent_bust = 0  
     window.onbeforeunload = function() { prevent_bust++ }  
     setInterval(function() {  
       if (prevent_bust > 0) {  
         prevent_bust -= 2
-        window.top.location = 'http://localhost:3000/getBlank'
+        //window.top.location = 'http://localhost:3000/getBlank'
+		window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
       }  
-    }, 1); */	
+    }, 1);
 	
 });
 
