@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	$("#btnSearch").bind('keypress', onEnter_Search);
+
 	$('.season-select').click(function(e) {
 		e.stopPropagation();
 	});
@@ -41,6 +44,305 @@ $(document).ready(function() {
 	});
 	
 });
+
+function onEnter_Search(e) {
+	if (e.keyCode == 13) {		
+		var val = document.getElementById('btnSearch').value.trim().replace(' ', '+');
+		if (val == '') {
+			alert('Please enter a show you want to watch');
+		} else {
+			
+			$("#grdSrchResults").slideDown(150);
+			
+			temp_url = static_url + 'getSK?srch=' + val + '&type=tv';			
+			$.ajax({
+				url: temp_url,
+				success: function (rslt) {	
+					//Put conditional statement here to change between plugins
+					processSearchResults(rslt);
+				}
+			}); 
+		}
+	}
+}
+
+function build_lnkAccordion(ssnList) {
+	
+	var xChild;
+	var yChild;
+	var xTextNode;
+	var yTextNode;
+	var uList;
+	var lstItem;
+	var mxWidth = 1;
+	var currWidth;
+	var tmpSsn;
+	var tmpEp;
+	var tmpLink;
+	
+	for (i = 0; i < ssnList.length; i++) {
+		for (j = 0; j < ssnList[i].length; j++) {
+			currWidth = $.fn.textWidth(String(ssnList[i][j].Item) + String(ssnList[i][j].Name));
+			if (currWidth > mxWidth) {
+				mxWidth = currWidth;
+			}
+		}
+	}
+	
+	for (x = (ssnList.length - 1); x >= 0; x--) {
+	
+		xChild = document.createElement('h3');
+		xTextNode = document.createTextNode('Season ' + String(x + 1));
+		xChild.appendChild(xTextNode);
+		document.getElementById('lnkAccordion').appendChild(xChild);
+		
+		yChild = document.createElement('div');
+		yChild.id = 'acrdSsn_' + String(x + 1);
+		yChild.style.height= '100%';
+		uList = document.createElement('ul');
+		
+		for (y = 0; y < ssnList[x].length; y++) {
+			lstItem = document.createElement('li');			
+			yTextNode = document.createTextNode(String(ssnList[x][y].Item) + String(ssnList[x][y].Name));
+			lstItem.style.minWidth = mxWidth + 'px';
+			if (y > 8) {
+				$(lstItem).click(function() { onClick_Link(1, this); });
+			} else {
+				$(lstItem).click(function() { onClick_Link(0, this); });
+			}
+			$(lstItem).css('cursor', 'pointer');
+			lstItem.appendChild(yTextNode);
+			uList.appendChild(lstItem);	
+		}
+		
+		uList.style.width = String(mxWidth + 80) + 'px'; 
+		yChild.appendChild(uList);
+		document.getElementById('lnkAccordion').appendChild(yChild);
+	}
+	$("#lnkAccordion").accordion({heightStyle: 'panel', active: 0, activate: function (event, ui) {
+            var scrollTop = $("#lnkAccordion").scrollTop();
+            if(!ui.newHeader.length) return;
+            var top = $(ui.newHeader).offset().top;
+            $(this).animate({
+                scrollTop: scrollTop + top - 175
+            }, "fast");
+        }
+	});
+}
+
+function onClick_Link(flag1, obj1) {
+	if (flag1 == 0) {
+		tmpSsn = obj1.parentNode.parentNode.id.replace('acrdSsn_', '');
+		tmpEp = obj1.innerHTML.substring(8, 9);
+		tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+		//add conditional statement to allow for more plug-ins
+		PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
+		loadCurrentValues(tmpSsn, tmpEp);
+	} else {
+		tmpSsn = obj1.parentNode.parentNode.id.replace('acrdSsn_', '');
+		tmpEp = obj1.innerHTML.substring(8, 10);
+		tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+		PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
+		loadCurrentValues(tmpSsn, tmpEp);
+	}
+}
+
+function loadCurrentValues(ssn, ep) {	
+	$("#hdnValues5").empty();	
+	var t1 = document.createTextNode(ssn);	
+	var t2 = document.createTextNode(ep);	
+	document.getElementById('hdnValues5').appendChild(t1);
+	document.getElementById('hdnValues5').appendChild(t2);
+}
+
+function loadSsnList(ssnList) {
+	$("#hdnValues3").empty();	
+	var table = '<table><tbody><tr>';
+	for (i = 0; i < ssnList.length; i++) {
+		table += '<td>' + ssnList[i].length + '</td>';
+	}
+	table += '</tr></tbody></table>';
+	var div1 = document.getElementById('hdnValues3');
+	div1.innerHTML = table;
+}
+
+function prepareMovieFrame(currLink) {
+	document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
+	$.modal.close();
+	document.getElementById('mdlInfoPane').style.display = 'none';
+	var frame = document.getElementsByTagName('iframe')[0];
+	//Add conditional statement to allow for other plug-ins
+	//if (plugin_type == 'PW')
+	frame.src = getVideo(currLink);
+	frame.height = ($(window).height()) - 175
+	frame.parentNode.style.display = 'block';
+	
+	$($(frame)).load(function() {
+		var prevent_bust = 0  
+		window.onbeforeunload = function() { prevent_bust++ }  
+		setInterval(function() {  
+		  if (prevent_bust > 0) {  
+		    prevent_bust -= 2
+		    window.top.location = redir1
+		  }  
+		}, 1);	
+	});
+	
+	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
+	$("#basic-modal-content").modal({
+		onClose: function(dialog) {
+			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
+			var frame = document.getElementsByTagName('iframe')[0];
+			frame.src = 'about:blank';
+			frame.parentNode.style.display = 'none';
+			document.getElementById('mdlInfoPane').style.display = 'block';
+			$.modal.close();
+		}
+	});	
+}
+
+function getVideo(lnkUrl) {
+	//Add conditional statement to allow for other plug-ins
+	//if (plugin_type == 'PW')
+	var rslt4 = callAjax(static_url + 'getPW_Video', '?srch=' + lnkUrl);
+	//else
+	//rslt4 = callAjax(static_url + 'someotherplugin', '?srch=' + lnkUrl);
+	return rslt4;
+}
+
+function loadPreviousLink() {
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	var div1 = document.getElementById('hdnValues6');
+	var tmpIndex = div1.childNodes[1].nodeValue;
+	var lnkIndex = parseInt(tmpIndex, 10);
+	if (lnkIndex > 0) {
+		lnkIndex = (lnkIndex - 1);
+	} else {
+		var lnkCount = div1.getElementsByTagName('li').length;
+		lnkIndex = (lnkCount - 1);
+	}
+	var nextLink = div1.getElementsByTagName('li')[lnkIndex];
+	div1.childNodes[1].nodeValue = lnkIndex;	
+	
+	var frame = document.getElementById('mdlVideoFrame');
+	
+	$($(frame)).load(function() {
+		var prevent_bust = 0  
+		window.onbeforeunload = function() { prevent_bust++ }  
+		setInterval(function() {  
+		  if (prevent_bust > 0) {  
+		    prevent_bust -= 2
+		    window.top.location = redir1
+		  }  
+		}, 1);	
+	});
+	
+	if (nextLink.innerText == undefined) {
+		frame.src = getVideo(nextLink.lastChild.nodeValue);
+	} else {
+		frame.src = getVideo(nextLink.innerText);
+	}
+	document.getElementById('mdlNavButtons').style.display = 'inline-block';
+}
+
+function loadNextLink() {
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	var div1 = document.getElementById('hdnValues6');
+	var tmpIndex = div1.childNodes[1].nodeValue;
+	var lnkIndex = parseInt(tmpIndex, 10);
+	var lnkCount = div1.getElementsByTagName('li').length;
+	if (lnkIndex < (lnkCount - 1)) {
+		lnkIndex++;
+	} else {
+		lnkIndex = 0;
+	}
+	var nextLink = div1.getElementsByTagName('li')[lnkIndex];
+	div1.childNodes[1].nodeValue = lnkIndex;	
+	
+	var frame = document.getElementById('mdlVideoFrame');
+	
+	$($(frame)).load(function() {
+		var prevent_bust = 0  
+		window.onbeforeunload = function() { prevent_bust++ }  
+		setInterval(function() {  
+		  if (prevent_bust > 0) {  
+		    prevent_bust -= 2
+		    window.top.location = redir1
+		  }  
+		}, 1);	
+	});
+	
+	if (nextLink.innerText == undefined) {
+		frame.src = getVideo(nextLink.lastChild.nodeValue);
+	} else {
+		frame.src = getVideo(nextLink.innerText);
+	}
+	document.getElementById('mdlNavButtons').style.display = 'inline-block';
+}
+
+function loadPreviousEpisode() {
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	//document.getElementsByClassName('modalCloseImg simplemodal-close')[0].display = 'none';
+	var testx = document.getElementById('simplemodal-close');
+	var div1 = document.getElementById('hdnValues5');	
+	var tmpSsn = div1.childNodes[0].nodeValue;
+	var ssn = parseInt(tmpSsn, 10);
+	var tmpEp = div1.childNodes[1].nodeValue;
+	var ep = parseInt(tmpEp, 10);
+	
+	var container = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
+	var epCount = div1.getElementsByTagName('li').length;
+	if (ep > 1) {
+		ep = (ep - 1);
+	} else {
+		if (ssn > 1) {
+			ssn = (ssn - 1);
+			var tmpNum = container[(ssn - 1)].innerHTML;
+			ep = tmpNum;			
+		} else {
+			alert('You are currently on the 1st epidode of the 1st season. Please click "Next Episode".');
+			document.getElementById('mdlNavButtons').style.display = 'inline-block';
+			return;
+		}
+	}
+	
+	div1.childNodes[0].nodeValue = ssn;
+	div1.childNodes[1].nodeValue = ep;
+	tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+	//Add conditional statement to allow for other plug-ins
+	PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + ssn + '-episode-' + ep);
+}
+
+function loadNextEpisode() {	
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	//document.getElementsByClassName('modalCloseImg simplemodal-close')[0].display = 'none';
+	var testx = document.getElementById('simplemodal-close');
+	var div1 = document.getElementById('hdnValues5');	
+	var tmpSsn = div1.childNodes[0].nodeValue;
+	var ssn = parseInt(tmpSsn, 10);
+	var tmpEp = div1.childNodes[1].nodeValue;
+	var ep = parseInt(tmpEp, 10) + 1;
+	
+	var container = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
+	var tmpNum = container[(ssn - 1)].innerHTML;
+	var maxEpisode = parseInt(tmpNum, 10);
+	if (ep > maxEpisode) {
+		if (container.length <= ssn) {
+			alert('You have finished the series.');
+			document.getElementById('mdlNavButtons').style.display = 'inline-block';
+			return;
+		} else {
+			ssn++;
+			ep = 1;
+		}
+	}
+	
+	div1.childNodes[0].nodeValue = ssn;
+	div1.childNodes[1].nodeValue = ep;
+	tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+	//Add conditional statement to allow for other plug-ins
+	PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + ssn + '-episode-' + ep);
+}
 
 function callAjax(webUrl, queryString) {
     var xmlHttpObject = null;
