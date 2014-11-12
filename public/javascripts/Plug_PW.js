@@ -557,17 +557,59 @@ function loadLinkResults(authLinks, unauthLinks) {
 	div1.innerHTML = table;
 	div1 = div1.firstChild;
 	
-	var t1 = document.createTextNode('1');	
+	var t1 = document.createTextNode('0');	
 	document.getElementById('hdnValues6').appendChild(div1);
 	document.getElementById('hdnValues6').appendChild(t1);
+}
+
+function loadPreviousLink() {
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	var div1 = document.getElementById('hdnValues6');
+	var tmpIndex = div1.childNodes[1].nodeValue;
+	var lnkIndex = parseInt(tmpIndex, 10);
+	if (lnkIndex > 0) {
+		lnkIndex = (lnkIndex - 1);
+	} else {
+		var lnkCount = div1.getElementsByTagName('li').length;
+		lnkIndex = (lnkCount - 1);
+	}
+	var nextLink = div1.getElementsByTagName('li')[lnkIndex];
+	div1.childNodes[1].nodeValue = lnkIndex;	
+	
+	var frame = document.getElementById('mdlVideoFrame');
+	
+	$($(frame)).load(function() {
+		var prevent_bust = 0  
+		window.onbeforeunload = function() { prevent_bust++ }  
+		setInterval(function() {  
+		  if (prevent_bust > 0) {  
+		    prevent_bust -= 2
+		    window.top.location = redir1
+		  }  
+		}, 1);	
+	});
+	
+	if (nextLink.innerText == undefined) {
+		frame.src = getVideo(nextLink.lastChild.nodeValue);
+	} else {
+		frame.src = getVideo(nextLink.innerText);
+	}
+	document.getElementById('mdlNavButtons').style.display = 'inline-block';
 }
 
 function loadNextLink() {
 	document.getElementById('mdlNavButtons').style.display = 'none';
 	var div1 = document.getElementById('hdnValues6');
-	var lnkIndex = div1.childNodes[1].nodeValue;
+	var tmpIndex = div1.childNodes[1].nodeValue;
+	var lnkIndex = parseInt(tmpIndex, 10);
+	var lnkCount = div1.getElementsByTagName('li').length;
+	if (lnkIndex < (lnkCount - 1)) {
+		lnkIndex++;
+	} else {
+		lnkIndex = 0;
+	}
 	var nextLink = div1.getElementsByTagName('li')[lnkIndex];
-	div1.childNodes[1].nodeValue = parseInt(lnkIndex, 10) + 1;	
+	div1.childNodes[1].nodeValue = lnkIndex;	
 	
 	var frame = document.getElementById('mdlVideoFrame');
 	
@@ -598,10 +640,42 @@ function loadCurrentValues(ssn, ep) {
 	document.getElementById('hdnValues5').appendChild(t2);
 }
 
+function loadPreviousEpisode() {
+	document.getElementById('mdlNavButtons').style.display = 'none';
+	//document.getElementsByClassName('modalCloseImg simplemodal-close')[0].display = 'none';
+	var testx = document.getElementById('simplemodal-close');
+	var div1 = document.getElementById('hdnValues5');	
+	var tmpSsn = div1.childNodes[0].nodeValue;
+	var ssn = parseInt(tmpSsn, 10);
+	var tmpEp = div1.childNodes[1].nodeValue;
+	var ep = parseInt(tmpEp, 10);
+	
+	var container = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
+	var epCount = div1.getElementsByTagName('li').length;
+	if (ep > 1) {
+		ep = (ep - 1);
+	} else {
+		if (ssn > 1) {
+			ssn = (ssn - 1);
+			var tmpNum = container[(ssn - 1)].innerHTML;
+			ep = tmpNum;			
+		} else {
+			alert('You are currently on the 1st epidode of the 1st season. Please click "Next Episode".');
+			document.getElementById('mdlNavButtons').style.display = 'inline-block';
+			return;
+		}
+	}
+	
+	div1.childNodes[0].nodeValue = ssn;
+	div1.childNodes[1].nodeValue = ep;
+	tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+	getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + ssn + '-episode-' + ep);
+}
+
 function loadNextEpisode() {	
 	document.getElementById('mdlNavButtons').style.display = 'none';
 	//document.getElementsByClassName('modalCloseImg simplemodal-close')[0].display = 'none';
-	document.getElementById('simplemodal-container').childNodes[0].display = 'none';
+	var testx = document.getElementById('simplemodal-close');
 	var div1 = document.getElementById('hdnValues5');	
 	var tmpSsn = div1.childNodes[0].nodeValue;
 	var ssn = parseInt(tmpSsn, 10);
@@ -614,6 +688,7 @@ function loadNextEpisode() {
 	if (ep > maxEpisode) {
 		if (container.length <= ssn) {
 			alert('You have finished the series.');
+			document.getElementById('mdlNavButtons').style.display = 'inline-block';
 			return;
 		} else {
 			ssn++;
