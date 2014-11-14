@@ -1101,18 +1101,35 @@
                 </div>
             </div>
         </div>
+		<!-- #ShowInfo - custom table containing important values from search results -->
 		<div id="hdnValues" style="display: none;"></div>
+		<!-- #showEpisodes - Raw data from primewire tv show episode list -->
 		<div id="hdnValues2" style="display: none;"></div>
+		<!-- table (no id) - Holds an array of season lengths -->
 		<div id="hdnValues3" style="display: none;"></div>
+		<!-- #showLinks - raw html 'span' elements whose href values contains actual links for TV SHOWS -->
 		<div id="hdnValues4" style="display: none;"></div>
+		<!-- 2 text fields (no id) - first field = current season; second field = current episode -->
 		<div id="hdnValues5" style="display: none;"></div>
+		<!-- 2 elements (no id) - first element = list of links for current episode; second field = current link index -->
 		<div id="hdnValues6" style="display: none;"></div>
+		<!-- #showLinks - raw html 'span' elements whose href values contains actual links for MOVIES -->
+		<div id="hdnValues7" style="display: none;"></div>
+		<div id="hdnSearchType" style="display: none;">tv</div>
+		<div id="hdnModalType" style="display: none;"></div>
 		<div id="basic-modal-content">
 			<div class="info-pane" id="mdlInfoPane">
 				<div class="row">
 					<div class="col-sm-3">
 						<a class="info-pic" href="#"> <img id="mdlInfo_Img" class="info-thumb-img" src="../public/images//placeholder.png">
 						</a>
+						<div style="width: 150px; height 30px; display: none;" id="mdlStartMovie">
+							<div class="btn-primary">
+								<button class="btn-toggle" onclick="startMovie();" type="button">
+									<div class="btn-primary-txt">Play Movie</div>
+								</button>
+							</div>
+						</div>
 					</div>
 					<div id="mdlInfo" class="col-sm-9">
 						<div class="detail-wrap">
@@ -1147,9 +1164,11 @@
 					<p style="display: inline-block; color: #ffffff; padding-left: 10px; padding-right: 10px;">  |  </p>
 					<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextLink(); return false;">Next Link</p>
 					<p style="padding-left: 15px; padding-right: 15px; display: inline-block;"> </p>
-					<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadPreviousEpisode(); return false;">Previous Episode</p>
-					<p style="display: inline-block; color: #ffffff; padding-left: 10px; padding-right: 10px;">  |  </p>
-					<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextEpisode(); return false;">Next Episode</p>
+					<div id="mdlNavEpisodes" style="inline-block">
+						<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadPreviousEpisode(); return false;">Previous Episode</p>
+						<p style="display: inline-block; color: #ffffff; padding-left: 10px; padding-right: 10px;">  |  </p>
+						<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextEpisode(); return false;">Next Episode</p>
+					</div>
 				</div>
 				<iframe id="mdlVideoFrame" style="width: 100%; height: 800px;" src="about:blank"></iframe>
 				

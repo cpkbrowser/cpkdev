@@ -1,3 +1,8 @@
+//var static_url = 'http://localhost:3000/';
+//var redir1 = 'http://localhost:3000/getBlank';
+var static_url = 'http://cpktestapp2.herokuapp.com/';
+var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
+
 $(document).ready(function() {
 	
 	$("#btnSearch").bind('keypress', onEnter_Search);
@@ -32,8 +37,8 @@ $(document).ready(function() {
     setInterval(function() {  
       if (prevent_bust > 0) {  
         prevent_bust -= 2
-        //window.top.location = 'http://localhost:3000/getBlank'
-		window.top.location = 'http://cpktestapp2.herokuapp.com/getBlank'
+        window.top.location = static_url;
+		//window.top.location = static_url;
       }  
     }, 1);
 	
@@ -59,11 +64,50 @@ function onEnter_Search(e) {
 				url: temp_url,
 				success: function (rslt) {	
 					//Put conditional statement here to change between plugins
-					processSearchResults(rslt);
+					PWTV_processSearchResults(rslt);
 				}
 			}); 
 		}
 	}
+}
+
+function open_mdlInfo(t) {
+	var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
+	
+	//add conditional statement to allow for more plug-ins
+	var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML));
+	
+	var child = document.createElement('div');
+	child.innerHTML = String(x1);
+	child = child.firstChild;
+	document.getElementById('hdnValues').appendChild(child);
+	
+	var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);
+	document.getElementById('mdlInfo_Desc').innerHTML = desc.trim()
+	var oldList = document.getElementsByClassName('movie_info')[0];
+	document.getElementById('hdnValues').removeChild(oldList);
+	
+	document.getElementById('mdlInfo_Img').src = info[1].innerHTML;
+	document.getElementById('mdlInfo_Name').innerHTML = info[0].innerHTML;
+	document.getElementById('mdlInfo_Year').innerHTML = info[4].innerHTML;
+	document.getElementById('mdlInfo_Genre').innerHTML = info[3].innerHTML;
+	var newLink = info[5].innerHTML.replace('watch-', 'tv-');
+	document.getElementById('mdlInfo_Link').innerHTML = newLink;
+	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
+	document.getElementById('mdlInfoPane').style.display = 'block';
+	document.getElementsByTagName('iframe')[0].parentNode.style.display = 'none';
+	$("#basic-modal-content").modal({
+		onClose: function(dialog) {
+			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
+			$.modal.close();
+		}
+	});	
+	document.getElementById('simplemodal-container').style.width = '100%';
+	var hgt = document.getElementById('mdlInfoPane').offsetHeight + 10;
+	document.getElementById('simplemodal-container').style.height = String(hgt) + 'px';
+	
+	//add conditional statement to allow for more plug-ins
+	PWTV_getEpisodes(static_url + 'getPW_Episodes' + '?srch=' + info[5].innerHTML)
 }
 
 function build_lnkAccordion(ssnList) {
@@ -171,7 +215,7 @@ function prepareMovieFrame(currLink) {
 	$.modal.close();
 	document.getElementById('mdlInfoPane').style.display = 'none';
 	var frame = document.getElementsByTagName('iframe')[0];
-	//Add conditional statement to allow for other plug-ins
+	//add conditional statement to allow for more plug-ins
 	//if (plugin_type == 'PW')
 	frame.src = getVideo(currLink);
 	frame.height = ($(window).height()) - 175
@@ -199,15 +243,34 @@ function prepareMovieFrame(currLink) {
 			$.modal.close();
 		}
 	});	
+	
+	var modType = document.getElementById('hdnModalType').innerHTML;
+	if (modType == 'tv') {
+		document.getElementById('mdlNavEpisodes').style.display = 'inline-block';
+	} else if (modType == 'movie') {
+		document.getElementById('mdlNavEpisodes').style.display = 'none';
+	}
 }
 
 function getVideo(lnkUrl) {
-	//Add conditional statement to allow for other plug-ins
+	//add conditional statement to allow for more plug-ins
 	//if (plugin_type == 'PW')
 	var rslt4 = callAjax(static_url + 'getPW_Video', '?srch=' + lnkUrl);
 	//else
 	//rslt4 = callAjax(static_url + 'someotherplugin', '?srch=' + lnkUrl);
 	return rslt4;
+}
+
+function startMovie() {
+	var div1 = document.getElementById('hdnValues6');	
+	var lnk = div1.getElementsByTagName('li')[0];
+	var lnk2;
+	if (lnk.innerText == undefined) {
+		lnk2 = lnk.lastChild.nodeValue;
+	} else {
+		lnk2 = lnk.innerText;
+	}	
+	prepareMovieFrame(lnk2);
 }
 
 function loadPreviousLink() {
@@ -241,6 +304,13 @@ function loadPreviousLink() {
 		frame.src = getVideo(nextLink.lastChild.nodeValue);
 	} else {
 		frame.src = getVideo(nextLink.innerText);
+	}
+	
+	var modType = document.getElementById('hdnModalType').innerHTML;
+	if (modType == 'tv') {
+		document.getElementById('mdlNavEpisodes').style.display = 'inline-block';
+	} else if (modType == 'movie') {
+		document.getElementById('mdlNavEpisodes').style.display = 'none';
 	}
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
 }
@@ -277,6 +347,13 @@ function loadNextLink() {
 	} else {
 		frame.src = getVideo(nextLink.innerText);
 	}
+	
+	var modType = document.getElementById('hdnModalType').innerHTML;
+	if (modType == 'tv') {
+		document.getElementById('mdlNavEpisodes').style.display = 'inline-block';
+	} else if (modType == 'movie') {
+		document.getElementById('mdlNavEpisodes').style.display = 'none';
+	}
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
 }
 
@@ -309,7 +386,7 @@ function loadPreviousEpisode() {
 	div1.childNodes[0].nodeValue = ssn;
 	div1.childNodes[1].nodeValue = ep;
 	tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
-	//Add conditional statement to allow for other plug-ins
+	//add conditional statement to allow for more plug-ins
 	PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + ssn + '-episode-' + ep);
 }
 
@@ -340,9 +417,15 @@ function loadNextEpisode() {
 	div1.childNodes[0].nodeValue = ssn;
 	div1.childNodes[1].nodeValue = ep;
 	tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
-	//Add conditional statement to allow for other plug-ins
+	//add conditional statement to allow for more plug-ins
 	PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + ssn + '-episode-' + ep);
 }
+
+$.fn.textWidth = function(text, font) {
+    if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+    $.fn.textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
+    return $.fn.textWidth.fakeEl.width();
+};
 
 function callAjax(webUrl, queryString) {
     var xmlHttpObject = null;

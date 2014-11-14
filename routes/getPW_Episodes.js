@@ -32,15 +32,35 @@ router.get('/', function(req, res){
 	  var $ = cheerio.load(data);
 	  var links = $('.tv_container');
 	  
-	  var table = '<div id="showEpisodes" style="display: none;">';  
-	  
-	  links.each(function(i, e) { 
-		table += String($(e));
-	  });
-	  
-	  table += '</div>';
-	  
-	  res.end(String(table));
+	  if (links.length > 0) {
+	    
+	    var table = '<div id="showEpisodes" style="display: none;">';  
+	    
+	    links.each(function(i, e) { 
+		  table += String($(e));
+	    });
+	    
+	    table += '</div>';
+	    
+	    res.end(String(table));
+		
+	  } else {
+		
+		var table = '<div id="movieLinks" style="display: none;">';
+		
+		links = $('.movie_version_link');
+		
+		links.each(function(i, e) { 
+		  if (i != 0) {
+		    table += String($(e));
+		  }
+	    });
+	    
+	    table += '</div>';
+	    
+	    res.end(String(table));
+		
+	  }
 	  
 	} else {
 	  res.end('nothing');
