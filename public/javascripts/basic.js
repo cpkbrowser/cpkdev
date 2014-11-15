@@ -144,9 +144,11 @@ function build_lnkAccordion(ssnList) {
 		yChild.id = 'acrdSsn_' + String(x + 1);
 		yChild.style.height= '100%';
 		uList = document.createElement('ul');
+		uList.className += ' season_list';
 		
 		for (y = 0; y < ssnList[x].length; y++) {
-			lstItem = document.createElement('li');			
+			lstItem = document.createElement('li');	
+			lstItem.className += ' episode_item';		
 			yTextNode = document.createTextNode(String(ssnList[x][y].Item) + String(ssnList[x][y].Name));
 			lstItem.style.minWidth = mxWidth + 'px';
 			if (y > 8) {

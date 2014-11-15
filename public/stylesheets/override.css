@@ -52,7 +52,7 @@
 	width: 232px;
 }
 p.info {
-	padding-right: 150px;
+	padding-right: 20px;
 }
 @media screen and (max-width: 600px) {
 	p.info {
@@ -100,10 +100,19 @@ p.info {
 	min-height: 365px;
 	overflow-y: auto;
 }
-
+.tab-content {
+	width: 100%;
+}
+@media (min-width:768px) {
+	.tab-content {
+		max-width: 500px;
+	}
+}
 .detail-wrap {
 	float: left;
 	overflow-y: auto;
+	width: 100%;
+	max-width: 500px;
 }
 /*end of modalstuff*/
 
@@ -230,6 +239,51 @@ select.source-select {
 	.input-group-btn > .btn {
     		width: 6px;
     		padding: 6px 10px;
+	}
+}
+
+@media (min-width:768px) {
+	.info {
+		max-width:400px;
+	}
+}
+.ui-accordion .ui-accordion-content {
+	padding: 0 !important;
+}
+
+/*LIST ITEMS DYNAMIC*/
+li.episode_item {
+	list-style-type: none;
+	padding-bottom: 9px;
+}
+@media (max-width:480px){
+	li.episode_item {
+		font-size:13px;
+		font-size:1.3rem;
+	}
+}
+
+ul.season_list {
+	width:100% !important;
+	padding: 15px;
+	overflow-x: hidden;
+}
+
+.ui-accordion .ui-accordion-icons {
+	padding: 15px !important;
+}
+
+#simplemodal-container h3 {
+	color: red !important;
+}
+
+.play-button {
+	float:right;
+}
+
+@media (max-width:768px) {
+	.play-button {
+		float:none;
 	}
 }
 
