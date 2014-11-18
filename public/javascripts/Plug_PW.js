@@ -1,10 +1,10 @@
 /**
  * 
  */
-//var static_url = 'http://localhost:3000/';
-//var redir1 = 'http://localhost:3000/getBlank';
-var static_url = 'http://cpktestapp2.herokuapp.com/';
-var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
+var static_url = 'http://localhost:3000/';
+var redir1 = 'http://localhost:3000/getBlank';
+//var static_url = 'http://cpktestapp2.herokuapp.com/';
+//var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
 var temp_url = ''; 
  
 function PWTV_processSearchResults(rslt) {
@@ -290,36 +290,55 @@ function PWTV_orderLinkList(lnkList) {
 	for (i = 0; i < lnkList.length; i++) {
 		tmpString = String(lnkList[i]);
 		if (tmpString.indexOf('Z29yaWxsYXZpZC5pbg') != -1) {
+			//Gorillavid
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 9;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('bm93dmlkZW8uZXU') != -1) {
+			//Nowvideo
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 8;
+			authLinks[a_count][1] = lnkList[i];
+			a_count++;
+		} else if (tmpString.indexOf('c2hhcmVyZXBvLmNvbQ') != -1) {
+			//ShareRepo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 7;
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
-		} else if (tmpString.indexOf('bm9zdmlkZW8uY29t') != -1) {
+		} else if (tmpString.indexOf('dGhldmlkZW8ubWU') != -1) {
+			//theVideo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 6;
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
 		} else if (tmpString.indexOf('c29ja3NoYXJlLmNvbQ') != -1) {
+			//Sockshare
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 5;
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
 		} else if (tmpString.indexOf('cHJvbXB0ZmlsZS5jb20') != -1) {
+			//Promptfile
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 4;
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
-		} else if (tmpString.indexOf('bm93dmlkZW8uZXU') != -1) {
+		} else if (tmpString.indexOf('bm92YW1vdi5jb20') != -1) {
+			//Novamov
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 3;
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
-		} else if (tmpString.indexOf('cHV0bG9ja2VyLmNvbQ') != -1) {
+		} else if (tmpString.indexOf('bm9zdmlkZW8uY29t') != -1) {
+		    //Nosvideo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 2;
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
-		} else if (tmpString.indexOf('bm92YW1vdi5jb20') != -1) {
+		} else if (tmpString.indexOf('cHV0bG9ja2VyLmNvbQ') != -1) {
+			//Putlocker
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 1;
 			authLinks[a_count][1] = lnkList[i];
