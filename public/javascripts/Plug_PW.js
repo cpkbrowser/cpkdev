@@ -1,10 +1,10 @@
 /**
  * 
  */
-var static_url = 'http://localhost:3000/';
-var redir1 = 'http://localhost:3000/getBlank';
-//var static_url = 'http://cpktestapp2.herokuapp.com/';
-//var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
+//var static_url = 'http://localhost:3000/';
+//var redir1 = 'http://localhost:3000/getBlank';
+var static_url = 'http://cpktestapp2.herokuapp.com/';
+var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
 var temp_url = ''; 
  
 function PWTV_processSearchResults(rslt) {
