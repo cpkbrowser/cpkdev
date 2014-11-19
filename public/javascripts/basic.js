@@ -45,6 +45,9 @@ $(document).ready(function() {
 	$(document).bind('keydown keyup', function(e) {
 		if(e.which === 116) {
 			window.onbeforeunload = function() {};
+		} else if (e.which === 118) {
+			/* var test = callAjax(static_url, 'cpkconnect');
+			var x = ''; */
 		}
 	});
 	
@@ -179,14 +182,14 @@ function build_lnkAccordion(ssnList) {
 function onClick_Link(flag1, obj1) {
 	if (flag1 == 0) {
 		tmpSsn = obj1.parentNode.parentNode.id.replace('acrdSsn_', '');
-		tmpEp = obj1.innerHTML.substring(8, 9);
+		tmpEp = obj1.innerHTML.substring(1, 2);
 		tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
 		//add conditional statement to allow for more plug-ins
 		PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
 		loadCurrentValues(tmpSsn, tmpEp);
 	} else {
 		tmpSsn = obj1.parentNode.parentNode.id.replace('acrdSsn_', '');
-		tmpEp = obj1.innerHTML.substring(8, 10);
+		tmpEp = obj1.innerHTML.substring(1, 3);
 		tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
 		PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
 		loadCurrentValues(tmpSsn, tmpEp);

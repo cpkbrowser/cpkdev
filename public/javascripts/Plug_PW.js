@@ -152,12 +152,12 @@ function PWTV_getEpisodes_processResults(rslt2) {
 						Item: tempItem,
 						Name: tempName
 					}
-					if (tempItem == 'Episode 1' && epCount > 0) {
+					if (tempItem == 'E1' && epCount > 0) {
 						ssnList[ssnList.length] = kvpEpisodes;
 						kvpEpisodes = new Array();
 						epCount = 0;
 					} 
-					if (tempItem != 'Episode 0') {
+					if (tempItem != 'E0') {
 						kvpEpisodes[epCount] = tmpArray;
 						epCount += 1;
 					}
@@ -187,7 +187,7 @@ function PWTV_getEpisodes_processResults(rslt2) {
 						Item: tempItem,
 						Name: tempName
 					}
-					if (tempItem != 'Episode 0') {
+					if (tempItem != 'E0') {
 						kvpEpisodes[epCount] = tmpArray;
 						epCount += 1;
 					}
