@@ -46,8 +46,8 @@ $(document).ready(function() {
 		if(e.which === 116) {
 			window.onbeforeunload = function() {};
 		} else if (e.which === 118) {
-			/* var test = callAjax(static_url, 'cpkconnect');
-			var x = ''; */
+			//var test = callAjax(static_url, 'cpkconnect');
+			var x = '';
 		}
 	});
 	

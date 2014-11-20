@@ -343,6 +343,16 @@ function PWTV_orderLinkList(lnkList) {
 			authLinks[a_count][0] = 1;
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
+		} else if (tmpString.indexOf('ZnJhbWVndGZv') != -1) {
+			//do nothing
+		} else if (tmpString.indexOf('YmVzdHJlYW1zLm5ldA') != -1) {
+			//do nothing
+		} else if (tmpString.indexOf('bWlnaHR5dXBsb2FkLmNvbQ') != -1) {
+			//do nothing
+		} else if (tmpString.indexOf('dXBsb2FkYy5jb20') != -1) {
+			//do nothing
+		} else if (tmpString.indexOf('emFsYWEuY29t') != -1) {
+			//do nothing
 		} else {
 			unauthLinks[u_count] = lnkList[i];
 			u_count++;
