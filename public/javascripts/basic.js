@@ -42,13 +42,30 @@ $(document).ready(function() {
       }  
     }, 1);
 	
-	$(document).bind('keydown keyup', function(e) {
+	$(document).bind('keyup', function(e) {
 		if(e.which === 116) {
 			window.onbeforeunload = function() {};
 		} else if (e.which === 118) {
 			//var test = callAjax(static_url, 'cpkconnect');
 			var x = '';
 		}
+	});
+	
+	$('#btnLogin').click(function() {
+		var start = '';
+		$.ajax({
+			url: '/cpkconnect',
+			type: 'POST',
+			data: $('#frmUser').serialize(),
+			dataTpe: 'json',
+			success: function(rslt) {
+				if (rslt == 'true') {
+					alert('validated');
+				} else {
+					alert('error logging in');
+				}
+			}
+		});
 	});
 	
 });
@@ -478,3 +495,18 @@ function clearSearchResults() {
 		document.getElementById('srchItem_container' + i).style.display = 'none';
 	}
 }
+
+/* function cpklogin() {
+	$.ajax({
+		url: '/cpkconnect',
+		type: 'POST',
+		data: $('#frmUser').serialize(),
+		dataTpe: 'json',
+		success: function(rslt) {
+			alert('done');
+		}
+	});
+} */
+
+
+

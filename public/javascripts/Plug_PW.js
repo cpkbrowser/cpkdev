@@ -118,7 +118,7 @@ function PWTV_getEpisodes_processResults(rslt2) {
 	$("#hdnValues2").empty();
 	$("#hdnValues2").append(rslt2.childNodes[0]);
 	
-	var containers = $("#showEpisodes .tv_container");
+	var containers = $("#showEpisodes .show_season");
 	if (containers.length < 1) {
 		//Internet Explorer Work-Around
 		containers = document.getElementById('hdnValues2').getElementsByTagName('div')[0];
@@ -134,71 +134,35 @@ function PWTV_getEpisodes_processResults(rslt2) {
 	
 	$.each(containers, function(i, val) {
 		kvpEpisodes = new Array();
-		if (i == 0) {
-			ep = val.getElementsByTagName('div');
-			$.each(ep, function(i2, val2) {
-				try {
-					tempItem = val2.childNodes[1].childNodes[0].data.trim();
-					if (val2.childNodes[1].childNodes.length > 1) {
-						tempName = val2.childNodes[1].childNodes[1].innerHTML;
-					} else {
-						tempName = ' ';
-					}
-					if (tempName == null) {
-						//Internet Explorer Work-Around
-						tempName = val2.childNodes[1].childNodes[1].textContent;
-					}
-					var tmpArray = {
-						Item: tempItem,
-						Name: tempName
-					}
-					if (tempItem == 'E1' && epCount > 0) {
-						ssnList[ssnList.length] = kvpEpisodes;
-						kvpEpisodes = new Array();
-						epCount = 0;
-					} 
-					if (tempItem != 'E0') {
-						kvpEpisodes[epCount] = tmpArray;
-						epCount += 1;
-					}
-					if (i2 == (ep.length - 1)) {
-						ssnList[ssnList.length] = kvpEpisodes;								
-					}
-				} catch (e) {
-					
+		ep = val.getElementsByTagName('div');
+		epCount = 0;
+		$.each(ep, function(i3, val3) {
+			try {
+				tempItem = val3.childNodes[1].childNodes[0].data.trim();
+				if (val3.childNodes[1].childNodes.length > 1) {
+					tempName = val3.childNodes[1].childNodes[1].innerHTML;
+				} else {
+					tempName = ' ';
 				}
-			});
-		} else {
-			ep = val.getElementsByTagName('div');
-			epCount = 0;
-			$.each(ep, function(i3, val3) {
-				try {
-					tempItem = val3.childNodes[1].childNodes[0].data.trim();
-					if (val3.childNodes[1].childNodes.length > 1) {
-						tempName = val3.childNodes[1].childNodes[1].innerHTML;
-					} else {
-						tempName = ' ';
-					}
-					if (tempName == null) {
-						//Internet Explorer Work-Around							
-						tempName = val2.childNodes[1].childNodes[1].textContent;
-					}
-					var tmpArray = {
-						Item: tempItem,
-						Name: tempName
-					}
-					if (tempItem != 'E0') {
-						kvpEpisodes[epCount] = tmpArray;
-						epCount += 1;
-					}
-					if (i3 == (ep.length - 1)) {
-						ssnList[ssnList.length] = kvpEpisodes;								
-					}
-				} catch (e) {
-					
+				if (tempName == null) {
+					//Internet Explorer Work-Around							
+					tempName = val2.childNodes[1].childNodes[1].textContent;
 				}
-			});
-		}				
+				var tmpArray = {
+					Item: tempItem,
+					Name: tempName
+				}
+				if (tempItem != 'E0') {
+					kvpEpisodes[epCount] = tmpArray;
+					epCount += 1;
+				}
+				if (i3 == (ep.length - 1)) {
+					ssnList[ssnList.length] = kvpEpisodes;								
+				}
+			} catch (e) {
+				
+			}
+		}); 				
 	});
 	
 	build_lnkAccordion(ssnList);

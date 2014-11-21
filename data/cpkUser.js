@@ -5,10 +5,14 @@ var Schema = mongoose.Schema;
 module.exports = function() {	
 	var userSchema = new Schema({
 		name: String,
-		email: String,
 		username: String,
 		pwd: String,
-		account_type: String 
+		slt: String,
+		account_type: String,
+		email: String,
+		phone: String,
+		active_date: Date,
+		exp_date: Date
 	});
 	mongoose.model('testUser', userSchema);
 };
