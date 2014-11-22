@@ -77,7 +77,7 @@ p.info {
 		/*max-width: 675px !important;*/
 		height:auto !important;
 		left:0 !important;	
-		height: auto !important;
+		height: 320px;
 		width:100%;
 	}
 .simplemodal-wrap {
