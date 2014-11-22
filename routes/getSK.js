@@ -27,6 +27,7 @@ router.get('/', function(req, res){
     if (data) {
 	  var $ = cheerio.load(data);
 	  var key = $('.search_container input[name=key]').attr('value');
+	  console.log(key);
 	  
 	  var str = req.url.split('?')[1];
 	  var query = qs.parse(str);

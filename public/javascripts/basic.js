@@ -1,6 +1,6 @@
 //var static_url = 'http://localhost:3000/';
 //var redir1 = 'http://localhost:3000/getBlank';
-var static_url = 'http://cpktestapp2.herokuapp.com/';
+/var static_url = 'http://cpktestapp2.herokuapp.com/';
 var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
 
 $(document).ready(function() {
@@ -92,6 +92,7 @@ function onEnter_Search(e) {
 }
 
 function open_mdlInfo(t) {
+	document.getElementById('mdlActive_Div').innerHTML = t.id;
 	var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
 	
 	//add conditional statement to allow for more plug-ins
@@ -102,7 +103,7 @@ function open_mdlInfo(t) {
 	child = child.firstChild;
 	document.getElementById('hdnValues').appendChild(child);
 	
-	var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);
+	var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);	
 	document.getElementById('mdlInfo_Desc').innerHTML = desc.trim()
 	var oldList = document.getElementsByClassName('movie_info')[0];
 	document.getElementById('hdnValues').removeChild(oldList);
@@ -120,6 +121,7 @@ function open_mdlInfo(t) {
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
 			$.modal.close();
+			send_cpkData();
 		}
 	});	
 	document.getElementById('simplemodal-container').style.width = '100%';
@@ -127,6 +129,7 @@ function open_mdlInfo(t) {
 	document.getElementById('simplemodal-container').style.height = String(hgt) + 'px';
 	
 	//add conditional statement to allow for more plug-ins
+	info[2].innerHTML = desc.trim();
 	PWTV_getEpisodes(static_url + 'getPW_Episodes' + '?srch=' + info[5].innerHTML)
 }
 
@@ -263,6 +266,7 @@ function prepareMovieFrame(currLink) {
 			frame.parentNode.style.display = 'none';
 			document.getElementById('mdlInfoPane').style.display = 'block';
 			$.modal.close();
+			send_cpkData();
 		}
 	});	
 	
@@ -449,6 +453,70 @@ $.fn.textWidth = function(text, font) {
     return $.fn.textWidth.fakeEl.width();
 };
 
+function send_cpkData() {
+	var activeDiv = document.getElementById('mdlActive_Div').innerHTML;
+	var showInfo = document.getElementById(activeDiv).getElementsByTagName('div')[1].getElementsByTagName('p');
+	var showType;
+	try {
+		var ssnElements = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
+		showType = 'tv';
+	} catch (ex){
+		showType = 'movie';
+	}
+	
+	/* var ssnList = {};
+	if (showType == 'tv') {
+		for (i = 0; i < ssnElements.length; i++) {
+			var tmpSsn = { ep_count: ssnElements[i].innerHTML };
+			ssnList[i] = tmpSsn;
+		}
+	} */
+	var ssnList = '';
+	if (showType == 'tv') {
+		for (i = 0; i < ssnElements.length; i++) {
+			ssnList += (ssnElements[i].innerHTML + ',');
+		}
+	}
+	ssnList = ssnList.substring(0, ssnList.length - 1);
+	
+	//add conditional statement to allow for more plug-ins
+	var sHost = 'http://www.primewire.ag'
+	var sName = String(showInfo[2].innerHTML).split(':')[0].replace(':', '');
+	if (sName == null) {
+		sName = showInfo[0].innerHTML;
+	}
+	
+	var postData = {
+		name: sName,
+		show_type: showType,
+		description: showInfo[2].innerHTML,
+		tags: showInfo[3].innerHTML,
+		year: showInfo[4].innerHTML,
+		img_url: showInfo[1].innerHTML,
+		host: sHost,
+		link: showInfo[5].innerHTML,
+		seasons: ssnList		
+	}
+	
+	var request = $.ajax({
+		url: '/cpkUpdShow',
+		type: 'POST',
+		data: postData,
+		contentType: 'application/x-www-form-urlencoded',
+		dataType: 'json'		
+	});
+	
+	request.success(function(rslt) {
+		//alert('succeeded');
+	});
+	
+	request.fail(function(jqXHR, textStatus) {
+		alert('Error Saving Show Info');
+	});
+	
+	var x = '';
+}
+
 function callAjax(webUrl, queryString) {
     var xmlHttpObject = null;
 
@@ -496,17 +564,6 @@ function clearSearchResults() {
 	}
 }
 
-/* function cpklogin() {
-	$.ajax({
-		url: '/cpkconnect',
-		type: 'POST',
-		data: $('#frmUser').serialize(),
-		dataTpe: 'json',
-		success: function(rslt) {
-			alert('done');
-		}
-	});
-} */
 
 
 

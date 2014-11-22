@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var cpkstart = require('./routes/cpkstart');
 var getSK = require('./routes/getSK');
 var getPW_Details = require('./routes/getPW_Details');
 var getPW_Episodes = require('./routes/getPW_Episodes');
@@ -15,6 +14,7 @@ var getPW_Links = require('./routes/getPW_Links');
 var getPW_Video = require('./routes/getPW_Video');
 var getBlank = require('./routes/getBlank');
 var cpkConnect = require('./routes/cpkconnect');
+var cpkUpdShow = require('./routes/cpkUpdShow');
 
 var app = express();
 
@@ -33,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/cpkstart', cpkstart);
 app.use('/getSK', getSK);
 app.use('/getPW_Details', getPW_Details);
 app.use('/getPW_Episodes', getPW_Episodes);
@@ -41,6 +40,7 @@ app.use('/getPW_Links', getPW_Links);
 app.use('/getPW_Video', getPW_Video);
 app.use('/getBlank', getBlank);
 app.use('/cpkconnect', cpkConnect);
+app.use('/cpkUpdShow', cpkUpdShow);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -106,6 +106,7 @@ function PWTV_getEpisodes(src_url) {
 				document.getElementById('hdnModalType').innerHTML = 'tv';
 				PWTV_getEpisodes_processResults(rslt2);
 			} else if (rsltType == "movieLinks") {
+				$('#hdnValues3').empty();
 				document.getElementById('hdnModalType').innerHTML = 'movie';
 				PWTV_getMovieLinks_processResults(rslt2);
 			}
