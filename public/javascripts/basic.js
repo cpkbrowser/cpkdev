@@ -6,6 +6,9 @@ var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
 $(document).ready(function() {
 	
 	$("#btnSearch").bind('keypress', onEnter_Search);
+	$("#btnSrchSubmit").click(function() {
+		onClick_Search();
+	});
 
 	$('.season-select').click(function(e) {
 		e.stopPropagation();
@@ -89,6 +92,20 @@ function onEnter_Search(e) {
 			}); 
 		}
 	}
+}
+
+function onClick_Search() {
+	$("#grdSrchResults").slideDown(150);
+	var val = document.getElementById('btnSearch').value.trim().replace(' ', '+');
+			
+	temp_url = static_url + 'getSK?srch=' + val + '&type=tv';			
+	$.ajax({
+		url: temp_url,
+		success: function (rslt) {	
+			//Put conditional statement here to change between plugins
+			PWTV_processSearchResults(rslt);
+		}
+	}); 
 }
 
 function open_mdlInfo(t) {
