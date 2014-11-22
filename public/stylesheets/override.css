@@ -1,4 +1,12 @@
+::selection {
 
+  background: red;
+  color:black;
+}
+::-moz-selection {
+  background: red;
+  color:black; 
+}
 .search-results {
 	width: 770px;
 	height: 438px;
@@ -61,9 +69,21 @@ p.info {
 }
 
 /*modal*/
+.info-pic {
+	float: right;
+}
 #simplemodal-container {
 		top: 80px !important;
+		/*max-width: 675px !important;*/
+		height:auto !important;
+		left:0 !important;	
+		height: 320px !important;
+		width:100%;
 	}
+.simplemodal-wrap {
+	/*max-width: 675px;*/
+	width:100%;
+}
 
 @media (max-width: 480px) {
 	#simplemodal-container {
@@ -71,9 +91,6 @@ p.info {
 		height:auto;
 		position:absolute !important;
 	}
-}
-.info-pic {
-	float: right;
 }
 @media screen and (max-width: 768px) {
 	.info-pic {
@@ -97,8 +114,8 @@ p.info {
 	background: white;
 	opacity: .96;
 	bottom: 0;
-	min-height: 365px;
 	overflow-y: auto;
+	min-height: 305px;
 }
 .tab-content {
 	width: 100%;
@@ -264,9 +281,14 @@ li.episode_item {
 }
 
 ul.season_list {
-	width:100% !important;
+	width:94% !important;
 	padding: 15px;
 	overflow-x: hidden;
+	background:white;
+	border-bottom: 2px solid red;
+	border-right: 2px solid red;
+	border-left: 2px solid red;
+	margin: 0px 14px;
 }
 
 .ui-accordion .ui-accordion-icons {
@@ -274,7 +296,11 @@ ul.season_list {
 }
 
 #simplemodal-container h3 {
-	color: red !important;
+	color: black !important;
+}
+
+.ui-accordion-header-active {
+	outline-width:0!important;
 }
 
 .play-button {
@@ -287,3 +313,71 @@ ul.season_list {
 	}
 }
 
+.info-pane-max {
+	max-width: 1300px;
+}
+
+.float-button {
+	float: left;
+	width: 100%;
+	margin-top: 4px;
+}
+.vid-grid{
+	margin-top: 5px;
+	max-width: 1270px;
+	margin: 0 auto;
+	display: block;
+}
+
+.makers {
+	padding-top: 50px;
+}
+
+.bottom-section  {
+	max-width: 1270px;
+	margin: 0 auto;
+	display: block;
+}
+
+input:focus { 
+    background-color: black;
+    border:3px solid red;
+    border-right: none;
+    margin-top:10px;
+    margin-bottom:10px;
+    color:red;
+    outline-width:0;
+}
+
+.ui-accordion-header,
+.ui-state-default,
+.ui-accordion-header-active,
+.ui-corner-top,
+.ui-accordion-icons {
+	border-bottom:1px solid black !important;
+	border:none !important;
+	background:white !important;
+}
+
+.ui-state-active {
+	background: none !important;
+	border-bottom:1px solid black !important;
+	border:none !important;
+}
+
+.ui-accordion-header:hover {
+	background:white !important;
+}
+
+#simplemodal-container h3 {
+	border: 2px solid red !important;
+	outline-width:0;
+	margin-bottom: -4px;
+}
+#simplemodal-container h3:active {
+	border-bottom: none !important;
+}
+
+.btn-toggle {
+	outline-width: 0;
+}

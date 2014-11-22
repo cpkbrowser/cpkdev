@@ -198,6 +198,7 @@
 	padding: 1em 2.2em;
 	border-top: 0;
 	overflow: auto;
+	background: white;
 }
 .ui-autocomplete {
 	position: absolute;

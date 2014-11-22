@@ -121,8 +121,8 @@
                     <div id="ddlLogin" class="dropdown-menu login" style="padding: 15px; padding-bottom: 10px;">
                                   <!-- Login form here -->
                       <form id="frmUser" action="/" method="post" accept-charset="UTF-8">
-                          <input id="user_username" style="margin-bottom: 15px;" type="text" name="username" size="30" />
-                          <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
+                          <input id="user_username" placeholder="Login" style="margin-bottom: 15px;" type="text" name="username" size="30" />
+                          <input id="user_password" placeholder="Password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
                           <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="remember_me" value="1" />
                           <label class="string optional" for="remember_me"> Remember me</label>
 
@@ -1120,12 +1120,12 @@
 		<div id="hdnModalType" style="display: none;"></div>
 		<div id="basic-modal-content">
 			<div class="info-pane" id="mdlInfoPane">
-				<div class="row">
+				<div class="row info-pane-max">
 					<div class="col-sm-3">
 						<a class="info-pic" href="#"> <img id="mdlInfo_Img" class="info-thumb-img" src="../public/images//placeholder.png">
 						</a>
 						<div style="width: 150px; height 30px; display: none;" class="play-button" id="mdlStartMovie">
-							<div class="btn-primary">
+							<div class="btn-primary float-button">
 								<button class="btn-toggle" onclick="startMovie();" type="button">
 									<div class="btn-primary-txt">Play Movie</div>
 								</button>
