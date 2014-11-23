@@ -363,17 +363,16 @@ ul.season_list {
 	display: block;
 }
 
-.makers {
-	padding-top: 50px;
-}
-
 .bottom-section  {
 	max-width: 1270px;
 	margin: 0 auto;
 	display: block;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 
-input:focus { 
+input.search:focus { 
     background-color: black;
     border:3px solid red;
     border-right: none;
@@ -418,7 +417,7 @@ input:focus {
 /*nav control*/
 .nav-control {
 	background: black;
-	max-width: 320px;
+	max-width: 75px;
 	width: 100%;
 	position: fixed;
 	min-height: 30px;
@@ -431,6 +430,12 @@ input:focus {
 	-webkit-border-bottom-right-radius: 10px;
 	-moz-border-bottom-right-radius: 10px;
 		border-bottom-right-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	   -moz-border-top-right-radius: 10px;
+		    border-top-right-radius: 10px;
+	border: 2px red solid;
+	border-left: none;
+	margin-top: 200px
 }
 
 .nav-control:hover,
@@ -475,9 +480,17 @@ span.nav-link-design {
 }
 
 .link-placement {
-	padding-left: 50px;
+	padding-left: 30px;
 }
 
 .icon-hover:hover {
 	color:red !important;
+}
+
+.failed-login {
+	display: none;
+}
+
+.title {
+	height: 44px !important;
 }

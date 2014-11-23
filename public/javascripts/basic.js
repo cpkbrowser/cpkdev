@@ -9,6 +9,10 @@ $(document).ready(function() {
 	$("#btnSrchSubmit").click(function() {
 		onClick_Search();
 	});
+	
+	$("#navCntrlContainer").click(function() {
+		mdlNavInfo_Click();
+	});
 
 	$('.season-select').click(function(e) {
 		e.stopPropagation();
@@ -48,10 +52,11 @@ $(document).ready(function() {
 	$(document).bind('keyup', function(e) {
 		if(e.which === 116) {
 			window.onbeforeunload = function() {};
-		} else if (e.which === 118) {
-			//var test = callAjax(static_url, 'cpkconnect');
-			var x = '';
-		}
+		} else if (e.which ===13) {
+			$.modal.close()
+		} //else if (e.which === 118) {
+			
+		//}
 	});
 	
 	$('#btnLogin').click(function() {
@@ -63,12 +68,36 @@ $(document).ready(function() {
 			dataTpe: 'json',
 			success: function(rslt) {
 				if (rslt == 'true') {
-					alert('validated');
+					document.getElementById('binCategoryContainer').style.display = 'block';
+					document.getElementById('pFailedLogin').style.display = 'none';
+					document.getElementById('srchbarContainer').click();
+					$('#btnLogin').click(function() {});
 				} else {
-					alert('error logging in');
+					document.getElementById('pFailedLogin').style.display = 'block';
 				}
 			}
 		});
+	});
+	
+	$('#srchItem_getMore').click(function() {
+		var num = parseInt(document.getElementById('hdnRsltSetCounter').innerHTML, 10);		
+		var shows = document.getElementById('hdnValues').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+		if ((num + 36) < (shows.length * 6)) {
+			document.getElementById('hdnRsltSetCounter').innerHTML = num + 6;
+			PWTV_processSearchResults();			
+		} else {
+		
+		}
+	});
+	
+	$('#srchItem_getLess').click(function() {
+		var num = parseInt(document.getElementById('hdnRsltSetCounter').innerHTML, 10);
+		if (num > 0) { 
+			document.getElementById('hdnRsltSetCounter').innerHTML = num - 6;
+			PWTV_processSearchResults();
+		} else {
+			
+		}
 	});
 	
 });
@@ -86,8 +115,13 @@ function onEnter_Search(e) {
 			$.ajax({
 				url: temp_url,
 				success: function (rslt) {	
+					$("#hdnValues").empty();
+					$("#hdnValues").append(rslt.childNodes[0]);
+					clearSearchResults();
+					document.getElementById('hdnRsltSetCounter').innerHTML = '0';
+					
 					//Put conditional statement here to change between plugins
-					PWTV_processSearchResults(rslt);
+					PWTV_processSearchResults();
 				}
 			}); 
 		}
@@ -102,8 +136,12 @@ function onClick_Search() {
 	$.ajax({
 		url: temp_url,
 		success: function (rslt) {	
+			$("#hdnValues").empty();
+			$("#hdnValues").append(rslt.childNodes[0]);
+			clearSearchResults();
+			
 			//Put conditional statement here to change between plugins
-			PWTV_processSearchResults(rslt);
+			PWTV_processSearchResults();
 		}
 	}); 
 }
@@ -149,6 +187,11 @@ function open_mdlInfo(t) {
 	info[2].innerHTML = desc.trim();
 	PWTV_getEpisodes(static_url + 'getPW_Episodes' + '?srch=' + info[5].innerHTML)
 }
+
+/* function rsltSetCounter() {
+	var rsltSetCounter = parseInt(document.getElementById('hdnRsltSetCounter').innerHTML, 10) + 6;
+	PWTV_processSearchResults();
+} */
 
 function build_lnkAccordion(ssnList) {
 	
@@ -264,6 +307,8 @@ function prepareMovieFrame(currLink) {
 	frame.parentNode.style.display = 'block';
 	
 	$($(frame)).load(function() {
+		$("#simplemodal-container").css('height', 'auto'); //To reset the container.
+		$(window).trigger('resize.simplemodal'); 
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
@@ -333,6 +378,9 @@ function loadPreviousLink() {
 	var frame = document.getElementById('mdlVideoFrame');
 	
 	$($(frame)).load(function() {
+		$("#simplemodal-container").css('height', 'auto'); //To reset the container.
+		$(window).trigger('resize.simplemodal'); 
+		
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
@@ -375,6 +423,8 @@ function loadNextLink() {
 	var frame = document.getElementById('mdlVideoFrame');
 	
 	$($(frame)).load(function() {
+		$("#simplemodal-container").css('height', 'auto'); //To reset the container.
+		$(window).trigger('resize.simplemodal'); 
 		var prevent_bust = 0  
 		window.onbeforeunload = function() { prevent_bust++ }  
 		setInterval(function() {  
@@ -534,6 +584,18 @@ function send_cpkData() {
 	var x = '';
 }
 
+function mdlNavInfo_Click() {
+	if (document.getElementById('navContainer').style.display == 'none') {
+		document.getElementById('mdlNavButtons').style.height = '25px';
+		document.getElementById('navCntrlContainer').style.maxWidth = '180px';
+		document.getElementById('navContainer').style.display = 'block';
+	} else {
+		document.getElementById('mdlNavButtons').style.height = 'auto';
+		document.getElementById('navCntrlContainer').style.maxWidth = '75px';
+		document.getElementById('navContainer').style.display = 'none';
+	}
+}
+
 function callAjax(webUrl, queryString) {
     var xmlHttpObject = null;
 
@@ -573,6 +635,10 @@ function sleep(milliseconds) {
             break;
         }
     }
+}
+
+function pad(width, string, padding) { 
+  return (width <= string.length) ? string : pad(width, string + padding, padding)
 }
 
 function clearSearchResults() {

@@ -22,8 +22,10 @@ router.post('/', function(req, res){
 		var salt;
 		var test = testUser.findOne({'username': String(req.body.username).trim()}, function(err, rslt) {
 			if (err) {
+				mongoose.disconnect();
 				res.end('Failed Query');				
 			} else if (rslt == null) {
+				mongoose.disconnect();
 				res.end('null');
 			} else {
 				console.dir(rslt);
@@ -38,6 +40,7 @@ router.post('/', function(req, res){
 					console.log('error validating password');
 				}
 				mongoose.disconnect();
+				console.log('disconnected');
 				res.end(String(valid));
 			}
 		});

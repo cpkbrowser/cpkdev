@@ -6,13 +6,11 @@
 var static_url = 'http://cpktestapp2.herokuapp.com/';
 var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
 var temp_url = ''; 
- 
-function PWTV_processSearchResults(rslt) {
-	
-	$("#hdnValues").empty();
-	$("#hdnValues").append(rslt.childNodes[0]);
-	clearSearchResults();					
+
+function PWTV_processSearchResults(){
+
 	var shows = document.getElementById('hdnValues').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('td');
+	var rsltSetCounter = parseInt(document.getElementById('hdnRsltSetCounter').innerHTML, 10);
 	
 	var itemCount = 0;
 	var counter = 1;
@@ -22,13 +20,14 @@ function PWTV_processSearchResults(rslt) {
 	var sYear = '';
 	var sGenre = '';
 	var sLink = '';
-	for (i = 0; i < shows.length; i++) {						
+	for (i = rsltSetCounter; i < shows.length; i++) {						
 		switch (counter) {
 			case 1:
 				sName = shows[i].innerHTML;
 				if (sName == undefined) {
 					sName = shows[i].textContent;
 				}
+				
 				document.getElementById('srchItem_n' + itemCount).innerHTML = sName;
 				document.getElementById('srchItem_hdnName' + itemCount).innerHTML = sName;
 				break;
@@ -89,8 +88,13 @@ function PWTV_processSearchResults(rslt) {
 	}
 	
 	document.getElementById('srch_preLoader').style.display = "none";
-	document.getElementById('hdnLoadResults').style.display = "none";
-	$("#hdnLoadResults").fadeIn(10);
+	
+	var isLoaded = document.getElementById('hdnRsltSetLoaded').innerHTML;
+	if (isLoaded == 'false') {
+		document.getElementById('hdnRsltSetLoaded').innerHTML = 'true';
+		document.getElementById('hdnLoadResults').style.display = "none";
+		$("#hdnLoadResults").fadeIn(10);
+	}
 }
 
 function PWTV_getEpisodes(src_url) {
