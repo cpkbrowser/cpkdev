@@ -171,7 +171,7 @@ function open_mdlInfo(t) {
 	document.getElementById('mdlInfo_Link').innerHTML = newLink;
 	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
 	document.getElementById('mdlInfoPane').style.display = 'block';
-	document.getElementsByTagName('iframe')[0].parentNode.style.display = 'none';
+	document.getElementById('mdlVideoFrame').parentNode.style.display = 'none';
 	$("#basic-modal-content").modal({
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
@@ -299,7 +299,7 @@ function prepareMovieFrame(currLink) {
 	document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
 	$.modal.close();
 	document.getElementById('mdlInfoPane').style.display = 'none';
-	var frame = document.getElementsByTagName('iframe')[0];
+	var frame = document.getElementById('mdlVideoFrame');
 	//add conditional statement to allow for more plug-ins
 	//if (plugin_type == 'PW')
 	frame.src = getVideo(currLink);
@@ -323,7 +323,7 @@ function prepareMovieFrame(currLink) {
 	$("#basic-modal-content").modal({
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
-			var frame = document.getElementsByTagName('iframe')[0];
+			var frame = document.getElementById('mdlVideoFrame');
 			frame.src = 'about:blank';
 			frame.parentNode.style.display = 'none';
 			document.getElementById('mdlInfoPane').style.display = 'block';
@@ -646,6 +646,15 @@ function clearSearchResults() {
 		document.getElementById('srchItem_container' + i).style.display = 'none';
 	}
 }
+
+// When ready...
+window.addEventListener("load",function() {
+	// Set a timeout...
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
+});
 
 
 

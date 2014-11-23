@@ -151,6 +151,11 @@ h4.title-info-pane {
 	overflow-y: auto;
 	min-height: 305px;
 }
+@media (max-width: 480px) {
+	.info-pane {
+		min-height: 555px;
+	}
+}
 .tab-content {
 	width: 100%;
 }
@@ -367,9 +372,20 @@ ul.season_list {
 	max-width: 1270px;
 	margin: 0 auto;
 	display: block;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
+	background: black;
+	color:white !important;
+	border-top: 2px solid red;
+	/*z-index:999999999999999;*/
+}
+
+.bottom-section a {
+	color: white !important;
+}
+.makers {
+	color: white !important;
 }
 
 input.search:focus { 
@@ -493,4 +509,66 @@ span.nav-link-design {
 
 .title {
 	height: 44px !important;
+}
+
+.footer {
+	padding: 0;
+}
+/*landing*/
+.welcome {
+	font-family: monospace;
+	color: red;
+	font-size: 71px;
+	text-transform: uppercase;
+	/* background: white; */
+	padding: 22px;
+	width: 380px;
+	line-height: 0.53;
+	text-align: right;
+	float: right;
+}
+.uparrow {
+	font-size: 130px;
+	font-size: 13.0rem;
+	color: white;
+}
+img.landing-main-pic {
+	width: 100%;
+}
+
+@media (max-width:590px) {
+	.uparrow {
+		display: none;
+	}
+	.welcome {
+		font-size: 31px;
+		font-size: 3.1rem;
+	}
+}
+
+.landing-picture {
+	position: absolute;
+}
+.landing-video {
+	padding-top:30px;
+	max-width:555px;
+}
+.coax {
+	z-index: 999;
+}
+h4.catch-phase1 {
+	position: absolute;
+	top: 100px;
+	width: 100%;
+	color: white;
+	font-size: 29px;
+	font-size: 2.9rem;
+}
+
+@media (max-width:992px) {
+	h4.catch-phase1 {
+		position:static;
+		text-align: center;
+		padding: 10px 0px 80px 0px;
+	}
 }
