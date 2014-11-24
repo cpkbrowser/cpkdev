@@ -151,7 +151,7 @@ function PWTV_getEpisodes_processResults(rslt2) {
 				}
 				if (tempName == null) {
 					//Internet Explorer Work-Around							
-					tempName = val2.childNodes[1].childNodes[1].textContent;
+					tempName = val3.childNodes[1].childNodes[1].textContent;
 				}
 				var tmpArray = {
 					Item: tempItem,
