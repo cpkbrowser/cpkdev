@@ -586,7 +586,7 @@ function send_cpkData() {
 
 function mdlNavInfo_Click() {
 	if (document.getElementById('navContainer').style.display == 'none') {
-		document.getElementById('mdlNavButtons').style.height = '25px';
+		document.getElementById('mdlNavButtons').style.height = 'auto';
 		document.getElementById('navCntrlContainer').style.maxWidth = '180px';
 		document.getElementById('navContainer').style.display = 'block';
 	} else {
