@@ -15,6 +15,7 @@ var getPW_Video = require('./routes/getPW_Video');
 var getBlank = require('./routes/getBlank');
 var cpkConnect = require('./routes/cpkconnect');
 var cpkUpdShow = require('./routes/cpkUpdShow');
+var cpkLoadBins = require('./routes/cpkLoadBins');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/getPW_Video', getPW_Video);
 app.use('/getBlank', getBlank);
 app.use('/cpkconnect', cpkConnect);
 app.use('/cpkUpdShow', cpkUpdShow);
+app.use('/cpkLoadBins', cpkLoadBins);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

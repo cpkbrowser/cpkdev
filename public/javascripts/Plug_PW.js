@@ -5,6 +5,7 @@
 //var redir1 = 'http://localhost:3000/getBlank';
 var static_url = 'http://cpktestapp2.herokuapp.com/';
 var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
+
 var temp_url = ''; 
 
 function PWTV_processSearchResults(){
@@ -45,6 +46,10 @@ function PWTV_processSearchResults(){
 				imgLink = shows[i].innerHTML;
 				if (imgLink == undefined) {
 					imgLink = shows[i].textContent;
+				}
+				//add conditional statement to allow for more plug-ins
+				if (imgLink == '/images/noposter.jpg') {
+					imgLink = '/images//placeholder.png';
 				}
 				document.getElementById('srchItem_img' + itemCount).src = imgLink;
 				document.getElementById('srchItem_hdnImg' + itemCount).innerHTML = imgLink;

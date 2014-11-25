@@ -54,9 +54,9 @@ $(document).ready(function() {
 			window.onbeforeunload = function() {};
 		} else if (e.which ===13) {
 			$.modal.close()
-		} //else if (e.which === 118) {
-			
-		//}
+		} else if (e.which === 118) {
+			//loadCPKBin_Popular();
+		}
 	});
 	
 	$('#btnLogin').click(function() {
@@ -68,10 +68,13 @@ $(document).ready(function() {
 			dataTpe: 'json',
 			success: function(rslt) {
 				if (rslt == 'true') {
+					loadCPKBin_Popular();
 					document.getElementById('binCategoryContainer').style.display = 'block';
 					document.getElementById('pFailedLogin').style.display = 'none';
 					document.getElementById('srchbarContainer').click();
-					$('#btnLogin').click(function() {});
+					document.getElementById('landingPage').style.display = 'none';
+					document.getElementById('binCategoryContainer').style.display = 'block';
+					$('#btnLogin').click(function() {});					
 				} else {
 					document.getElementById('pFailedLogin').style.display = 'block';
 				}
@@ -151,17 +154,22 @@ function open_mdlInfo(t) {
 	var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
 	
 	//add conditional statement to allow for more plug-ins
-	var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML));
-	
-	var child = document.createElement('div');
-	child.innerHTML = String(x1);
-	child = child.firstChild;
-	document.getElementById('hdnValues').appendChild(child);
-	
-	var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);	
-	document.getElementById('mdlInfo_Desc').innerHTML = desc.trim()
-	var oldList = document.getElementsByClassName('movie_info')[0];
-	document.getElementById('hdnValues').removeChild(oldList);
+	var testx = t.id.substring(0, 4);
+	if (t.id.substring(0, 4) == 'srch') {
+		var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML));
+		
+		var child = document.createElement('div');
+		child.innerHTML = String(x1);
+		child = child.firstChild;
+		document.getElementById('hdnValues').appendChild(child);
+		
+		var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);	
+		document.getElementById('mdlInfo_Desc').innerHTML = desc.trim()
+		var oldList = document.getElementsByClassName('movie_info')[0];
+		document.getElementById('hdnValues').removeChild(oldList);
+	} else {
+		document.getElementById('mdlInfo_Desc').innerHTML = info[2].innerHTML;
+	}
 	
 	document.getElementById('mdlInfo_Img').src = info[1].innerHTML;
 	document.getElementById('mdlInfo_Name').innerHTML = info[0].innerHTML;
@@ -184,7 +192,9 @@ function open_mdlInfo(t) {
 	document.getElementById('simplemodal-container').style.height = String(hgt) + 'px';
 	
 	//add conditional statement to allow for more plug-ins
-	info[2].innerHTML = desc.trim();
+	if (t.id.substring(0, 4) == 'srch') {
+		info[2].innerHTML = desc.trim();
+	} 	
 	PWTV_getEpisodes(static_url + 'getPW_Episodes' + '?srch=' + info[5].innerHTML)
 }
 

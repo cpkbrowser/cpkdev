@@ -36,6 +36,7 @@
         <!-- Kyle's JS code -->		
 		<script src="/javascripts/jquery.simplemodal.js"></script>
 		<script src="/javascripts/simplemodal-procs.js"></script>
+		<script src="/javascripts/load_grids.js"></script>
     	<script src="/javascripts/basic.js"></script>
     	<script src="/javascripts/Plug_PW.js"></script>
 
@@ -390,6 +391,235 @@
 			</div>
 		
 			<div id="binCategoryContainer" style="position: relative; display: none;">
+				<!--PopularOnCPKBrowser-->
+				<div id="grdPopularOnCPK">
+					<div class="section">
+						<h4 class="section-head">Popular on CPK Browser</h4>
+						<hr class="section">
+					</div>
+					<div class="row">
+						<div id="popItem_container0" class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img0" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="popItem_n0">Title of Movie or Episode</h2>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu0">
+													<div id="popItem_btnInfo0" class="btn-primary-txt">Info
+													</div>
+													<div id="popItem_hdnDiv0" style="display: none;">
+														<p id="popItem_hdnName0"></p>
+														<p id="popItem_hdnImg0"></p>
+														<p id="popItem_hdnDesc0"></p>
+														<p id="popItem_hdnGenre0"></p>
+														<p id="popItem_hdnYear0"></p>
+														<p id="popItem_hdnLink0"></p>
+													</div>
+												</button>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div id="popItem_btnFav0" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="popItem_container1" class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img1" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="popItem_n1">Title of Movie or Episode</h2>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu1">
+													<div id="popItem_btnInfo1" class="btn-primary-txt">Info
+													</div>
+													<div id="popItem_hdnDiv1" style="display: none;">
+														<p id="popItem_hdnName1"></p>
+														<p id="popItem_hdnImg1"></p>
+														<p id="popItem_hdnDesc1"></p>
+														<p id="popItem_hdnGenre1"></p>
+														<p id="popItem_hdnYear1"></p>
+														<p id="popItem_hdnLink1"></p>
+													</div>
+												</button>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div id="popItem_btnFav1" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="popItem_container2" class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img2" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="popItem_n2">Title of Movie or Episode</h2>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu2">
+													<div id="popItem_btnInfo2" class="btn-primary-txt">Info
+													</div>
+													<div id="popItem_hdnDiv2" style="display: none;">
+														<p id="popItem_hdnName2"></p>
+														<p id="popItem_hdnImg2"></p>
+														<p id="popItem_hdnDesc2"></p>
+														<p id="popItem_hdnGenre2"></p>
+														<p id="popItem_hdnYear2"></p>
+														<p id="popItem_hdnLink2"></p>
+													</div>
+												</button>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div id="popItem_btnFav2" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="popItem_container3" class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img3" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="popItem_n3">Title of Movie or Episode</h2>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu3">
+													<div id="popItem_btnInfo3" class="btn-primary-txt">Info
+													</div>
+													<div id="popItem_hdnDiv3" style="display: none;">
+														<p id="popItem_hdnName3"></p>
+														<p id="popItem_hdnImg3"></p>
+														<p id="popItem_hdnDesc3"></p>
+														<p id="popItem_hdnGenre3"></p>
+														<p id="popItem_hdnYear3"></p>
+														<p id="popItem_hdnLink3"></p>
+													</div>
+												</button>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div id="popItem_btnFav3" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="popItem_container4" class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img4" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="popItem_n4">Title of Movie or Episode</h2>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu4">
+													<div id="popItem_btnInfo4" class="btn-primary-txt">Info
+													</div>
+													<div id="popItem_hdnDiv4" style="display: none;">
+														<p id="popItem_hdnName4"></p>
+														<p id="popItem_hdnImg4"></p>
+														<p id="popItem_hdnDesc4"></p>
+														<p id="popItem_hdnGenre4"></p>
+														<p id="popItem_hdnYear4"></p>
+														<p id="popItem_hdnLink4"></p>
+													</div>
+												</button>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div id="popItem_btnFav4" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="popItem_container5" class="col-md-2 col-sm-4 col-xs-6">
+							<div class="vid-hover">
+								<div class="video-box">
+									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img5" class="vid-thumb-img" src="/images//placeholder.png">
+									</a>
+									<div class="description">
+										<h2 class="title" id="popItem_n5">Title of Movie or Episode</h2>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 button-span">
+											<div class="dropdown btn-primary">
+												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu5">
+													<div id="popItem_btnInfo5" class="btn-primary-txt">Info
+													</div>
+													<div id="popItem_hdnDiv5" style="display: none;">
+														<p id="popItem_hdnName5"></p>
+														<p id="popItem_hdnImg5"></p>
+														<p id="popItem_hdnDesc5"></p>
+														<p id="popItem_hdnGenre5"></p>
+														<p id="popItem_hdnYear5"></p>
+														<p id="popItem_hdnLink5"></p>
+													</div>
+												</button>
+											</div>
+										</div>
+										<div class="col-xs-6 button-span">
+											<div id="popItem_btnFav5" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+												<a href="#">
+													+Favs
+												</a>
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--end of row-->
+					<div class="more-arrow" style="display: none;">
+						<a href="#">^</a>
+					</div>
+				</div>
+			
 				<!--Favorites-->
 				<div id="grdFavorites">
 					<div class="section">
@@ -846,239 +1076,10 @@
 					<div class="more-arrow">
 						<a href="#">^</a>
 					</div>
-				</div>
-	
-				<!--PopularOnCPKBrowser-->
-				<div id="grdPopularOnCPK">
-					<div class="section">
-						<h4 class="section-head">Popular on CPK Browser</h4>
-						<hr class="section">
-					</div>
-					<div class="row">
-						<div id="popItem_container0" class="col-md-2 col-sm-4 col-xs-6">
-							<div class="vid-hover">
-								<div class="video-box">
-									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img0" class="vid-thumb-img" src="/images//placeholder.png">
-									</a>
-									<div class="description">
-										<h2 class="title" id="popItem_n0">Title of Movie or Episode</h2>
-									</div>
-									<div class="row">
-										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu0">
-													<div id="popItem_btnInfo0" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv0" style="display: none;">
-														<p id="popItem_hdnName0"></p>
-														<p id="popItem_hdnImg0"></p>
-														<p id="popItem_hdnDesc0"></p>
-														<p id="popItem_hdnGenre0"></p>
-														<p id="popItem_hdnYear0"></p>
-														<p id="popItem_hdnLink0"></p>
-													</div>
-												</button>
-											</div>
-										</div>
-										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav0" style="text-align:center;padding:2px;" class="btn-primary addtofav">
-												<a href="#">
-													+Favs
-												</a>
-											</div>
-										</div> 
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="popItem_container1" class="col-md-2 col-sm-4 col-xs-6">
-							<div class="vid-hover">
-								<div class="video-box">
-									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img1" class="vid-thumb-img" src="/images//placeholder.png">
-									</a>
-									<div class="description">
-										<h2 class="title" id="popItem_n1">Title of Movie or Episode</h2>
-									</div>
-									<div class="row">
-										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu1">
-													<div id="popItem_btnInfo1" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv1" style="display: none;">
-														<p id="popItem_hdnName1"></p>
-														<p id="popItem_hdnImg1"></p>
-														<p id="popItem_hdnDesc1"></p>
-														<p id="popItem_hdnGenre1"></p>
-														<p id="popItem_hdnYear1"></p>
-														<p id="popItem_hdnLink1"></p>
-													</div>
-												</button>
-											</div>
-										</div>
-										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav1" style="text-align:center;padding:2px;" class="btn-primary addtofav">
-												<a href="#">
-													+Favs
-												</a>
-											</div>
-										</div> 
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="popItem_container2" class="col-md-2 col-sm-4 col-xs-6">
-							<div class="vid-hover">
-								<div class="video-box">
-									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img2" class="vid-thumb-img" src="/images//placeholder.png">
-									</a>
-									<div class="description">
-										<h2 class="title" id="popItem_n2">Title of Movie or Episode</h2>
-									</div>
-									<div class="row">
-										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu2">
-													<div id="popItem_btnInfo2" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv2" style="display: none;">
-														<p id="popItem_hdnName2"></p>
-														<p id="popItem_hdnImg2"></p>
-														<p id="popItem_hdnDesc2"></p>
-														<p id="popItem_hdnGenre2"></p>
-														<p id="popItem_hdnYear2"></p>
-														<p id="popItem_hdnLink2"></p>
-													</div>
-												</button>
-											</div>
-										</div>
-										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav2" style="text-align:center;padding:2px;" class="btn-primary addtofav">
-												<a href="#">
-													+Favs
-												</a>
-											</div>
-										</div> 
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="popItem_container3" class="col-md-2 col-sm-4 col-xs-6">
-							<div class="vid-hover">
-								<div class="video-box">
-									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img3" class="vid-thumb-img" src="/images//placeholder.png">
-									</a>
-									<div class="description">
-										<h2 class="title" id="popItem_n3">Title of Movie or Episode</h2>
-									</div>
-									<div class="row">
-										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu3">
-													<div id="popItem_btnInfo3" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv3" style="display: none;">
-														<p id="popItem_hdnName3"></p>
-														<p id="popItem_hdnImg3"></p>
-														<p id="popItem_hdnDesc3"></p>
-														<p id="popItem_hdnGenre3"></p>
-														<p id="popItem_hdnYear3"></p>
-														<p id="popItem_hdnLink3"></p>
-													</div>
-												</button>
-											</div>
-										</div>
-										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav3" style="text-align:center;padding:2px;" class="btn-primary addtofav">
-												<a href="#">
-													+Favs
-												</a>
-											</div>
-										</div> 
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="popItem_container4" class="col-md-2 col-sm-4 col-xs-6">
-							<div class="vid-hover">
-								<div class="video-box">
-									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img4" class="vid-thumb-img" src="/images//placeholder.png">
-									</a>
-									<div class="description">
-										<h2 class="title" id="popItem_n4">Title of Movie or Episode</h2>
-									</div>
-									<div class="row">
-										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu4">
-													<div id="popItem_btnInfo4" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv4" style="display: none;">
-														<p id="popItem_hdnName4"></p>
-														<p id="popItem_hdnImg4"></p>
-														<p id="popItem_hdnDesc4"></p>
-														<p id="popItem_hdnGenre4"></p>
-														<p id="popItem_hdnYear4"></p>
-														<p id="popItem_hdnLink4"></p>
-													</div>
-												</button>
-											</div>
-										</div>
-										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav4" style="text-align:center;padding:2px;" class="btn-primary addtofav">
-												<a href="#">
-													+Favs
-												</a>
-											</div>
-										</div> 
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="popItem_container5" class="col-md-2 col-sm-4 col-xs-6">
-							<div class="vid-hover">
-								<div class="video-box">
-									<a class="vid-link" href="<?php echo home_url(); ?>/#"> <img id="popItem_img5" class="vid-thumb-img" src="/images//placeholder.png">
-									</a>
-									<div class="description">
-										<h2 class="title" id="popItem_n5">Title of Movie or Episode</h2>
-									</div>
-									<div class="row">
-										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu5">
-													<div id="popItem_btnInfo5" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv5" style="display: none;">
-														<p id="popItem_hdnName5"></p>
-														<p id="popItem_hdnImg5"></p>
-														<p id="popItem_hdnDesc5"></p>
-														<p id="popItem_hdnGenre5"></p>
-														<p id="popItem_hdnYear5"></p>
-														<p id="popItem_hdnLink5"></p>
-													</div>
-												</button>
-											</div>
-										</div>
-										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav5" style="text-align:center;padding:2px;" class="btn-primary addtofav">
-												<a href="#">
-													+Favs
-												</a>
-											</div>
-										</div> 
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!--end of row-->
-					<div class="more-arrow" style="display: none;">
-						<a href="#">^</a>
-					</div>
-				</div>
+				</div>				
 			</div>
 		</div><!--endofvidgrid-->
-		<div class="land-page" style="display:block;" >
+		<div id="landingPage" class="land-page" style="display:block;" >
 			<div class="container">
 				<!-- logo starter -->
 				<div class="container try-anything">
@@ -1180,6 +1181,8 @@
 			</div>
 		</div>
 		<div id="usrInfo" style="display: none;"></div>
+		<!-- #cpk_popEpisodes - Popular On CPK -->
+		<div id="hdn_tblPopular" style="display: none;"></div>
 		<!-- #ShowInfo - custom table containing important values from search results -->
 		<div id="hdnValues" style="display: none;"></div>
 		<!-- #showEpisodes - Raw data from primewire tv show episode list -->
