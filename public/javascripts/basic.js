@@ -8,7 +8,9 @@ $(document).ready(function() {
 	$("#btnSearch").bind('keypress', onEnter_Search);
 	$("#btnSrchSubmit").click(function() {
 		onClick_Search();
-	});
+	});	
+	
+	$('#user_password').bind('keypress', onEnter_Login);
 	
 	$("#navCntrlContainer").click(function() {
 		mdlNavInfo_Click();
@@ -60,32 +62,14 @@ $(document).ready(function() {
 	});
 	
 	$('#btnLogin').click(function() {
-		var start = '';
-		$.ajax({
-			url: '/cpkconnect',
-			type: 'POST',
-			data: $('#frmUser').serialize(),
-			dataTpe: 'json',
-			success: function(rslt) {
-				if (rslt == 'true') {
-					loadCPKBin_Popular();
-					document.getElementById('binCategoryContainer').style.display = 'block';
-					document.getElementById('pFailedLogin').style.display = 'none';
-					document.getElementById('srchbarContainer').click();
-					document.getElementById('landingPage').style.display = 'none';
-					document.getElementById('binCategoryContainer').style.display = 'block';
-					$('#btnLogin').click(function() {});					
-				} else {
-					document.getElementById('pFailedLogin').style.display = 'block';
-				}
-			}
-		});
+		beginLogin();
 	});
 	
 	$('#srchItem_getMore').click(function() {
 		var num = parseInt(document.getElementById('hdnRsltSetCounter').innerHTML, 10);		
 		var shows = document.getElementById('hdnValues').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 		if ((num + 36) < (shows.length * 6)) {
+			//Put conditional statement here to change between plugins
 			document.getElementById('hdnRsltSetCounter').innerHTML = num + 6;
 			PWTV_processSearchResults();			
 		} else {
@@ -96,6 +80,7 @@ $(document).ready(function() {
 	$('#srchItem_getLess').click(function() {
 		var num = parseInt(document.getElementById('hdnRsltSetCounter').innerHTML, 10);
 		if (num > 0) { 
+			//Put conditional statement here to change between plugins
 			document.getElementById('hdnRsltSetCounter').innerHTML = num - 6;
 			PWTV_processSearchResults();
 		} else {
@@ -104,6 +89,30 @@ $(document).ready(function() {
 	});
 	
 });
+
+function beginLogin() {
+	var start = '';
+	$.ajax({
+		url: '/cpkconnect',
+		type: 'POST',
+		data: $('#frmUser').serialize(),
+		dataTpe: 'json',
+		success: function(rslt) {
+			if (rslt.substring(0, 4) == 'true') {
+				loadCPKBin_Popular();
+				document.getElementById('userInfo_ID').innerHTML = rslt.split('?&')[1];
+				document.getElementById('binCategoryContainer').style.display = 'block';
+				document.getElementById('pFailedLogin').style.display = 'none';
+				document.getElementById('srchbarContainer').click();
+				document.getElementById('landingPage').style.display = 'none';
+				document.getElementById('binCategoryContainer').style.display = 'block';
+				$('#btnLogin').click(function() {});					
+			} else {
+				document.getElementById('pFailedLogin').style.display = 'block';
+			}
+		}
+	});
+}
 
 function onEnter_Search(e) {
 	if (e.keyCode == 13) {		
@@ -128,6 +137,12 @@ function onEnter_Search(e) {
 				}
 			}); 
 		}
+	}
+}
+
+function onEnter_Login(e) {
+	if (e.keyCode == 13) {
+		beginLogin();
 	}
 }
 
@@ -156,7 +171,7 @@ function open_mdlInfo(t) {
 	//add conditional statement to allow for more plug-ins
 	var testx = t.id.substring(0, 4);
 	if (t.id.substring(0, 4) == 'srch') {
-		var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML));
+		var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML + '&type=false'));
 		
 		var child = document.createElement('div');
 		child.innerHTML = String(x1);
@@ -164,7 +179,7 @@ function open_mdlInfo(t) {
 		document.getElementById('hdnValues').appendChild(child);
 		
 		var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);	
-		document.getElementById('mdlInfo_Desc').innerHTML = desc.trim()
+		document.getElementById('mdlInfo_Desc').innerHTML = desc.trim().replace(/\r?\n|\r/, '');
 		var oldList = document.getElementsByClassName('movie_info')[0];
 		document.getElementById('hdnValues').removeChild(oldList);
 	} else {
@@ -184,7 +199,7 @@ function open_mdlInfo(t) {
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
 			$.modal.close();
-			send_cpkData();
+			send_cpkShowData();
 		}
 	});	
 	document.getElementById('simplemodal-container').style.width = '100%';
@@ -338,7 +353,7 @@ function prepareMovieFrame(currLink) {
 			frame.parentNode.style.display = 'none';
 			document.getElementById('mdlInfoPane').style.display = 'block';
 			$.modal.close();
-			send_cpkData();
+			send_cpkShowData();
 		}
 	});	
 	
@@ -530,9 +545,10 @@ $.fn.textWidth = function(text, font) {
     return $.fn.textWidth.fakeEl.width();
 };
 
-function send_cpkData() {
+function send_cpkShowData() {
 	var activeDiv = document.getElementById('mdlActive_Div').innerHTML;
 	var showInfo = document.getElementById(activeDiv).getElementsByTagName('div')[1].getElementsByTagName('p');
+	
 	var showType;
 	try {
 		var ssnElements = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
@@ -541,13 +557,6 @@ function send_cpkData() {
 		showType = 'movie';
 	}
 	
-	/* var ssnList = {};
-	if (showType == 'tv') {
-		for (i = 0; i < ssnElements.length; i++) {
-			var tmpSsn = { ep_count: ssnElements[i].innerHTML };
-			ssnList[i] = tmpSsn;
-		}
-	} */
 	var ssnList = '';
 	if (showType == 'tv') {
 		for (i = 0; i < ssnElements.length; i++) {
@@ -584,6 +593,85 @@ function send_cpkData() {
 	});
 	
 	request.success(function(rslt) {
+		//alert('succeeded');
+	});
+	
+	request.fail(function(jqXHR, textStatus) {
+		alert('Error Saving Show Info');
+	});
+	
+	var x = '';
+}
+
+function send_cpkFavData(t) {
+	var prefix = String(t.id).split('_');
+	var dataID = prefix[0] + '_' + prefix[1].replace('Fav', 'Info');
+	var showType = '';
+	
+	var info = document.getElementById(dataID).parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
+	
+	//add conditional statement to allow for more plug-ins
+	if (t.id.substring(0, 4) == 'srch') {
+		var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML + '&type=true'));
+		
+		var child = document.createElement('div');
+		child.innerHTML = String(x1);
+		child = child.firstChild;
+		document.getElementById('hdnValues').appendChild(child);
+		
+		var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);
+		info[2].innerHTML = desc.replace(/\r?\n|\r/, '');
+		
+		var tmpType = document.getElementsByClassName('hdn_tmpShowType')[0];
+		showType = tmpType.innerHTML;
+		
+		var oldList = document.getElementsByClassName('hdn_tmpContainer')[0];
+		document.getElementById('hdnValues').removeChild(oldList);		
+	} else {
+		var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML + '&type=partial'));
+		
+		var child = document.createElement('div');
+		child.innerHTML = String(x1);
+		child = child.firstChild;
+		document.getElementById('hdnValues').appendChild(child);
+		
+		var tmpType = document.getElementsByClassName('hdn_tmpShowType')[0];
+		showType = tmpType.innerHTML;
+		
+		var oldList = document.getElementsByClassName('hdn_tmpShowType')[0];
+		document.getElementById('hdnValues').removeChild(oldList);
+	}
+	var sHost = 'http://www.primewire.ag'
+	var sName = String(info[2].innerHTML).split(':')[0].replace(':', '');
+	if (sName == null) {
+		sName = showInfo[0].innerHTML;
+	}
+	//end conditional statement
+	
+	var userID = document.getElementById('userInfo_ID').innerHTML;
+	var postData = {
+		name: sName,
+		show_type: showType,
+		description: info[2].innerHTML,
+		tags: info[3].innerHTML,
+		year: info[4].innerHTML,
+		img_url: info[1].innerHTML,
+		host: sHost,
+		link: info[5].innerHTML,
+		seasons: '',
+		userID: userID
+	}
+	
+	var request = $.ajax({
+		url: '/cpkAddFavorite',
+		type: 'POST',
+		data: postData,
+		contentType: 'application/x-www-form-urlencoded',
+		dataType: 'json'		
+	});
+	
+	request.success(function(rslt) {
+		var x = '';
 		//alert('succeeded');
 	});
 	

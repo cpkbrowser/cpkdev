@@ -16,6 +16,7 @@ var getBlank = require('./routes/getBlank');
 var cpkConnect = require('./routes/cpkconnect');
 var cpkUpdShow = require('./routes/cpkUpdShow');
 var cpkLoadBins = require('./routes/cpkLoadBins');
+var cpkAddFavorite = require('./routes/cpkAddFavorite');
 
 var app = express();
 
@@ -32,6 +33,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//start databse schemas
+require('./data/cpkShow')();
+require('./data/cpkUser')();
+require('./data/cpkUserProfile')();
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/getSK', getSK);
@@ -43,6 +49,7 @@ app.use('/getBlank', getBlank);
 app.use('/cpkconnect', cpkConnect);
 app.use('/cpkUpdShow', cpkUpdShow);
 app.use('/cpkLoadBins', cpkLoadBins);
+app.use('/cpkAddFavorite', cpkAddFavorite);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -38,31 +38,64 @@ router.post('/', function(req, res){
 					watch_count: 1			
 				});		
 				
-				newShow.save(function(err, rslt) {
-					if (err) {
+				newShow.save(function(err2, rslt2) {
+					if (err2) {
 						mongoose.disconnect();
 						res.json({exists: false, created: true, success: 'no'});
+					} else {
+						
 					}
+					
 					mongoose.disconnect();
 					res.json({exists: false, created: true, success: 'yes'});
 				});
 				
 			} else {
-			
-				var count = rslt.watch_count;
-				count = (count + 1);
-				console.log(String('count: ' + count));
 				
-				rslt.watch_count = count;
-				rslt.seasons = req.body.seasons;
-				rslt.save(function(err2, rslt2) {
+				var testUserProfile = mongoose.model('testUserProfile');
+				
+				/* var newUserProfile = new testUserProfile({
+					user_id: req.body.userID,
+					favorites: String(rslt._id) + ';',
+					recently_watched: String(rslt._id) + ';',
+					Theme: 'cpkStandard'
+				});
+				
+				newUserProfile.save(function(err2, rslt2) {
 					if (err2) {
-						console.log('failed save');
+						mongoose.disconnect();
+						res.json({exists: true, created: true, success: 'no'});
 					} else {
-						console.log('saved');
+						
 					}
+					
 					mongoose.disconnect();
-					res.json({exists: true, created: false, success: 'yes'});
+					res.json({exists: true, created: true, success: 'yes'});
+				}); */
+				
+				testUserProfile.findOne({user_id: req.body.userID }, function(err2, rslt2) {
+				
+					if (err2) {
+						mongoose.disconnect();
+						res.json({exists: true, created: false, success: 'no'});
+					} else {					
+						if (rslt2.favorites.indexOf(rslt._id) == -1) {
+							rslt2.favorites = rslt2.favorites + rslt._id + ';';						
+							rslt2.save(function(err3, rslt3) {
+								if (err3) {
+									mongoose.disconnect();
+									res.json({exists: true, created: true, success: 'fail'});
+								} else {
+									mongoose.disconnect();
+									res.json({exists: true, created: true, success: 'yes'});
+								}
+							});
+						} else {
+							mongoose.disconnect();
+							res.json({exists: true, created: true, success: 'pre-existed'});
+						}
+					}
+					
 				});				
 			}
 		});		

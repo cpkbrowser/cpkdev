@@ -36,7 +36,7 @@
         <!-- Kyle's JS code -->		
 		<script src="/javascripts/jquery.simplemodal.js"></script>
 		<script src="/javascripts/simplemodal-procs.js"></script>
-		<script src="/javascripts/load_grids.js"></script>
+		<script src="/javascripts/cpkBins.js"></script>
     	<script src="/javascripts/basic.js"></script>
     	<script src="/javascripts/Plug_PW.js"></script>
 
@@ -188,7 +188,7 @@
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="srchItem_btnFav0" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="srchItem_btnFav0" onclick="send_cpkFavData(this);" style="text-align:center;padding:2px;" class="btn-primary addtofav">
 												<a href="#">
 													+Favs
 												</a>
@@ -424,7 +424,7 @@
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav0" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="popItem_btnFav0" onclick="send_cpkFavData(this);" style="text-align:center;padding:2px;" class="btn-primary addtofav">
 												<a href="#">
 													+Favs
 												</a>
@@ -460,7 +460,7 @@
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="popItem_btnFav1" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="popItem_btnFav1" onclick="send_cpkFavData(this);" style="text-align:center;padding:2px;" class="btn-primary addtofav">
 												<a href="#">
 													+Favs
 												</a>
@@ -615,9 +615,14 @@
 							</div>
 						</div>
 					</div><!--end of row-->
-					<div class="more-arrow" style="display: none;">
-						<a href="#">^</a>
+					<div id="popItem_getMore" class="more-arrow">
+						<p><i class="fa fa-chevron-circle-left"></i></p>
 					</div>
+					<div id="popItem_getLess" class="more-arrow">
+						<p><i class="fa fa-chevron-circle-right"></i></p>
+					</div>
+					<p id="hdnPopSetCounter" style="display: none;">0</p>
+					<p id="hdnPopSetLoaded" style="display: none;">false</p>
 				</div>
 			
 				<!--Favorites-->
@@ -1180,7 +1185,9 @@
 				</div>
 			</div>
 		</div>
-		<div id="usrInfo" style="display: none;"></div>
+		<div id="usrInfo" style="display: none;">
+			<p id="userInfo_ID"></div>
+		</div>
 		<!-- #cpk_popEpisodes - Popular On CPK -->
 		<div id="hdn_tblPopular" style="display: none;"></div>
 		<!-- #ShowInfo - custom table containing important values from search results -->

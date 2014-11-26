@@ -5,7 +5,6 @@ var http = require("http");
 var mongoose = require('mongoose');
 var cpkAuth = require('../routes/cpkAuth');
 require('date-utils');
-require('../data/cpkUser')();
 
 router.post('/', function(req, res){
 	
@@ -26,16 +25,16 @@ router.post('/', function(req, res){
 				res.end('Failed Query');				
 			} else if (rslt == null) {
 				mongoose.disconnect();
-				res.end('null');
+				res.end('null return value');
 			} else {
 				console.dir(rslt);
 				pass = rslt.pwd;
 				salt = rslt.slt;
 				
-				var valid = false;
+				var valid = 'false';
 				if (cpkAuth.cpkDecrypt(String(req.body.password).trim(), pass, salt)) {
 					console.log('validated');
-					valid = true;
+					valid = 'true?&' + String(rslt._id);
 				} else {
 					console.log('error validating password');
 				}
