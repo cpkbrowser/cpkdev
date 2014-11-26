@@ -849,9 +849,14 @@
 							</div>
 						</div>
 					</div><!--end of row-->
-					<div class="more-arrow">
-						<a href="#">^</a>
+					<div id="favItem_getMore" style="cursor: pointer;" class="more-arrow">
+						<p><i class="fa fa-chevron-circle-left"></i></p>
 					</div>
+					<div id="favItem_getLess" style="cursor: pointer;" class="more-arrow">
+						<p><i class="fa fa-chevron-circle-right"></i></p>
+					</div>
+					<p id="hdnFavSetCounter" style="display: none;">0</p>
+					<p id="hdnFavSetLoaded" style="display: none;">false</p>
 				</div>
 	
 				<!--RecentlyWatched-->
@@ -1189,8 +1194,10 @@
 			<p id="userInfo_ID">null</div>
 			<p id="userInfo_username">null</div>
 		</div>
-		<!-- #cpk_popEpisodes - Popular On CPK -->
+		<!-- #cpk_popShows - Popular On CPK -->
 		<div id="hdn_tblPopular" style="display: none;"></div>
+		<!-- #cpk_favShows - User Profile List of Favorite Shows -->
+		<div id="hdn_tblFavorites" style="display: none;"></div>
 		<!-- #ShowInfo - custom table containing important values from search results -->
 		<div id="hdnValues" style="display: none;"></div>
 		<!-- #showEpisodes - Raw data from primewire tv show episode list -->

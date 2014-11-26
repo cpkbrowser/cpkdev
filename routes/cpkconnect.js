@@ -40,7 +40,7 @@ router.post('/', function(req, res){
 				}
 				mongoose.disconnect();
 				console.log('disconnected');
-				res.end(String(valid));
+				res.json({rslt: valid});
 			}
 		});
 				

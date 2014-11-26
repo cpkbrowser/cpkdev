@@ -97,10 +97,11 @@ function beginLogin() {
 		data: $('#frmUser').serialize(),
 		dataTpe: 'json',
 		success: function(rslt) {
-			if (rslt.substring(0, 4) == 'true') {
+			if (rslt.rslt.substring(0, 4) == 'true') {
+				document.getElementById('userInfo_ID').innerHTML = rslt.rslt.split('?&')[1];
+				document.getElementById('userInfo_username').innerHTML = rslt.rslt.split('?&')[2];
 				loadCPKBins_Standard();
-				document.getElementById('userInfo_ID').innerHTML = rslt.split('?&')[1];
-				document.getElementById('userInfo_username').innerHTML = rslt.split('?&')[2];
+				
 				document.getElementById('binCategoryContainer').style.display = 'block';
 				document.getElementById('pFailedLogin').style.display = 'none';
 				document.getElementById('srchbarContainer').click();
