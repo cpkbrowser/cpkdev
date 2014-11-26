@@ -21,7 +21,7 @@ router.post('/', function(req, res){
 					console.log('error' + String(err));
 				}
 				mongoose.disconnect();
-				res.json({result: rslt});;
+				res.json({rsltPop: rslt});;
 			});
 		
 		} else {

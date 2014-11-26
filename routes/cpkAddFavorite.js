@@ -8,6 +8,7 @@ require('date-utils');
 router.post('/', function(req, res){
 		
 	var db = mongoose.connection;
+	var testUserProfile = mongoose.model('testUserProfile');
 
 	db.on('error', console.error);
 	db.once('open', function() {
@@ -44,34 +45,41 @@ router.post('/', function(req, res){
 						res.json({exists: false, created: true, success: 'no'});
 					} else {
 						
-					}
-					
-					mongoose.disconnect();
-					res.json({exists: false, created: true, success: 'yes'});
-				});
-				
-			} else {
-				
-				var testUserProfile = mongoose.model('testUserProfile');
-				
-				/* var newUserProfile = new testUserProfile({
-					user_id: req.body.userID,
-					favorites: String(rslt._id) + ';',
-					recently_watched: String(rslt._id) + ';',
-					Theme: 'cpkStandard'
-				});
-				
-				newUserProfile.save(function(err2, rslt2) {
-					if (err2) {
-						mongoose.disconnect();
-						res.json({exists: true, created: true, success: 'no'});
-					} else {
+						testUserProfile.findOne({user_id: req.body.userID }, function(err3, rslt3) {
+							if (err3) {
+								mongoose.disconnect();
+								res.json({exists: false, created: true, success: 'error finding user profile'});
+							} else {
+								var tmpFavs = rslt3.favorites.split(';');
+								if (tmpFavs.length > 20) {
+									if (rslt3.favorites.indexOf(rslt2._id) == -1) {
+										rslt3.favorites = rslt3.favorites.slice(25);
+										console.log('sliced');
+									}
+								}
+								if (rslt3.favorites.indexOf(rslt2._id) == -1) {
+									rslt3.favorites = rslt3.favorites + rslt2._id + ';';
+									rslt3.save(function(err4, rslt4) {
+										if (err4) {
+											mongoose.disconnect();
+											res.json({exists: false, created: true, success: 'error updating user profile'});
+										} else {
+											mongoose.disconnect();
+											res.json({exists: false, created: true, success: 'yes'});
+										}
+									});
+								} else {
+									mongoose.disconnect();
+									res.json({exists: false, created: true, success: 'pre-existed'});
+								}
+								
+							}
+						});
 						
 					}
-					
-					mongoose.disconnect();
-					res.json({exists: true, created: true, success: 'yes'});
-				}); */
+				});
+				
+			} else {				
 				
 				testUserProfile.findOne({user_id: req.body.userID }, function(err2, rslt2) {
 				
@@ -79,6 +87,13 @@ router.post('/', function(req, res){
 						mongoose.disconnect();
 						res.json({exists: true, created: false, success: 'no'});
 					} else {					
+						var tmpFavs = rslt2.favorites.split(';');
+						if (tmpFavs.length > 20) {
+							if (rslt2.favorites.indexOf(rslt._id) == -1) {
+								rslt2.favorites = rslt2.favorites.slice(25);
+								console.log('sliced');
+							}
+						}
 						if (rslt2.favorites.indexOf(rslt._id) == -1) {
 							rslt2.favorites = rslt2.favorites + rslt._id + ';';						
 							rslt2.save(function(err3, rslt3) {
@@ -96,7 +111,7 @@ router.post('/', function(req, res){
 						}
 					}
 					
-				});				
+				});			
 			}
 		});		
 	});

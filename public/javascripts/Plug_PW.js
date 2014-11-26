@@ -48,10 +48,9 @@ function PWTV_processSearchResults(){
 					imgLink = shows[i].textContent;
 				}
 				//add conditional statement to allow for more plug-ins
-				if (imgLink == '/images/noposter.jpg') {
-					imgLink = '/images//placeholder.png';
+				if (imgLink != '/images/noposter.jpg') {
+					document.getElementById('srchItem_img' + itemCount).src = imgLink;
 				}
-				document.getElementById('srchItem_img' + itemCount).src = imgLink;
 				document.getElementById('srchItem_hdnImg' + itemCount).innerHTML = imgLink;
 				break;
 			case 5:

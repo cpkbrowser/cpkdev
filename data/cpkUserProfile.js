@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 module.exports = function() {	
 	var userProfile = new Schema({
 		user_id: String,
+		username: String,
 		favorites: String,
 		recently_watched: String,
 		Theme: String

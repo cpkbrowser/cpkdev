@@ -55,7 +55,7 @@ $(document).ready(function() {
 	});
 });
 
-function loadCPKBin_Popular() {
+function loadCPKBins_Standard() {
 
 	var request = $.ajax({
 		url: '/cpkLoadBins',
@@ -66,8 +66,8 @@ function loadCPKBin_Popular() {
 	});
 	
 	request.success(function(rslt) {
-		var rtrn = rslt.result.length;
-		var table = createBinTable(rslt.result, 'hdn_tblPopular');
+		var rtrn = rslt.rsltPop.length;
+		var table = createBinTable(rslt.rsltPop, 'hdn_tblPopular');
 		document.getElementById('hdn_tblPopular').appendChild(table);
 		document.getElementById('hdnPopSetLoaded').innerHTML = 'true';
 		//alert('succeeded');

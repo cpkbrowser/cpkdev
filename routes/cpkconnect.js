@@ -34,7 +34,7 @@ router.post('/', function(req, res){
 				var valid = 'false';
 				if (cpkAuth.cpkDecrypt(String(req.body.password).trim(), pass, salt)) {
 					console.log('validated');
-					valid = 'true?&' + String(rslt._id);
+					valid = 'true?&' + String(rslt._id) + '?&' + String(rslt.username);
 				} else {
 					console.log('error validating password');
 				}
@@ -43,11 +43,7 @@ router.post('/', function(req, res){
 				res.end(String(valid));
 			}
 		});
-		
-		//var hash_digest = cpkAuth.cpkEncrypt('testpass1', 'fakesalt1');				
-		
-		//res.end('done');
-		
+				
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Below is an example of how to create a user
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
