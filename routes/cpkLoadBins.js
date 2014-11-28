@@ -18,31 +18,27 @@ router.post('/', function(req, res){
 		var objFav;
 		
 		function getPopularOnCPK() {
-			if (req.body.popular == 'true') {
-				
-				testShow.find({}).sort({watch_count: -1}).limit(20).exec(function (popErr, popRslt) {
-					if (popErr) {
-						console.log('error' + String(popErr));
-						mongoose.disconnect();
-						res.json({rsltPop: 'DB Error'});
-					}
-					console.log(req.body.favorites);
-					if (req.body.favorites == 'true') {
-						objPop = popRslt;
-						getFavorites();
-					} else {
-						mongoose.disconnect();
-						res.json({rsltPop: popRslt});
-					}
-				});
 			
-			} else {
-				mongoose.disconnect();
-			}
+			testShow.find({}).sort({watch_count: -1}).limit(20).exec(function (popErr, popRslt) {
+				if (popErr) {
+					console.log('error' + String(popErr));
+					mongoose.disconnect();
+					res.json({rsltPop: 'DB Error'});
+				}
+				console.log(req.body.favorites);
+				if (req.body.favorites == 'true') {
+					objPop = popRslt;
+					getFavorites();
+				} else {
+					mongoose.disconnect();
+					res.json({rsltPop: popRslt});
+				}
+			});		
+			
 		}
 		
 		function getFavorites() {
-			console.log(req.body.userID);
+			
 			if (req.body.userID != null) {
 				testUserProfile.findOne({user_id: req.body.userID }, function (upErr, upRslt) {
 					if (upErr) {
@@ -72,7 +68,11 @@ router.post('/', function(req, res){
 			}
 		}
 		
-		getPopularOnCPK();
+		if (req.body.popular == 'true') {
+			getPopularOnCPK();
+		} else if (req.body.favorites == 'true') {
+			getFavorites();
+		}
 		
 	});
 	

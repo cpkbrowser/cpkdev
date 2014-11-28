@@ -40,6 +40,26 @@ $(document).ready(function() {
 	$("#ddlLogin").click(function(e) {
 		e.stopPropagation();
 	});
+	$("#user_remember_me").click(function() {
+		var cbx = document.getElementById('user_remember_me');
+		if (cbx.value == '0') {
+			document.getElementById('user_remember_me').value = '1';
+		} else {
+			document.getElementById('user_remember_me').value = '0';
+		}
+	});
+	
+	var usrCookie = readCookie('cpkuser');
+	var passCookie = readCookie('cpkpass');
+	if (usrCookie && passCookie) {
+		document.getElementById('hdnUserCookieExists').innerHTML = 'true';
+		document.getElementById('user_username').value = usrCookie;
+		document.getElementById('user_password').value = passCookie;
+		var x = document.getElementById('user_remember_me').value;
+		beginLogin();
+	} 	
+	//eraseCookie('cpkuser');
+	//eraseCookie('cpkpass');
 	
 	var prevent_bust = 0  
     window.onbeforeunload = function() { prevent_bust++ }  
@@ -107,6 +127,10 @@ function beginLogin() {
 				document.getElementById('srchbarContainer').click();
 				document.getElementById('landingPage').style.display = 'none';
 				document.getElementById('binCategoryContainer').style.display = 'block';
+				if (document.getElementById('user_remember_me').value == '1') {
+					createCookie('cpkuser', document.getElementById('user_username').value, 30);
+					createCookie('cpkpass', document.getElementById('user_password').value, 30);
+				}
 				$('#btnLogin').click(function() {});					
 			} else {
 				document.getElementById('pFailedLogin').style.display = 'block';
@@ -671,12 +695,31 @@ function send_cpkFavData(t) {
 		});
 		
 		request.success(function(rslt) {
-			var x = '';
-			//alert('succeeded');
+			var user_id = document.getElementById('userInfo_ID').innerHTML;
+			var request = $.ajax({
+				url: '/cpkLoadBins',
+				type: 'POST',
+				data: {popular: 'false', favorites: 'true', userID: user_id},
+				contentType: 'application/x-www-form-urlencoded',
+				dataType: 'json'		
+			});
+			
+			request.success(function(rslt2) {
+				var table2 = createBinTable(rslt2.rsltFav, 'cpk_favShows', 'favItem');
+				$('#hdn_tblFavorites').empty();
+				document.getElementById('hdn_tblFavorites').appendChild(table2);
+				document.getElementById('hdnFavSetLoaded').innerHTML = 'true';
+				document.getElementById('hdnFavSetMax').innerHTML = rslt2.rsltFav.length;
+				//alert('succeeded');
+			});
+			
+			request.fail(function(jqXHR, textStatus) {
+				alert('Error Retrieving Favorites');
+			});
 		});
 		
 		request.fail(function(jqXHR, textStatus) {
-			alert('Error Saving Show Info');
+			alert('Error Saving Favorites');
 		});
 	} else {
 		alert('Please log-in to add shows to favorites list.');
@@ -744,6 +787,31 @@ function clearSearchResults() {
 	for (var i = 0; i < 6; i++) {
 		document.getElementById('srchItem_container' + i).style.display = 'none';
 	}
+}
+
+function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
 }
 
 // // When ready...

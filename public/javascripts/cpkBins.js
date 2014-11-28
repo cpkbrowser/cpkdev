@@ -59,7 +59,8 @@ $(document).ready(function() {
 		if (document.getElementById('hdnFavSetLoaded').innerHTML != 'false') {
 			var shows = document.getElementById('hdn_tblFavorites').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 			var favSetCounter = parseInt(document.getElementById('hdnFavSetCounter').innerHTML, 10);
-			if (favSetCounter < 14) {
+			var favSetMax = parseInt(document.getElementById('hdnFavSetMax').innerHTML, 10);
+			if (favSetCounter < (favSetMax - 6)) {
 				favSetCounter++;
 				document.getElementById('hdnFavSetCounter').innerHTML = favSetCounter;
 				for (i = 0; i < 6; i++) {
@@ -120,17 +121,20 @@ function loadCPKBins_Standard() {
 	
 	request.success(function(rslt) {
 		var table1 = createBinTable(rslt.rsltPop, 'cpk_popShows', 'popItem');
+		$('#hdn_tblPopular').empty();
 		document.getElementById('hdn_tblPopular').appendChild(table1);
 		document.getElementById('hdnPopSetLoaded').innerHTML = 'true';
 		
 		var table2 = createBinTable(rslt.rsltFav, 'cpk_favShows', 'favItem');
+		$('#hdn_tblFavorites').empty();
 		document.getElementById('hdn_tblFavorites').appendChild(table2);
 		document.getElementById('hdnFavSetLoaded').innerHTML = 'true';
+		document.getElementById('hdnFavSetMax').innerHTML = rslt.rsltFav.length;
 		//alert('succeeded');
 	});
 	
 	request.fail(function(jqXHR, textStatus) {
-		alert('Error Saving Show Info');
+		alert('Error Retrieving CPK Bins');
 	});
 }
 
@@ -164,8 +168,14 @@ function createBinTable(rslt, tmpID, binID) {
 		//load first 6 elements
 		if (i < 6) {
 			changeCPKBinObjects(binID, i, rslt[i]);
+			document.getElementById(binID + '_container' + i).style.display = 'block';
 		}
 		
+	}
+	if (rslt.length < 6) {
+		for (i = rslt.length; i < 6; i++ ) {
+			document.getElementById(binID + '_container' + i).style.display = 'none';
+		}
 	}
 	table.appendChild(body);
 	table.id = tmpID;
