@@ -57,9 +57,7 @@ $(document).ready(function() {
 		document.getElementById('user_password').value = passCookie;
 		var x = document.getElementById('user_remember_me').value;
 		beginLogin();
-	} 	
-	//eraseCookie('cpkuser');
-	//eraseCookie('cpkpass');
+	}
 	
 	var prevent_bust = 0  
     window.onbeforeunload = function() { prevent_bust++ }  
@@ -128,8 +126,10 @@ function beginLogin() {
 				document.getElementById('landingPage').style.display = 'none';
 				document.getElementById('binCategoryContainer').style.display = 'block';
 				if (document.getElementById('user_remember_me').value == '1') {
-					createCookie('cpkuser', document.getElementById('user_username').value, 30);
-					createCookie('cpkpass', document.getElementById('user_password').value, 30);
+					if (readCookie('cpkuser') == null) {
+						createCookie('cpkuser', document.getElementById('user_username').value, 30);
+						createCookie('cpkpass', document.getElementById('user_password').value, 30);
+					}
 				}
 				$('#btnLogin').click(function() {});					
 			} else {
@@ -319,6 +319,7 @@ function onClick_Link(flag1, obj1) {
 		PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
 		loadCurrentValues(tmpSsn, tmpEp);
 	}
+	send_cpkRecentData(document.getElementById('mdlActive_Div').innerHTML, 'tv');
 }
 
 function loadCurrentValues(ssn, ep) {	
@@ -374,6 +375,25 @@ function prepareMovieFrame(currLink) {
 			document.getElementById('mdlInfoPane').style.display = 'block';
 			$.modal.close();
 			send_cpkShowData();
+			
+			var user_id = document.getElementById('userInfo_ID').innerHTML;
+			var request = $.ajax({
+				url: '/cpkLoadBins',
+				type: 'POST',
+				data: {popular: 'false', favorites: 'false', recent: 'true', userID: user_id},
+				contentType: 'application/x-www-form-urlencoded',
+				dataType: 'json'		
+			});
+			
+			request.success(function(rslt) {
+				var table = createBinTable(rslt.rsltRec, 'cpk_recShows', 'recItem');
+				$('#hdn_tblRecent').empty();
+				document.getElementById('hdn_tblRecent').appendChild(table);
+				document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
+				document.getElementById('hdnRecSetMax').innerHTML = rslt.rsltRec.length;
+				//alert('succeeded');
+			});
+			
 		}
 	});	
 	
@@ -404,6 +424,7 @@ function startMovie() {
 		lnk2 = lnk.innerText;
 	}	
 	prepareMovieFrame(lnk2);
+	send_cpkRecentData(document.getElementById('mdlActive_Div').innerHTML, 'movie');
 }
 
 function loadPreviousLink() {
@@ -696,15 +717,15 @@ function send_cpkFavData(t) {
 		
 		request.success(function(rslt) {
 			var user_id = document.getElementById('userInfo_ID').innerHTML;
-			var request = $.ajax({
+			var request2 = $.ajax({
 				url: '/cpkLoadBins',
 				type: 'POST',
-				data: {popular: 'false', favorites: 'true', userID: user_id},
+				data: {popular: 'false', favorites: 'true', recent: 'false', userID: user_id},
 				contentType: 'application/x-www-form-urlencoded',
 				dataType: 'json'		
 			});
 			
-			request.success(function(rslt2) {
+			request2.success(function(rslt2) {
 				var table2 = createBinTable(rslt2.rsltFav, 'cpk_favShows', 'favItem');
 				$('#hdn_tblFavorites').empty();
 				document.getElementById('hdn_tblFavorites').appendChild(table2);
@@ -713,7 +734,7 @@ function send_cpkFavData(t) {
 				//alert('succeeded');
 			});
 			
-			request.fail(function(jqXHR, textStatus) {
+			request2.fail(function(jqXHR, textStatus) {
 				alert('Error Retrieving Favorites');
 			});
 		});
@@ -721,6 +742,53 @@ function send_cpkFavData(t) {
 		request.fail(function(jqXHR, textStatus) {
 			alert('Error Saving Favorites');
 		});
+	} else {
+		alert('Please log-in to add shows to favorites list.');
+	}
+}
+
+function send_cpkRecentData(tmpID, sType) {
+	if (String(document.getElementById('userInfo_ID').innerHTML) != 'null') {
+		var prefix = String(tmpID).split('_');
+		var dataID = prefix[0] + 'Item_' + prefix[1].replace('dropdownMenu', 'btnInfo');
+		
+		var info = document.getElementById(dataID).parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
+		
+		//add conditional statement to allow for more plug-ins
+		var sHost = 'http://www.primewire.ag'
+		var sName = String(info[2].innerHTML).split(':')[0].replace(':', '');
+		if (sName == null) {
+			sName = showInfo[0].innerHTML;
+		}
+		
+		var userID = document.getElementById('userInfo_ID').innerHTML;
+		var username = document.getElementById('userInfo_username').innerHTML;
+		var postData = {
+			name: sName,
+			show_type: sType,
+			description: info[2].innerHTML,
+			tags: info[3].innerHTML,
+			year: info[4].innerHTML,
+			img_url: info[1].innerHTML,
+			host: sHost,
+			link: info[5].innerHTML,
+			seasons: '',
+			userID: userID,
+			userName: username
+		}
+		
+		var request = $.ajax({
+			url: '/cpkUpdateRecent',
+			type: 'POST',
+			data: postData,
+			contentType: 'application/x-www-form-urlencoded',
+			dataType: 'json'		
+		});
+		
+		request.success(function(rslt) {
+			var x = '';
+		});
+		
 	} else {
 		alert('Please log-in to add shows to favorites list.');
 	}

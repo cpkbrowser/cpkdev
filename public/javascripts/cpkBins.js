@@ -106,6 +106,59 @@ $(document).ready(function() {
 			}
 		}
 	});
+	
+	//CPK User - Recently Watched - Next Button
+	$('#recItem_getMore').click(function() {
+		if (document.getElementById('hdnRecSetLoaded').innerHTML != 'false') {
+			var shows = document.getElementById('hdn_tblRecent').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+			var recSetCounter = parseInt(document.getElementById('hdnRecSetCounter').innerHTML, 10);
+			var recSetMax = parseInt(document.getElementById('hdnRecSetMax').innerHTML, 10);
+			if (recSetCounter < (recSetMax - 6)) {
+				recSetCounter++;
+				document.getElementById('hdnRecSetCounter').innerHTML = recSetCounter;
+				for (i = 0; i < 6; i++) {
+					var tmpInfo = shows[i + recSetCounter].getElementsByTagName('td');
+					var info = {
+						name: tmpInfo[0].innerHTML,
+						img_url: tmpInfo[1].innerHTML,
+						description: tmpInfo[2].innerHTML,
+						tags: tmpInfo[3].innerHTML,
+						year: tmpInfo[4].innerHTML,
+						link: tmpInfo[5].innerHTML
+					}
+					changeCPKBinObjects('recItem', i, info);
+				}
+			} else {
+				
+			}
+		}
+	});
+	
+	//CPK User - Recently Watched - Previous Button
+	$('#recItem_getLess').click(function() {
+		if (document.getElementById('hdnRecSetLoaded').innerHTML != 'false') {
+			var shows = document.getElementById('hdn_tblRecent').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+			var recSetCounter = parseInt(document.getElementById('hdnRecSetCounter').innerHTML, 10);
+			if (recSetCounter > 0) {
+				recSetCounter--;
+				document.getElementById('hdnRecSetCounter').innerHTML = recSetCounter;
+				for (i = 0; i < 6; i++) {
+					var tmpInfo = shows[i + recSetCounter].getElementsByTagName('td');
+					var info = {
+						name: tmpInfo[0].innerHTML,
+						img_url: tmpInfo[1].innerHTML,
+						description: tmpInfo[2].innerHTML,
+						tags: tmpInfo[3].innerHTML,
+						year: tmpInfo[4].innerHTML,
+						link: tmpInfo[5].innerHTML
+					}
+					changeCPKBinObjects('recItem', i, info);
+				}
+			} else {
+				
+			}
+		}
+	});
 });
 
 function loadCPKBins_Standard() {
@@ -114,7 +167,7 @@ function loadCPKBins_Standard() {
 	var request = $.ajax({
 		url: '/cpkLoadBins',
 		type: 'POST',
-		data: {popular: 'true', favorites: 'true', userID: user_id},
+		data: {popular: 'true', favorites: 'true', recent: 'true', userID: user_id},
 		contentType: 'application/x-www-form-urlencoded',
 		dataType: 'json'		
 	});
@@ -130,7 +183,13 @@ function loadCPKBins_Standard() {
 		document.getElementById('hdn_tblFavorites').appendChild(table2);
 		document.getElementById('hdnFavSetLoaded').innerHTML = 'true';
 		document.getElementById('hdnFavSetMax').innerHTML = rslt.rsltFav.length;
-		//alert('succeeded');
+		
+		var table3 = createBinTable(rslt.rsltRec, 'cpk_recShows', 'recItem');
+		$('#hdn_tblRecent').empty();
+		document.getElementById('hdn_tblRecent').appendChild(table3);
+		document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
+		document.getElementById('hdnRecSetMax').innerHTML = rslt.rsltRec.length;
+		
 	});
 	
 	request.fail(function(jqXHR, textStatus) {

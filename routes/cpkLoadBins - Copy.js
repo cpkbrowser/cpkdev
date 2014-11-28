@@ -16,7 +16,6 @@ router.post('/', function(req, res){
 		var testUserProfile = mongoose.model('testUserProfile');
 		var objPop;
 		var objFav;
-		var objRec;
 		
 		function getPopularOnCPK() {
 			
@@ -57,39 +56,8 @@ router.post('/', function(req, res){
 								mongoose.disconnect();
 								res.json({rsltPop: objPop, rsltFav: 'Error Finding Show List'});
 							} else {
-								objFav = sRslt;
-								getRecentItems();
-							}
-						});
-					}
-				});
-			} else {
-				mongoose.disconnect();
-				res.json({rsltPop: objPop, rsltFav: 'user ID error'});
-			}
-		}
-		
-		function getRecentItems() {
-			
-			if (req.body.userID != null) {
-				testUserProfile.findOne({user_id: req.body.userID }, function (upErr, upRslt) {
-					if (upErr) {
-						console.log('error' + String(upErr));
-						mongoose.disconnect();
-						res.json({rsltPop: objPop, rsltFav: objFav, rsltRec: 'DB Error'});
-					} else if (upRslt == null) {
-						mongoose.disconnect();
-						res.json({rsltPop: objPop, rsltFav: objFav, rsltRec: 'Error Finding Show List'});
-					} else {
-						var list = upRslt.recently_watched.substring(0, upRslt.recently_watched.length - 1).split(';');
-						testShow.find({_id: {$in: list}}, function(sErr, sRslt) {
-							if (sErr) {
-								console.log('Error Finding Show List');
 								mongoose.disconnect();
-								res.json({rsltPop: objPop, rsltFav: objFav, objRec: 'Error Finding Show List'});
-							} else {
-								mongoose.disconnect();
-								res.json({rsltPop: objPop, rsltFav: objFav, rsltRec: sRslt});
+								res.json({rsltPop: objPop, rsltFav: sRslt});
 							}
 						});
 					}
@@ -104,8 +72,6 @@ router.post('/', function(req, res){
 			getPopularOnCPK();
 		} else if (req.body.favorites == 'true') {
 			getFavorites();
-		} else if (req.body.recent == 'true') {
-			getRecentItems();
 		}
 		
 	});

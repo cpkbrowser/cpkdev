@@ -1085,9 +1085,15 @@
 							</div>							
 						</div>
 					</div><!--end of row-->
-					<div class="more-arrow">
-						<a href="#">^</a>
+					<div id="recItem_getMore" style="cursor: pointer;" class="more-arrow">
+						<p><i class="fa fa-chevron-circle-left"></i></p>
 					</div>
+					<div id="recItem_getLess" style="cursor: pointer;" class="more-arrow">
+						<p><i class="fa fa-chevron-circle-right"></i></p>
+					</div>
+					<p id="hdnRecSetCounter" style="display: none;">0</p>
+					<p id="hdnRecSetLoaded" style="display: none;">false</p>
+					<p id="hdnRecSetMax" style="display: none;">0</p>
 				</div>				
 			</div>
 		</div><!--endofvidgrid-->
@@ -1200,6 +1206,8 @@
 		<div id="hdn_tblPopular" style="display: none;"></div>
 		<!-- #cpk_favShows - User Profile List of Favorite Shows -->
 		<div id="hdn_tblFavorites" style="display: none;"></div>
+		<!-- #cpk_recShows - User Profile List of Recently Watched Shows -->
+		<div id="hdn_tblRecent" style="display: none;"></div>
 		<!-- #ShowInfo - custom table containing important values from search results -->
 		<div id="hdnValues" style="display: none;"></div>
 		<!-- #showEpisodes - Raw data from primewire tv show episode list -->
