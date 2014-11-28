@@ -224,7 +224,7 @@ function open_mdlInfo(t) {
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
 			$.modal.close();
-			send_cpkShowData();
+			send_cpkShowData('false');
 		}
 	});	
 	document.getElementById('simplemodal-container').style.width = '100%';
@@ -374,26 +374,7 @@ function prepareMovieFrame(currLink) {
 			frame.parentNode.style.display = 'none';
 			document.getElementById('mdlInfoPane').style.display = 'block';
 			$.modal.close();
-			send_cpkShowData();
-			
-			var user_id = document.getElementById('userInfo_ID').innerHTML;
-			var request = $.ajax({
-				url: '/cpkLoadBins',
-				type: 'POST',
-				data: {popular: 'false', favorites: 'false', recent: 'true', userID: user_id},
-				contentType: 'application/x-www-form-urlencoded',
-				dataType: 'json'		
-			});
-			
-			request.success(function(rslt) {
-				var table = createBinTable(rslt.rsltRec, 'cpk_recShows', 'recItem');
-				$('#hdn_tblRecent').empty();
-				document.getElementById('hdn_tblRecent').appendChild(table);
-				document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
-				document.getElementById('hdnRecSetMax').innerHTML = rslt.rsltRec.length;
-				//alert('succeeded');
-			});
-			
+			send_cpkShowData('true');
 		}
 	});	
 	
@@ -586,7 +567,7 @@ $.fn.textWidth = function(text, font) {
     return $.fn.textWidth.fakeEl.width();
 };
 
-function send_cpkShowData() {
+function send_cpkShowData(watched) {
 	var activeDiv = document.getElementById('mdlActive_Div').innerHTML;
 	var showInfo = document.getElementById(activeDiv).getElementsByTagName('div')[1].getElementsByTagName('p');
 	
@@ -633,9 +614,27 @@ function send_cpkShowData() {
 		dataType: 'json'		
 	});
 	
-	request.success(function(rslt) {
-		//alert('succeeded');
-	});
+	if (watched == 'true') {
+		request.success(function(rslt) {
+			var user_id = document.getElementById('userInfo_ID').innerHTML;
+			var request2 = $.ajax({
+				url: '/cpkLoadBins',
+				type: 'POST',
+				data: {popular: 'false', favorites: 'false', recent: 'true', userID: user_id},
+				contentType: 'application/x-www-form-urlencoded',
+				dataType: 'json'		
+			});
+			
+			request2.success(function(rslt) {
+				var table = createBinTable(rslt.rsltRec, 'cpk_recShows', 'recItem');
+				$('#hdn_tblRecent').empty();
+				document.getElementById('hdn_tblRecent').appendChild(table);
+				document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
+				document.getElementById('hdnRecSetMax').innerHTML = rslt.rsltRec.length;
+				//alert('succeeded');
+			});
+		});
+	}
 	
 	request.fail(function(jqXHR, textStatus) {
 		alert('Error Saving Show Info');
