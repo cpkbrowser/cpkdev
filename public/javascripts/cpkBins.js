@@ -209,6 +209,8 @@ function createBinTable(rslt, tmpID, binID) {
 		row.appendChild(name);
 		var img = document.createElement('td');
 		img.innerHTML = rslt[i].img_url;
+		//pre-render the image
+		(new Image()).src = rslt[i].img_url;
 		row.appendChild(img);
 		var desc = document.createElement('td');
 		desc.innerHTML = rslt[i].description;
