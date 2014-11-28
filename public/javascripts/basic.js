@@ -319,7 +319,9 @@ function onClick_Link(flag1, obj1) {
 		PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
 		loadCurrentValues(tmpSsn, tmpEp);
 	}
-	send_cpkRecentData(document.getElementById('mdlActive_Div').innerHTML, 'tv');
+	if (String(document.getElementById('userInfo_ID').innerHTML) != 'null') {
+		send_cpkRecentData(document.getElementById('mdlActive_Div').innerHTML, 'tv');
+	}
 }
 
 function loadCurrentValues(ssn, ep) {	
@@ -405,7 +407,10 @@ function startMovie() {
 		lnk2 = lnk.innerText;
 	}	
 	prepareMovieFrame(lnk2);
-	send_cpkRecentData(document.getElementById('mdlActive_Div').innerHTML, 'movie');
+	
+	if (String(document.getElementById('userInfo_ID').innerHTML) != 'null') {
+		send_cpkRecentData(document.getElementById('mdlActive_Div').innerHTML, 'movie');
+	}
 }
 
 function loadPreviousLink() {
@@ -789,7 +794,7 @@ function send_cpkRecentData(tmpID, sType) {
 		});
 		
 	} else {
-		alert('Please log-in to add shows to favorites list.');
+		alert('Please log-in to add shows to recently watched list.');
 	}
 }
 
