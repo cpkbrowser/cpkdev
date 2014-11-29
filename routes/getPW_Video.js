@@ -43,7 +43,7 @@ router.get('/', function(req, res){
   }
   str = str.replace('?srch=', '');
   //res.end(str);
-  var x = "http://www.primewire.ag" + str;
+  var x = str;//"http://www.primewire.ag" + str;
   
   download(x, function(data) {
     if (data) {
