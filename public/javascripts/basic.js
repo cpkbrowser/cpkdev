@@ -350,7 +350,8 @@ function prepareMovieFrame(currLink) {
 	var frame = document.getElementById('mdlVideoFrame');
 	//add conditional statement to allow for more plug-ins
 	//if (plugin_type == 'PW')
-	frame.src = getVideo(currLink);
+	//frame.src = getVideo(currLink);
+	frame.src = currLink;
 	frame.height = ($(window).height()) - 175
 	frame.parentNode.style.display = 'block';
 	
@@ -444,9 +445,11 @@ function loadPreviousLink() {
 	});
 	
 	if (nextLink.innerText == undefined) {
-		frame.src = getVideo(nextLink.lastChild.nodeValue);
+		//frame.src = getVideo(nextLink.lastChild.nodeValue);
+		frame.src = nextLink.lastChild.nodeValue;
 	} else {
-		frame.src = getVideo(nextLink.innerText);
+		//frame.src = getVideo(nextLink.innerText);
+		frame.src = nextLink.innerText;
 	}
 	
 	var modType = document.getElementById('hdnModalType').innerHTML;
@@ -488,9 +491,11 @@ function loadNextLink() {
 	});
 	
 	if (nextLink.innerText == undefined) {
-		frame.src = getVideo(nextLink.lastChild.nodeValue);
+		//frame.src = getVideo(nextLink.lastChild.nodeValue);
+		frame.src = nextLink.lastChild.nodeValue;
 	} else {
-		frame.src = getVideo(nextLink.innerText);
+		//frame.src = getVideo(nextLink.innerText);
+		frame.src = nextLink.innerText;
 	}
 	
 	var modType = document.getElementById('hdnModalType').innerHTML;
