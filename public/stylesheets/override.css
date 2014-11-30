@@ -765,6 +765,7 @@ a.tut-vid-4app {
 	padding:10px;
 	display: block;
 	margin:0 auto;
+	text-align:center;
 }
 @media (max-width: 320px) {
 	.welcome {
