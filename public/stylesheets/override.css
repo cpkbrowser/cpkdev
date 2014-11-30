@@ -760,6 +760,8 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 }
 .tut-video-4app {
 	display:none;
+	height:45px;
+	width:100%;
 }
 @media (max-width: 320px) {
 	.welcome {
