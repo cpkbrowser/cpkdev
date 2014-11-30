@@ -473,6 +473,11 @@ span.nav-link-design {
 		margin-top: 84px !important;
 	}
 }
+@media (max-width:530px) {
+	.nav {
+		margin-top: 15px !important;
+	}
+}
 @media (max-width:480px) {
 	.nav {
 		margin-top: 84px !important;
