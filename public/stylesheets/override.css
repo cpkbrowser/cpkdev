@@ -473,11 +473,6 @@ span.nav-link-design {
 		margin-top: 84px !important;
 	}
 }
-@media (max-width:530px) {
-	.nav {
-		margin-top: 15px !important;
-	}
-}
 @media (max-width:480px) {
 	.nav {
 		margin-top: 84px !important;
@@ -488,9 +483,14 @@ span.nav-link-design {
 		margin-top: 15px !important;
 	}
 }
-@media (max-width:365px) {
+@media (max-width:430px) {
 	.nav {
-		margin-top: 2px !important;
+		margin-top: 84px !important;
+	}
+}
+@media (max-width:400px) {
+	.nav {
+		margin-top: 15px !important;
 	}
 }
 
@@ -778,7 +778,6 @@ a.tut-vid-4app {
 	height:45px;
 	width:100%;
 	padding:10px;
-	display: block;
 	margin:0 auto;
 	text-align:center;
 }
@@ -797,7 +796,7 @@ a.tut-vid-4app {
 	.landing-video {
 		display:none;
 	}
-	.tut-video-4app {
+	a.tut-vid-4app {
 		display:block;
 	}
 }
