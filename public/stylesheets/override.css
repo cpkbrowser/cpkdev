@@ -757,6 +757,8 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 	#container input, #container select {
 		width:100%;
 	}
+}
+@media (max-width:430px) {
 	.logo {
 		margin-right: 0;
 	}
