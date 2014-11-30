@@ -751,12 +751,12 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 	#container table {
 		margin:0;
 	}
-}
-@media (max-width: 320px) {
 	#progress_bar,
 	#progress_text {
 		width: 270px;
 	}
+}
+@media (max-width: 320px) {
 	.welcome {
 		font-size:24px;
 		font-size:2.4rem;
