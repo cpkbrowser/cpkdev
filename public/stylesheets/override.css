@@ -775,6 +775,9 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 	.logo {
 		margin-right: 0;
 	}
+	.makers {
+		padding-top:5px;
+	}
 }
 
 
