@@ -488,6 +488,11 @@ span.nav-link-design {
 		margin-top: 15px !important;
 	}
 }
+@media (max-width:365px) {
+	.nav {
+		margin-top: 2px !important;
+	}
+}
 
 .link-placement {
 	padding-left: 30px;
