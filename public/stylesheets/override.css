@@ -758,7 +758,7 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 		width:100%;
 	}
 }
-.tut-video-4app {
+a.tut-vid-4app {
 	display:none;
 	height:45px;
 	width:200px;
