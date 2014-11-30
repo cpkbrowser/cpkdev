@@ -488,7 +488,7 @@ span.nav-link-design {
 		margin-top: 15px !important;
 	}
 }
-@media (max-width:408px) {
+@media (max-width:425px) {
 	.nav {
 		margin-top: 2px !important;
 	}
