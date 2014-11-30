@@ -772,3 +772,13 @@ input#phone-number[placeholder] {
 	  font-weight: bold;
 	  font-size: 15px;
     }
+@media (max-width:480px) {
+	.open .btn-default.dropdown-toggle {
+		color: red !important;
+		background-color: white !important;
+		border-color: white !important;
+	}
+	.input-group-btn>.btn {
+		color:black !important;
+	}
+}
