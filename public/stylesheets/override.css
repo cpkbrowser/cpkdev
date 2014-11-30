@@ -758,6 +758,9 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 		width:100%;
 	}
 }
+.tut-video-4app {
+	display:none;
+}
 @media (max-width: 320px) {
 	.welcome {
 		font-size:24px;
@@ -777,6 +780,13 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 	}
 	.makers {
 		padding-top:5px;
+	}
+	.landing-video {
+		display:none;
+	}
+	.tut-video-4app {
+		display:block;
+		width: 100%;
 	}
 }
 
