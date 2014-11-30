@@ -757,6 +757,19 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 	#container input, #container select {
 		width:100%;
 	}
+	.logo {
+		margin-right: 0;
+	}
+	.submit-button {
+		width:30px;
+		padding: 0 !important;
+	}
+	input.search {
+		max-width: 167px !important;
+	}
+	.input-group-btn > .btn {
+		width:18px;
+	}
 }
 a.tut-vid-4app {
 	display:none;
@@ -772,17 +785,9 @@ a.tut-vid-4app {
 		font-size:24px;
 		font-size:2.4rem;
 	}
-	.submit-button {
-		width:30px;
-		padding: 0 !important;
-	}
 	input.search {
-		max-width: 167px !important;
 		font-size: 31px;
 		font-size: 3.1rem;
-	}
-	.logo {
-		margin-right: 0;
 	}
 	.makers {
 		padding-top:5px;
