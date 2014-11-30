@@ -741,6 +741,7 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 		display: block;
 		margin: 0 auto;
 		float: none;
+		width: 100%;
 	}
 }
 @media (max-width:480px) {
@@ -751,6 +752,13 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 		margin:0;
 	}
 }
+@media (max-width: 320px) {
+	#progress_bar,
+	#progress_text {
+		width: 270px;
+	}	
+}
+
 
 input#phone-number[placeholder] {
       color: #888 !important;
