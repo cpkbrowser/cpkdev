@@ -761,7 +761,10 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 .tut-video-4app {
 	display:none;
 	height:45px;
-	width:100%;
+	width:200px;
+	padding:10px;
+	display: block;
+	margin:0 auto;
 }
 @media (max-width: 320px) {
 	.welcome {
@@ -788,7 +791,6 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 	}
 	.tut-video-4app {
 		display:block;
-		width: 100%;
 	}
 }
 
