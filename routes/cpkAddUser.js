@@ -17,8 +17,9 @@ router.post('/', function(req, res){
 		
 		var db = mongoose.connection;		
 		var testUser = mongoose.model('testUser');	
+		var testUserProfile = mongoose.model('testUserProfile');
 		
-		var salt = crypto.randomBytes(64).toString('hex');
+		var salt = crypto.randomBytes(64).toString('hex').substring(0, 15);
 		var pass = cpkAuth.cpkEncrypt(String(req.body.password).trim(), salt); 		
 		var act_type = 'beta';
 		
@@ -42,19 +43,30 @@ router.post('/', function(req, res){
 			exp_date: expTime
 		}); 
 		
-		//console.dir(new_user);
-		//mongoose.disconnect();
-		//res.end();
+		/* console.dir(new_user);
+		mongoose.disconnect();
+		res.json({success: 'true'}); */
 		
 		new_user.save(function(err, rslt) {
 			if (err) {
-				//res.json({success: 'false', error: err});
 				mongoose.disconnect();
-				res.end();
+				res.json({usr_success: 'false', error: err});
 			}
-			//res.json({success: 'true', id: rslt._id, userName: rslt.username});
-			mongoose.disconnect();
-			res.end();
+			var new_UserProfile = new testUserProfile({
+				user_id: rslt._id,
+				username: rslt.username,
+				favorites: "",
+				recently_watched: "",
+				Theme: "cpkStandard"
+			});
+			new_UserProfile.save(function(err2, rslt2) {
+				if (err2) {
+					mongoose.disconnect();
+					res.json({usr_success: 'true', up_success: 'false', error: err});
+				}
+				mongoose.disconnect();
+				res.json({usr_success: 'true', up_success: 'true', id: rslt._id, userName: rslt.username});	
+			});					
 		}); 
 		
 	});

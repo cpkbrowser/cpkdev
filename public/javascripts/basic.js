@@ -1,7 +1,8 @@
-//var static_url = 'http://localhost:3000/';
-//var redir1 = 'http://localhost:3000/getBlank';
-var static_url = 'http://cpktestapp2.herokuapp.com/';
-var redir1 = 'http://cpktestapp2.herokuapp.com/getBlank';
+/**
+ * 
+ */
+var static_url = window.location;
+var redir1 = static_url + 'getBlank';
 
 $(document).ready(function() {
 	
@@ -17,12 +18,12 @@ $(document).ready(function() {
 	});
 	
 	$("#btnSignUp").click(function() {
-		document.getElementById('signup-container').style.display = 'block';
-		$("#signup-container").modal({
-			onClose: function() {
-				document.getElementById('signup-container').style.display = 'none';
-			}
-		});
+		document.getElementById('landingPage').style.display = 'none';
+		document.getElementById('signup-container').style.display = 'block';	
+	});
+	
+	$("#submit_fourth").click(function() {
+		createUser();
 	});
 
 	$('.season-select').click(function(e) {
@@ -84,27 +85,7 @@ $(document).ready(function() {
 		} else if (e.which === 13) {
 			$.modal.close()
 		} else if (e.which === 118) {
-			/* var postData = {
-				firstname: 'Kyle',
-				lastname: 'Brown',
-				username: 'admin2',
-				password: 'testpass1',
-				account_type: 'admin',
-				email: 'mma_legend03@live.com',
-				phone: '555-555-5555',
-				bday: '11/02/1989',
-				zip: '67877',
-				age: '18-25',
-				gender: 'male',
-			};
 			
-			var request = $.ajax({
-				url: '/cpkAddUser',
-				type: 'POST',
-				data: postData,
-				contentType: 'application/x-www-form-urlencoded',
-				dataType: 'json'		
-			}); */
 		}
 	});
 	
@@ -166,6 +147,44 @@ function beginLogin() {
 			}
 		}
 	});	
+}
+
+function createUser() {
+	var postData = {
+		firstname: document.getElementById('firstname').value,
+		lastname: document.getElementById('lastname').value,
+		username: document.getElementById('username').value,
+		password: document.getElementById('password').value,
+		email: document.getElementById('email').value,
+		phone: document.getElementById('phone').value,
+		bday: document.getElementById('bday').value,
+		zip: document.getElementById('zip').value,
+		age: document.getElementById('age').value,
+		gender: document.getElementById('gender').value
+	};
+	
+	var request = $.ajax({
+		url: '/cpkAddUser',
+		type: 'POST',
+		data: postData,
+		contentType: 'application/x-www-form-urlencoded',
+		dataType: 'json'		
+	});
+	
+	request.success(function(rslt) {
+		if (rslt.usr_success == 'true') {
+			if (rslt.up_success == 'true') {
+				document.getElementById('signup-container').style.display = 'none';
+				document.getElementById('user_username').value = rslt.userName;
+				document.getElementById('user_password').value = document.getElementById('password').value;
+				beginLogin();
+			} else {
+				alert('User was successfuly created, however the corresponding User Profile failed upon creation. Please contact support.')
+			}
+		} else {
+			alert('Error Creating User. Please contact support');
+		}
+	});
 }
 
 function onEnter_Search(e) {

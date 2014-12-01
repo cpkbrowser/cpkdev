@@ -1165,7 +1165,7 @@
 
 		<!-- Sign Up -->
 		<div id="signup-container" style="display: none;">
-			<form action="#" method="post">
+			<form id="frmUserSignup" action="#" method="post">
 		
 				<!-- #first_step -->
 				<div id="first_step">
@@ -1234,7 +1234,7 @@
 						<div class="row">
 							<div class="col-sm-7">
 								<form action="#">
-									<input type="date" name="bday">
+									<input type="date" id="bday" name="bday">
 								</form>
 							</div>
 							<div class="col-sm-5">
@@ -1244,7 +1244,7 @@
 						<div class="row">
 							<div class="col-sm-7">
 								<form>
-									<input type="tel" name="phone-number" id="phone-number" max-length="10" placeholder="phone number" />
+									<input type="tel" name="phone" id="phone" max-length="10" placeholder="phone number" />
 								</form>
 							</div>
 							<div class="col-sm-5">
@@ -1289,7 +1289,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-7">
-								<input TYPE="text" NAME="zip" SIZE="5" MAXLENGTH="5">
+								<input TYPE="text" id="zip" NAME="zip" SIZE="5" MAXLENGTH="5">
 							</div>
 							<div class="col-sm-5">
 								<label for="country">Your Zip. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
