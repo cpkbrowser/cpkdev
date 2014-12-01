@@ -139,7 +139,7 @@
               </button> -->
                       <!-- The drop down menu -->
                 <ul class="nav pull-right login-buttons">
-                  <li><a class="btn-primary sign-cred-btn" href="#container">Sign Up</a></li>
+                  <li><a id="btnSignUp" style="cursor: pointer;" class="btn-primary sign-cred-btn">Sign Up</a></li>
                   <li class="divider-vertical"></li>
                   <li class="drop down">
                     <a class="dropdown-toggle btn-primary sign-cred-btn" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
@@ -1160,179 +1160,179 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 
-				<!-- Sign Up -->
-	<div id="container">
-        <form action="#" method="post">
+		<!-- Sign Up -->
+		<div id="signup-container" style="display: none;">
+			<form action="#" method="post">
+		
+				<!-- #first_step -->
+				<div id="first_step">
+					<h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
 	
-            <!-- #first_step -->
-            <div id="first_step">
-                <h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
-
-                <div class="form">
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <input type="text" name="username" id="username" value="username" />
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="username">At least 4 characters. Uppercase letters, lowercase letters and numbers only.</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <input type="password" name="password" id="password" value="password" />
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="password">At least 4 characters. Use a mix of upper and lowercase for a strong password.</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <input type="password" name="cpassword" id="cpassword" value="password" />
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="cpassword">If your passwords aren’t equal, you won’t be able to continue with signup.</label>
-                        </div>
-                    </div>
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit" type="submit" name="submit_first" id="submit_first" value="" />
-            </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-
-
-            <!-- #second_step -->
-            <div id="second_step">
-                <h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
-
-                <div class="form">
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <input type="text" name="firstname" id="firstname" value="first name" />
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="firstname">Your First Name. </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <input type="text" name="lastname" id="lastname" value="last name" />
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="lastname">Your Last Name. </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <input type="text" name="email" id="email" value="email address" />
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="email">Your email address. We send important administration notices to this address. </label>  
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <form action="#">
-                                <input type="date" name="bday">
-                            </form>
-                        </div>
-                        <div class="col-sm-5">
-                            <label>Your birthdate is varified for access to mature content.</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <form>
-                                <input type="tel" name="phone-number" id="phone-number" max-length="10" placeholder="phone number" />
-                            </form>
-                        </div>
-                        <div class="col-sm-5">
-                            <label>Your phone number is used for activation and to connect your computer to your phone. We promise we won't use it for any other reason.</label>
-                        </div>
-                    </div>
-                                      
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit" type="submit" name="submit_second" id="submit_second" value="" />
-            </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-
-
-            <!-- #third_step -->
-            <div id="third_step">
-                <h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
-
-                <div class="form">
-
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <select id="age" name="age">
-                                <option> 0 - 17</option>
-                                <option>18 - 25</option>
-                                <option>26 - 40</option>
-                                <option>40+</option>
-                             </select>
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="age">Your age range. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <select id="gender" name="gender">
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-5">
-                            <label for="gender">Your Gender. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-							<input TYPE="text" NAME="zip" SIZE="5" MAXLENGTH="5">
-                        </div>
-                        <div class="col-sm-5">
-                             <label for="country">Your Zip. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                        </div>
-                    </div>
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit" type="submit" name="submit_third" id="submit_third" value="" />
-                
-            </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-            
-            
-            <!-- #fourth_step -->
-            <div id="fourth_step">
-                <h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
-
-                <div class="form">
-                    <h2>Summary</h2>
-                    
-                    <table>
-                        <tr><td>Username</td><td></td></tr>
-                        <tr><td>Password</td><td></td></tr>
-                        <tr><td>Email</td><td></td></tr>
-                        <tr><td>Name</td><td></td></tr>
-                        <tr><td>Age</td><td></td></tr>
-                        <tr><td>Gender</td><td></td></tr>
-                        <tr><td>Zip</td><td></td></tr>
-                    </table>
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <p style="padding-right:25px; text-align:right;">
-                By signing up you agree to the TOS and have read our <a style="color:red;" href="#">Disclamer</a></p>
-                <input class="send submit" type="submit" name="submit_fourth" id="submit_fourth" value="" />
-
-            </div>
-            
-        </form>
-	</div>
-	<div id="progress_bar">
-        <div id="progress"></div>
-        <div id="progress_text">0% Complete</div>
-	</div>
-	</div>
-</div>
-	<div class="spacing">
-	</div>	
+					<div class="form">
+						<div class="row">
+							<div class="col-sm-7">
+								<input type="text" name="username" id="username" value="username" />
+							</div>
+							<div class="col-sm-5">
+								<label for="username">At least 4 characters. Uppercase letters, lowercase letters and numbers only.</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<input type="password" name="password" id="password" value="password" />
+							</div>
+							<div class="col-sm-5">
+								<label for="password">At least 4 characters. Use a mix of upper and lowercase for a strong password.</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<input type="password" name="cpassword" id="cpassword" value="password" />
+							</div>
+							<div class="col-sm-5">
+								<label for="cpassword">If your passwords aren’t equal, you won’t be able to continue with signup.</label>
+							</div>
+						</div>
+						
+					</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+					<input class="submit" type="submit" name="submit_first" id="submit_first" value="" />
+				</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+	
+	
+				<!-- #second_step -->
+				<div id="second_step">
+					<h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
+	
+					<div class="form">
+						<div class="row">
+							<div class="col-sm-7">
+								<input type="text" name="firstname" id="firstname" value="first name" />
+							</div>
+							<div class="col-sm-5">
+								<label for="firstname">Your First Name. </label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<input type="text" name="lastname" id="lastname" value="last name" />
+							</div>
+							<div class="col-sm-5">
+								<label for="lastname">Your Last Name. </label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<input type="text" name="email" id="email" value="email address" />
+							</div>
+							<div class="col-sm-5">
+								<label for="email">Your email address. We send important administration notices to this address. </label>  
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<form action="#">
+									<input type="date" name="bday">
+								</form>
+							</div>
+							<div class="col-sm-5">
+								<label>Your birthdate is varified for access to mature content.</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<form>
+									<input type="tel" name="phone-number" id="phone-number" max-length="10" placeholder="phone number" />
+								</form>
+							</div>
+							<div class="col-sm-5">
+								<label>Your phone number is used for activation and to connect your computer to your phone. We promise we won't use it for any other reason.</label>
+							</div>
+						</div>
+										
+					</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+					<input class="submit" type="submit" name="submit_second" id="submit_second" value="" />
+				</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+	
+	
+				<!-- #third_step -->
+				<div id="third_step">
+					<h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
+	
+					<div class="form">
+	
+						<div class="row">
+							<div class="col-sm-7">
+								<select id="age" name="age">
+									<option> 0 - 17</option>
+									<option>18 - 25</option>
+									<option>26 - 40</option>
+									<option>40+</option>
+								</select>
+							</div>
+							<div class="col-sm-5">
+								<label for="age">Your age range. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<select id="gender" name="gender">
+									<option>Male</option>
+									<option>Female</option>
+								</select>
+							</div>
+							<div class="col-sm-5">
+								<label for="gender">Your Gender. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<input TYPE="text" NAME="zip" SIZE="5" MAXLENGTH="5">
+							</div>
+							<div class="col-sm-5">
+								<label for="country">Your Zip. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+							</div>
+						</div>
+						
+					</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+					<input class="submit" type="submit" name="submit_third" id="submit_third" value="" />
+					
+				</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+				
+				
+				<!-- #fourth_step -->
+				<div id="fourth_step">
+					<h1>SIGN UP FOR A FREE <span>CPK</span> ACCOUNT</h1>
+	
+					<div class="form">
+						<h2>Summary</h2>
+						
+						<table>
+							<tr><td>Username</td><td></td></tr>
+							<tr><td>Password</td><td></td></tr>
+							<tr><td>Email</td><td></td></tr>
+							<tr><td>Name</td><td></td></tr>
+							<tr><td>Age</td><td></td></tr>
+							<tr><td>Gender</td><td></td></tr>
+							<tr><td>Zip</td><td></td></tr>
+						</table>
+					</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+					<p style="padding-right:25px; text-align:right;">
+					By signing up you agree to the TOS and have read our <a style="color:red;" href="#">Disclamer</a></p>
+					<input class="send submit" type="submit" name="submit_fourth" id="submit_fourth" value="" />
+	
+				</div>
+				
+			</form>
+			<div id="progress_bar">
+				<div id="progress"></div>
+				<div id="progress_text">0% Complete</div>
+			</div>
+		</div>
+		<div class="spacing">
+		</div>	
 		<div class="container-fluid footer">
 			<div class="bottom-section">
 				<div class="row row-reset">

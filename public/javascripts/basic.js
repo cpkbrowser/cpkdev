@@ -15,6 +15,15 @@ $(document).ready(function() {
 	$("#navCntrlContainer").click(function() {
 		mdlNavInfo_Click();
 	});
+	
+	$("#btnSignUp").click(function() {
+		document.getElementById('signup-container').style.display = 'block';
+		$("#signup-container").modal({
+			onClose: function() {
+				document.getElementById('signup-container').style.display = 'none';
+			}
+		});
+	});
 
 	$('.season-select').click(function(e) {
 		e.stopPropagation();
@@ -72,10 +81,30 @@ $(document).ready(function() {
 	$(document).bind('keyup', function(e) {
 		if(e.which === 116) {
 			window.onbeforeunload = function() {};
-		} else if (e.which ===13) {
+		} else if (e.which === 13) {
 			$.modal.close()
 		} else if (e.which === 118) {
-			//loadCPKBin_Popular();
+			/* var postData = {
+				firstname: 'Kyle',
+				lastname: 'Brown',
+				username: 'admin2',
+				password: 'testpass1',
+				account_type: 'admin',
+				email: 'mma_legend03@live.com',
+				phone: '555-555-5555',
+				bday: '11/02/1989',
+				zip: '67877',
+				age: '18-25',
+				gender: 'male',
+			};
+			
+			var request = $.ajax({
+				url: '/cpkAddUser',
+				type: 'POST',
+				data: postData,
+				contentType: 'application/x-www-form-urlencoded',
+				dataType: 'json'		
+			}); */
 		}
 	});
 	

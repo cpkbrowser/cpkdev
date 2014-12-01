@@ -52,13 +52,18 @@ router.post('/', function(req, res){
 		
 		//PlainText pwd is testpass1
 		var test = new testUser({
-			name: 'Kyle Brown',			
+			first_name: 'Kyle',
+			last_name: 'Brown',
 			username: 'admin',
 			pwd: hash_digest,
 			slt: 'fakesalt1',
 			account_type: 'admin',
 			email: 'mma_legend03@live.com',
 			phone: '555-555-5555',
+			birthday: '11/02/1989',
+			zip_code: '67877',
+			age_range: '18-25',
+			gender: 'male',
 			active_date: Date.today(),
 			exp_date: expTime
 		}); 
@@ -71,23 +76,6 @@ router.post('/', function(req, res){
 			res.end('Save Successful');
 			mongoose.disconnect();
 		});  */
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		//Below code shows how to use $in operator (this will be useful in loading Popular on CPK, other query data that is one to many)
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		/* var array1 = [];
-		array1[0] = 'test';
-		array1[1] = 'admin';
-		var test = testUser.findOne({ 'username': { $in: array1 }}, function(err, rslt) {
-			if (err) {
-				res.end('Failed Query');				
-			} else if (rslt == null) {
-				res.end('null');
-			} else {
-				console.dir(rslt);
-				res.end(String(rslt.name));
-			}
-		}); */
 		
 	});
 	
