@@ -172,7 +172,13 @@ function createUser() {
 	});
 	
 	request.success(function(rslt) {
-		if (rslt.usr_success == 'true') {
+		if (rslt.usr_exists != 'false') {
+			if (rslt.usr_exists == 'true') {
+				alert('Username Already Exists');
+			} else if (rslt.usr_exists == 'error') {
+				alert('Error Creating User. Please try again later or contact support');
+			}		
+		} else if (rslt.usr_success == 'true') {
 			if (rslt.up_success == 'true') {
 				document.getElementById('signup-container').style.display = 'none';
 				document.getElementById('user_username').value = rslt.userName;
@@ -182,7 +188,7 @@ function createUser() {
 				alert('User was successfuly created, however the corresponding User Profile failed upon creation. Please contact support.')
 			}
 		} else {
-			alert('Error Creating User. Please contact support');
+			alert('Error Creating User. Please try again later or contact support');
 		}
 	});
 }

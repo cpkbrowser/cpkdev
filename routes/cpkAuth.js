@@ -18,6 +18,7 @@ module.exports.cpkDecrypt = function(pass, dbpass, salt) {
 	
 	var decryptPass = decipher.update(dbpass, 'base64', 'utf8');
 	decryptPass += decipher.final('utf8');
+	console.log(decryptPass);
 	
 	//return decryptPass;
 	if (pass == decryptPass) {
