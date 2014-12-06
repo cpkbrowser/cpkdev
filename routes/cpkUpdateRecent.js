@@ -10,7 +10,7 @@ router.post('/', function(req, res){
 	var db = mongoose.connection;
 	var testUserProfile = mongoose.model('testUserProfile');
 
-	db.on('error', console.error);
+	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function() {
 				
 		var db = mongoose.connection;		
@@ -22,10 +22,9 @@ router.post('/', function(req, res){
 		testShow.findOne({'name': String(sName).trim(), 'show_type': String(sType)}, function(err, rslt) {
 			if (err) {
 				mongoose.disconnect();
-				console.log('err');
-				res.end('Failed Query');
+				res.json({exists: 'Failed Query'});
 			} else if (rslt == null) {
-				console.log('null');
+				
 				var newShow = new testShow({
 					name: req.body.name,
 					show_type: req.body.show_type,
@@ -54,7 +53,6 @@ router.post('/', function(req, res){
 								if (tmpFavs.length > 20) {
 									if (rslt3.recently_watched.indexOf(rslt2._id) == -1) {
 										rslt3.recently_watched = rslt3.recently_watched.slice(25);
-										console.log('sliced');
 									}
 								}
 								if (rslt3.recently_watched.indexOf(rslt2._id) == -1) {
@@ -91,7 +89,6 @@ router.post('/', function(req, res){
 						if (tmpFavs.length > 20) {
 							if (rslt2.recently_watched.indexOf(rslt._id) == -1) {
 								rslt2.recently_watched = rslt2.recently_watched.slice(25);
-								console.log('sliced');
 							}
 						}
 						if (rslt2.recently_watched.indexOf(rslt._id) == -1) {

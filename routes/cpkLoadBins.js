@@ -9,7 +9,7 @@ router.post('/', function(req, res){
 		
 	var db = mongoose.connection;
 
-	db.on('error', console.error);
+	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function() {
 		
 		var testShow = mongoose.model('testShow');
@@ -22,17 +22,16 @@ router.post('/', function(req, res){
 			
 			testShow.find({}).sort({watch_count: -1}).limit(20).exec(function (popErr, popRslt) {
 				if (popErr) {
-					console.log('error' + String(popErr));
 					mongoose.disconnect();
 					res.json({rsltPop: 'DB Error'});
-				}
-				console.log(req.body.favorites);
-				if (req.body.favorites == 'true') {
-					objPop = popRslt;
-					getFavorites();
 				} else {
-					mongoose.disconnect();
-					res.json({rsltPop: popRslt});
+					if (req.body.favorites == 'true') {
+						objPop = popRslt;
+						getFavorites();
+					} else {
+						mongoose.disconnect();
+						res.json({rsltPop: popRslt});
+					}
 				}
 			});		
 			
@@ -43,7 +42,6 @@ router.post('/', function(req, res){
 			if (req.body.userID != null) {
 				testUserProfile.findOne({user_id: req.body.userID }, function (upErr, upRslt) {
 					if (upErr) {
-						console.log('error' + String(upErr));
 						mongoose.disconnect();
 						res.json({rsltPop: objPop, rsltFav: 'DB Error'});
 					} else if (upRslt == null) {
@@ -53,7 +51,6 @@ router.post('/', function(req, res){
 						var list = upRslt.favorites.substring(0, upRslt.favorites.length - 1).split(';');
 						testShow.find({_id: {$in: list}}, function(sErr, sRslt) {
 							if (sErr) {
-								console.log('Error Finding Show List');
 								mongoose.disconnect();
 								res.json({rsltPop: objPop, rsltFav: 'Error Finding Show List'});
 							} else {
@@ -74,7 +71,6 @@ router.post('/', function(req, res){
 			if (req.body.userID != null) {
 				testUserProfile.findOne({user_id: req.body.userID }, function (upErr, upRslt) {
 					if (upErr) {
-						console.log('error' + String(upErr));
 						mongoose.disconnect();
 						res.json({rsltPop: objPop, rsltFav: objFav, rsltRec: 'DB Error'});
 					} else if (upRslt == null) {
@@ -84,7 +80,6 @@ router.post('/', function(req, res){
 						var list = upRslt.recently_watched.substring(0, upRslt.recently_watched.length - 1).split(';');
 						testShow.find({_id: {$in: list}}, function(sErr, sRslt) {
 							if (sErr) {
-								console.log('Error Finding Show List');
 								mongoose.disconnect();
 								res.json({rsltPop: objPop, rsltFav: objFav, objRec: 'Error Finding Show List'});
 							} else {

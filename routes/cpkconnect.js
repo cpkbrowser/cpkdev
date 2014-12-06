@@ -10,9 +10,8 @@ router.post('/', function(req, res){
 	
 	var db = mongoose.connection;
 
-	db.on('error', console.error);
+	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function() {
-		console.log('success');
 		
 		var db = mongoose.connection;		
 		var testUser = mongoose.model('testUser');	
@@ -27,19 +26,16 @@ router.post('/', function(req, res){
 				mongoose.disconnect();
 				res.end('null return value');
 			} else {
-				console.dir(rslt);
 				pass = rslt.pwd;
 				salt = rslt.slt;
 				
 				var valid = 'false';
 				if (cpkAuth.cpkDecrypt(String(req.body.password).trim(), pass, salt)) {
-					console.log('validated');
 					valid = 'true?&' + String(rslt._id) + '?&' + String(rslt.username);
 				} else {
-					console.log('error validating password');
+					
 				}
 				mongoose.disconnect();
-				console.log('disconnected');
 				res.json({rslt: valid});
 			}
 		});

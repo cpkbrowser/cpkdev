@@ -9,7 +9,7 @@ router.post('/', function(req, res){
 		
 	var db = mongoose.connection;
 
-	db.on('error', console.error);
+	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function() {
 				
 		var db = mongoose.connection;		
@@ -21,10 +21,9 @@ router.post('/', function(req, res){
 		testShow.findOne({'name': String(sName).trim(), 'show_type': String(sType)}, function(err, rslt) {
 			if (err) {
 				mongoose.disconnect();
-				console.log('err');
-				res.end('Failed Query');
+				res.json({exists: 'failed query'});
 			} else if (rslt == null) {
-				console.log('null');
+				
 				var newShow = new testShow({
 					name: req.body.name,
 					show_type: req.body.show_type,
@@ -42,27 +41,27 @@ router.post('/', function(req, res){
 					if (err) {
 						mongoose.disconnect();
 						res.json({exists: false, created: true, success: 'no'});
+					} else {
+						mongoose.disconnect();
+						res.json({exists: false, created: true, success: 'yes'});
 					}
-					mongoose.disconnect();
-					res.json({exists: false, created: true, success: 'yes'});
 				});
 				
 			} else {
 			
 				var count = rslt.watch_count;
 				count = (count + 1);
-				console.log(String('count: ' + count));
 				
 				rslt.watch_count = count;
 				rslt.seasons = req.body.seasons;
 				rslt.save(function(err2, rslt2) {
 					if (err2) {
-						console.log('failed save');
+						mongoose.disconnect();
+						res.json({exists: true, created: false, success: 'no'});
 					} else {
-						console.log('saved');
-					}
-					mongoose.disconnect();
-					res.json({exists: true, created: false, success: 'yes'});
+						mongoose.disconnect();
+						res.json({exists: true, created: true, success: 'yes'});
+					}					
 				});				
 			}
 		});		

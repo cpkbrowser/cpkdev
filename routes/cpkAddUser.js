@@ -11,9 +11,8 @@ router.post('/', function(req, res){
 	
 	var db = mongoose.connection;
 
-	db.on('error', console.error);
+	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function() {
-		console.log('success');
 		
 		var db = mongoose.connection;		
 		var testUser = mongoose.model('testUser');	
