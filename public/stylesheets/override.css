@@ -61,9 +61,14 @@
     transition: color 500ms ease-out .23s;
 }
 
-.more-arrow:active,
-.more-arrow:focus{
+.more-arrow:active{
 	color: white;
+}
+
+@media (max-width: 320px) {
+	.more-arrow:hover {
+		color: white;
+	}
 }
 @media (max-width: 589px) {
 	.login-buttons {
