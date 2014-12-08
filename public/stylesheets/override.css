@@ -53,8 +53,7 @@
     transform: rotate(180deg);
 }
 
-.more-arrow:hover,
-.more-arrow:focus {
+.more-arrow:hover{
 	color: red;
 	-webkit-transition: color 500ms ease-out .23s;
     -moz-transition: color 500ms ease-out .23s;
@@ -62,7 +61,8 @@
     transition: color 500ms ease-out .23s;
 }
 
-.more-arrow:active {
+.more-arrow:active,
+.more-arrow:focus{
 	color: white;
 }
 @media (max-width: 589px) {
@@ -866,6 +866,11 @@ input#phone-number[placeholder] {
 		font-size: 28px;
 		font-size: 2.8rem;
 		bottom: 43px;
+	}
+}
+@media (max-width: 320px) {
+	.back-to-top {
+		bottom: 35px;
 	}
 }
 
