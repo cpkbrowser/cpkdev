@@ -1,4 +1,5 @@
 
+
 ::selection {
   background: red;
   color:black;
@@ -50,6 +51,19 @@
 	-ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
+}
+
+.more-arrow:hover,
+.more-arrow:focus {
+	color: red;
+	-webkit-transition: color 500ms ease-out .23s;
+    -moz-transition: color 500ms ease-out .23s;
+    -o-transition: color 500ms ease-out .23s;
+    transition: color 500ms ease-out .23s;
+}
+
+.more-arrow:active {
+	color: white;
 }
 @media (max-width: 589px) {
 	.login-buttons {
@@ -215,7 +229,7 @@ select.source-select {
 }
 @media screen and (max-width: 480px) {
 	.login {
-    		margin-top: -68px;
+    		margin-top: -55px;
     		right: 116px;
     		max-width: 200px;
 	}
@@ -521,7 +535,7 @@ span.nav-link-design {
 }
 /*landing*/
 .land-page {
-	padding-bottom: 50px;
+	padding-bottom: 30px;
 }
 .welcome {
 	font-family: Cantarell, Verdana, sans-serif;
@@ -682,7 +696,7 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
         #signup-container input.valid { border: 1px solid #1FFF00; }
         
         #signup-container input:focus, #signup-container select:focus {
-            border: 1px solid red;
+            border: 2px solid red;
             color: red;
         }
 
@@ -732,9 +746,6 @@ input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
 	height: 30px;
 }
 @media (max-width:768px) {
-	.spacing {
-		height: 60px;
-	}
 	#signup-container {
 		padding:0;
 	}
@@ -828,4 +839,54 @@ input#phone-number[placeholder] {
 	.input-group-btn>.btn {
 		color:black !important;
 	}
+}
+
+.back-to-top {
+	position: fixed;
+	bottom: 0;
+	right: 10px;
+	z-index: 999;
+	height: 63px;
+	font-size: 40px;
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.back-to-top {
+		display: block;
+	}
+}
+
+@media (max-width: 480px) {
+	.back-to-top {
+		height: 26px;
+		font-size: 28px;
+		font-size: 2.8rem;
+		bottom: 43px;
+	}
+}
+
+.back-to-top a {
+	color: white;
+}
+
+.remember-me {
+	font-size: 30px;
+	font-size: 3.0rem;
+}
+
+.remember-me:visited {
+	background: white;
+	outline-width: 0;
+}
+input#user_username,
+input#user_password,
+.btnUserLogin{
+	outline-width: 0;
+}
+
+.btnUserLogin:active,
+.btnUserLogin:focus {
+	outline-width: 0;
+	color:white;
 }
