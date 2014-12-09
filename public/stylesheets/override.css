@@ -909,8 +909,8 @@ input#user_password,
 	outline-width: 0;
 	color:white;
 }
-@media (max-width: 560px) {
-	.info-nav-tabs {
-		margin-top: 0px !important;
-	}
+
+.info-nav-tabs {
+	margin-top: 0px !important;
 }
+
