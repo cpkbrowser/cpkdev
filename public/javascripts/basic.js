@@ -954,7 +954,8 @@ window.addEventListener("load",function() {
 	}, 0);
 });
 
-//smooth scrolling on back to top button
+//SHAWN LOGIC: Please apply the following jquery smooth scrolling for div=back-to-top button and id=#btnSignUp button
+
 // $(function() {
 //   $('a[href*=#]:not([href=#])').click(function() {
 //     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
