@@ -328,6 +328,12 @@ select.source-select {
 .ui-accordion .ui-accordion-content {
 	padding: 0 !important;
 }
+@media (max-width:480px) {
+	.ui-accordion {
+		max-height: 240px !important;
+	}
+}
+
 
 /*LIST ITEMS DYNAMIC*/
 li.episode_item {
@@ -902,4 +908,9 @@ input#user_password,
 .btnUserLogin:focus {
 	outline-width: 0;
 	color:white;
+}
+@media (max-width: 560px) {
+	.info-nav-tabs {
+		margin-top: 0px !important;
+	}
 }
