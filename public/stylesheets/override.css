@@ -307,9 +307,9 @@ select.source-select {
 		max-width: 195px;
 	}
 	.login {
-    		margin-top: -70px;
+    		margin-top: -55px;
     		right: 132px;
-   		max-width: 178px !important;
+   			max-width: 178px !important;
 	}
 	form#frmUser input {
 		max-width: 144px;
