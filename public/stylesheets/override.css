@@ -854,6 +854,9 @@ input#phone-number[placeholder] {
 		color:black !important;
 	}
 }
+.img-point {
+	cursor: pointer;
+}
 
 .back-to-top {
 	position: fixed;
