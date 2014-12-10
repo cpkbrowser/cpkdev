@@ -4,7 +4,7 @@
 var static_url = window.location;
 var redir1 = static_url + 'getBlank';
 
-$(document).ready(function() {
+$(document).ready(function() {	
 	
 	$("#btnSearch").bind('keypress', onEnter_Search);
 	$("#btnSrchSubmit").click(function() {
@@ -20,6 +20,14 @@ $(document).ready(function() {
 	$("#btnSignUp").click(function() {
 		document.getElementById('landingPage').style.display = 'none';
 		document.getElementById('signup-container').style.display = 'block';	
+		$('html, body').animate({
+            scrollTop: $("#signup-container").offset().top
+        }, 10);
+	});
+	
+	$("#backToTop").click(function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+		return false;
 	});
 	
 	$("#submit_fourth").click(function() {
@@ -117,6 +125,21 @@ $(document).ready(function() {
 	});
 	
 });
+
+function onClick_Img(t) {
+	var btn1 = t.parentNode.getElementsByClassName('row')[0].getElementsByTagName('div')[1].childNodes[1];
+	open_mdlInfo(btn1);
+	
+	//Set Tab header to active
+	var act1 = document.getElementById('mdlInfo').getElementsByTagName('ul')[0].getElementsByTagName('li');
+	$(act1[0]).removeClass('active');
+	$(act1[1]).addClass('active');
+	
+	//Set Tab content to active
+	var act2 = document.getElementById('mdlInfo').getElementsByClassName('tab-pane');
+	$(act2[0]).removeClass('active');
+	$(act2[1]).addClass('active');
+}
 
 function beginLogin() {	
 	$.ajax({
