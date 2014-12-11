@@ -15,64 +15,48 @@ router.post('/', function(req, res){
 		
 		var db = mongoose.connection;		
 		var testUser = mongoose.model('testUser');	
+		var testUserProfile = mongoose.model('testUserProfile');
 		
 		var pass; 
 		var salt;
-		var test = testUser.findOne({'username': String(req.body.username).trim()}, function(err, rslt) {
+		testUser.findOne({'username': String(req.body.username).trim()}, function(err, rslt1) {
 			if (err) {
 				mongoose.disconnect();
 				res.end('Failed Query');				
-			} else if (rslt == null) {
+			} else if (rslt1 == null) {
 				mongoose.disconnect();
 				res.end('null return value');
 			} else {
-				pass = rslt.pwd;
-				salt = rslt.slt;
+				pass = rslt1.pwd;
+				salt = rslt1.slt;				
 				
-				var valid = 'false';
-				if (cpkAuth.cpkDecrypt(String(req.body.password).trim(), pass, salt)) {
-					valid = 'true?&' + String(rslt._id) + '?&' + String(rslt.username);
-				} else {
-					
-				}
-				mongoose.disconnect();
-				res.json({rslt: valid});
+				testUserProfile.findOne({'user_id': rslt1._id}, function (err2, rslt2) {
+					if (err2 || rslt2 == null) {
+						var valid = 'false';
+						if (cpkAuth.cpkDecrypt(String(req.body.password).trim(), pass, salt)) {
+							valid = 'true?&' + String(rslt1._id) + '?&' + String(rslt1.username);
+						} 
+						mongoose.disconnect();
+						res.json({rslt: valid});
+					} else {
+						rslt2.last_signon = String(Date.today());
+						rslt2.save(function(err3, rslt3) {
+							/* if (err3) {
+								console.log('not saved');
+							} else {
+								console.log(rslt3.last_signon);								
+							} */
+							var valid = 'false';
+							if (cpkAuth.cpkDecrypt(String(req.body.password).trim(), pass, salt)) {
+								valid = 'true?&' + String(rslt1._id) + '?&' + String(rslt1.username);
+							} 
+							mongoose.disconnect();
+							res.json({rslt: valid});
+						});
+					}					
+				});		
 			}
-		});
-				
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		//Below is an example of how to create a user
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		/* var expTime = Date.today();
-		expTime.add({years: 10});
-		
-		//PlainText pwd is testpass1
-		var test = new testUser({
-			first_name: 'Kyle',
-			last_name: 'Brown',
-			username: 'admin',
-			pwd: hash_digest,
-			slt: 'fakesalt1',
-			account_type: 'admin',
-			email: 'mma_legend03@live.com',
-			phone: '555-555-5555',
-			birthday: '11/02/1989',
-			zip_code: '67877',
-			age_range: '18-25',
-			gender: 'male',
-			active_date: Date.today(),
-			exp_date: expTime
-		}); 
-		
-		test.save(function(err, test1) {
-			if (err) {
-				res.end('Save Failed');
-				mongoose.disconnect();
-			}
-			res.end('Save Successful');
-			mongoose.disconnect();
-		});  */
-		
+		});		
 	});
 	
 	mongoose.connect('mongodb://cpkadmin:bballrulz@ds055680.mongolab.com:55680/cpkdevdb1');	

@@ -64,7 +64,9 @@ router.post('/', function(req, res){
 						username: rslt.username,
 						favorites: "",
 						recently_watched: "",
-						Theme: "cpkStandard"
+						Theme: "cpkStandard",
+						last_signon: String(Date.today()),
+						referred_by: req.body.referred
 					});
 					new_UserProfile.save(function(err3, rslt2) {
 						if (err3) {

@@ -8,7 +8,9 @@ module.exports = function() {
 		username: String,
 		favorites: String,
 		recently_watched: String,
-		Theme: String
+		Theme: String,
+		last_signon: String,
+		referred_by: String
 	});
 	mongoose.model('testUserProfile', userProfile);
 };

@@ -183,7 +183,8 @@ function createUser() {
 		bday: document.getElementById('bday').value,
 		zip: document.getElementById('zip').value,
 		age: document.getElementById('age').value,
-		gender: document.getElementById('gender').value
+		gender: document.getElementById('gender').value,
+		referred: document.getElementById('referred-by').value
 	};
 	
 	var request = $.ajax({
@@ -968,31 +969,6 @@ function eraseCookie(name) {
     createCookie(name,"",-1);
 }
 
-// When ready...
-window.addEventListener("load",function() {
-	// Set a timeout...
-	setTimeout(function(){
-		// Hide the address bar!
-		window.scrollTo(0, 1);
-	}, 0);
-});
-
-//SHAWN LOGIC: Please apply the following jquery smooth scrolling for div=back-to-top button and id=#btnSignUp button
-
-// $(function() {
-//   $('a[href*=#]:not([href=#])').click(function() {
-//     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-//       var target = $(this.hash);
-//       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-//       if (target.length) {
-//         $('html,body').animate({
-//           scrollTop: target.offset().top
-//         }, 1250);
-//         return false;
-//       }
-//     }
-//   });
-// });
 
 
 
