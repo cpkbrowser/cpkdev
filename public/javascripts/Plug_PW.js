@@ -257,7 +257,8 @@ function PWTV_orderLinkList(lnkList) {
 	var finalList = {};
 	var tempItem = 0;
 	var tmpString = '';
-	
+	var isMobile = window.mobilecheck();
+		
 	for (i = 0; i < lnkList.length; i++) {
 		tmpString = String(lnkList[i]);
 		if (tmpString.indexOf('Z29yaWxsYXZpZC5pbg') != -1) {
@@ -281,7 +282,11 @@ function PWTV_orderLinkList(lnkList) {
 		} else if (tmpString.indexOf('dGhldmlkZW8ubWU') != -1) {
 			//theVideo
 			authLinks[a_count] = new Array(2);
-			authLinks[a_count][0] = 6;
+			if (isMobile.iOS() != null) {
+				authLinks[a_count][0] = 18;
+			} else {
+				authLinks[a_count][0] = 6;
+			}
 			authLinks[a_count][1] = lnkList[i];
 			a_count++;
 		} else if (tmpString.indexOf('c29ja3NoYXJlLmNvbQ') != -1) {
