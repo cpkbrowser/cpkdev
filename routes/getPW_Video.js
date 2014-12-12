@@ -43,12 +43,17 @@ router.get('/', function(req, res){
   }
   str = str.replace('?srch=', '');
   //res.end(str);
-  var x = str;//"http://www.primewire.ag" + str;
+  var x = "http://www.primewire.ag" + str;
   
   download(x, function(data) {
     if (data) {
-	
-	  res.end(data);
+	  
+	  var x1 = String(data).indexOf('<noframes>') + 10;
+	  var x2 = String(data).indexOf('</noframes>')
+	  
+	  //console.log(String(data).substring(x1, x2));
+	  
+	  res.end(String(data).substring(x1, x2));
 	  
 	} else {
 	  res.end('nothing');
