@@ -111,10 +111,19 @@ function PWTV_getEpisodes(src_url) {
 			if (rsltType == "showEpisodes") {
 				document.getElementById('hdnModalType').innerHTML = 'tv';
 				PWTV_getEpisodes_processResults(rslt2);
+				document.getElementById('mdlInfo_tabLinks').style.display = 'block';
+				var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(' ', '-*-') + '_cookie';
+				if (readCookie(fName) != null) {
+					document.getElementById('mdlKeepWatch').style.display = 'block';
+				}
 			} else if (rsltType == "movieLinks") {
 				$('#hdnValues3').empty();
 				document.getElementById('hdnModalType').innerHTML = 'movie';
 				PWTV_getMovieLinks_processResults(rslt2);
+				document.getElementById('mdlInfo_tabLinks').style.display = 'none';
+			}
+			if (document.getElementById('hdnQuickLink').innerHTML == 'true') {
+				quickLink_Click();
 			}
 		}
 	});
@@ -211,9 +220,18 @@ function PWTV_getLinks_processResults(rslt3) {
 	document.getElementById('simplemodal-container').childNodes[0].display = 'inline';
 	if (topLink != 'none') {
 		prepareMovieFrame(topLink);
+		create_RWCookie();
 	} else {
 		alert('No Links Found.');
 	}
+}
+
+function create_RWCookie() {
+	var sName = document.getElementById('mdlInfo_Name').innerHTML.replace(' ', '-*-') + '_cookie';
+	var info = document.getElementById('hdnValues5').childNodes;
+	var ssn = info[0].nodeValue;
+	var ep = info[1].nodeValue;
+	createCookie(sName, (ssn + '*' + ep), 7);
 }
 
 function PWTV_getLinkArray() {

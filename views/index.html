@@ -1422,6 +1422,7 @@
 		<div id="hdnValues7" style="display: none;"></div>
 		<div id="hdnSearchType" style="display: none;">tv</div>
 		<div id="hdnModalType" style="display: none;"></div>
+		<div id="hdnQuickLink" style="display: none;">false</div>
 		<div id="basic-modal-content">
 			<div class="info-pane" id="mdlInfoPane">
 				<div class="row info-pane-max">
@@ -1435,6 +1436,13 @@
 								</button>
 							</div>
 						</div>
+						<div style="width: 150px; height 30px; display: none;" class="play-button" id="mdlKeepWatch">
+							<div class="btn-primary float-button">
+								<button class="btn-toggle" onclick="ContinueShow();" type="button">
+									<div class="btn-primary-txt">Keep Watching</div>
+								</button>
+							</div>
+						</div>
 					</div>
 					<div id="mdlInfo" class="col-sm-9">
 						<div class="detail-wrap">
@@ -1442,7 +1450,7 @@
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs info-nav-tabs" role="tablist">
 								<li class="active"><a href="#main-details" class="main-detials-color" style="color:black" role="tab" data-toggle="tab">Details</a></li>
-								<li><a href="#links" class="nav-links-spacing" role="tab" style="color:black" data-toggle="tab">Links</a></li>
+								<li><a id="mdlInfo_tabLinks" href="#links" class="nav-links-spacing" role="tab" style="color:black; display: none;" data-toggle="tab">Links</a></li>
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content">

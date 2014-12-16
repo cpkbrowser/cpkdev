@@ -128,17 +128,34 @@ $(document).ready(function() {
 
 function onClick_Img(t) {
 	var btn1 = t.parentNode.getElementsByClassName('row')[0].getElementsByTagName('div')[1].childNodes[1];
+	document.getElementById('hdnQuickLink').innerHTML = 'true';
 	open_mdlInfo(btn1);
-	
-	//Set Tab header to active
-	var act1 = document.getElementById('mdlInfo').getElementsByTagName('ul')[0].getElementsByTagName('li');
-	$(act1[0]).removeClass('active');
-	$(act1[1]).addClass('active');
-	
-	//Set Tab content to active
-	var act2 = document.getElementById('mdlInfo').getElementsByClassName('tab-pane');
-	$(act2[0]).removeClass('active');
-	$(act2[1]).addClass('active');
+}
+
+function quickLink_Click() {
+	var sType = document.getElementById('hdnModalType').innerHTML;
+	if (sType == 'tv') {
+		//Set Tab header to active
+		var act1 = document.getElementById('mdlInfo').getElementsByTagName('ul')[0].getElementsByTagName('li');
+		$(act1[0]).removeClass('active');
+		$(act1[1]).addClass('active');
+		
+		//Set Tab content to active
+		var act2 = document.getElementById('mdlInfo').getElementsByClassName('tab-pane');
+		$(act2[0]).removeClass('active');
+		$(act2[1]).addClass('active');
+	} else {
+		//Set Tab header to active
+		var act1 = document.getElementById('mdlInfo').getElementsByTagName('ul')[0].getElementsByTagName('li');
+		$(act1[1]).removeClass('active');
+		$(act1[0]).addClass('active');
+		
+		//Set Tab content to active
+		var act2 = document.getElementById('mdlInfo').getElementsByClassName('tab-pane');
+		$(act2[1]).removeClass('active');
+		$(act2[0]).addClass('active');
+	}
+	document.getElementById('hdnQuickLink').innerHTML = 'false';
 }
 
 function beginLogin() {	
@@ -270,6 +287,7 @@ function onClick_Search() {
 function open_mdlInfo(t) {
 	document.getElementById('mdlActive_Div').innerHTML = t.id;
 	var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
+	var fullName = "";
 	
 	//add conditional statement to allow for more plug-ins
 	var testx = t.id.substring(0, 4);
@@ -283,14 +301,16 @@ function open_mdlInfo(t) {
 		
 		var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);	
 		document.getElementById('mdlInfo_Desc').innerHTML = desc.trim().replace(/\r?\n|\r/, '');
+		fullName = desc.split(':')[0];
 		var oldList = document.getElementsByClassName('movie_info')[0];
 		document.getElementById('hdnValues').removeChild(oldList);
 	} else {
 		document.getElementById('mdlInfo_Desc').innerHTML = info[2].innerHTML;
+		fullName = info[0].innerHTML;
 	}
 	
 	document.getElementById('mdlInfo_Img').src = info[1].innerHTML;
-	document.getElementById('mdlInfo_Name').innerHTML = info[0].innerHTML;
+	document.getElementById('mdlInfo_Name').innerHTML = fullName;
 	document.getElementById('mdlInfo_Year').innerHTML = info[4].innerHTML;
 	document.getElementById('mdlInfo_Genre').innerHTML = info[3].innerHTML;
 	var newLink = info[5].innerHTML.replace('watch-', 'tv-');
@@ -298,6 +318,7 @@ function open_mdlInfo(t) {
 	document.getElementsByClassName('no-js')[0].style.overflow = 'hidden';
 	document.getElementById('mdlInfoPane').style.display = 'block';
 	document.getElementById('mdlVideoFrame').parentNode.style.display = 'none';
+	document.getElementById('mdlKeepWatch').style.display = 'none';
 	$("#basic-modal-content").modal({
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
@@ -313,7 +334,7 @@ function open_mdlInfo(t) {
 	if (t.id.substring(0, 4) == 'srch') {
 		info[2].innerHTML = desc.trim();
 	} 	
-	PWTV_getEpisodes(static_url + 'getPW_Episodes' + '?srch=' + info[5].innerHTML)
+	PWTV_getEpisodes(static_url + 'getPW_Episodes' + '?srch=' + info[5].innerHTML);	
 }
 
 function build_lnkAccordion(ssnList) {
@@ -400,6 +421,15 @@ function onClick_Link(flag1, obj1) {
 	if (String(document.getElementById('userInfo_ID').innerHTML) != 'null') {
 		send_cpkRecentData(document.getElementById('mdlActive_Div').innerHTML, 'tv');
 	}
+}
+
+function ContinueShow() {
+	var tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
+	var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(' ', '-*-') + '_cookie';
+	var info = readCookie(fName).split('*');
+	//PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
+	loadCurrentValues(info[0], info[1]);
+	loadNextEpisode();
 }
 
 function loadCurrentValues(ssn, ep) {	
