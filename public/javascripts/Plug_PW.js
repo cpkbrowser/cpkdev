@@ -108,6 +108,10 @@ function PWTV_getEpisodes(src_url) {
 			if (rsltType == undefined) {
 				rsltType = rslt2.childNodes[0].attributes[1].nodeValue;
 			}
+			if (rsltType == "display: none;") {
+				//Workaround for Safari / Tablets / old browsers
+				rsltType = rslt2.childNodes[0].attributes.id.nodeValue;
+			}
 			if (rsltType == "showEpisodes") {
 				document.getElementById('hdnModalType').innerHTML = 'tv';
 				PWTV_getEpisodes_processResults(rslt2);
