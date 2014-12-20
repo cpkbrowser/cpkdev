@@ -231,7 +231,7 @@ function create_RWCookie() {
 	var info = document.getElementById('hdnValues5').childNodes;
 	var ssn = info[0].nodeValue;
 	var ep = info[1].nodeValue;
-	createCookie(sName, (ssn + '*' + ep), 7);
+	createCookie(sName, (ssn + '*' + ep), 15);
 }
 
 function PWTV_getLinkArray() {

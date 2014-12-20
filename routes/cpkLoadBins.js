@@ -51,8 +51,13 @@ router.post('/', function(req, res){
 						var list = upRslt.favorites.substring(0, upRslt.favorites.length - 1).split(';');
 						testShow.find({_id: {$in: list}}, function(sErr, sRslt) {
 							if (sErr) {
-								mongoose.disconnect();
-								res.json({rsltPop: objPop, rsltFav: 'Error Finding Show List'});
+								if (req.body.recent == 'true') {
+									objFav = 'Error Finding Show List';
+									getRecentItems();
+								} else {
+									mongoose.disconnect();
+									res.json({rsltPop: objPop, rsltFav: 'Error Finding Show List'});
+								}
 							} else {
 								objFav = sRslt;
 								getRecentItems();
@@ -81,7 +86,7 @@ router.post('/', function(req, res){
 						testShow.find({_id: {$in: list}}, function(sErr, sRslt) {
 							if (sErr) {
 								mongoose.disconnect();
-								res.json({rsltPop: objPop, rsltFav: objFav, objRec: 'Error Finding Show List'});
+								res.json({rsltPop: objPop, rsltFav: objFav, rsltRec: 'Error Finding Show List'});
 							} else {
 								mongoose.disconnect();
 								res.json({rsltPop: objPop, rsltFav: objFav, rsltRec: sRslt});

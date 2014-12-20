@@ -178,17 +178,21 @@ function loadCPKBins_Standard() {
 		document.getElementById('hdn_tblPopular').appendChild(table1);
 		document.getElementById('hdnPopSetLoaded').innerHTML = 'true';
 		
-		var table2 = createBinTable(rslt.rsltFav, 'cpk_favShows', 'favItem');
-		$('#hdn_tblFavorites').empty();
-		document.getElementById('hdn_tblFavorites').appendChild(table2);
-		document.getElementById('hdnFavSetLoaded').innerHTML = 'true';
-		document.getElementById('hdnFavSetMax').innerHTML = rslt.rsltFav.length;
+		if (typeof rslt.rsltFav !== 'string') {
+			var table2 = createBinTable(rslt.rsltFav, 'cpk_favShows', 'favItem');
+			$('#hdn_tblFavorites').empty();
+			document.getElementById('hdn_tblFavorites').appendChild(table2);
+			document.getElementById('hdnFavSetLoaded').innerHTML = 'true';
+			document.getElementById('hdnFavSetMax').innerHTML = rslt.rsltFav.length;
+		}
 		
-		var table3 = createBinTable(rslt.rsltRec, 'cpk_recShows', 'recItem');
-		$('#hdn_tblRecent').empty();
-		document.getElementById('hdn_tblRecent').appendChild(table3);
-		document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
-		document.getElementById('hdnRecSetMax').innerHTML = rslt.rsltRec.length;
+		if (typeof rslt.rsltRec !== 'string') {
+			var table3 = createBinTable(rslt.rsltRec, 'cpk_recShows', 'recItem');
+			$('#hdn_tblRecent').empty();
+			document.getElementById('hdn_tblRecent').appendChild(table3);
+			document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
+			document.getElementById('hdnRecSetMax').innerHTML = rslt.rsltRec.length;
+		}
 		
 	});
 	
