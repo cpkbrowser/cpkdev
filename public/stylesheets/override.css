@@ -917,3 +917,58 @@ input#user_password,
 	margin-top: 0px !important;
 }
 
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: none;
+}
+
+.intrinsic-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 960px;
+}
+
+.close-profile-iframe {
+	background: rgb(0, 0, 0); /* The Fallback */
+  	background: rgba(0, 0, 0, 0.55); 
+	color: white;
+	position: fixed;
+	width: 45px;
+	font-size: 24px;
+	top: 88px;
+	right:3px;
+	text-align: center;
+	padding: 8px;
+	z-index: 99;
+}
+
+@media (max-width: 590px) {
+	.close-profile-iframe {
+		left:0;
+		right: 100%;
+		z-index: 9999;
+		top: 90px;
+	}
+}
+.close-profile-iframe a {
+	color: white;
+}
+
+.close-profile-iframe a:hover {
+	color: red;
+}
+
+@media (max-width:480px) {
+	.close-profile-iframe {
+		padding: 5px;
+	}
+}
+
+.close-profile-iframe:hover {
+	color:red;
+}
+

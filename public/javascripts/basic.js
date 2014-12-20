@@ -1026,6 +1026,45 @@ window.mobilecheck = function() {
 	return isMobile
 }
 
+function openCPKLinks(t) {
+	var src = "";
+	switch (t) {
+		case 'privacy':
+			src = static_url + 'privacy.html';
+			break;
+		case 'faq':
+			src = static_url + 'faq.html';
+			break;
+		case 'legal':
+			src = static_url + 'legal.html';
+			break;
+		case 'tos':
+			src = static_url + 'tos.html';
+			break;
+		case 'logout':
+			document.getElementsByTagName('header')[0].style.setAttribute("marginBottom", '0px');
+			break;			
+	}
+	document.getElementById('iframeCPK').src = src;
+	document.getElementById('vidGridContainer').style.display = 'none';
+	document.getElementById('landingPage').style.display = 'none';
+	document.getElementById('cpkFooter').style.display = 'none';
+	document.getElementsByTagName('header')[0].style.marginBottom = '0px';
+	document.getElementById('internalLinks').style.display = 'block';
+	document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+}
+
+function closeCPKInternal() {
+	document.getElementById('iframeCPK').src = 'about:blank';
+	document.getElementById('vidGridContainer').style.display = 'block';
+	if (document.getElementById('userInfo_ID').innerHTML == 'null') {
+		document.getElementById('landingPage').style.display = 'block';
+	}
+	document.getElementById('cpkFooter').style.display = 'block';
+	document.getElementsByTagName('header')[0].style.marginBottom = '20px';
+	document.getElementById('internalLinks').style.display = 'none';
+	document.getElementsByTagName('body')[0].style.overflow = 'auto';
+}
 
 
 

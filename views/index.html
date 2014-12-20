@@ -180,7 +180,7 @@
         </header>
 
         <!--Content Section-->
-        <div class="vid-grid">
+        <div id="vidGridContainer" class="vid-grid">
 			<!--SearchResults-->
 			<div id="grdSrchResults" style="display: none;">
 				<div id="srch_preLoader">
@@ -1127,6 +1127,16 @@
 				</div>				
 			</div>
 		</div><!--endofvidgrid-->
+		<div id="internalLinks" class="intrinsic-container" style="display: none;">
+			
+			  <div class="close-profile-iframe" style="cursor: pointer;">
+				<a onclick="closeCPKInternal()">
+					<i class="fa fa-times"></i>
+				</a>
+			  </div>
+			
+			<iframe id="iframeCPK" src="about:blank" allowfullscreen></iframe>
+		</div>
 		<div id="landingPage" class="land-page" style="display:block;" >
 			<div class="container">
 				<!-- logo starter -->
@@ -1355,7 +1365,7 @@
 		</div>
 		<div class="spacing">
 		</div>	
-		<div class="container-fluid footer">
+		<div id="cpkFooter" class="container-fluid footer">
 			<div class="back-to-top" id="backToTop">
 				<i class="fa fa-chevron-up"></i>
 			</div>
@@ -1385,11 +1395,11 @@
 					<div class="col-sm-6">
 						<div class="common-links">
 							<ul>
-							<li><a href="#">Copyright</a></li>
-							<li><a href="#">Disclamer</a></li>
-							<li><a href="#">Forum</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Login</a></li>
+							<li><a style="cursor: pointer;" onclick="openCPKLinks('legal')">Legal</a></li>
+							<li><a style="cursor: pointer;" onclick="openCPKLinks('privacy')">Privacy</a></li>
+							<li><a href="#">CPK Lens</a></li>
+							<li><a style="cursor: pointer;" onclick="openCPKLinks('faq')">FAQs</a></li>
+							<li><a style="cursor: pointer;" onclick="openCPKLinks('logout')">Logout</a></li>
 							</ul>
 						</div>
 					</div>
