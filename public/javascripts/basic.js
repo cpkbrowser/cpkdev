@@ -1030,22 +1030,28 @@ function openCPKLinks(t) {
 	var src = "";
 	switch (t) {
 		case 'privacy':
-			src = static_url + 'privacy.html';
+			src = static_url + 'privacy';
 			break;
 		case 'faq':
-			src = static_url + 'faq.html';
+			src = static_url + 'faq';
 			break;
 		case 'legal':
-			src = static_url + 'legal.html';
+			src = static_url + 'legal';
 			break;
 		case 'tos':
-			src = static_url + 'tos.html';
+			src = static_url + 'tos';
 			break;
 		case 'logout':
 			document.getElementsByTagName('header')[0].style.setAttribute("marginBottom", '0px');
 			break;			
 	}
+	
 	document.getElementById('iframeCPK').src = src;
+	var hgt = $(window).height();
+	var hdrHgt = $("#hdrAll").height();
+	hgt = hgt - hdrHgt;
+	document.getElementById('iframeCPK').style.minHeight = hgt.toString() + 'px';
+	
 	document.getElementById('vidGridContainer').style.display = 'none';
 	document.getElementById('landingPage').style.display = 'none';
 	document.getElementById('cpkFooter').style.display = 'none';

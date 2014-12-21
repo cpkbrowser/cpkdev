@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var Privacy = require('./routes/privacy');
+var TOS = require('./routes/tos');
+var Legal = require('./routes/legal');
+var FAQ = require('./routes/faq');
 var getSK = require('./routes/getSK');
 var getPW_Details = require('./routes/getPW_Details');
 var getPW_Episodes = require('./routes/getPW_Episodes');
@@ -40,6 +44,10 @@ require('./data/cpkUser')();
 require('./data/cpkUserProfile')();
 
 app.use('/', routes);
+app.use('/privacy', Privacy);
+app.use('/tos', TOS);
+app.use('/legal', Legal);
+app.use('/faq', FAQ);
 app.use('/getSK', getSK);
 app.use('/getPW_Details', getPW_Details);
 app.use('/getPW_Episodes', getPW_Episodes);
