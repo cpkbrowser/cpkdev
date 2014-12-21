@@ -1430,6 +1430,8 @@
 		<div id="hdnValues6" style="display: none;"></div>
 		<!-- #showLinks - raw html 'span' elements whose href values contains actual links for MOVIES -->
 		<div id="hdnValues7" style="display: none;"></div>
+		<!-- Contains tool-tip information in li element -->
+		<div id="hdnValues8" style="display: none;"></div>
 		<div id="hdnSearchType" style="display: none;">tv</div>
 		<div id="hdnModalType" style="display: none;"></div>
 		<div id="hdnQuickLink" style="display: none;">false</div>
@@ -1483,44 +1485,49 @@
 			</div>	
 			<div id="mdlMoviePane">
 				<!-- <iframe style="width: 100%; height: 800px;" src="about:blank" sandbox="allow-forms allow-same-origin allow-scripts allow-pointer-lock"></iframe>  -->
-			<div id="navCntrlContainer" class="nav-control">
-				<div id="mdlNavButtons" align="left" style="width: 100%;">
-					<div id="btnNavInfo" style="color: white; margin-left: 28px; padding-bottom: 10px; float: left;">
-						<i class="fa fa-bars"></i>
+				<div id="helpCntrlContainer" class="help-control">
+					<i class="fa fa-info-circle help-icon"></i>
+					<div id="helpContainer" style=" width: 250px; height: auto; display: none;">
+						<p class="tool-tip-source" id="mdlToolTipType">test name</p>
+						<p class="tool-tip-info" id="mdlExtToolTip">test value</p>
 					</div>
-					<div id="navContainer" class="row" style="display:none">
-						<div class="col-xs-12 link-placement">
-							<p style="text-align: right; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadPreviousLink(); return false;">  
-							<i class="fa fa-step-backward icon-hover"></i>
-							
-							</p>
-							<p style="display: inline-block; color: #ffffff; padding-left: 0px; padding-right: 0px;"> <span style="padding: 0px 22px 0px 22px;" class="nav-link-design">Link</span> </p>
-							<p style="text-align: right; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextLink(); return false;">
-							<i class="fa fa-step-forward icon-hover"></i>
-							</p>
-							<p style="padding-left: 0px; padding-right: 0px; display: inline-block;"> </p>
+				</div>
+				<div id="navCntrlContainer" class="nav-control">
+					<div id="mdlNavButtons" align="left" style="width: 100%;">
+						<div id="btnNavInfo" style="color: white; margin-left: 28px; padding-bottom: 10px; float: left;">
+							<i class="fa fa-bars"></i>
 						</div>
-						<div class="col-xs-12 link-placement">
-							<div id="mdlNavEpisodes" style="inline-block">
-								<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadPreviousEpisode(); return false;">
-								<i class="fa fa-fast-backward icon-hover"></i>
+						<div id="navContainer" class="row" style="display:none">
+							<div class="col-xs-12 link-placement">
+								<p style="text-align: right; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadPreviousLink(); return false;">  
+								<i class="fa fa-step-backward icon-hover"></i>
+								
 								</p>
-								<p style="display: inline-block; color: #ffffff; padding-left: 0px; padding-right: 0px;">
-								<span class="nav-link-design">
-									Episode
-								</span>
+								<p style="display: inline-block; color: #ffffff; padding-left: 0px; padding-right: 0px;"> <span style="padding: 0px 22px 0px 22px;" class="nav-link-design">Link</span> </p>
+								<p style="text-align: right; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextLink(); return false;">
+								<i class="fa fa-step-forward icon-hover"></i>
 								</p>
-								<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextEpisode(); return false;">
-								<i class="fa fa-fast-forward icon-hover"></i>
-								</p>
+								<p style="padding-left: 0px; padding-right: 0px; display: inline-block;"> </p>
+							</div>
+							<div class="col-xs-12 link-placement">
+								<div id="mdlNavEpisodes" style="inline-block">
+									<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadPreviousEpisode(); return false;">
+									<i class="fa fa-fast-backward icon-hover"></i>
+									</p>
+									<p style="display: inline-block; color: #ffffff; padding-left: 0px; padding-right: 0px;">
+									<span class="nav-link-design">
+										Episode
+									</span>
+									</p>
+									<p style="text-align: left; color: #ffffff; cursor: pointer; display: inline-block;" onclick="loadNextEpisode(); return false;">
+									<i class="fa fa-fast-forward icon-hover"></i>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-
-				<iframe id="mdlVideoFrame" style="width: 100%; height: 800px;" src="about:blank"></iframe>
-				
+				</div>				
+				<iframe id="mdlVideoFrame" style="width: 100%; height: 800px;" src="about:blank"></iframe>				
 			</div>
 		</div>
     </body>

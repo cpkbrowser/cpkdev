@@ -17,6 +17,10 @@ $(document).ready(function() {
 		mdlNavInfo_Click();
 	});
 	
+	$("#helpCntrlContainer").click(function() {
+		mdlHelp_Click();
+	});
+	
 	$("#btnSignUp").click(function() {
 		document.getElementById('landingPage').style.display = 'none';
 		document.getElementById('signup-container').style.display = 'block';	
@@ -495,6 +499,17 @@ function prepareMovieFrame(currLink) {
 	} else if (modType == 'movie') {
 		document.getElementById('mdlNavEpisodes').style.display = 'none';
 	}
+	
+	var tipList = document.getElementById('hdnValues8').childNodes[0];
+	if (tipList != null) {
+		var tmpDiv = document.getElementById('hdnValues6');
+		var tmpIndex = tmpDiv.childNodes[1].nodeValue;
+		var lnkIndex = parseInt(tmpIndex, 10);
+		var tipType = tipList.childNodes[lnkIndex].innerHTML.split('*-*')[0];
+		var tipValue = tipList.childNodes[lnkIndex].innerHTML.split('*-*')[1];
+		document.getElementById('mdlToolTipType').innerHTML = tipType;
+		document.getElementById('mdlExtToolTip').innerHTML = tipValue;
+	}
 }
 
 function getVideo(lnkUrl) {
@@ -567,6 +582,19 @@ function loadPreviousLink() {
 		document.getElementById('mdlNavEpisodes').style.display = 'none';
 	}
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
+	
+	var tipList = document.getElementById('hdnValues8').childNodes[0];
+	if (tipList != null) {
+		try {
+			var tipType = tipList.childNodes[lnkIndex].innerHTML.split('*-*')[0];
+			var tipValue = tipList.childNodes[lnkIndex].innerHTML.split('*-*')[1];
+			document.getElementById('mdlToolTipType').innerHTML = tipType;
+			document.getElementById('mdlExtToolTip').innerHTML = tipValue;
+		} catch (err) {
+			document.getElementById('mdlToolTipType').innerHTML = 'Unknown';
+			document.getElementById('mdlExtToolTip').innerHTML = 'No Suggestions Available';
+		}			
+	}
 }
 
 function loadNextLink() {
@@ -613,6 +641,19 @@ function loadNextLink() {
 		document.getElementById('mdlNavEpisodes').style.display = 'none';
 	}
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
+	
+	var tipList = document.getElementById('hdnValues8').childNodes[0];
+	if (tipList != null) {
+		try {
+			var tipType = tipList.childNodes[lnkIndex].innerHTML.split('*-*')[0];
+			var tipValue = tipList.childNodes[lnkIndex].innerHTML.split('*-*')[1];
+			document.getElementById('mdlToolTipType').innerHTML = tipType;
+			document.getElementById('mdlExtToolTip').innerHTML = tipValue;
+		} catch (err) {
+			document.getElementById('mdlToolTipType').innerHTML = 'Unknown';
+			document.getElementById('mdlExtToolTip').innerHTML = 'No Suggestions Available';
+		}
+	}
 }
 
 function loadPreviousEpisode() {
@@ -920,6 +961,16 @@ function mdlNavInfo_Click() {
 		document.getElementById('mdlNavButtons').style.height = 'auto';
 		document.getElementById('navCntrlContainer').style.maxWidth = '75px';
 		document.getElementById('navContainer').style.display = 'none';
+	}
+}
+
+function mdlHelp_Click() {
+	if (document.getElementById('helpContainer').style.display == 'none') {
+		document.getElementById('helpCntrlContainer').style.maxWidth = '250px';
+		document.getElementById('helpContainer').style.display = 'block';
+	} else {
+		document.getElementById('helpCntrlContainer').style.maxWidth = '75px';
+		document.getElementById('helpContainer').style.display = 'none';
 	}
 }
 

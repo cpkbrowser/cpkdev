@@ -192,6 +192,7 @@ function PWTV_getEpisodes_processResults(rslt2) {
 function PWTV_getLinks(lnkUrl) {
 	var lnkList = {};
 	document.getElementById('mdlNavButtons').style.display = 'none';
+	//document.getElementById('helpCntrlContainer').style.display = 'none';
 	$.ajax({
 		url: lnkUrl,
 		success: function(rslt3) {
@@ -208,6 +209,7 @@ function PWTV_getMovieLinks_processResults(rslt2) {
 	var topLink = PWTV_orderLinkList(lnkList);
 	
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
+	//document.getElementById('helpCntrlContainer').style.display = 'inline-block';
 	document.getElementById('simplemodal-container').childNodes[0].display = 'inline';
 	document.getElementById('mdlStartMovie').style.display = 'block';	
 }
@@ -221,6 +223,7 @@ function PWTV_getLinks_processResults(rslt3) {
 	var topLink = PWTV_orderLinkList(lnkList);
 	
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
+	//document.getElementById('helpCntrlContainer').style.display = 'inline-block';
 	document.getElementById('simplemodal-container').childNodes[0].display = 'inline';
 	if (topLink != 'none') {
 		prepareMovieFrame(topLink);
@@ -288,18 +291,21 @@ function PWTV_orderLinkList(lnkList) {
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 9;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Gorillavid*-*Click orange "Continue to Video" Button. After page loads, click play button (ad may be covering button).';
 			a_count++;
 		} else if (tmpString.indexOf('bm93dmlkZW8uZXU') != -1) {
 			//Nowvideo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 8;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Nowvideo*-*Close ads that are on-top of video player. Click play button.';
 			a_count++;
 		} else if (tmpString.indexOf('c2hhcmVyZXBvLmNvbQ') != -1) {
 			//ShareRepo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 7;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'ShareRepo*-*Click play button.';
 			a_count++;
 		} else if (tmpString.indexOf('dGhldmlkZW8ubWU') != -1) {
 			//theVideo
@@ -310,36 +316,42 @@ function PWTV_orderLinkList(lnkList) {
 				authLinks[a_count][0] = 6;
 			}
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'theVideo.me*-*Click blue "Proceed to Video" button. After page loads, click play button (ad may be covering button)';
 			a_count++;
 		} else if (tmpString.indexOf('c29ja3NoYXJlLmNvbQ') != -1) {
 			//Sockshare
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 5;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Sockshare*-*Click blue "Proceed to Video" button. After page loads, click play button';
 			a_count++;
 		} else if (tmpString.indexOf('cHJvbXB0ZmlsZS5jb20') != -1) {
 			//Promptfile
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 4;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Promptfile*-*Click grey "Continue to File" button. After page loads, click "Continue" button';
 			a_count++;
 		} else if (tmpString.indexOf('bm92YW1vdi5jb20') != -1) {
 			//Novamov
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 3;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Novamov*-*Close ads that are on-top of video player. Click play button.';
 			a_count++;
 		} else if (tmpString.indexOf('bm9zdmlkZW8uY29t') != -1) {
 		    //Nosvideo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 2;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Nosvideo*-*Click orange "Proceed to Video" button. After page loads, click play button (ad may be covering button)';
 			a_count++;
 		} else if (tmpString.indexOf('cHV0bG9ja2VyLmNvbQ') != -1) {
 			//Putlocker
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 1;
 			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Putlocker*-*Click blue "Proceed to Video" button. After page loads, click play button';
 			a_count++;
 		} else if (tmpString.indexOf('ZnJhbWVndGZv') != -1) {
 			//do nothing
@@ -372,7 +384,7 @@ function PWTV_orderLinkList(lnkList) {
 	
 	var topLink;
 	if (a_count > 0) {
-		topLink = authLinks[0][1];
+		topLink = authLinks[0][1];		
 	} else if (u_count > 0) {
 		topLink = unauthLinks[0];
 	} else {
@@ -398,13 +410,16 @@ function PWTV_loadLinkResults(authLinks, unauthLinks) {
 	$("#hdnValues6").empty();
 
 	var table = '<ul>';
+	var table2 = '<ul>';
 	for (i = 0; i < authLinks.length; i++) {
 		table += ('<li>' + authLinks[i][1] + '</li>');
+		table2 += ('<li>' + authLinks[i][2] + '</li>');
 	}
 	for (i = 0; i < unauthLinks.length; i++) {
 		table += ('<li>' + unauthLinks[i] + '</li>');
 	}
 	table += '</ul></div>';
+	table2 += '</ul></div>';
 	
 	var div1 = document.createElement('div');
 	div1.id = 'LinkList';
@@ -412,9 +427,18 @@ function PWTV_loadLinkResults(authLinks, unauthLinks) {
 	div1.innerHTML = table;
 	div1 = div1.firstChild;
 	
+	var div2 = document.createElement('div');
+	div2.id = 'LinkList';
+	div2.style.display = 'none';
+	div2.innerHTML = table2;
+	div2 = div2.firstChild;
+	
 	var t1 = document.createTextNode('0');	
 	document.getElementById('hdnValues6').appendChild(div1);
 	document.getElementById('hdnValues6').appendChild(t1);
+	
+	$("#hdnValues8").empty();
+	document.getElementById('hdnValues8').appendChild(div2);
 }
 
 
