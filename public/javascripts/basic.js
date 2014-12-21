@@ -202,6 +202,7 @@ function createUser() {
 		email: document.getElementById('email').value,
 		phone: document.getElementById('phone').value,
 		bday: document.getElementById('bday').value,
+		country: document.getElementById('country-signup').value,
 		zip: document.getElementById('zip').value,
 		age: document.getElementById('age').value,
 		gender: document.getElementById('gender').value,

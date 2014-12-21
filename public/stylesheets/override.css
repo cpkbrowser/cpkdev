@@ -391,7 +391,6 @@ ul.season_list {
 }
 .vid-grid{
 	margin-top: 5px;
-	padding-bottom: 50px;
 	max-width: 1270px;
 	margin: 0 auto;
 	display: block;
@@ -617,7 +616,7 @@ img.landing-main-pic {
 }
 .landing-video {
 	padding-top:30px;
-	max-width:555px;
+	width: 100%;
 }
 .coax {
 	z-index: 999;
@@ -630,6 +629,7 @@ h4.catch-phase1 {
 	font-size: 29px;
 	font-size: 2.9rem;
 	font-family: Cantarell, Verdana, sans-serif;
+
 }
 
 @media (max-width:992px) {
@@ -637,6 +637,12 @@ h4.catch-phase1 {
 		position:static;
 		text-align: center;
 		padding: 10px 0px 20px 0px;
+	}
+}
+@media (max-width:480px) {
+	h4.catch-phase1 {
+		font-size: 30px;
+		font-size: 3.0rem;
 	}
 }
 
@@ -1030,3 +1036,161 @@ p.tool-tip-info {
 	right: 25px !important;
 }
 
+.supported-devices {
+	color: white;
+	text-align: center;
+   	padding: 30px 0;
+}
+
+.support-icons {
+	font-size: 40px;
+	font-size: 4.0rem;
+	color: red;
+}
+
+
+@media (min-width: 992px) {
+	.support-header {
+		font-size: 25px;
+		font-size: 2.5rem;
+		margin: 20px 0;
+	}
+}
+
+@media (max-width: 992px) {
+	.support-header {
+		font-size: 18px;
+		font-size: 1.8rem;
+	}
+}
+@media (max-width: 768px) {
+	.support-header {
+		font-size: 25px;
+		font-size: 2.5rem;
+	}
+}
+
+span.sup-title {
+	margin: 10px 0;
+}
+.no-margin-top {
+	margin-top: 0;
+}
+h1.catch-phrase-main {
+	text-align: right;
+	color: white;
+	font-size: 6.0rem;
+	font-size: 60px;
+	margin: 40px;
+	font-family: Cantarell, Verdana, sans-serif;
+}
+
+@media (max-width:992px) {
+	h1.catch-phrase-main {
+		font-size: 4.0rem;
+		font-size: 40px;
+	}
+}
+@media (max-width:768px) {
+	h1.catch-phrase-main {
+		text-align: center;
+		font-size: 5.5rem;
+		font-size: 55px;
+		margin: 20px;
+	}
+}
+@media (max-width:480px) {
+	h1.catch-phrase-main {
+		font-size: 4.0rem;
+		font-size: 40px;
+		margin: 20px;
+	}
+}
+
+.top-landing {
+	background: black; /* The Fallback */
+    background: rgba(0, 0, 0, 0.55);
+    font-family: Cantarell, Verdana, sans-serif;
+}
+h4.catch-phase1 {
+	text-align:center;
+	font-size: 40px;
+	font-size: 4.0rem;
+	background: black; /* The Fallback */
+    background: rgba(0, 0, 0, 0.55);
+	padding: 40px 0;
+	-webkit-border-radius: 24px;
+	-moz-border-radius: 24px;
+	border-radius: 24px;
+	max-width: 480px;
+	margin: 0 auto;
+	margin-top: 20px;
+	display: block;
+}
+@media (max-width:480px) {
+	h4.catch-phase1 {
+		font-size: 3.0rem;
+		font-size: 30px;
+		margin: 10px 0;
+	}
+}
+.signup-ad {
+	background: black;
+	padding: 40px 0;
+	color: white;
+	font-family: Cantarell, Verdana, sans-serif;
+}
+img.primary-ad-img {
+	max-width: 100%;
+	margin: 0 auto;
+	display: block;
+}
+.padding-off {
+	padding-left: 0;
+}
+@media (max-width:992px) {
+	.bottom-landing-titles {
+		font-size: 32px;
+		font-size: 3.2rem;
+	}
+}
+.top-landing-wrap {
+	max-width: 900px;
+	margin: 0 auto;
+	display: block;
+}
+.social-media-icons-landing {
+	font-size: 40px;
+	font-size: 4.0rem;
+}
+
+a.social-icons-landing {
+	color: white;
+}
+a.social-icons-landing:hover {
+	color: red !important; 
+}
+.twitter-feed {
+	display:block;
+	margin: 20px auto !important;
+}
+iframe#twitter-widget-0 {
+	width: 100% !important;
+	max-width: 400px;
+}
+span.news-date {
+	padding-bottom: 20px;
+}
+.news-feed {
+	padding-bottom: 7px;
+}
+@media (max-width:992px) {
+	.news-feed {
+		padding: 7px 0;
+	}
+}
+.bottom-section-landing {
+	background: black; /* The Fallback */
+    background: rgba(0, 0, 0, 0.55);
+    padding-bottom: 30px;
+}
