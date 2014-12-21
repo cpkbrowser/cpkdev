@@ -957,10 +957,16 @@ function mdlNavInfo_Click() {
 		document.getElementById('mdlNavButtons').style.height = 'auto';
 		document.getElementById('navCntrlContainer').style.maxWidth = '180px';
 		document.getElementById('navContainer').style.display = 'block';
+		if (document.getElementById('helpCntrlContainer').style.display == 'none') {
+			document.getElementById('navCntrlContainer').style.zIndex = '999';
+		} else {
+			document.getElementById('navCntrlContainer').style.zIndex = '9999';
+		}		
 	} else {
 		document.getElementById('mdlNavButtons').style.height = 'auto';
 		document.getElementById('navCntrlContainer').style.maxWidth = '75px';
 		document.getElementById('navContainer').style.display = 'none';
+		document.getElementById('navCntrlContainer').style.zIndex = '0';
 	}
 }
 
@@ -968,9 +974,15 @@ function mdlHelp_Click() {
 	if (document.getElementById('helpContainer').style.display == 'none') {
 		document.getElementById('helpCntrlContainer').style.maxWidth = '250px';
 		document.getElementById('helpContainer').style.display = 'block';
+		if (document.getElementById('navCntrlContainer').style.display == 'none') {
+			document.getElementById('helpCntrlContainer').style.zIndex = '999';
+		} else {
+			document.getElementById('helpCntrlContainer').style.zIndex = '9999';
+		}				
 	} else {
 		document.getElementById('helpCntrlContainer').style.maxWidth = '75px';
 		document.getElementById('helpContainer').style.display = 'none';
+		document.getElementById('helpCntrlContainer').style.zIndex = '0';
 	}
 }
 
