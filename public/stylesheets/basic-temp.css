@@ -1,0 +1,269 @@
+@font-face{font-family:'gotham_bookregular';src:url("../fonts/gotham-book.eot");src:url("../fonts/gotham-book.eot?#iefix") format("embedded-opentype"),
+			url("../fonts/gotham-book.woff2") format("woff2"),
+			url("../fonts/gotham-book.woff") format("woff"),
+			url("../fonts/gotham-book.ttf") format("truetype"),
+			url("../fonts/gotham-book.svg#gotham_bookregular") format("svg");font-weight:normal;font-style:normal}
+
+@font-face{
+			font-family:'gotham_bolditalic';src:url("../fonts/gotham-bold-italic.eot");src:url("../fonts/gotham-bold-italic.eot?#iefix") format("embedded-opentype"),
+			url("../fonts/gotham-bold-italic.woff2") format("woff2"),
+			url("../fonts/gotham-bold-italic.woff") format("woff"),
+			url("../fonts/gotham-bold-italic.ttf") format("truetype"),
+			url("../fonts/gotham-bold-italic.svg#gotham_bolditalic") format("svg");font-weight:normal;font-style:normal}
+
+@font-face{
+			font-family:'gotham_bookitalic';src:url("../fonts/gotham-book-italic.eot");src:url("../fonts/gotham-book-italic.eot?#iefix") format("embedded-opentype"),
+			url("../fonts/gotham-book-italic.woff2") format("woff2"),
+			url("../fonts/gotham-book-italic.woff") format("woff"),
+			url("../fonts/gotham-book-italic.ttf") format("truetype"),
+			url("../fonts/gotham-book-italic.svg#gotham_bookitalic") format("svg");font-weight:normal;font-style:normal}
+
+@font-face{
+			font-family:'gotham_boldregular';src:url("../fonts/gotham-bold.eot");src:url("../fonts/gotham-bold.eot?#iefix") format("embedded-opentype"),
+			url("../fonts/gotham-bold.woff2") format("woff2"),
+			url("../fonts/gotham-bold.woff") format("woff"),
+			url("../fonts/gotham-bold.ttf") format("truetype"),
+			url("../fonts/gotham-bold.svg#gotham_boldregular") format("svg");font-weight:normal;font-style:normal
+}
+
+a {
+	color: white !important;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: red !important;
+}
+@media (max-width:480px) {
+	ul.mobile-arrange-list {
+		padding-left: 10px;
+	}
+}
+
+/*Beginning of copyright.html CSS*/
+hr.section-basic {
+	margin: 5px 0 20px 0;
+	border: 0;
+	border-top: 1px solid #eee;
+}
+ul ul, ul ol, ol ul, ol ol {
+	padding: 14px 20px;
+}
+@media (max-width:480px) {
+	ul ul, ul ol, ol ul, ol ol {
+		padding: 8px 20px;
+	}
+}
+.row-reset {
+	margin: 0;
+}
+ul.section {
+	padding-left: 25px;
+}
+body.basic {
+	background: url(img/bg.png);/*ALREADY ADDED TO CPK (REMOVE ME)*/
+	color: white;
+	font-family: 'gotham_bookregular', sans-serif;
+	text-align:left !important;
+}
+li.tos {
+	list-style-type:none;
+}
+h1 {
+	font-size: 42px;
+	font-size: 4.2rem;
+}
+@media (max-width: 768px) {
+	h1 {
+		font-size: 32px;
+		font-size: 3.2rem;	
+	}
+}
+h1.primary,
+h2.primary,
+h4.primary {
+	margin: 20px 0;
+	text-align: left;
+	color:red;
+}
+
+h4.primary {
+	margin-bottom: 5px;
+	font-size: 28px;
+	font-size: 2.8rem;
+}
+
+@media (max-width:480px) {
+	h4.primary {
+		font-size: 22px;
+		font-size: 2.2rem;
+	}
+}
+
+h5.primary {
+	font-size: 21px;
+	font-size: 2.1rem;
+}
+
+.copyright-bg {
+   background: rgb(0, 0, 0);  /*The Fallback */
+   background: rgba(0, 0, 0, 0.55); 
+   padding: 20px 60px;
+   margin-bottom: 40px;
+}
+@media (max-width:480px) {
+	.copyright-bg {
+		padding: 0 20px;
+		padding-bottom:40px;
+	}
+}
+a.link-space:hover {
+	color: red;
+}
+.main-link,
+a.link-space {
+	text-decoration: underline;
+	color: white;
+	font-size:16px;
+	font-size:1.6rem;
+	margin: 0 auto;
+	padding: 10px;
+	width: 100%;
+	background: black;
+	border: 2px solid red;
+	display: block;
+	text-align: center;
+	max-width: 370px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-transition: background .275s ease .275s;
+	-moz-transition: background .275s ease .275s;
+	-o-transition: background .275s ease .275s;
+	transition: background .275s ease .275s;
+}
+@media (max-width:768px) {
+	.main-link,
+	a.link-space {
+		margin-top: 20px;
+	} 
+}
+.main-link:hover {
+	color: red;
+}
+span.highlight {
+	color:red;
+}
+.top-qoute {
+	font-size: 19px;
+	font-size: 1.9rem;
+	margin-top: 35px;
+	line-height: 1.4;
+	text-align: justify;
+	margin: 32px 40px;
+	max-width: 550px;
+	border-right: 4px solid rgb(255, 0, 0);
+	border-left: 4px solid red;
+	padding: 0px 20px;
+}
+@media (max-width:992px) {
+	.top-qoute {
+		font-size: 15px;
+		font-size: 1.5rem;
+	}
+}
+@media (max-width:480px) {
+	.top-qoute {
+		margin: 10px;
+	}
+}
+
+li.upsize {
+	font-size: 19px;
+	font-size: 1.9rem;
+}
+
+h4.secoundary {
+	font-size: 30px;
+	font-size: 3.0rem;
+	margin-bottom:30px;
+	text-align: center;
+	border-bottom: 2px solid red;
+	max-width: 400px;
+	margin: 40px auto;
+}
+@media (min-width:768px) {
+	.buttom-sources{
+		margin-bottom: 50px;
+	}
+}
+@media (max-width:480px) {
+	h4.secoundary {
+		margin: 20px 0;
+		max-width: 100%;
+	}
+}
+.right-direction {
+	margin-left: 20px;
+	display:none;
+}
+@media (min-width: 768px) {
+	.right-direction {
+		font-size: 24px;
+		font-size: 2.4rem;
+		display:block !important;
+		float:right;
+	}
+}
+/*end of copyright.html CSS*/
+
+
+/*Start of FAQ.html css*/
+a.base-link {
+	color: white;
+	text-decoration: underline;
+}
+
+a.base-link:hover {
+	color: red;
+}
+
+h4.faq-title {
+	font-size: 20px !important;
+	font-size: 2.0rem !important;
+}
+
+.signup-onFAQ {
+	padding-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+	.package-signup {
+		width:100%;
+		margin-bottom: 20px;
+	}
+	.signup-onFAQ {
+		padding-bottom: 0px;
+		margin-bottom: 20px;
+	}
+}
+.tos-list {
+	list-style-type: none;
+}
+
+li.tos-list,
+li.sub-list {
+	margin: 20px 10px;
+}
+
+.exp-tos-list {
+	margin-bottom: 0px !important;
+}
+.exp-tos-top {
+	margin-top: 0px !important;
+}
+.icon-space {
+	margin-right: 10px;
+}
+
+/*end of faq.html CSS*/
