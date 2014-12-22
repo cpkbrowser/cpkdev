@@ -13,6 +13,7 @@ module.exports = function() {
 		email: String,
 		phone: String,
 		birthday: String,
+		country: String,
 		zip_code: Number,
 		age_range: String,
 		gender: String,

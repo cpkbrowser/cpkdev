@@ -22,11 +22,7 @@ $(document).ready(function() {
 	});
 	
 	$("#btnSignUp").click(function() {
-		document.getElementById('landingPage').style.display = 'none';
-		document.getElementById('signup-container').style.display = 'block';	
-		$('html, body').animate({
-            scrollTop: $("#signup-container").offset().top
-        }, 10);
+		signUp_onClick();
 	});
 	
 	$("#backToTop").click(function() {
@@ -191,6 +187,15 @@ function beginLogin() {
 			}
 		}
 	});	
+}
+
+function signUp_onClick() {
+	//document.getElementById('landingPage').style.display = 'none';
+	document.getElementById('signup-container').style.display = 'block';	
+	document.getElementById('signup-container').style.paddingBottom = '70px';
+	$('html, body').animate({
+        scrollTop: $("#signup-container").offset().top + $("#landingPage").offset().top
+    }, 10);
 }
 
 function createUser() {

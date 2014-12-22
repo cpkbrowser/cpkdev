@@ -43,6 +43,7 @@ router.post('/', function(req, res){
 					email: req.body.email,
 					phone: req.body.phone,
 					birthday: req.body.bday,
+					country: req.body.country,
 					zip_code: req.body.zip,
 					age_range: req.body.age,
 					gender: req.body.gender,
