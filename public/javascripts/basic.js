@@ -159,6 +159,7 @@ function quickLink_Click() {
 }
 
 function beginLogin() {	
+	document.getElementById('vidGridContainer').style.display = 'block';
 	$.ajax({
 		url: '/cpkconnect',
 		type: 'POST',
@@ -250,7 +251,7 @@ function onEnter_Search(e) {
 		if (val == '') {
 			alert('Please enter a show you want to watch');
 		} else {
-			
+			document.getElementById('vidGridContainer').style.display = 'block';
 			$("#grdSrchResults").slideDown(150);
 			
 			temp_url = static_url + 'getSK?srch=' + val + '&type=tv';			
@@ -277,6 +278,7 @@ function onEnter_Login(e) {
 }
 
 function onClick_Search() {
+	document.getElementById('vidGridContainer').style.display = 'block';
 	$("#grdSrchResults").slideDown(150);
 	var val = document.getElementById('btnSearch').value.trim().replace(' ', '+');
 			
@@ -1110,15 +1112,19 @@ function openCPKLinks(t) {
 		case 'tos':
 			src = static_url + 'tos';
 			break;
-		case 'logout':
-			document.getElementsByTagName('header')[0].style.setAttribute("marginBottom", '0px');
+		case 'logout':			
+			eraseCookie('cpkuser');
+			eraseCookie('cpkpass');
+			window.onbeforeunload = function() {};
+			window.location.href = window.location.href;
+			return false;
 			break;			
 	}
 	
 	document.getElementById('iframeCPK').src = src;
 	var hgt = $(window).height();
 	var hdrHgt = $("#hdrAll").height();
-	hgt = hgt - hdrHgt;
+	hgt = (hgt - hdrHgt) - 5;
 	document.getElementById('iframeCPK').style.minHeight = hgt.toString() + 'px';
 	
 	document.getElementById('vidGridContainer').style.display = 'none';
@@ -1126,19 +1132,21 @@ function openCPKLinks(t) {
 	document.getElementById('cpkFooter').style.display = 'none';
 	document.getElementsByTagName('header')[0].style.marginBottom = '0px';
 	document.getElementById('internalLinks').style.display = 'block';
-	document.getElementsByTagName('body')[0].style.overflow = 'hidden';
 }
 
 function closeCPKInternal() {
 	document.getElementById('iframeCPK').src = 'about:blank';
-	document.getElementById('vidGridContainer').style.display = 'block';
+	var srch1 = document.getElementById('srchItem_n0').innerHTML;
+	var pop1 = document.getElementById('popItem_n0').innerHTML;
+	if (srch1 != 'Title of Movie or Episode' || pop1 != 'Title of Movie or Episode') {
+		document.getElementById('vidGridContainer').style.display = 'block';
+	}
 	if (document.getElementById('userInfo_ID').innerHTML == 'null') {
 		document.getElementById('landingPage').style.display = 'block';
 	}
 	document.getElementById('cpkFooter').style.display = 'block';
 	document.getElementsByTagName('header')[0].style.marginBottom = '20px';
 	document.getElementById('internalLinks').style.display = 'none';
-	document.getElementsByTagName('body')[0].style.overflow = 'auto';
 }
 
 

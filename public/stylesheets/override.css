@@ -1161,6 +1161,13 @@ img.primary-ad-img {
 	margin: 0 auto;
 	display: block;
 }
+@media (max-width:480px) {
+	.indent1 {
+		/* padding-top: 25px; */
+		text-indent: -35px;
+		padding-bottom: 10px;
+	}
+}
 .social-media-icons-landing {
 	font-size: 40px;
 	font-size: 4.0rem;

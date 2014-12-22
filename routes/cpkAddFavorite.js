@@ -58,7 +58,7 @@ router.post('/', function(req, res){
 									}
 								}
 								if (rslt3.favorites.indexOf(rslt2._id) == -1) {
-									rslt3.favorites = rslt3.favorites + rslt2._id + ';';
+									rslt3.favorites = (rslt2._id + ';' + rslt3.favorites);
 									rslt3.save(function(err4, rslt4) {
 										if (err4) {
 											mongoose.disconnect();
@@ -95,7 +95,7 @@ router.post('/', function(req, res){
 							}
 						}
 						if (rslt2.favorites.indexOf(rslt._id) == -1) {
-							rslt2.favorites = rslt2.favorites + rslt._id + ';';						
+							rslt2.favorites = (rslt._id + ';' + rslt2.favorites);						
 							rslt2.save(function(err3, rslt3) {
 								if (err3) {
 									mongoose.disconnect();
