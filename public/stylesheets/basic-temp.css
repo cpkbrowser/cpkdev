@@ -291,3 +291,8 @@ li.sub-list {
 		min-height: 150px;
 	}
 }
+@media (max-width:320px) {
+	.copyright-bg {
+		max-width: 318px;
+	}
+}
