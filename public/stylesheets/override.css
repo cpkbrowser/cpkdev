@@ -1277,3 +1277,7 @@ img.red-hover :hover{
 		display:block;
 	}
 }
+
+h1.privacy-mobile {
+	margin-top: 50px;
+}
