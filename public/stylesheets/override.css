@@ -580,6 +580,11 @@ span.nav-link-design {
 .land-page {
 	padding-bottom: 30px;
 }
+@media (max-width:480px) {
+	.land-page {
+		padding: 30px 0px;
+	}
+}
 .welcome {
 	font-family: Cantarell, Verdana, sans-serif;
 	color: red;
@@ -902,6 +907,7 @@ input#phone-number[placeholder] {
 	height: 63px;
 	font-size: 40px;
 	display: none;
+	cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -1088,8 +1094,8 @@ h1.catch-phrase-main {
 
 @media (max-width:992px) {
 	h1.catch-phrase-main {
-		font-size: 4.0rem;
-		font-size: 40px;
+		font-size: 4.8rem;
+		font-size: 48px;
 	}
 }
 @media (max-width:768px) {
@@ -1108,6 +1114,13 @@ h1.catch-phrase-main {
 	}
 }
 
+@media (max-width:320px) {
+	h1.catch-phrase-main {
+		font-size: 3.0rem;
+		font-size: 30px;
+	}
+}
+
 .top-landing {
 	background: black; /* The Fallback */
     background: rgba(0, 0, 0, 0.55);
@@ -1123,7 +1136,7 @@ h4.catch-phase1 {
 	-webkit-border-radius: 24px;
 	-moz-border-radius: 24px;
 	border-radius: 24px;
-	max-width: 480px;
+	max-width: 420px;
 	margin: 0 auto;
 	margin-top: 20px;
 	display: block;
@@ -1141,11 +1154,21 @@ h4.catch-phase1 {
 	color: white;
 	font-family: Cantarell, Verdana, sans-serif;
 }
+@media (max-width: 992px) {
+	.signup-ad {
+		padding: 15px 0;
+	}
+}
 img.primary-ad-img {
 	max-width: 100%;
-	margin: 0 auto;
+	margin: 4% auto;
 	display: block;
 	cursor: pointer;
+}
+@media (max-width: 992px) {
+	img.primary-ad-img {
+		margin:0 auto;
+	}
 }
 .padding-off {
 	padding-left: 0;
@@ -1155,18 +1178,14 @@ img.primary-ad-img {
 		font-size: 32px;
 		font-size: 3.2rem;
 	}
+	.stay-connect-title {
+		text-align: center;
+	}
 }
 .top-landing-wrap {
 	max-width: 900px;
 	margin: 0 auto;
 	display: block;
-}
-@media (max-width:480px) {
-	.indent1 {
-		/* padding-top: 25px; */
-		text-indent: -35px;
-		padding-bottom: 10px;
-	}
 }
 .social-media-icons-landing {
 	font-size: 40px;
@@ -1178,6 +1197,11 @@ a.social-icons-landing {
 }
 a.social-icons-landing:hover {
 	color: red !important; 
+}
+img.social-icon {
+	max-width: 100%;
+	margin: 0 auto;
+	display: block;
 }
 .twitter-feed {
 	display:block;
@@ -1206,4 +1230,45 @@ span.news-date {
 img.red-hover :hover{
 	border-color: #66afe9;
 	box-shadow: 0 0 8px rgba(255,0,0, 0.6);
+}
+
+/*iPad portrait - Might have to OVERRIDE - BOTTOM OF PAGE*/
+@media (max-width: 769px) and (min-width:768px) {
+	#signup-container label {
+		padding:0;
+	}
+	input.search {
+		font-size: 31px;
+		font-size: 3.1rem;
+		max-width: 400px;
+	}
+	.makers {
+		font-size: 14px;
+		font-size: 1.4rem;
+		padding-top:0;
+		text-align: left;
+	}
+	.back-to-top {
+		font-size: 30px;
+		font-size: 3.0rem;
+		height: 43px;
+	}
+	.bottom-section {
+		height: 41px;
+		padding-top: 10px;
+	}
+}/*End of Portrait iPad*/
+.signup-promo-mobile {
+	display: none;
+}
+
+@media (max-width:992px) {
+	.signup-promo {
+		display: none;
+	}
+}
+@media (max-width:992px) {
+	.signup-promo-mobile {
+		display:block;
+	}
 }

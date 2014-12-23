@@ -117,6 +117,11 @@ h5.primary {
 		padding-bottom:40px;
 	}
 }
+@media (max-width:320px) {
+	.copyright-bg {
+		padding-top: 50px !important;
+	}
+}
 a.link-space:hover {
 	color: red;
 }
@@ -267,3 +272,22 @@ li.sub-list {
 }
 
 /*end of faq.html CSS*/
+.package-wrap {
+	background: black; /* The Fallback */
+    background: rgba(0, 0, 0, 0.55);
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px; 
+	padding:5px;
+	min-height: 280px;
+}
+@media (max-width: 922px) {
+	.package-wrap {
+		min-height: 230px;
+	}
+}
+@media (max-width: 768px) {
+	.package-wrap {
+		min-height: 150px;
+	}
+}
