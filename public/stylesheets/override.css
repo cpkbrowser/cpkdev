@@ -1284,3 +1284,22 @@ h1.privacy-mobile {
 .social-media-wrap-icons {
 	text-align: center;
 }
+
+/* .disruption-notice {
+	height: 20px; 
+	background-color: red; 
+	color: white; 
+	overflow: hidden; 
+	width: 100%;
+	margin-left: auto; 
+	margin-right: auto;
+	bottom: 45px;
+	position: fixed;
+	display: none;
+}
+@media (max-width:767px) {
+	.disruption-notice {
+		bottom: 65px;
+		position: fixed;
+	}
+} */

@@ -6,6 +6,7 @@ var redir1 = static_url + 'getBlank';
 
 $(document).ready(function() {	
 	
+	$('.disruption-notice').marquee({speed: 10, leftToRight: false});
 	$("#btnSearch").bind('keypress', onEnter_Search);
 	$("#btnSrchSubmit").click(function() {
 		onClick_Search();
@@ -1127,6 +1128,7 @@ function openCPKLinks(t) {
 	hgt = (hgt - hdrHgt) - 5;
 	document.getElementById('iframeCPK').style.minHeight = hgt.toString() + 'px';
 	
+	document.getElementById('dn-container').style.display = 'none';
 	document.getElementById('vidGridContainer').style.display = 'none';
 	document.getElementById('landingPage').style.display = 'none';
 	document.getElementById('cpkFooter').style.display = 'none';
@@ -1147,6 +1149,7 @@ function closeCPKInternal() {
 	document.getElementById('cpkFooter').style.display = 'block';
 	document.getElementsByTagName('header')[0].style.marginBottom = '20px';
 	document.getElementById('internalLinks').style.display = 'none';
+	document.getElementById('dn-container').style.display = 'block';
 }
 
 
