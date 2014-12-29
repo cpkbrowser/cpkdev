@@ -13,7 +13,8 @@ module.exports = function() {
 		host: String,
 		link: String,
 		seasons: String,
-		watch_count: Number
+		watch_count: Number,
+		actors: String
 	});
 	mongoose.model('testShow', tvShow);
 };

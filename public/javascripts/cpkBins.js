@@ -18,7 +18,9 @@ $(document).ready(function() {
 						description: tmpInfo[2].innerHTML,
 						tags: tmpInfo[3].innerHTML,
 						year: tmpInfo[4].innerHTML,
-						link: tmpInfo[5].innerHTML
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
 					}
 					changeCPKBinObjects('popItem', i, info);
 				}
@@ -44,7 +46,9 @@ $(document).ready(function() {
 						description: tmpInfo[2].innerHTML,
 						tags: tmpInfo[3].innerHTML,
 						year: tmpInfo[4].innerHTML,
-						link: tmpInfo[5].innerHTML
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
 					}
 					changeCPKBinObjects('popItem', i, info);
 				}
@@ -71,7 +75,9 @@ $(document).ready(function() {
 						description: tmpInfo[2].innerHTML,
 						tags: tmpInfo[3].innerHTML,
 						year: tmpInfo[4].innerHTML,
-						link: tmpInfo[5].innerHTML
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
 					}
 					changeCPKBinObjects('favItem', i, info);
 				}
@@ -97,7 +103,9 @@ $(document).ready(function() {
 						description: tmpInfo[2].innerHTML,
 						tags: tmpInfo[3].innerHTML,
 						year: tmpInfo[4].innerHTML,
-						link: tmpInfo[5].innerHTML
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
 					}
 					changeCPKBinObjects('favItem', i, info);
 				}
@@ -124,7 +132,9 @@ $(document).ready(function() {
 						description: tmpInfo[2].innerHTML,
 						tags: tmpInfo[3].innerHTML,
 						year: tmpInfo[4].innerHTML,
-						link: tmpInfo[5].innerHTML
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
 					}
 					changeCPKBinObjects('recItem', i, info);
 				}
@@ -150,7 +160,9 @@ $(document).ready(function() {
 						description: tmpInfo[2].innerHTML,
 						tags: tmpInfo[3].innerHTML,
 						year: tmpInfo[4].innerHTML,
-						link: tmpInfo[5].innerHTML
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
 					}
 					changeCPKBinObjects('recItem', i, info);
 				}
@@ -228,6 +240,12 @@ function createBinTable(rslt, tmpID, binID) {
 		var link = document.createElement('td');
 		link.innerHTML = rslt[i].link;
 		row.appendChild(link);
+		var type = document.createElement('td');
+		type.innerHTML = rslt[i].show_type;
+		row.appendChild(type);
+		var actors = document.createElement('td');
+		actors.innerHTML = rslt[i].actors;
+		row.appendChild(actors);
 		body.appendChild(row);
 		
 		//load first 6 elements
@@ -261,6 +279,8 @@ function changeCPKBinObjects(prefix, i, info) {
 	document.getElementById(prefix + '_hdnYear' + i).innerHTML = info.year;
 	document.getElementById(prefix + '_hdnLink' + i).innerHTML = info.link;
 	document.getElementById(prefix + '_hdnGenre' + i).innerHTML = info.tags;
+	document.getElementById(prefix + '_hdnType' + i).innerHTML = info.show_type;
+	document.getElementById(prefix + '_hdnActors' + i).innerHTML = info.actors;
 }
 
 

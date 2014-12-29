@@ -100,6 +100,7 @@ function PWTV_processSearchResults(){
 }
 
 function PWTV_getEpisodes(src_url) {
+	$("#hdnModalType").empty();
 	var now = new Date();
 	$.ajax({
 		url: src_url,

@@ -35,7 +35,8 @@ router.post('/', function(req, res){
 					host: req.body.host,
 					link: req.body.link,
 					seasons: req.body.seasons,
-					watch_count: 1			
+					watch_count: 1,
+					actors: ""
 				});		
 				
 				newShow.save(function(err2, rslt2) {

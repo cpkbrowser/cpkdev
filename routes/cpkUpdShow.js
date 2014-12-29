@@ -34,7 +34,8 @@ router.post('/', function(req, res){
 					host: req.body.host,
 					link: req.body.link,
 					seasons: req.body.seasons,
-					watch_count: 1			
+					watch_count: 1,
+					actors: req.body.actors
 				});		
 				
 				newShow.save(function(err, rslt) {
@@ -54,6 +55,7 @@ router.post('/', function(req, res){
 				
 				rslt.watch_count = count;
 				rslt.seasons = req.body.seasons;
+				rslt.actors = req.body.actors;
 				rslt.save(function(err2, rslt2) {
 					if (err2) {
 						mongoose.disconnect();

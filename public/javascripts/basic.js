@@ -303,7 +303,6 @@ function open_mdlInfo(t) {
 	var fullName = "";
 	
 	//add conditional statement to allow for more plug-ins
-	var testx = t.id.substring(0, 4);
 	if (t.id.substring(0, 4) == 'srch') {
 		var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML + '&type=false'));
 		
@@ -312,6 +311,16 @@ function open_mdlInfo(t) {
 		child = child.firstChild;
 		document.getElementById('hdnValues').appendChild(child);
 		
+		var actors = "";
+		try {
+			var actorList = document.getElementsByClassName('movie_info')[0].getElementsByClassName('movie_info_actors')[0].getElementsByTagName('a');
+			for (i = 0; i < actorList.length; i++) {
+				actors += actorList[i].childNodes[0].nodeValue + ';';
+			}
+			actors = actors.substring(0, actors.length - 1);
+			document.getElementById('mdlInfo_Actors').innerHTML = actors;
+		} catch (ex) {}
+		
 		var desc = String(document.getElementsByClassName('movie_info')[0].getElementsByTagName('table')[0].getElementsByTagName('td')[0].getElementsByTagName('p')[0].innerHTML);	
 		document.getElementById('mdlInfo_Desc').innerHTML = desc.trim().replace(/\r?\n|\r/, '');
 		fullName = desc.split(':')[0];
@@ -319,6 +328,7 @@ function open_mdlInfo(t) {
 		document.getElementById('hdnValues').removeChild(oldList);
 	} else {
 		document.getElementById('mdlInfo_Desc').innerHTML = info[2].innerHTML;
+		document.getElementById('mdlInfo_Actors').innerHTML = info[7].innerHTML;
 		fullName = info[0].innerHTML;
 	}
 	
@@ -336,9 +346,11 @@ function open_mdlInfo(t) {
 		onClose: function(dialog) {
 			document.getElementsByClassName('no-js')[0].style.overflow = 'auto';
 			$.modal.close();
-			send_cpkShowData('false');
 		}
 	});	
+	$(".modalCloseImg").click(function() {
+		send_cpkShowData('false');
+	});
 	document.getElementById('simplemodal-container').style.width = '100%';
 	var hgt = document.getElementById('mdlInfoPane').offsetHeight + 10;
 	document.getElementById('simplemodal-container').style.height = String(hgt) + 'px';
@@ -498,9 +510,11 @@ function prepareMovieFrame(currLink) {
 			frame.parentNode.style.display = 'none';
 			document.getElementById('mdlInfoPane').style.display = 'block';
 			$.modal.close();
-			send_cpkShowData('true');
 		}
 	});	
+	$(".modalCloseImg").click(function() {
+		send_cpkShowData('true');
+	});
 	
 	var modType = document.getElementById('hdnModalType').innerHTML;
 	if (modType == 'tv') {
@@ -668,7 +682,6 @@ function loadNextLink() {
 function loadPreviousEpisode() {
 	document.getElementById('mdlNavButtons').style.display = 'none';
 	//document.getElementsByClassName('modalCloseImg simplemodal-close')[0].display = 'none';
-	var testx = document.getElementById('simplemodal-close');
 	var div1 = document.getElementById('hdnValues5');	
 	var tmpSsn = div1.childNodes[0].nodeValue;
 	var ssn = parseInt(tmpSsn, 10);
@@ -701,7 +714,6 @@ function loadPreviousEpisode() {
 function loadNextEpisode() {	
 	document.getElementById('mdlNavButtons').style.display = 'none';
 	//document.getElementsByClassName('modalCloseImg simplemodal-close')[0].display = 'none';
-	var testx = document.getElementById('simplemodal-close');
 	var div1 = document.getElementById('hdnValues5');	
 	var tmpSsn = div1.childNodes[0].nodeValue;
 	var ssn = parseInt(tmpSsn, 10);
@@ -739,76 +751,77 @@ function send_cpkShowData(watched) {
 	var activeDiv = document.getElementById('mdlActive_Div').innerHTML;
 	var showInfo = document.getElementById(activeDiv).getElementsByTagName('div')[1].getElementsByTagName('p');
 	
-	var showType;
-	try {
-		var ssnElements = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
-		showType = 'tv';
-	} catch (ex){
-		showType = 'movie';
-	}
-	
-	var ssnList = '';
-	if (showType == 'tv') {
-		for (i = 0; i < ssnElements.length; i++) {
-			ssnList += (ssnElements[i].innerHTML + ',');
+	var showType = document.getElementById('hdnModalType').innerHTML;
+	if (showType == 'movie' || showType == 'tv') {
+		var ssnList = '';
+		var ssnElements;
+		if (showType == 'tv') {
+			try {
+				ssnElements = document.getElementById('hdnValues3').getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td');
+			} catch (ex) { 
+				ssnElements = ""; 
+			}
+			for (i = 0; i < ssnElements.length; i++) {
+				ssnList += (ssnElements[i].innerHTML + ',');
+			}
 		}
-	}
-	ssnList = ssnList.substring(0, ssnList.length - 1);
-	
-	//add conditional statement to allow for more plug-ins
-	var sHost = 'http://www.primewire.ag'
-	var sName = String(showInfo[2].innerHTML).split(':')[0].replace(':', '');
-	if (sName == null) {
-		sName = showInfo[0].innerHTML;
-	}
-	
-	var postData = {
-		name: sName,
-		show_type: showType,
-		description: showInfo[2].innerHTML,
-		tags: showInfo[3].innerHTML,
-		year: showInfo[4].innerHTML,
-		img_url: showInfo[1].innerHTML,
-		host: sHost,
-		link: showInfo[5].innerHTML,
-		seasons: ssnList		
-	}
-	
-	var request = $.ajax({
-		url: '/cpkUpdShow',
-		type: 'POST',
-		data: postData,
-		contentType: 'application/x-www-form-urlencoded',
-		dataType: 'json'		
-	});
-	
-	if (watched == 'true') {
-		request.success(function(rslt) {
-			var user_id = document.getElementById('userInfo_ID').innerHTML;
-			var request2 = $.ajax({
-				url: '/cpkLoadBins',
-				type: 'POST',
-				data: {popular: 'false', favorites: 'false', recent: 'true', userID: user_id},
-				contentType: 'application/x-www-form-urlencoded',
-				dataType: 'json'		
-			});
-			
-			request2.success(function(rslt) {
-				var table = createBinTable(rslt.rsltRec, 'cpk_recShows', 'recItem');
-				$('#hdn_tblRecent').empty();
-				document.getElementById('hdn_tblRecent').appendChild(table);
-				document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
-				document.getElementById('hdnRecSetMax').innerHTML = rslt.rsltRec.length;
-				//alert('succeeded');
-			});
+		ssnList = ssnList.substring(0, ssnList.length - 1);
+		
+		//add conditional statement to allow for more plug-ins
+		var sHost = 'http://www.primewire.ag'
+		var sName = String(showInfo[2].innerHTML).split(':')[0].replace(':', '');
+		if (sName == null) {
+			sName = showInfo[0].innerHTML;
+		}
+		
+		var actorList = document.getElementById('mdlInfo_Actors').innerHTML;
+		var postData = {
+			name: sName,
+			show_type: showType,
+			description: showInfo[2].innerHTML,
+			tags: showInfo[3].innerHTML,
+			year: showInfo[4].innerHTML,
+			img_url: showInfo[1].innerHTML,
+			host: sHost,
+			link: showInfo[5].innerHTML,
+			seasons: ssnList,
+			actors: actorList
+		}
+		
+		var request = $.ajax({
+			url: '/cpkUpdShow',
+			type: 'POST',
+			data: postData,
+			contentType: 'application/x-www-form-urlencoded',
+			dataType: 'json'		
 		});
-	}
-	
-	request.fail(function(jqXHR, textStatus) {
-		alert('Error Saving Show Info');
-	});
-	
-	var x = '';
+		
+		if (watched == 'true') {
+			request.success(function(rslt) {
+				var user_id = document.getElementById('userInfo_ID').innerHTML;
+				var request2 = $.ajax({
+					url: '/cpkLoadBins',
+					type: 'POST',
+					data: {popular: 'false', favorites: 'false', recent: 'true', userID: user_id},
+					contentType: 'application/x-www-form-urlencoded',
+					dataType: 'json'		
+				});
+				
+				request2.success(function(rslt2) {
+					var table = createBinTable(rslt2.rsltRec, 'cpk_recShows', 'recItem');
+					$('#hdn_tblRecent').empty();
+					document.getElementById('hdn_tblRecent').appendChild(table);
+					document.getElementById('hdnRecSetLoaded').innerHTML = 'true';
+					document.getElementById('hdnRecSetMax').innerHTML = rslt2.rsltRec.length;
+					//alert('succeeded');
+				});
+			});
+		}
+		
+		request.fail(function(jqXHR, textStatus) {
+			alert('Error Saving Show Info');
+		});
+	}		
 }
 
 function send_cpkFavData(t) {
@@ -838,83 +851,77 @@ function send_cpkFavData(t) {
 			var oldList = document.getElementsByClassName('hdn_tmpContainer')[0];
 			document.getElementById('hdnValues').removeChild(oldList);		
 		} else {
-			var x1 = callAjax((static_url + 'getPW_Details'), ('?srch=' + info[5].innerHTML + '&type=partial'));
-			
-			var child = document.createElement('div');
-			child.innerHTML = String(x1);
-			child = child.firstChild;
-			document.getElementById('hdnValues').appendChild(child);
-			
-			var tmpType = document.getElementsByClassName('hdn_tmpShowType')[0];
-			showType = tmpType.innerHTML;
-			
-			var oldList = document.getElementsByClassName('hdn_tmpShowType')[0];
-			document.getElementById('hdnValues').removeChild(oldList);
-		}
-		var sHost = 'http://www.primewire.ag'
-		var sName = String(info[2].innerHTML).split(':')[0].replace(':', '');
-		if (sName == null) {
-			sName = showInfo[0].innerHTML;
-		}
-		//end conditional statement
-		
-		var userID = document.getElementById('userInfo_ID').innerHTML;
-		var username = document.getElementById('userInfo_username').innerHTML;
-		var postData = {
-			name: sName,
-			show_type: showType,
-			description: info[2].innerHTML,
-			tags: info[3].innerHTML,
-			year: info[4].innerHTML,
-			img_url: info[1].innerHTML,
-			host: sHost,
-			link: info[5].innerHTML,
-			seasons: '',
-			userID: userID,
-			userName: username
+			showType = document.getElementById(dataID.replace('btnInfo', 'hdnType')).innerHTML;
 		}
 		
-		var request = $.ajax({
-			url: '/cpkAddFavorite',
-			type: 'POST',
-			data: postData,
-			contentType: 'application/x-www-form-urlencoded',
-			dataType: 'json'		
-		});
-		
-		request.success(function(rslt) {
-			var user_id = document.getElementById('userInfo_ID').innerHTML;
-			var request2 = $.ajax({
-				url: '/cpkLoadBins',
+		if (showType == 'movie' || showType == 'tv') {
+			var sHost = 'http://www.primewire.ag'
+			var sName = String(info[2].innerHTML).split(':')[0].replace(':', '');
+			if (sName == null) {
+				sName = showInfo[0].innerHTML;
+			}
+			//end conditional statement
+			
+			var userID = document.getElementById('userInfo_ID').innerHTML;
+			var username = document.getElementById('userInfo_username').innerHTML;
+			
+			var postData = {
+				name: sName,
+				show_type: showType,
+				description: info[2].innerHTML,
+				tags: info[3].innerHTML,
+				year: info[4].innerHTML,
+				img_url: info[1].innerHTML,
+				host: sHost,
+				link: info[5].innerHTML,
+				seasons: '',
+				userID: userID,
+				userName: username
+			}
+			
+			var request = $.ajax({
+				url: '/cpkAddFavorite',
 				type: 'POST',
-				data: {popular: 'false', favorites: 'true', recent: 'false', userID: user_id},
+				data: postData,
 				contentType: 'application/x-www-form-urlencoded',
 				dataType: 'json'		
 			});
 			
-			request2.success(function(rslt2) {
-				var table2 = createBinTable(rslt2.rsltFav, 'cpk_favShows', 'favItem');
-				$('#hdn_tblFavorites').empty();
-				document.getElementById('hdn_tblFavorites').appendChild(table2);
-				document.getElementById('hdnFavSetLoaded').innerHTML = 'true';
-				document.getElementById('hdnFavSetMax').innerHTML = rslt2.rsltFav.length;
-				//alert('succeeded');
+			request.success(function(rslt) {
+				var user_id = document.getElementById('userInfo_ID').innerHTML;
+				var request2 = $.ajax({
+					url: '/cpkLoadBins',
+					type: 'POST',
+					data: {popular: 'false', favorites: 'true', recent: 'false', userID: user_id},
+					contentType: 'application/x-www-form-urlencoded',
+					dataType: 'json'		
+				});
+				
+				request2.success(function(rslt2) {
+					var table2 = createBinTable(rslt2.rsltFav, 'cpk_favShows', 'favItem');
+					$('#hdn_tblFavorites').empty();
+					document.getElementById('hdn_tblFavorites').appendChild(table2);
+					document.getElementById('hdnFavSetLoaded').innerHTML = 'true';
+					document.getElementById('hdnFavSetMax').innerHTML = rslt2.rsltFav.length;
+					//alert('succeeded');
+				});
+				
+				request2.fail(function(jqXHR, textStatus) {
+					alert('Error Retrieving Favorites');
+				});
 			});
 			
-			request2.fail(function(jqXHR, textStatus) {
-				alert('Error Retrieving Favorites');
+			request.fail(function(jqXHR, textStatus) {
+				alert('Error Saving Favorites');
 			});
-		});
-		
-		request.fail(function(jqXHR, textStatus) {
-			alert('Error Saving Favorites');
-		});
+		}
 	} else {
 		alert('Please log-in to add shows to favorites list.');
 	}
 }
 
 function send_cpkRecentData(tmpID, sType) {
+	var test = document.getElementById('mdlInfo_Actors').innerHTML;
 	if (String(document.getElementById('userInfo_ID').innerHTML) != 'null') {
 		var prefix = String(tmpID).split('_');
 		var dataID = prefix[0] + 'Item_' + prefix[1].replace('dropdownMenu', 'btnInfo');
