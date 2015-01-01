@@ -485,7 +485,12 @@ function prepareMovieFrame(currLink) {
 	//if (plugin_type == 'PW')
 	frame.src = getVideo(currLink);
 	//frame.src = currLink;
-	frame.height = ($(window).height()) - 175
+	var isMobile = window.mobilecheck();
+	if (isMobile.iOS()) {
+		frame.height = 800
+	} else {
+		frame.height = ($(window).height()) - 175
+	} 	
 	frame.parentNode.style.display = 'block';
 	
 	$($(frame)).load(function() {
