@@ -533,6 +533,11 @@ function prepareMovieFrame(currLink) {
 		document.getElementById('mdlToolTipType').innerHTML = tipType;
 		document.getElementById('mdlExtToolTip').innerHTML = tipValue;
 	}
+	
+	if (isMobile.iOS()) {
+		//add class to iframe
+		$("#mdlMoviePane").addClass('iframeScroll');
+	}
 }
 
 function getVideo(lnkUrl) {
