@@ -485,12 +485,13 @@ function prepareMovieFrame(currLink) {
 	//if (plugin_type == 'PW')
 	frame.src = getVideo(currLink);
 	//frame.src = currLink;
-	var isMobile = window.mobilecheck();
+	/* var isMobile = window.mobilecheck();
 	if (isMobile.iOS()) {
 		frame.height = 1200
 	} else {
 		frame.height = ($(window).height()) - 175
-	} 	
+	}  */	
+	frame.height = ($(window).height()) - 175
 	frame.parentNode.style.display = 'block';
 	
 	$($(frame)).load(function() {
@@ -539,10 +540,10 @@ function prepareMovieFrame(currLink) {
 		document.getElementById('mdlExtToolTip').innerHTML = tipValue;
 	}
 	
-	if (isMobile.iOS()) {
+	/* if (isMobile.iOS()) {
 		//add class to iframe
 		$("#mdlMoviePane").addClass('iframeScroll');
-	}
+	} */
 }
 
 function getVideo(lnkUrl) {
