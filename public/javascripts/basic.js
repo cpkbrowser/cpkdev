@@ -487,7 +487,7 @@ function prepareMovieFrame(currLink) {
 	//frame.src = currLink;
 	var isMobile = window.mobilecheck();
 	if (isMobile.iOS()) {
-		frame.height = 800
+		frame.height = 1200
 	} else {
 		frame.height = ($(window).height()) - 175
 	} 	
