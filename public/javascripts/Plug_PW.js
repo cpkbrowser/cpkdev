@@ -288,36 +288,38 @@ function PWTV_orderLinkList(lnkList) {
 	for (i = 0; i < lnkList.length; i++) {
 		tmpString = String(lnkList[i]);
 		if (tmpString.indexOf('Z29yaWxsYXZpZC5pbg') != -1) {
-			//Gorillavid
+			//ShareRepo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 9;
 			authLinks[a_count][1] = lnkList[i];
-			authLinks[a_count][2] = 'Gorillavid*-*Click orange "Continue to Video" Button. After page loads, click play button (ad may be covering button).';
-			a_count++;
-		} else if (tmpString.indexOf('bm93dmlkZW8uZXU') != -1) {
-			//Nowvideo
-			authLinks[a_count] = new Array(2);
-			authLinks[a_count][0] = 8;
-			authLinks[a_count][1] = lnkList[i];
-			authLinks[a_count][2] = 'Nowvideo*-*Close ads that are on-top of video player. Click play button.';
-			a_count++;
-		} else if (tmpString.indexOf('c2hhcmVyZXBvLmNvbQ') != -1) {
-			//ShareRepo
-			authLinks[a_count] = new Array(2);
-			authLinks[a_count][0] = 7;
-			authLinks[a_count][1] = lnkList[i];
 			authLinks[a_count][2] = 'ShareRepo*-*Click play button.';
 			a_count++;
-		} else if (tmpString.indexOf('dGhldmlkZW8ubWU') != -1) {
+		} else if (tmpString.indexOf('bm93dmlkZW8uZXU') != -1) {
 			//theVideo
 			authLinks[a_count] = new Array(2);
 			if (isMobile.iOS() != null) {
 				authLinks[a_count][0] = 18;
+				authLinks[a_count][1] = lnkList[i];
+				authLinks[a_count][2] = 'theVideo.me*-*Click blue "Proceed to Video" button (sometimes twice). After page loads, click preview image (sometimes it loads slowly)';
 			} else {
-				authLinks[a_count][0] = 6;
-			}
+				authLinks[a_count][0] = 8;
+				authLinks[a_count][1] = lnkList[i];
+				authLinks[a_count][2] = 'theVideo.me*-*Click blue "Proceed to Video" button. After page loads, click play button (ad may be covering button)';
+			}			
+			a_count++;
+		} else if (tmpString.indexOf('c2hhcmVyZXBvLmNvbQ') != -1) {
+			//Gorillavid
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 7;
 			authLinks[a_count][1] = lnkList[i];
-			authLinks[a_count][2] = 'theVideo.me*-*Click blue "Proceed to Video" button. After page loads, click play button (ad may be covering button)';
+			authLinks[a_count][2] = 'Gorillavid*-*Click orange "Continue to Video" Button. After page loads, click play button (ad may be covering button).';
+			a_count++;
+		} else if (tmpString.indexOf('dGhldmlkZW8ubWU') != -1) {
+			//Nowvideo
+			authLinks[a_count] = new Array(2);
+			authLinks[a_count][0] = 6;
+			authLinks[a_count][1] = lnkList[i];
+			authLinks[a_count][2] = 'Nowvideo*-*Close ads that are on-top of video player. Click play button.';
 			a_count++;
 		} else if (tmpString.indexOf('c29ja3NoYXJlLmNvbQ') != -1) {
 			//Sockshare

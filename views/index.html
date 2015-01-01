@@ -664,14 +664,16 @@
 							</div>
 						</div>
 					</div><!--end of row-->
-					<div id="popItem_getMore" style="cursor: pointer;" class="more-arrow">
-						<p><i class="fa fa-chevron-circle-left"></i></p>
-					</div>
-					<div id="popItem_getLess" style="cursor: pointer;" class="more-arrow">
-						<p><i class="fa fa-chevron-circle-right"></i></p>
-					</div>
-					<p id="hdnPopSetCounter" style="display: none;">0</p>
-					<p id="hdnPopSetLoaded" style="display: none;">false</p>
+					<div id="Popular_MoreItems">
+						<div id="popItem_getMore" onclick="getMore_Click(this);" style="cursor: pointer;" class="more-arrow">
+							<p><i class="fa fa-chevron-circle-left"></i></p>
+						</div>
+						<div id="popItem_getLess" onclick="getLess_Click(this);" style="cursor: pointer;" class="more-arrow">
+							<p><i class="fa fa-chevron-circle-right"></i></p>
+						</div>
+						<p id="hdnPopSetCounter" style="display: none;">0</p>
+						<p id="hdnPopSetLoaded" style="display: none;">false</p>
+					</div>						
 				</div>
 			
 				<!--Favorites-->
@@ -910,15 +912,17 @@
 							</div>
 						</div>
 					</div><!--end of row-->
-					<div id="favItem_getMore" style="cursor: pointer;" class="more-arrow">
-						<p><i class="fa fa-chevron-circle-left"></i></p>
+					<div id="Favorites_MoreItems">
+						<div id="favItem_getMore" onclick="getMore_Click(this);" style="cursor: pointer;" class="more-arrow">
+							<p><i class="fa fa-chevron-circle-left"></i></p>
+						</div>
+						<div id="favItem_getLess" onclick="getLess_Click(this);" style="cursor: pointer;" class="more-arrow">
+							<p><i class="fa fa-chevron-circle-right"></i></p>
+						</div>
+						<p id="hdnFavSetCounter" style="display: none;">0</p>
+						<p id="hdnFavSetLoaded" style="display: none;">false</p>
+						<p id="hdnFavSetMax" style="display: none;">0</p>
 					</div>
-					<div id="favItem_getLess" style="cursor: pointer;" class="more-arrow">
-						<p><i class="fa fa-chevron-circle-right"></i></p>
-					</div>
-					<p id="hdnFavSetCounter" style="display: none;">0</p>
-					<p id="hdnFavSetLoaded" style="display: none;">false</p>
-					<p id="hdnFavSetMax" style="display: none;">0</p>
 				</div>
 	
 				<!--RecentlyWatched-->
@@ -1157,15 +1161,17 @@
 							</div>							
 						</div>
 					</div><!--end of row-->
-					<div id="recItem_getMore" style="cursor: pointer;" class="more-arrow">
-						<p><i class="fa fa-chevron-circle-left"></i></p>
+					<div id="Recent_MoreItems">
+						<div id="recItem_getMore" onclick="getMore_Click(this);" style="cursor: pointer;" class="more-arrow">
+							<p><i class="fa fa-chevron-circle-left"></i></p>
+						</div>
+						<div id="recItem_getLess" onclick="getLess_Click(this);" style="cursor: pointer;" class="more-arrow">
+							<p><i class="fa fa-chevron-circle-right"></i></p>
+						</div>
+						<p id="hdnRecSetCounter" style="display: none;">0</p>
+						<p id="hdnRecSetLoaded" style="display: none;">false</p>
+						<p id="hdnRecSetMax" style="display: none;">0</p>
 					</div>
-					<div id="recItem_getLess" style="cursor: pointer;" class="more-arrow">
-						<p><i class="fa fa-chevron-circle-right"></i></p>
-					</div>
-					<p id="hdnRecSetCounter" style="display: none;">0</p>
-					<p id="hdnRecSetLoaded" style="display: none;">false</p>
-					<p id="hdnRecSetMax" style="display: none;">0</p>
 				</div>				
 			</div>
 		</div><!--endofvidgrid-->
@@ -1600,7 +1606,7 @@
 					</div>
 				</div>
 			</div>	
-			<div id="mdlMoviePane">
+			<div id="mdlMoviePane" style="overflow: auto !important; -webkit-overflow-scrolling:touch !important;">
 				<!-- <iframe style="width: 100%; height: 800px;" src="about:blank" sandbox="allow-forms allow-same-origin allow-scripts allow-pointer-lock"></iframe>  -->
 				<div id="helpCntrlContainer" class="help-control">
 					<i class="fa fa-info-circle help-icon"></i>
