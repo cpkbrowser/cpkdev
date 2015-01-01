@@ -142,7 +142,7 @@ function PWTV_getEpisodes_processResults(rslt2) {
 	var containers = $("#showEpisodes .show_season");
 	if (containers.length < 1) {
 		//Internet Explorer Work-Around
-		containers = document.getElementById('hdnValues2').getElementsByTagName('div')[0];
+		containers = document.getElementById('hdnValues2').getElementsByTagName('div')[0].getElementsByTagName('div');
 		containers = $(containers);
 	}
 	var linkList = new Array();
