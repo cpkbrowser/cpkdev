@@ -43,11 +43,12 @@
         <!-- Kyle's JS code -->		
 		<script src="/javascripts/jquery.simplemodal.js"></script>
 		<script src="/javascripts/simplemodal-procs.js"></script>
+		<script src="/javascripts/generic_bin.js"></script>
 		<script src="/javascripts/cpkBins.js"></script>
     	<script src="/javascripts/basic.js"></script>
     	<script src="/javascripts/Plug_PW.js"></script>
 		<script src="/javascripts/jq-marquee2.js"></script>
-
+		
 		<!-- Favicons for all devices -->
 		<link rel="shortcut icon" href="/images/favicons/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/images/favicons/favicon.ico" type="image/x-icon">
@@ -109,43 +110,98 @@
 			  <button id="btnSrchSubmit" type="button" class="btn btn-default submit-button"><i class="fa fa-search search-icon"></i></button>
 			  </div>
               <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                <button onclick="$('.search-options').show();" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
                 <ul class="dropdown-menu keep-open dropdown-menu-left search-options" role="menu">
-                  <form>
-                    <!-- <div class="btn-group btn-group-justified btn-show-select">
-                          <input type="button" href="#" class="btn disabled btn-block tv-select" value="TV">
-                          <input type="button" href="#" class="btn disabled btn-block movie-select" value="Movie">
-                          <input type="button" href="#" class="btn disabled btn-block fav-select" value="Favs">
-                          <div class="btn-group">
-                             <div class="season">
-                                <select class="season-select">
-                                  <option value="" disabled selected>Season</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                </select>
-                            </div>
-                            <div class="episode">
-                                <select class="episode-select">
-                                  <option value="" disabled selected>Episode</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                </select>
-                            </div>
-                            <div class="source">
-                                <select class="source-select">
-                                  <option value="" disabled selected>Source</option>
-                                  <option>MovShare</option>
-                                  <option>PutLocker</option>
-                                  <option>Gorillavid</option>
-                                </select>
-                            </div>
-                          </div>
-                    </div> -->
-					<div style="padding-top: 5px; padding-left: 5px;">Options Coming Soon.</div>
+                  <form id="frmBinCategories">
+                    <div style="padding-top: 5px; padding-left: 5px;"> <!-- channels padding wrap -->
+						<!-- Start of Channels -->
+						<div class="row">
+							<div class="col-sm-11">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatANA" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//ActionAdventure.jpg" onclick="imgCategoryBin_Click('#imgCatANA');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatAdult" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//AdultCartoons.jpg" onclick="imgCategoryBin_Click('#imgCatAdult');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatCMD" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//Comedy.jpg" onclick="imgCategoryBin_Click('#imgCatCMD');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatDNM" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//DateNightFinal.jpg" onclick="imgCategoryBin_Click('#imgCatDNM');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatDOC" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//Docs.jpg" onclick="imgCategoryBin_Click('#imgCatDOC');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatFGM" class="channel-img-wrap Inactive_Category">
+												<img class="channels " src="/images/channels//FeelGood.jpg" onclick="imgCategoryBin_Click('#imgCatFGM');"></img>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="container modal-bottom-channel">
+									<div class="row">
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatKids" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//ForKids.jpg" onclick="imgCategoryBin_Click('#imgCatKids');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatMusic" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//LiveMusic.jpg" onclick="imgCategoryBin_Click('#imgCatMusic');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatNWR" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//NewReleases.jpg" onclick="imgCategoryBin_Click('#imgCatNWR');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatPPVS" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//PaperView.jpg" onclick="imgCategoryBin_Click('#imgCatPPVS');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatHBO" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//PremireShows.jpg" onclick="imgCategoryBin_Click('#imgCatHBO');"></img>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-6 padding-off">
+											<div id="imgCatSCI" class="channel-img-wrap Inactive_Category">
+												<img class="channels" src="/images/channels//SciFi.jpg" onclick="imgCategoryBin_Click('#imgCatSCI');"></img>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-1">
+								<div class="confirm-channel-wrap">
+									<div class="row">
+										<a id="cancelAddCategoryBins" class="apply-channels cancel-btn btn-primary" style="cursor: pointer; display: none;" class="btn-primary sign-cred-btn">Cancel</a>
+									</div>
+									<div class="row">
+										<a id="okAddCategoryBins" class="apply-channels btn-primary apply-ok-style" style="cursor: pointer; display: none;" class="btn-primary sign-cred-btn">OK</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					<!-- End of Channels -->
+					</div> <!-- channels padding wrap -->
                   </form>
                 </ul>
+				<div id="hdnBinCategoryList" style="display: none;"></div>
               </div><!-- /btn-group -->
             <div class="navbar-header">
               <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -186,7 +242,7 @@
         </header>
 
         <!--Content Section-->
-        <div id="vidGridContainer" class="vid-grid" style="display: none;">
+        <div id="vidGridContainer" class="vid-grid" style="display: none;">		
 			<!--SearchResults-->
 			<div id="grdSrchResults" style="display: none;">
 				<div id="srch_preLoader">
@@ -426,7 +482,7 @@
 				<p id="hdnRsltSetCounter" style="display: none;">0</p>
 				<p id="hdnRsltSetLoaded" style="display: none;">false</p>
 			</div>
-		
+			<div id="binCategoryContainer2" style="position: relative; display: none;"></div>
 			<div id="binCategoryContainer" style="position: relative; display: none;">
 				<!--PopularOnCPKBrowser-->
 				<div id="grdPopularOnCPK">
@@ -1173,7 +1229,7 @@
 						<p id="hdnRecSetMax" style="display: none;">0</p>
 					</div>
 				</div>				
-			</div>
+			</div>			
 		</div><!--endofvidgrid-->
 		<div id="internalLinks" class="intrinsic-container" style="display: none;">	
 			<a onclick="closeCPKInternal()">		
@@ -1538,6 +1594,8 @@
 		<div id="hdn_tblFavorites" style="display: none;"></div>
 		<!-- #cpk_recShows - User Profile List of Recently Watched Shows -->
 		<div id="hdn_tblRecent" style="display: none;"></div>
+		<!-- #List of all non-standard bins-->
+		<div id="hdn_tblNonStandardBins" style="display: none;"></div>
 		<!-- #ShowInfo - custom table containing important values from search results -->
 		<div id="hdnValues" style="display: none;"></div>
 		<!-- #showEpisodes - Raw data from primewire tv show episode list -->

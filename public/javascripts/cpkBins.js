@@ -1,5 +1,10 @@
 $(document).ready(function() {
-	
+	$('.channels').click(function(e) {
+		e.stopPropagation();
+	});
+	$('#frmBinCategories').click(function(e) {
+		e.stopPropagation();
+	});
 });
 
 function getMore_Click(t) {
@@ -26,27 +31,30 @@ function getMore_Click(t) {
 	
 	if (document.getElementById('hdn' + type + 'SetLoaded').innerHTML != 'false') {
 		var shows = document.getElementById('hdn_tbl' + cType).getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-		var popSetCounter = parseInt(document.getElementById('hdn' + type + 'SetCounter').innerHTML, 10);
-		if (popSetCounter < 14) {
-			popSetCounter++;
-			document.getElementById('hdn' + type + 'SetCounter').innerHTML = popSetCounter;
-			for (i = 0; i < 6; i++) {
-				var tmpInfo = shows[i + popSetCounter].getElementsByTagName('td');
-				var info = {
-					name: tmpInfo[0].innerHTML,
-					img_url: tmpInfo[1].innerHTML,
-					description: tmpInfo[2].innerHTML,
-					tags: tmpInfo[3].innerHTML,
-					year: tmpInfo[4].innerHTML,
-					link: tmpInfo[5].innerHTML,
-					show_type: tmpInfo[6].innerHTML,
-					actors: tmpInfo[7].innerHTML
+		if (shows.length > 6) {
+			var popSetCounter = parseInt(document.getElementById('hdn' + type + 'SetCounter').innerHTML, 10);
+			var maxLength = shows.length - 6;
+			if (popSetCounter < maxLength) {
+				popSetCounter++;
+				document.getElementById('hdn' + type + 'SetCounter').innerHTML = popSetCounter;
+				for (i = 0; i < 6; i++) {
+					var tmpInfo = shows[i + popSetCounter].getElementsByTagName('td');
+					var info = {
+						name: tmpInfo[0].innerHTML,
+						img_url: tmpInfo[1].innerHTML,
+						description: tmpInfo[2].innerHTML,
+						tags: tmpInfo[3].innerHTML,
+						year: tmpInfo[4].innerHTML,
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
+					}
+					changeCPKBinObjects(prefix + 'Item', i, info);
 				}
-				changeCPKBinObjects(prefix + 'Item', i, info);
+			} else {
+				
 			}
-		} else {
-			
-		}		
+		}
 	}
 }
 
@@ -74,26 +82,28 @@ function getLess_Click(t) {
 	
 	if (document.getElementById('hdn' + type + 'SetLoaded').innerHTML != 'false') {
 		var shows = document.getElementById('hdn_tbl' + cType).getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-		var recSetCounter = parseInt(document.getElementById('hdn' + type + 'SetCounter').innerHTML, 10);
-		if (recSetCounter > 0) {
-			recSetCounter--;
-			document.getElementById('hdn' + type + 'SetCounter').innerHTML = recSetCounter;
-			for (i = 0; i < 6; i++) {
-				var tmpInfo = shows[i + recSetCounter].getElementsByTagName('td');
-				var info = {
-					name: tmpInfo[0].innerHTML,
-					img_url: tmpInfo[1].innerHTML,
-					description: tmpInfo[2].innerHTML,
-					tags: tmpInfo[3].innerHTML,
-					year: tmpInfo[4].innerHTML,
-					link: tmpInfo[5].innerHTML,
-					show_type: tmpInfo[6].innerHTML,
-					actors: tmpInfo[7].innerHTML
+		if (shows.length > 6) {
+			var recSetCounter = parseInt(document.getElementById('hdn' + type + 'SetCounter').innerHTML, 10);
+			if (recSetCounter > 0) {
+				recSetCounter--;
+				document.getElementById('hdn' + type + 'SetCounter').innerHTML = recSetCounter;
+				for (i = 0; i < 6; i++) {
+					var tmpInfo = shows[i + recSetCounter].getElementsByTagName('td');
+					var info = {
+						name: tmpInfo[0].innerHTML,
+						img_url: tmpInfo[1].innerHTML,
+						description: tmpInfo[2].innerHTML,
+						tags: tmpInfo[3].innerHTML,
+						year: tmpInfo[4].innerHTML,
+						link: tmpInfo[5].innerHTML,
+						show_type: tmpInfo[6].innerHTML,
+						actors: tmpInfo[7].innerHTML
+					}
+					changeCPKBinObjects(prefix + 'Item', i, info);
 				}
-				changeCPKBinObjects(prefix + 'Item', i, info);
+			} else {
+				
 			}
-		} else {
-			
 		}
 	}
 }
@@ -114,6 +124,7 @@ function loadCPKBins_Standard() {
 		$('#hdn_tblPopular').empty();
 		document.getElementById('hdn_tblPopular').appendChild(table1);
 		document.getElementById('hdnPopSetLoaded').innerHTML = 'true';
+		document.getElementById('hdnFavSetMax').innerHTML = rslt.rsltPop.length;
 		
 		if (typeof rslt.rsltFav !== 'string') {
 			var table2 = createBinTable(rslt.rsltFav, 'cpk_favShows', 'favItem');
@@ -138,8 +149,60 @@ function loadCPKBins_Standard() {
 	});
 }
 
-function loadCPKBins_Categories(categories) {
+function loadCPKBins_Categories(postData) {
+		
+	var request = $.ajax({
+		url: '/cpkLoadBins2',
+		type: 'POST',
+		data: postData,
+		contentType: 'application/x-www-form-urlencoded',
+		dataType: 'json'		
+	});
 	
+	request.success(function(rslt) {
+		for (var i = 0; i < rslt.Bins.length; i++) {
+			var info = rslt.Bins[i].binData;
+			var isNull;
+			try {
+				isNull = info.obj;
+			} catch (ex) {}	
+			if (isNull != null) {
+				if (document.getElementById(info.container) == null) {
+					processDynamicBin(info);
+				}
+			} else {
+				try {
+					var remove = document.getElementById(info.remove);
+					remove.parentNode.removeChild(remove);
+				} catch (ex) {}				
+			}
+		}
+		$(".search-options").hide();
+	});		
+}
+
+function processDynamicBin(info) {
+	
+	var genericBin = get_GenericBin();
+	var divInfo = genericBin.replace(/xyzBIN_NAMEzyx/g, info.bin_name).replace(/xyzSECTION_HEADzyx/g, info.section_head).replace(/xyzCONTAINER_NAMEzyx/g, info.container_name);
+	divInfo = divInfo.replace(/xyzCONTAINER_IMGzyx/g, info.container_img).replace(/xyzCONTAINER_TITLEzyx/g, info.container_title).replace(/xyzPREFIXzyx/g, info.prefix).replace(/xyzC_TYPEzyx/g, info.c_type);
+	
+	var newDiv = document.createElement('div');
+	newDiv.innerHTML = divInfo;	
+	newDiv.id = info.container;
+	var firstElement = document.getElementById('binCategoryContainer2').getElementsByTagName('div')[0];
+	if (firstElement == null) {
+		document.getElementById('binCategoryContainer2').appendChild(newDiv);
+		document.getElementById('binCategoryContainer2').style.display = 'block';
+	} else {
+		document.getElementById('binCategoryContainer2').insertBefore(newDiv, firstElement);
+	}
+	
+	var table = createBinTable(info.obj, ('cpk_' + info.prefix + 'Shows'), (info.prefix + 'Item'));
+	var newDiv = document.createElement('div');
+	newDiv.id = 'hdn_tbl' + info.bin_name;
+	newDiv.appendChild(table);
+	document.getElementById('hdn_tblNonStandardBins').appendChild(newDiv);
 }
 
 function createBinTable(rslt, tmpID, binID) {

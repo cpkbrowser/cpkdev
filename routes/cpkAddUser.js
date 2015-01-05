@@ -55,28 +55,36 @@ router.post('/', function(req, res){
 				mongoose.disconnect();
 				res.json({success: 'true'}); */
 				
-				new_user.save(function(err2, rslt) {
+				new_user.save(function(err2, rslt2) {
 					if (err2) {
 						mongoose.disconnect();
 						res.json({usr_exists: 'false', usr_success: 'false', error: err2});
-					}
-					var new_UserProfile = new testUserProfile({
-						user_id: rslt._id,
-						username: rslt.username,
-						favorites: "",
-						recently_watched: "",
-						Theme: "cpkStandard",
-						last_signon: String(Date.today()),
-						referred_by: req.body.referred
-					});
-					new_UserProfile.save(function(err3, rslt2) {
-						if (err3) {
-							mongoose.disconnect();
-							res.json({usr_exists: 'false', usr_success: 'true', up_success: 'false', error: err2});
-						}
+					} else if (rslt2 == null) {
 						mongoose.disconnect();
-						res.json({usr_exists: 'false', usr_success: 'true', up_success: 'true', id: rslt._id, userName: rslt.username});	
-					});					
+						res.json({usr_exists: 'false', usr_success: 'false'});
+					} else {
+						var new_UserProfile = new testUserProfile({
+							user_id: rslt2._id,
+							username: rslt2.username,
+							favorites: "",
+							recently_watched: "",
+							Theme: "cpkStandard",
+							last_signon: String(Date.today()),
+							referred_by: req.body.referred
+						});
+						new_UserProfile.save(function(err3, rslt3) {
+							if (err3) {
+								mongoose.disconnect();
+								res.json({usr_exists: 'false', usr_success: 'true', up_success: 'false', error: err2});
+							} else if (rslt3 == null) {
+								mongoose.disconnect();
+								res.json({usr_exists: 'false', usr_success: 'true', up_success: 'false'});	
+							} else {
+								mongoose.disconnect();
+								res.json({usr_exists: 'false', usr_success: 'true', up_success: 'true', id: rslt2._id, userName: rslt2.username});	
+							}
+						});	
+					}										
 				}); 
 			}
 		});		

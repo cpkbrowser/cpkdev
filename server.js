@@ -20,6 +20,7 @@ var cpkConnect = require('./routes/cpkconnect');
 var cpkAddUser = require('./routes/cpkAddUser');
 var cpkUpdShow = require('./routes/cpkUpdShow');
 var cpkLoadBins = require('./routes/cpkLoadBins');
+var cpkLoadBins2 = require('./routes/cpkLoadBins2');
 var cpkAddFavorite = require('./routes/cpkAddFavorite');
 var cpkUpdateRecent = require('./routes/cpkUpdateRecent');
 
@@ -58,6 +59,7 @@ app.use('/cpkconnect', cpkConnect);
 app.use('/cpkAddUser', cpkAddUser);
 app.use('/cpkUpdShow', cpkUpdShow);
 app.use('/cpkLoadBins', cpkLoadBins);
+app.use('/cpkLoadBins2', cpkLoadBins2);
 app.use('/cpkAddFavorite', cpkAddFavorite);
 app.use('/cpkUpdateRecent', cpkUpdateRecent);
 

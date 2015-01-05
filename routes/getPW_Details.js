@@ -28,6 +28,7 @@ router.get('/', function(req, res){
   var getType = query.type;
   
   var x = "http://www.primewire.ag" + srchKey;
+  //var x = "http://www.vodly.to" + srchKey;
   download(x, function(data) {
     if (data) {
 	  var $ = cheerio.load(data);

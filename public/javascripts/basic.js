@@ -31,6 +31,10 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	$("#okAddCategoryBins").click(function() {
+		prepareChangeCategoryBins();
+	});
+	
 	$("#submit_fourth").click(function() {
 		createUser();
 	});
@@ -1011,6 +1015,61 @@ function mdlHelp_Click() {
 		document.getElementById('helpContainer').style.display = 'none';
 		document.getElementById('helpCntrlContainer').style.zIndex = '0';
 	}
+}
+
+function imgCategoryBin_Click(name) {
+	if (document.getElementById('userInfo_ID').innerHTML != 'null') {
+		var list = document.getElementById('hdnBinCategoryList').innerHTML;
+		if (list.indexOf(name) == -1) {
+			$(name).removeClass('Inactive_Category');
+			document.getElementById('hdnBinCategoryList').innerHTML = (list + name + ';');
+		} else {
+			$(name).addClass('Inactive_Category');
+			document.getElementById('hdnBinCategoryList').innerHTML = list.replace((name + ';'), '');
+		}
+		if (document.getElementById('okAddCategoryBins').style.display == 'none') {
+			document.getElementById('okAddCategoryBins').style.display = 'block';
+			document.getElementById('cancelAddCategoryBins').style.display = 'block';
+		}
+	} else {
+		alert('Please Log-in or Sign-up to access Category Bins');
+	}
+}
+
+function prepareChangeCategoryBins() {
+	var tmpList = document.getElementById('hdnBinCategoryList').innerHTML;
+	tmpList = tmpList.substring(0, tmpList.length - 1).replace(/[\#]/g, '').replace(/imgCat/g, '').toLowerCase();
+	
+	var fgm = ((tmpList.indexOf('fgm') == -1) ? 'false' : 'true');
+	var ppvs = ((tmpList.indexOf('ppvs') == -1) ? 'false' : 'true');
+	var music = ((tmpList.indexOf('music') == -1) ? 'false' : 'true');
+	var dnm = ((tmpList.indexOf('dnm') == -1) ? 'false' : 'true');
+	var cmd = ((tmpList.indexOf('cmd') == -1) ? 'false' : 'true');
+	var ana = ((tmpList.indexOf('ana') == -1) ? 'false' : 'true');
+	var nwr = ((tmpList.indexOf('nwr') == -1) ? 'false' : 'true');
+	var adult = ((tmpList.indexOf('adult') == -1) ? 'false' : 'true');
+	var doc = ((tmpList.indexOf('doc') == -1) ? 'false' : 'true');
+	var hbo = ((tmpList.indexOf('hbo') == -1) ? 'false' : 'true');
+	var sci = ((tmpList.indexOf('sci') == -1) ? 'false' : 'true');
+	var disney = ((tmpList.indexOf('kids') == -1) ? 'false' : 'true');
+	
+	var postData = {
+		fgm: fgm,
+		ppvs: ppvs,	
+		music: music,
+		dnm: dnm,
+		cmd: cmd,
+		ana: ana,
+		nwr: nwr,
+		adult: adult,
+		doc: doc,
+		hbo: hbo,
+		sci: sci,
+		disney: disney,
+		numBins: tmpList.split(';').length
+	};
+	
+	loadCPKBins_Categories(postData);
 }
 
 function callAjax(webUrl, queryString) {
