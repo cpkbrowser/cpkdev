@@ -71,6 +71,14 @@ $(document).ready(function() {
 			document.getElementById('user_remember_me').value = '0';
 		}
 	});
+	$("body").click(function(e) {
+		var container = $(".search-options");
+		var btn = $("#btnCatMenu");
+		if (!container.is(e.target) && container.has(e.target).length === 0 && !btn.is(e.target) && btn.has(e.target).length === 0) {
+			container.hide();
+		}
+	});
+
 	
 	var usrCookie = readCookie('cpkuser');
 	var passCookie = readCookie('cpkpass');
