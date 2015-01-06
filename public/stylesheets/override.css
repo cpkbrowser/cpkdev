@@ -1484,8 +1484,4 @@ a.apply-ok-style {
 		margin-top: 0px !important;
 	}
 }
-@media (max-width: 400px) {
-	.login {
-		top: -17px;
-	}
-}
+
