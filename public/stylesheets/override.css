@@ -1469,12 +1469,4 @@ a.apply-ok-style {
 }
 /*End of channels*/
 
-.dropdown-menu {
-	margin-top: 15px;
-}
 
-@media (max-width: 590px) {
-	.dropdown-menu {
-		margin-top: -53px;
-	}
-}
