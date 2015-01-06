@@ -1469,4 +1469,22 @@ a.apply-ok-style {
 }
 /*End of channels*/
 
+.login {
+	margin-top: 17px !important;
+}
 
+@media (max-width: 590px) {
+	.login {
+		margin-top: -53px !important;
+	}
+}
+@media (max-width: 480px) {
+	.login {
+		top: -30px;
+	}
+}
+@media (max-width: 400px) {
+	.login {
+		top: -17px;
+	}
+}
