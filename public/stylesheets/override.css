@@ -1485,3 +1485,20 @@ a.apply-ok-style {
 	}
 }
 
+/* Fix Channels For iPad Portrait */
+@media (max-width: 769px) and (min-width:768px) {
+	.search-options {
+		width: 767px;
+		height: 395px;
+	}
+	.dropdown-menu-left {
+		left: -569px;
+	}
+	a.apply-channels {
+		top: 340px;
+		left: -26px !important;
+	}
+	a.cancel-btn {
+		left: -98px !important;
+	}
+}
