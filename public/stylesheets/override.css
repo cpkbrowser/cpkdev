@@ -1502,10 +1502,11 @@ a.apply-ok-style {
 		left: -98px !important;
 	}
 }
-.logo {
-	background-position-y: 0px;
-}
 
+.logo {
+	background-position: 0px 0px;
+}
 .logo:hover, .logo:focus {
+	background-image: url(../img/cpklogo.png);
 	background-position-y: -78px;
 }
