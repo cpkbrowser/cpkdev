@@ -203,6 +203,7 @@ hr.section {
 	color: white;
 	padding:0!important;
 	margin-top: 40px;
+	text-shadow: 3px 3px 4px rgba(0,0,0,0.91);
 }
 
 .button-span {
@@ -210,6 +211,7 @@ hr.section {
 }
 h2.title {
 	font-size: 20px;
+	text-shadow: 3px 3px 4px rgba(0,0,0,0.91);
 }
 .row {
 	margin: 0 !important;
