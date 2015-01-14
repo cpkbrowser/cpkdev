@@ -1504,7 +1504,6 @@ a.apply-ok-style {
 }
 
 .logo:hover, .logo:focus {
-	background: none;
 	background-position-y: -78px;
 	-moz-transition: none !important;
     -webkit-transition: none !important;
