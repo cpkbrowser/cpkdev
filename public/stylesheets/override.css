@@ -1504,10 +1504,6 @@ a.apply-ok-style {
 }
 .logo {
 	background-position-y: 0px;
-	-webkit-transition: background-position-y .7s ease .7s;
-	-moz-transition: background-position-y .7s ease .7s;
-	-o-transition: background-position-y .7s ease .7s;
-	transition: background-position-y .7s ease .7s;
 }
 
 .logo:hover, .logo:focus {
