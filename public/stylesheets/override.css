@@ -1502,11 +1502,13 @@ a.apply-ok-style {
 		left: -98px !important;
 	}
 }
-
-.logo:hover, .logo:focus {
-	background-position-y: -78px;
+.logo {
 	-moz-transition: none !important;
     -webkit-transition: none !important;
     -o-transition: color 0 ease-in !important;
-    transition: none !important;
+    transition:none !important;
+}
+
+.logo:hover, .logo:focus {
+	background-position-y: -78px;
 }
