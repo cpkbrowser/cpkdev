@@ -29,7 +29,7 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- Updates for CSS : Outside of template CSS -->
-        <link rel="stylesheet" href="/stylesheets/override.css?nocache01141501">
+        <link rel="stylesheet" href="/stylesheets/override.css?nocache01161501">
 		
 		<link rel="stylesheet" href="/stylesheets/loader.css">
 		<link rel="stylesheet" href="/stylesheets/simplemodal.css">
@@ -44,9 +44,9 @@
 		<script src="/javascripts/jquery.simplemodal.js"></script>
 		<script src="/javascripts/simplemodal-procs.js"></script>
 		<script src="/javascripts/generic_bin.js"></script>
-		<script src="/javascripts/cpkBins.js?nocache01141501"></script>
-    	<script src="/javascripts/basic.js?nocache01141501"></script>
-    	<script src="/javascripts/Plug_PW.js?nocache01141501"></script>
+		<script src="/javascripts/cpkBins.js?nocache01161501"></script>
+    	<script src="/javascripts/basic.js?nocache01161501"></script>
+    	<script src="/javascripts/Plug_PW.js?nocache01161501"></script>
 		<script src="/javascripts/jq-marquee2.js"></script>
 		
 		<!-- Favicons for all devices -->
@@ -201,19 +201,13 @@
                 </ul>
 				<div id="hdnBinCategoryList" style="display: none;"></div>
               </div><!-- /btn-group -->
-            <div class="navbar-header">
-              <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button> -->
-                      <!-- The drop down menu -->
+            <div id="divUserAccess" class="navbar-header">              
+                <!-- Sign In / Up drop down menu -->
                 <ul class="nav pull-right login-buttons">
                   <li><a id="btnSignUp" style="cursor: pointer;" class="btn-primary sign-cred-btn">Sign Up</a></li>
                   <li class="divider-vertical"></li>
                   <li class="drop down">
-                    <a class="dropdown-toggle btn-primary sign-cred-btn" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <a class="dropdown-toggle btn-primary sign-cred-btn" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
                     <div id="ddlLogin" class="dropdown-menu login" style="padding: 15px; padding-bottom: 10px;">
                                   <!-- Login form here -->
                       <form id="frmUser" action="/" method="post" accept-charset="UTF-8">
@@ -225,6 +219,19 @@
                           <input id="btnLogin" class="btn btn-primary btnUserLogin" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="button" name="commit" value="Sign In" />
                       </form>
 					  <div id="hdnUserCookieExists" style="display: none;">false</div>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+			<div id="divUserMenu" style="display:none;" class="navbar-header">              
+                <!-- Documents / Log Out drop down menu -->
+                <ul class="nav pull-right login-buttons">
+				  <li><a id="btnSignOut" class="btn-primary sign-cred-btn" style="cursor: pointer;">Log Out</a></li>
+                  <li class="divider-vertical"></li>
+                  <li class="drop down">
+                    <a id="btnMoreStuff" style="cursor: pointer;" data-toggle="dropdown" class="btn-primary sign-cred-btn">&nbsp;More <strong class="caret"></strong></a>
+                    <div id="ddlMoreStuff" class="dropdown-menu login" style="padding: 15px; padding-bottom: 10px;">
+						Coming Soon...
                     </div>
                   </li>
                 </ul>
@@ -256,26 +263,24 @@
 						<div id="srchItem_container0" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img0" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img0" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="srchItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu0">
-													<div id="srchItem_btnInfo0" class="btn-primary-txt">Info
-													</div>
-													<div id="srchItem_hdnDiv0" style="display: none;">
-														<p id="srchItem_hdnName0"></p>
-														<p id="srchItem_hdnImg0"></p>
-														<p id="srchItem_hdnDesc0"></p>
-														<p id="srchItem_hdnGenre0"></p>
-														<p id="srchItem_hdnYear0"></p>
-														<p id="srchItem_hdnLink0"></p>
-													</div>
-												</button>											
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu0">
+												<div id="srchItem_btnInfo0" class="btn-primary-txt">Info
+												</div>
+												<div id="srchItem_hdnDiv0" style="display: none;">
+													<p id="srchItem_hdnName0"></p>
+													<p id="srchItem_hdnImg0"></p>
+													<p id="srchItem_hdnDesc0"></p>
+													<p id="srchItem_hdnGenre0"></p>
+													<p id="srchItem_hdnYear0"></p>
+													<p id="srchItem_hdnLink0"></p>
+												</div>											
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -292,26 +297,24 @@
 						<div id="srchItem_container1" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img1" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img1" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="srchItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu1">
-													<div id="srchItem_btnInfo1" class="btn-primary-txt">Info
-													</div>
-													<div id="srchItem_hdnDiv1" style="display: none;">
-														<p id="srchItem_hdnName1"></p>
-														<p id="srchItem_hdnImg1"></p>
-														<p id="srchItem_hdnDesc1"></p>
-														<p id="srchItem_hdnGenre1"></p>
-														<p id="srchItem_hdnYear1"></p>
-														<p id="srchItem_hdnLink1"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu1">
+												<div id="srchItem_btnInfo1" class="btn-primary-txt">Info
+												</div>
+												<div id="srchItem_hdnDiv1" style="display: none;">
+													<p id="srchItem_hdnName1"></p>
+													<p id="srchItem_hdnImg1"></p>
+													<p id="srchItem_hdnDesc1"></p>
+													<p id="srchItem_hdnGenre1"></p>
+													<p id="srchItem_hdnYear1"></p>
+													<p id="srchItem_hdnLink1"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -328,26 +331,24 @@
 						<div id="srchItem_container2" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img2" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img2" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="srchItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu2">
-													<div id="srchItem_btnInfo2" class="btn-primary-txt">Info
-													</div>
-													<div id="srchItem_hdnDiv2" style="display: none;">
-														<p id="srchItem_hdnName2"></p>
-														<p id="srchItem_hdnImg2"></p>
-														<p id="srchItem_hdnDesc2"></p>
-														<p id="srchItem_hdnGenre2"></p>
-														<p id="srchItem_hdnYear2"></p>
-														<p id="srchItem_hdnLink2"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu2">
+												<div id="srchItem_btnInfo2" class="btn-primary-txt">Info
+												</div>
+												<div id="srchItem_hdnDiv2" style="display: none;">
+													<p id="srchItem_hdnName2"></p>
+													<p id="srchItem_hdnImg2"></p>
+													<p id="srchItem_hdnDesc2"></p>
+													<p id="srchItem_hdnGenre2"></p>
+													<p id="srchItem_hdnYear2"></p>
+													<p id="srchItem_hdnLink2"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -364,26 +365,24 @@
 						<div id="srchItem_container3" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img3" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img3" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="srchItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu3">
-													<div id="srchItem_btnInfo3" class="btn-primary-txt">Info
-													</div>
-													<div id="srchItem_hdnDiv3" style="display: none;">
-														<p id="srchItem_hdnName3"></p>
-														<p id="srchItem_hdnImg3"></p>
-														<p id="srchItem_hdnDesc3"></p>
-														<p id="srchItem_hdnGenre3"></p>
-														<p id="srchItem_hdnYear3"></p>
-														<p id="srchItem_hdnLink3"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu3">
+												<div id="srchItem_btnInfo3" class="btn-primary-txt">Info
+												</div>
+												<div id="srchItem_hdnDiv3" style="display: none;">
+													<p id="srchItem_hdnName3"></p>
+													<p id="srchItem_hdnImg3"></p>
+													<p id="srchItem_hdnDesc3"></p>
+													<p id="srchItem_hdnGenre3"></p>
+													<p id="srchItem_hdnYear3"></p>
+													<p id="srchItem_hdnLink3"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -400,26 +399,24 @@
 						<div id="srchItem_container4" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img4" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img4" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="srchItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu4">
-													<div id="srchItem_btnInfo4" class="btn-primary-txt">Info
-													</div>
-													<div id="srchItem_hdnDiv4" style="display: none;">
-														<p id="srchItem_hdnName4"></p>
-														<p id="srchItem_hdnImg4"></p>
-														<p id="srchItem_hdnDesc4"></p>
-														<p id="srchItem_hdnGenre4"></p>
-														<p id="srchItem_hdnYear4"></p>
-														<p id="srchItem_hdnLink4"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu4">
+												<div id="srchItem_btnInfo4" class="btn-primary-txt">Info
+												</div>
+												<div id="srchItem_hdnDiv4" style="display: none;">
+													<p id="srchItem_hdnName4"></p>
+													<p id="srchItem_hdnImg4"></p>
+													<p id="srchItem_hdnDesc4"></p>
+													<p id="srchItem_hdnGenre4"></p>
+													<p id="srchItem_hdnYear4"></p>
+													<p id="srchItem_hdnLink4"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -436,26 +433,24 @@
 						<div id="srchItem_container5" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img5" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="srchItem_img5" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="srchItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu5">
-													<div id="srchItem_btnInfo5" class="btn-primary-txt">Info
-													</div>
-													<div id="srchItem_hdnDiv5" style="display: none;">
-														<p id="srchItem_hdnName5"></p>
-														<p id="srchItem_hdnImg5"></p>
-														<p id="srchItem_hdnDesc5"></p>
-														<p id="srchItem_hdnGenre5"></p>
-														<p id="srchItem_hdnYear5"></p>
-														<p id="srchItem_hdnLink5"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="srch_dropdownMenu5">
+												<div id="srchItem_btnInfo5" class="btn-primary-txt">Info
+												</div>
+												<div id="srchItem_hdnDiv5" style="display: none;">
+													<p id="srchItem_hdnName5"></p>
+													<p id="srchItem_hdnImg5"></p>
+													<p id="srchItem_hdnDesc5"></p>
+													<p id="srchItem_hdnGenre5"></p>
+													<p id="srchItem_hdnYear5"></p>
+													<p id="srchItem_hdnLink5"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -492,28 +487,26 @@
 						<div id="popItem_container0" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img0" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img0" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="popItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu0">
-													<div id="popItem_btnInfo0" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv0" style="display: none;">
-														<p id="popItem_hdnName0"></p>
-														<p id="popItem_hdnImg0"></p>
-														<p id="popItem_hdnDesc0"></p>
-														<p id="popItem_hdnGenre0"></p>
-														<p id="popItem_hdnYear0"></p>
-														<p id="popItem_hdnLink0"></p>
-														<p id="popItem_hdnType0"></p>
-														<p id="popItem_hdnActors0"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" id="pop_dropdownMenu0">
+												<div id="popItem_btnInfo0" class="btn-primary-txt">Info
+												</div>
+												<div id="popItem_hdnDiv0" style="display: none;">
+													<p id="popItem_hdnName0"></p>
+													<p id="popItem_hdnImg0"></p>
+													<p id="popItem_hdnDesc0"></p>
+													<p id="popItem_hdnGenre0"></p>
+													<p id="popItem_hdnYear0"></p>
+													<p id="popItem_hdnLink0"></p>
+													<p id="popItem_hdnType0"></p>
+													<p id="popItem_hdnActors0"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -530,28 +523,26 @@
 						<div id="popItem_container1" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img1" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img1" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="popItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu1">
-													<div id="popItem_btnInfo1" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv1" style="display: none;">
-														<p id="popItem_hdnName1"></p>
-														<p id="popItem_hdnImg1"></p>
-														<p id="popItem_hdnDesc1"></p>
-														<p id="popItem_hdnGenre1"></p>
-														<p id="popItem_hdnYear1"></p>
-														<p id="popItem_hdnLink1"></p>
-														<p id="popItem_hdnType1"></p>
-														<p id="popItem_hdnActors1"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" id="pop_dropdownMenu1">
+												<div id="popItem_btnInfo1">Info
+												</div>
+												<div id="popItem_hdnDiv1" style="display: none;">
+													<p id="popItem_hdnName1"></p>
+													<p id="popItem_hdnImg1"></p>
+													<p id="popItem_hdnDesc1"></p>
+													<p id="popItem_hdnGenre1"></p>
+													<p id="popItem_hdnYear1"></p>
+													<p id="popItem_hdnLink1"></p>
+													<p id="popItem_hdnType1"></p>
+													<p id="popItem_hdnActors1"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -568,28 +559,26 @@
 						<div id="popItem_container2" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img2" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img2" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="popItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu2">
-													<div id="popItem_btnInfo2" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv2" style="display: none;">
-														<p id="popItem_hdnName2"></p>
-														<p id="popItem_hdnImg2"></p>
-														<p id="popItem_hdnDesc2"></p>
-														<p id="popItem_hdnGenre2"></p>
-														<p id="popItem_hdnYear2"></p>
-														<p id="popItem_hdnLink2"></p>
-														<p id="popItem_hdnType2"></p>
-														<p id="popItem_hdnActors2"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu2">
+												<div id="popItem_btnInfo2" class="btn-primary-txt">Info
+												</div>
+												<div id="popItem_hdnDiv2" style="display: none;">
+													<p id="popItem_hdnName2"></p>
+													<p id="popItem_hdnImg2"></p>
+													<p id="popItem_hdnDesc2"></p>
+													<p id="popItem_hdnGenre2"></p>
+													<p id="popItem_hdnYear2"></p>
+													<p id="popItem_hdnLink2"></p>
+													<p id="popItem_hdnType2"></p>
+													<p id="popItem_hdnActors2"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -606,28 +595,26 @@
 						<div id="popItem_container3" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img3" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img3" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="popItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu3">
-													<div id="popItem_btnInfo3" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv3" style="display: none;">
-														<p id="popItem_hdnName3"></p>
-														<p id="popItem_hdnImg3"></p>
-														<p id="popItem_hdnDesc3"></p>
-														<p id="popItem_hdnGenre3"></p>
-														<p id="popItem_hdnYear3"></p>
-														<p id="popItem_hdnLink3"></p>
-														<p id="popItem_hdnType3"></p>
-														<p id="popItem_hdnActors3"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu3">
+												<div id="popItem_btnInfo3" class="btn-primary-txt">Info
+												</div>
+												<div id="popItem_hdnDiv3" style="display: none;">
+													<p id="popItem_hdnName3"></p>
+													<p id="popItem_hdnImg3"></p>
+													<p id="popItem_hdnDesc3"></p>
+													<p id="popItem_hdnGenre3"></p>
+													<p id="popItem_hdnYear3"></p>
+													<p id="popItem_hdnLink3"></p>
+													<p id="popItem_hdnType3"></p>
+													<p id="popItem_hdnActors3"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -644,28 +631,26 @@
 						<div id="popItem_container4" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img4" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img4" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="popItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu4">
-													<div id="popItem_btnInfo4" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv4" style="display: none;">
-														<p id="popItem_hdnName4"></p>
-														<p id="popItem_hdnImg4"></p>
-														<p id="popItem_hdnDesc4"></p>
-														<p id="popItem_hdnGenre4"></p>
-														<p id="popItem_hdnYear4"></p>
-														<p id="popItem_hdnLink4"></p>
-														<p id="popItem_hdnType4"></p>
-														<p id="popItem_hdnActors4"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu4">
+												<div id="popItem_btnInfo4" class="btn-primary-txt">Info
+												</div>
+												<div id="popItem_hdnDiv4" style="display: none;">
+													<p id="popItem_hdnName4"></p>
+													<p id="popItem_hdnImg4"></p>
+													<p id="popItem_hdnDesc4"></p>
+													<p id="popItem_hdnGenre4"></p>
+													<p id="popItem_hdnYear4"></p>
+													<p id="popItem_hdnLink4"></p>
+													<p id="popItem_hdnType4"></p>
+													<p id="popItem_hdnActors4"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -682,28 +667,26 @@
 						<div id="popItem_container5" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img5" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="popItem_img5" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="popItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu5">
-													<div id="popItem_btnInfo5" class="btn-primary-txt">Info
-													</div>
-													<div id="popItem_hdnDiv5" style="display: none;">
-														<p id="popItem_hdnName5"></p>
-														<p id="popItem_hdnImg5"></p>
-														<p id="popItem_hdnDesc5"></p>
-														<p id="popItem_hdnGenre5"></p>
-														<p id="popItem_hdnYear5"></p>
-														<p id="popItem_hdnLink5"></p>
-														<p id="popItem_hdnType5"></p>
-														<p id="popItem_hdnActors5"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="pop_dropdownMenu5">
+												<div id="popItem_btnInfo5" class="btn-primary-txt">Info
+												</div>
+												<div id="popItem_hdnDiv5" style="display: none;">
+													<p id="popItem_hdnName5"></p>
+													<p id="popItem_hdnImg5"></p>
+													<p id="popItem_hdnDesc5"></p>
+													<p id="popItem_hdnGenre5"></p>
+													<p id="popItem_hdnYear5"></p>
+													<p id="popItem_hdnLink5"></p>
+													<p id="popItem_hdnType5"></p>
+													<p id="popItem_hdnActors5"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -740,32 +723,30 @@
 						<div id="favItem_container0" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img0" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img0" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="favItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu0">
-													<div id="favItem_btnInfo0" class="btn-primary-txt">Info
-													</div>
-													<div id="favItem_hdnDiv0" style="display: none;">
-														<p id="favItem_hdnName0"></p>
-														<p id="favItem_hdnImg0"></p>
-														<p id="favItem_hdnDesc0"></p>
-														<p id="favItem_hdnGenre0"></p>
-														<p id="favItem_hdnYear0"></p>
-														<p id="favItem_hdnLink0"></p>
-														<p id="favItem_hdnType0"></p>
-														<p id="favItem_hdnActors0"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu0">
+												<div id="favItem_btnInfo0" class="btn-primary-txt">Info
+												</div>
+												<div id="favItem_hdnDiv0" style="display: none;">
+													<p id="favItem_hdnName0"></p>
+													<p id="favItem_hdnImg0"></p>
+													<p id="favItem_hdnDesc0"></p>
+													<p id="favItem_hdnGenre0"></p>
+													<p id="favItem_hdnYear0"></p>
+													<p id="favItem_hdnLink0"></p>
+													<p id="favItem_hdnType0"></p>
+													<p id="favItem_hdnActors0"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="favItem_btnFav0" onclick="send_cpkFavData(this);" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="favItem_btnFav0" onclick="send_cpkDropFav(this);" class="btn-primary btn-props addtofav">
 												<a style="cursor: pointer;">
 													-Favs
 												</a>
@@ -778,32 +759,30 @@
 						<div id="favItem_container1" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img1" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img1" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="favItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu1">
-													<div id="favItem_btnInfo1" class="btn-primary-txt">Info
-													</div>
-													<div id="favItem_hdnDiv1" style="display: none;">
-														<p id="favItem_hdnName1"></p>
-														<p id="favItem_hdnImg1"></p>
-														<p id="favItem_hdnDesc1"></p>
-														<p id="favItem_hdnGenre1"></p>
-														<p id="favItem_hdnYear1"></p>
-														<p id="favItem_hdnLink1"></p>
-														<p id="favItem_hdnType1"></p>
-														<p id="favItem_hdnActors1"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu1">
+												<div id="favItem_btnInfo1" class="btn-primary-txt">Info
+												</div>
+												<div id="favItem_hdnDiv1" style="display: none;">
+													<p id="favItem_hdnName1"></p>
+													<p id="favItem_hdnImg1"></p>
+													<p id="favItem_hdnDesc1"></p>
+													<p id="favItem_hdnGenre1"></p>
+													<p id="favItem_hdnYear1"></p>
+													<p id="favItem_hdnLink1"></p>
+													<p id="favItem_hdnType1"></p>
+													<p id="favItem_hdnActors1"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="favItem_btnFav1" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="favItem_btnFav1" onclick="send_cpkDropFav(this);" class="btn-primary btn-props addtofav">
 												<a style="cursor: pointer;">
 													-Favs
 												</a>
@@ -816,32 +795,30 @@
 						<div id="favItem_container2" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img2" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img2" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="favItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu2">
-													<div id="favItem_btnInfo2" class="btn-primary-txt">Info
-													</div>
-													<div id="favItem_hdnDiv2" style="display: none;">
-														<p id="favItem_hdnName2"></p>
-														<p id="favItem_hdnImg2"></p>
-														<p id="favItem_hdnDesc2"></p>
-														<p id="favItem_hdnGenre2"></p>
-														<p id="favItem_hdnYear2"></p>
-														<p id="favItem_hdnLink2"></p>
-														<p id="favItem_hdnType2"></p>
-														<p id="favItem_hdnActors2"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu2">
+												<div id="favItem_btnInfo2" class="btn-primary-txt">Info
+												</div>
+												<div id="favItem_hdnDiv2" style="display: none;">
+													<p id="favItem_hdnName2"></p>
+													<p id="favItem_hdnImg2"></p>
+													<p id="favItem_hdnDesc2"></p>
+													<p id="favItem_hdnGenre2"></p>
+													<p id="favItem_hdnYear2"></p>
+													<p id="favItem_hdnLink2"></p>
+													<p id="favItem_hdnType2"></p>
+													<p id="favItem_hdnActors2"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="favItem_btnFav2" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="favItem_btnFav2" onclick="send_cpkDropFav(this);" class="btn-primary btn-props addtofav">
 												<a style="cursor: pointer;">
 													-Favs
 												</a>
@@ -854,32 +831,30 @@
 						<div id="favItem_container3" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img3" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img3" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="favItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu3">
-													<div id="favItem_btnInfo3" class="btn-primary-txt">Info
-													</div>
-													<div id="favItem_hdnDiv3" style="display: none;">
-														<p id="favItem_hdnName3"></p>
-														<p id="favItem_hdnImg3"></p>
-														<p id="favItem_hdnDesc3"></p>
-														<p id="favItem_hdnGenre3"></p>
-														<p id="favItem_hdnYear3"></p>
-														<p id="favItem_hdnLink3"></p>
-														<p id="favItem_hdnType3"></p>
-														<p id="favItem_hdnActors3"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu3">
+												<div id="favItem_btnInfo3" class="btn-primary-txt">Info
+												</div>
+												<div id="favItem_hdnDiv3" style="display: none;">
+													<p id="favItem_hdnName3"></p>
+													<p id="favItem_hdnImg3"></p>
+													<p id="favItem_hdnDesc3"></p>
+													<p id="favItem_hdnGenre3"></p>
+													<p id="favItem_hdnYear3"></p>
+													<p id="favItem_hdnLink3"></p>
+													<p id="favItem_hdnType3"></p>
+													<p id="favItem_hdnActors3"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="favItem_btnFav3" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="favItem_btnFav3" onclick="send_cpkDropFav(this);" class="btn-primary btn-props addtofav">
 												<a style="cursor: pointer;">
 													-Favs
 												</a>
@@ -892,32 +867,30 @@
 						<div id="favItem_container4" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img4" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img4" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="favItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu4">
-													<div id="favItem_btnInfo4" class="btn-primary-txt">Info
-													</div>
-													<div id="favItem_hdnDiv4" style="display: none;">
-														<p id="favItem_hdnName4"></p>
-														<p id="favItem_hdnImg4"></p>
-														<p id="favItem_hdnDesc4"></p>
-														<p id="favItem_hdnGenre4"></p>
-														<p id="favItem_hdnYear4"></p>
-														<p id="favItem_hdnLink4"></p>
-														<p id="favItem_hdnType4"></p>
-														<p id="favItem_hdnActors4"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu4">
+												<div id="favItem_btnInfo4" class="btn-primary-txt">Info
+												</div>
+												<div id="favItem_hdnDiv4" style="display: none;">
+													<p id="favItem_hdnName4"></p>
+													<p id="favItem_hdnImg4"></p>
+													<p id="favItem_hdnDesc4"></p>
+													<p id="favItem_hdnGenre4"></p>
+													<p id="favItem_hdnYear4"></p>
+													<p id="favItem_hdnLink4"></p>
+													<p id="favItem_hdnType4"></p>
+													<p id="favItem_hdnActors4"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="favItem_btnFav4" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="favItem_btnFav4" onclick="send_cpkDropFav(this);" class="btn-primary btn-props addtofav">
 												<a style="cursor: pointer;">
 													-Favs
 												</a>
@@ -930,32 +903,30 @@
 						<div id="favItem_container5" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img5" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="favItem_img5" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="favItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu5">
-													<div id="favItem_btnInfo5" class="btn-primary-txt">Info
-													</div>
-													<div id="favItem_hdnDiv5" style="display: none;">
-														<p id="favItem_hdnName5"></p>
-														<p id="favItem_hdnImg5"></p>
-														<p id="favItem_hdnDesc5"></p>
-														<p id="favItem_hdnGenre5"></p>
-														<p id="favItem_hdnYear5"></p>
-														<p id="favItem_hdnLink5"></p>
-														<p id="favItem_hdnType5"></p>
-														<p id="favItem_hdnActors5"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="fav_dropdownMenu5">
+												<div id="favItem_btnInfo5" class="btn-primary-txt">Info
+												</div>
+												<div id="favItem_hdnDiv5" style="display: none;">
+													<p id="favItem_hdnName5"></p>
+													<p id="favItem_hdnImg5"></p>
+													<p id="favItem_hdnDesc5"></p>
+													<p id="favItem_hdnGenre5"></p>
+													<p id="favItem_hdnYear5"></p>
+													<p id="favItem_hdnLink5"></p>
+													<p id="favItem_hdnType5"></p>
+													<p id="favItem_hdnActors5"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
-											<div id="favItem_btnFav5" style="text-align:center;padding:2px;" class="btn-primary addtofav">
+											<div id="favItem_btnFav5" onclick="send_cpkDropFav(this);" class="btn-primary btn-props addtofav">
 												<a style="cursor: pointer;">
 													-Favs
 												</a>
@@ -989,28 +960,26 @@
 						<div id="recItem_container0" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img0" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img0" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="recItem_n0">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu0">
-													<div id="recItem_btnInfo0" class="btn-primary-txt">Info
-													</div>
-													<div id="recItem_hdnDiv0" style="display: none;">
-														<p id="recItem_hdnName0"></p>
-														<p id="recItem_hdnImg0"></p>
-														<p id="recItem_hdnDesc0"></p>
-														<p id="recItem_hdnGenre0"></p>
-														<p id="recItem_hdnYear0"></p>
-														<p id="recItem_hdnLink0"></p>
-														<p id="recItem_hdnType0"></p>
-														<p id="recItem_hdnActors0"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu0">
+												<div id="recItem_btnInfo0" class="btn-primary-txt">Info
+												</div>
+												<div id="recItem_hdnDiv0" style="display: none;">
+													<p id="recItem_hdnName0"></p>
+													<p id="recItem_hdnImg0"></p>
+													<p id="recItem_hdnDesc0"></p>
+													<p id="recItem_hdnGenre0"></p>
+													<p id="recItem_hdnYear0"></p>
+													<p id="recItem_hdnLink0"></p>
+													<p id="recItem_hdnType0"></p>
+													<p id="recItem_hdnActors0"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -1027,28 +996,26 @@
 						<div id="recItem_container1" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img1" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img1" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="recItem_n1">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu1">
-													<div id="recItem_btnInfo1" class="btn-primary-txt">Info
-													</div>
-													<div id="recItem_hdnDiv1" style="display: none;">
-														<p id="recItem_hdnName1"></p>
-														<p id="recItem_hdnImg1"></p>
-														<p id="recItem_hdnDesc1"></p>
-														<p id="recItem_hdnGenre1"></p>
-														<p id="recItem_hdnYear1"></p>
-														<p id="recItem_hdnLink1"></p>
-														<p id="recItem_hdnType1"></p>
-														<p id="recItem_hdnActors1"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu1">
+												<div id="recItem_btnInfo1" class="btn-primary-txt">Info
+												</div>
+												<div id="recItem_hdnDiv1" style="display: none;">
+													<p id="recItem_hdnName1"></p>
+													<p id="recItem_hdnImg1"></p>
+													<p id="recItem_hdnDesc1"></p>
+													<p id="recItem_hdnGenre1"></p>
+													<p id="recItem_hdnYear1"></p>
+													<p id="recItem_hdnLink1"></p>
+													<p id="recItem_hdnType1"></p>
+													<p id="recItem_hdnActors1"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -1065,28 +1032,26 @@
 						<div id="recItem_container2" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img2" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img2" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="recItem_n2">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu2">
-													<div id="recItem_btnInfo2" class="btn-primary-txt">Info
-													</div>
-													<div id="recItem_hdnDiv2" style="display: none;">
-														<p id="recItem_hdnName2"></p>
-														<p id="recItem_hdnImg2"></p>
-														<p id="recItem_hdnDesc2"></p>
-														<p id="recItem_hdnGenre2"></p>
-														<p id="recItem_hdnYear2"></p>
-														<p id="recItem_hdnLink2"></p>
-														<p id="recItem_hdnType2"></p>
-														<p id="recItem_hdnActors2"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu2">
+												<div id="recItem_btnInfo2" class="btn-primary-txt">Info
+												</div>
+												<div id="recItem_hdnDiv2" style="display: none;">
+													<p id="recItem_hdnName2"></p>
+													<p id="recItem_hdnImg2"></p>
+													<p id="recItem_hdnDesc2"></p>
+													<p id="recItem_hdnGenre2"></p>
+													<p id="recItem_hdnYear2"></p>
+													<p id="recItem_hdnLink2"></p>
+													<p id="recItem_hdnType2"></p>
+													<p id="recItem_hdnActors2"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -1103,28 +1068,26 @@
 						<div id="recItem_container3" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img3" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img3" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="recItem_n3">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu3">
-													<div id="recItem_btnInfo3" class="btn-primary-txt">Info
-													</div>
-													<div id="recItem_hdnDiv3" style="display: none;">
-														<p id="recItem_hdnName3"></p>
-														<p id="recItem_hdnImg3"></p>
-														<p id="recItem_hdnDesc3"></p>
-														<p id="recItem_hdnGenre3"></p>
-														<p id="recItem_hdnYear3"></p>
-														<p id="recItem_hdnLink3"></p>
-														<p id="recItem_hdnType3"></p>
-														<p id="recItem_hdnActors3"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu3">
+												<div id="recItem_btnInfo3" class="btn-primary-txt">Info
+												</div>
+												<div id="recItem_hdnDiv3" style="display: none;">
+													<p id="recItem_hdnName3"></p>
+													<p id="recItem_hdnImg3"></p>
+													<p id="recItem_hdnDesc3"></p>
+													<p id="recItem_hdnGenre3"></p>
+													<p id="recItem_hdnYear3"></p>
+													<p id="recItem_hdnLink3"></p>
+													<p id="recItem_hdnType3"></p>
+													<p id="recItem_hdnActors3"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -1141,28 +1104,26 @@
 						<div id="recItem_container4" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img4" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img4" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="recItem_n4">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu4">
-													<div id="recItem_btnInfo4" class="btn-primary-txt">Info
-													</div>
-													<div id="recItem_hdnDiv4" style="display: none;">
-														<p id="recItem_hdnName4"></p>
-														<p id="recItem_hdnImg4"></p>
-														<p id="recItem_hdnDesc4"></p>
-														<p id="recItem_hdnGenre4"></p>
-														<p id="recItem_hdnYear4"></p>
-														<p id="recItem_hdnLink4"></p>
-														<p id="recItem_hdnType4"></p>
-														<p id="recItem_hdnActors4"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu4">
+												<div id="recItem_btnInfo4" class="btn-primary-txt">Info
+												</div>
+												<div id="recItem_hdnDiv4" style="display: none;">
+													<p id="recItem_hdnName4"></p>
+													<p id="recItem_hdnImg4"></p>
+													<p id="recItem_hdnDesc4"></p>
+													<p id="recItem_hdnGenre4"></p>
+													<p id="recItem_hdnYear4"></p>
+													<p id="recItem_hdnLink4"></p>
+													<p id="recItem_hdnType4"></p>
+													<p id="recItem_hdnActors4"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -1179,28 +1140,26 @@
 						<div id="recItem_container5" class="col-md-2 col-sm-4 col-xs-6">
 							<div class="vid-hover">
 								<div class="video-box">
-									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img5" class="vid-thumb-img img-point" src="/images//placeholder.png">
-									</a>
+									<a class="vid-link" onclick="onClick_Img(this);"> <img id="recItem_img5" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+									</img></a>
 									<div class="description">
 										<h2 class="title" id="recItem_n5">Title of Movie or Episode</h2>
 									</div>
 									<div class="row">
 										<div class="col-xs-6 button-span">
-											<div class="dropdown btn-primary">
-												<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu5">
-													<div id="recItem_btnInfo5" class="btn-primary-txt">Info
-													</div>
-													<div id="recItem_hdnDiv5" style="display: none;">
-														<p id="recItem_hdnName5"></p>
-														<p id="recItem_hdnImg5"></p>
-														<p id="recItem_hdnDesc5"></p>
-														<p id="recItem_hdnGenre5"></p>
-														<p id="recItem_hdnYear5"></p>
-														<p id="recItem_hdnLink5"></p>
-														<p id="recItem_hdnType5"></p>
-														<p id="recItem_hdnActors5"></p>
-													</div>
-												</button>
+											<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="rec_dropdownMenu5">
+												<div id="recItem_btnInfo5" class="btn-primary-txt">Info
+												</div>
+												<div id="recItem_hdnDiv5" style="display: none;">
+													<p id="recItem_hdnName5"></p>
+													<p id="recItem_hdnImg5"></p>
+													<p id="recItem_hdnDesc5"></p>
+													<p id="recItem_hdnGenre5"></p>
+													<p id="recItem_hdnYear5"></p>
+													<p id="recItem_hdnLink5"></p>
+													<p id="recItem_hdnType5"></p>
+													<p id="recItem_hdnActors5"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-xs-6 button-span">
@@ -1541,7 +1500,8 @@
 						</table>
 					</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
 					<p style="padding-right:25px; text-align:right;">
-					By signing up you agree to the TOS and have read our <a style="color:red;" href="#">Disclamer</a></p>
+					By signing up you agree to the <a href="http://www.cpktestapp2.herokuapp.com/tos" target="_blank">TOS</a> 
+					and have read our <a style="color:red;" href="http://www.cpktestapp2.herokuapp.com/privacy">Privacy Policy</a></p>
 					<input class="send submit" type="submit" name="submit_fourth" id="submit_fourth" value="" />
 	
 				</div>

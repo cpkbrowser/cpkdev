@@ -1518,3 +1518,9 @@ a.apply-ok-style {
 	background-image: url(../img/cpklogo-primary.png) !important;
 	background-position-y: -78px;
 }
+
+.btn-props {
+	text-align:center;
+	padding:2px; 
+	cursor: pointer;
+}

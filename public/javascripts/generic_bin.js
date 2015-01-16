@@ -10,27 +10,25 @@ function get_GenericBin() {
 			<div class="vid-hover">
 				<div class="video-box">
 					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx0" class="vid-thumb-img img-point" src="/images//placeholder.png">
-					</a>
+					</img></a>
 					<div class="description">
 						<h2 class="title" id="xyzCONTAINER_TITLEzyx0">Title of Movie or Episode</h2>
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="dropdown btn-primary">
-								<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu0">
-									<div id="xyzPREFIXzyxItem_btnInfo0" class="btn-primary-txt">Info
-									</div>
-									<div id="xyzPREFIXzyxItem_hdnDiv0" style="display: none;">
-										<p id="xyzPREFIXzyxItem_hdnName0"></p>
-										<p id="xyzPREFIXzyxItem_hdnImg0"></p>
-										<p id="xyzPREFIXzyxItem_hdnDesc0"></p>
-										<p id="xyzPREFIXzyxItem_hdnGenre0"></p>
-										<p id="xyzPREFIXzyxItem_hdnYear0"></p>
-										<p id="xyzPREFIXzyxItem_hdnLink0"></p>
-										<p id="xyzPREFIXzyxItem_hdnType0"></p>
-										<p id="xyzPREFIXzyxItem_hdnActors0"></p>
-									</div>
-								</button>											
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu0">
+								<div id="xyzPREFIXzyxItem_btnInfo0" class="btn-primary-txt">Info
+								</div>
+								<div id="xyzPREFIXzyxItem_hdnDiv0" style="display: none;">
+									<p id="xyzPREFIXzyxItem_hdnName0"></p>
+									<p id="xyzPREFIXzyxItem_hdnImg0"></p>
+									<p id="xyzPREFIXzyxItem_hdnDesc0"></p>
+									<p id="xyzPREFIXzyxItem_hdnGenre0"></p>
+									<p id="xyzPREFIXzyxItem_hdnYear0"></p>
+									<p id="xyzPREFIXzyxItem_hdnLink0"></p>
+									<p id="xyzPREFIXzyxItem_hdnType0"></p>
+									<p id="xyzPREFIXzyxItem_hdnActors0"></p>
+								</div>										
 							</div>
 						</div>
 						<div class="col-xs-6 button-span">
@@ -47,28 +45,26 @@ function get_GenericBin() {
 		<div id="xyzCONTAINER_NAMEzyx1" class="col-md-2 col-sm-4 col-xs-6">
 			<div class="vid-hover">
 				<div class="video-box">
-					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx1" class="vid-thumb-img img-point" src="/images//placeholder.png">
-					</a>
+					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx1" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+					</img></a>
 					<div class="description">
 						<h2 class="title" id="xyzCONTAINER_TITLEzyx1">Title of Movie or Episode</h2>
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="dropdown btn-primary">
-								<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu1">
-									<div id="xyzPREFIXzyxItem_btnInfo1" class="btn-primary-txt">Info
-									</div>
-									<div id="xyzPREFIXzyxItem_hdnDiv1" style="display: none;">
-										<p id="xyzPREFIXzyxItem_hdnName1"></p>
-										<p id="xyzPREFIXzyxItem_hdnImg1"></p>
-										<p id="xyzPREFIXzyxItem_hdnDesc1"></p>
-										<p id="xyzPREFIXzyxItem_hdnGenre1"></p>
-										<p id="xyzPREFIXzyxItem_hdnYear1"></p>
-										<p id="xyzPREFIXzyxItem_hdnLink1"></p>
-										<p id="xyzPREFIXzyxItem_hdnType1"></p>
-										<p id="xyzPREFIXzyxItem_hdnActors1"></p>
-									</div>
-								</button>
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu1">
+								<div id="xyzPREFIXzyxItem_btnInfo1" class="btn-primary-txt">Info
+								</div>
+								<div id="xyzPREFIXzyxItem_hdnDiv1" style="display: none;">
+									<p id="xyzPREFIXzyxItem_hdnName1"></p>
+									<p id="xyzPREFIXzyxItem_hdnImg1"></p>
+									<p id="xyzPREFIXzyxItem_hdnDesc1"></p>
+									<p id="xyzPREFIXzyxItem_hdnGenre1"></p>
+									<p id="xyzPREFIXzyxItem_hdnYear1"></p>
+									<p id="xyzPREFIXzyxItem_hdnLink1"></p>
+									<p id="xyzPREFIXzyxItem_hdnType1"></p>
+									<p id="xyzPREFIXzyxItem_hdnActors1"></p>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-6 button-span">
@@ -85,28 +81,26 @@ function get_GenericBin() {
 		<div id="xyzCONTAINER_NAMEzyx2" class="col-md-2 col-sm-4 col-xs-6">
 			<div class="vid-hover">
 				<div class="video-box">
-					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx2" class="vid-thumb-img img-point" src="/images//placeholder.png">
-					</a>
+					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx2" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+					</img></a>
 					<div class="description">
 						<h2 class="title" id="xyzCONTAINER_TITLEzyx2">Title of Movie or Episode</h2>
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="dropdown btn-primary">
-								<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu2">
-									<div id="xyzPREFIXzyxItem_btnInfo2" class="btn-primary-txt">Info
-									</div>
-									<div id="xyzPREFIXzyxItem_hdnDiv2" style="display: none;">
-										<p id="xyzPREFIXzyxItem_hdnName2"></p>
-										<p id="xyzPREFIXzyxItem_hdnImg2"></p>
-										<p id="xyzPREFIXzyxItem_hdnDesc2"></p>
-										<p id="xyzPREFIXzyxItem_hdnGenre2"></p>
-										<p id="xyzPREFIXzyxItem_hdnYear2"></p>
-										<p id="xyzPREFIXzyxItem_hdnLink2"></p>
-										<p id="xyzPREFIXzyxItem_hdnType2"></p>
-										<p id="xyzPREFIXzyxItem_hdnActors2"></p>
-									</div>
-								</button>
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu2">
+								<div id="xyzPREFIXzyxItem_btnInfo2" class="btn-primary-txt">Info
+								</div>
+								<div id="xyzPREFIXzyxItem_hdnDiv2" style="display: none;">
+									<p id="xyzPREFIXzyxItem_hdnName2"></p>
+									<p id="xyzPREFIXzyxItem_hdnImg2"></p>
+									<p id="xyzPREFIXzyxItem_hdnDesc2"></p>
+									<p id="xyzPREFIXzyxItem_hdnGenre2"></p>
+									<p id="xyzPREFIXzyxItem_hdnYear2"></p>
+									<p id="xyzPREFIXzyxItem_hdnLink2"></p>
+									<p id="xyzPREFIXzyxItem_hdnType2"></p>
+									<p id="xyzPREFIXzyxItem_hdnActors2"></p>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-6 button-span">
@@ -123,28 +117,26 @@ function get_GenericBin() {
 		<div id="xyzCONTAINER_NAMEzyx3" class="col-md-2 col-sm-4 col-xs-6">
 			<div class="vid-hover">
 				<div class="video-box">
-					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx3" class="vid-thumb-img img-point" src="/images//placeholder.png">
-					</a>
+					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx3" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+					</img></a>
 					<div class="description">
 						<h2 class="title" id="xyzCONTAINER_TITLEzyx3">Title of Movie or Episode</h2>
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="dropdown btn-primary">
-								<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu3">
-									<div id="xyzPREFIXzyxItem_btnInfo3" class="btn-primary-txt">Info
-									</div>
-									<div id="xyzPREFIXzyxItem_hdnDiv3" style="display: none;">
-										<p id="xyzPREFIXzyxItem_hdnName3"></p>
-										<p id="xyzPREFIXzyxItem_hdnImg3"></p>
-										<p id="xyzPREFIXzyxItem_hdnDesc3"></p>
-										<p id="xyzPREFIXzyxItem_hdnGenre3"></p>
-										<p id="xyzPREFIXzyxItem_hdnYear3"></p>
-										<p id="xyzPREFIXzyxItem_hdnLink3"></p>
-										<p id="xyzPREFIXzyxItem_hdnType3"></p>
-										<p id="xyzPREFIXzyxItem_hdnActors3"></p>
-									</div>
-								</button>
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu3">
+								<div id="xyzPREFIXzyxItem_btnInfo3" class="btn-primary-txt">Info
+								</div>
+								<div id="xyzPREFIXzyxItem_hdnDiv3" style="display: none;">
+									<p id="xyzPREFIXzyxItem_hdnName3"></p>
+									<p id="xyzPREFIXzyxItem_hdnImg3"></p>
+									<p id="xyzPREFIXzyxItem_hdnDesc3"></p>
+									<p id="xyzPREFIXzyxItem_hdnGenre3"></p>
+									<p id="xyzPREFIXzyxItem_hdnYear3"></p>
+									<p id="xyzPREFIXzyxItem_hdnLink3"></p>
+									<p id="xyzPREFIXzyxItem_hdnType3"></p>
+									<p id="xyzPREFIXzyxItem_hdnActors3"></p>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-6 button-span">
@@ -161,28 +153,26 @@ function get_GenericBin() {
 		<div id="xyzCONTAINER_NAMEzyx4" class="col-md-2 col-sm-4 col-xs-6">
 			<div class="vid-hover">
 				<div class="video-box">
-					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx4" class="vid-thumb-img img-point" src="/images//placeholder.png">
-					</a>
+					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx4" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+					</img></a>
 					<div class="description">
 						<h2 class="title" id="xyzCONTAINER_TITLEzyx4">Title of Movie or Episode</h2>
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="dropdown btn-primary">
-								<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu4">
-									<div id="xyzPREFIXzyxItem_btnInfo4" class="btn-primary-txt">Info
-									</div>
-									<div id="xyzPREFIXzyxItem_hdnDiv4" style="display: none;">
-										<p id="xyzPREFIXzyxItem_hdnName4"></p>
-										<p id="xyzPREFIXzyxItem_hdnImg4"></p>
-										<p id="xyzPREFIXzyxItem_hdnDesc4"></p>
-										<p id="xyzPREFIXzyxItem_hdnGenre4"></p>
-										<p id="xyzPREFIXzyxItem_hdnYear4"></p>
-										<p id="xyzPREFIXzyxItem_hdnLink4"></p>
-										<p id="xyzPREFIXzyxItem_hdnType4"></p>
-										<p id="xyzPREFIXzyxItem_hdnActors4"></p>
-									</div>
-								</button>
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu4">
+								<div id="xyzPREFIXzyxItem_btnInfo4" class="btn-primary-txt">Info
+								</div>
+								<div id="xyzPREFIXzyxItem_hdnDiv4" style="display: none;">
+									<p id="xyzPREFIXzyxItem_hdnName4"></p>
+									<p id="xyzPREFIXzyxItem_hdnImg4"></p>
+									<p id="xyzPREFIXzyxItem_hdnDesc4"></p>
+									<p id="xyzPREFIXzyxItem_hdnGenre4"></p>
+									<p id="xyzPREFIXzyxItem_hdnYear4"></p>
+									<p id="xyzPREFIXzyxItem_hdnLink4"></p>
+									<p id="xyzPREFIXzyxItem_hdnType4"></p>
+									<p id="xyzPREFIXzyxItem_hdnActors4"></p>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-6 button-span">
@@ -199,28 +189,26 @@ function get_GenericBin() {
 		<div id="xyzCONTAINER_NAMEzyx5" class="col-md-2 col-sm-4 col-xs-6">
 			<div class="vid-hover">
 				<div class="video-box">
-					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx5" class="vid-thumb-img img-point" src="/images//placeholder.png">
-					</a>
+					<a class="vid-link" onclick="onClick_Img(this);"> <img id="xyzCONTAINER_IMGzyx5" alt="No Image Found" class="vid-thumb-img img-point" src="/images//placeholder.png">
+					</img></a>
 					<div class="description">
 						<h2 class="title" id="xyzCONTAINER_TITLEzyx5">Title of Movie or Episode</h2>
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="dropdown btn-primary">
-								<button class="btn-toggle" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu5">
-									<div id="xyzPREFIXzyxItem_btnInfo5" class="btn-primary-txt">Info
-									</div>
-									<div id="xyzPREFIXzyxItem_hdnDiv5" style="display: none;">
-										<p id="xyzPREFIXzyxItem_hdnName5"></p>
-										<p id="xyzPREFIXzyxItem_hdnImg5"></p>
-										<p id="xyzPREFIXzyxItem_hdnDesc5"></p>
-										<p id="xyzPREFIXzyxItem_hdnGenre5"></p>
-										<p id="xyzPREFIXzyxItem_hdnYear5"></p>
-										<p id="xyzPREFIXzyxItem_hdnLink5"></p>
-										<p id="xyzPREFIXzyxItem_hdnType5"></p>
-										<p id="xyzPREFIXzyxItem_hdnActors5"></p>
-									</div>
-								</button>
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu5">
+								<div id="xyzPREFIXzyxItem_btnInfo5" class="btn-primary-txt">Info
+								</div>
+								<div id="xyzPREFIXzyxItem_hdnDiv5" style="display: none;">
+									<p id="xyzPREFIXzyxItem_hdnName5"></p>
+									<p id="xyzPREFIXzyxItem_hdnImg5"></p>
+									<p id="xyzPREFIXzyxItem_hdnDesc5"></p>
+									<p id="xyzPREFIXzyxItem_hdnGenre5"></p>
+									<p id="xyzPREFIXzyxItem_hdnYear5"></p>
+									<p id="xyzPREFIXzyxItem_hdnLink5"></p>
+									<p id="xyzPREFIXzyxItem_hdnType5"></p>
+									<p id="xyzPREFIXzyxItem_hdnActors5"></p>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-6 button-span">
