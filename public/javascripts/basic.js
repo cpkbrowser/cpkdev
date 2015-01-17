@@ -325,7 +325,8 @@ function onClick_Search() {
 
 function open_mdlInfo(t) {
 	document.getElementById('mdlActive_Div').innerHTML = t.id;
-	var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
+	//var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
+	var info = t.parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
 	var fullName = "";
 	
 	//add conditional statement to allow for more plug-ins
