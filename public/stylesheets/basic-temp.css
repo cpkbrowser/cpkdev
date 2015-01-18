@@ -120,11 +120,6 @@ h5.primary {
 		padding-bottom:40px;
 	}
 }
-@media (max-width:320px) {
-	.copyright-bg {
-		padding-top: 50px !important;
-	}
-}
 a.link-space:hover {
 	color: red;
 }
