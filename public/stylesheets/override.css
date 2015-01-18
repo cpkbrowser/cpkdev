@@ -969,6 +969,7 @@ input#user_password,
 
 .intrinsic-container iframe {
   position: absolute;
+  z-index:9999;
   top:0;
   left: 0;
   width: 100%;
@@ -987,14 +988,13 @@ input#user_password,
 	right:3px;
 	text-align: center;
 	padding: 8px;
-	z-index: 99;
+	z-index: 99999;
 }
 
 @media (max-width: 590px) {
 	.close-profile-iframe {
-		left:0;
-		right: 100%;
-		z-index: 9999;
+/*		left:0;
+		right: 100%;*/
 		top: 90px;
 	}
 }
@@ -1532,4 +1532,8 @@ a.apply-ok-style {
 		font-size: 3.1rem !important;
 		max-width: 215px !important;
 	}
+}
+
+.sign-cred-btn {
+	cursor: pointer;
 }
