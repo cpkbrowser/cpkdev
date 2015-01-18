@@ -1526,8 +1526,8 @@ a.apply-ok-style {
 }
 
 /*iphone 6 fix*/
-@media (min-width: 375px) and (max-width: 736px) {
+@media (min-width: 374px) and (max-width: 415px) {
 	input.search {
-		-webkit-text-size-adjust:none;
+		font-size: 3.8rem;
 	}
 }
