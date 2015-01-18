@@ -1511,7 +1511,7 @@ a.apply-ok-style {
 }
 
 .logo {
-	background-position: 0px 0px;
+	background-position: 0px -1px;
 	background-image: url(../img/cpklogo-primary.png) !important;
 }
 .logo:hover, .logo:focus {
@@ -1523,4 +1523,11 @@ a.apply-ok-style {
 	text-align:center;
 	padding:2px; 
 	cursor: pointer;
+}
+
+/*iphone 6 fix*/
+@media (min-width: 375px) and (max-width: 736px) {
+	input.search {
+		-webkit-text-size-adjust:none;
+	}
 }
