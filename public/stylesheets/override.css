@@ -1534,6 +1534,12 @@ a.apply-ok-style {
 	}
 }
 
+@media (min-width: 401px) and (max-width: 415px) {
+	.nav {
+		margin-top:12px !important;
+	}
+}
+
 .sign-cred-btn {
 	cursor: pointer;
 }
