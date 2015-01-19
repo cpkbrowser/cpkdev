@@ -787,7 +787,7 @@ $.fn.textWidth = function(text, font) {
 
 function send_cpkShowData(watched) {
 	var activeDiv = document.getElementById('mdlActive_Div').innerHTML;
-	var showInfo = document.getElementById(activeDiv).getElementsByTagName('div')[1].getElementsByTagName('p');
+	var showInfo = document.getElementById(activeDiv).parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
 	
 	var showType = document.getElementById('hdnModalType').innerHTML;
 	if (showType == 'movie' || showType == 'tv') {
@@ -1037,7 +1037,7 @@ function send_cpkRecentData(tmpID, sType) {
 	var test = document.getElementById('mdlInfo_Actors').innerHTML;
 	if (String(document.getElementById('userInfo_ID').innerHTML) != 'null') {
 		var prefix = String(tmpID).split('_');
-		var dataID = prefix[0] + 'Item_' + prefix[1].replace('dropdownMenu', 'btnInfo');
+		var dataID = prefix[0] + '_' + prefix[1].replace('dropdownMenu', 'btnInfo');
 		
 		var info = document.getElementById(dataID).parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
 		
@@ -1327,6 +1327,13 @@ function closeCPKInternal() {
 	document.getElementById('dn-container').style.display = 'block';
 }
 
+function btnCatMenu_Click() {
+	if (document.getElementById('catMenu_Options').style.display == 'none') {
+		$('.search-options').show();
+	} else {
+		$('.search-options').hide();
+	}	
+}
 
 
 

@@ -29,7 +29,7 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- Updates for CSS : Outside of template CSS -->
-        <link rel="stylesheet" href="/stylesheets/override.css?nocache01161501">
+        <link rel="stylesheet" href="/stylesheets/override.css?nocache01191501">
 		
 		<link rel="stylesheet" href="/stylesheets/loader.css">
 		<link rel="stylesheet" href="/stylesheets/simplemodal.css">
@@ -44,9 +44,9 @@
 		<script src="/javascripts/jquery.simplemodal.js"></script>
 		<script src="/javascripts/simplemodal-procs.js"></script>
 		<script src="/javascripts/generic_bin.js"></script>
-		<script src="/javascripts/cpkBins.js?nocache01161501"></script>
-    	<script src="/javascripts/basic.js?nocache01161501"></script>
-    	<script src="/javascripts/Plug_PW.js?nocache01161501"></script>
+		<script src="/javascripts/cpkBins.js?nocache01191501"></script>
+    	<script src="/javascripts/basic.js?nocache01191501"></script>
+    	<script src="/javascripts/Plug_PW.js?nocache01191501"></script>
 		<script src="/javascripts/jq-marquee2.js"></script>
 		
 		<!-- Favicons for all devices -->
@@ -108,8 +108,8 @@
 			  <button id="btnSrchSubmit" type="button" class="btn btn-default submit-button"><i class="fa fa-search search-icon"></i></button>
 			  </div>
               <div class="input-group-btn">
-                <button id="btnCatMenu" onclick="$('.search-options').show();" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
-                <ul class="dropdown-menu keep-open dropdown-menu-left search-options" role="menu">
+                <button id="btnCatMenu" onclick="btnCatMenu_Click();" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                <ul id="catMenu_Options" style="display: none;" class="dropdown-menu keep-open dropdown-menu-left search-options" role="menu">
                   <form id="frmBinCategories">
                     <div style="padding-top: 5px; padding-left: 5px;"> <!-- channels padding wrap -->
 						<!-- Start of Channels -->
