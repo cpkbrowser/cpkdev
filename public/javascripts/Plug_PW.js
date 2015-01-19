@@ -117,7 +117,7 @@ function PWTV_getEpisodes(src_url) {
 				document.getElementById('hdnModalType').innerHTML = 'tv';
 				PWTV_getEpisodes_processResults(rslt2);
 				document.getElementById('mdlInfo_tabLinks').style.display = 'block';
-				var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(' ', '-*-') + '_cookie';
+				var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(/ /g, '-*-') + '_cookie';
 				if (readCookie(fName) != null) {
 					document.getElementById('mdlKeepWatch').style.display = 'block';
 				}
@@ -235,11 +235,11 @@ function PWTV_getLinks_processResults(rslt3) {
 }
 
 function create_RWCookie() {
-	var sName = document.getElementById('mdlInfo_Name').innerHTML.replace(' ', '-*-') + '_cookie';
+	var sName = document.getElementById('mdlInfo_Name').innerHTML.trimLeft().replace(/ /g, '-*-') + '_cookie';
 	var info = document.getElementById('hdnValues5').childNodes;
 	var ssn = info[0].nodeValue;
 	var ep = info[1].nodeValue;
-	createCookie(sName, (ssn + '*' + ep), 15);
+	createCookie(sName, (ssn + '*' + ep), 21);
 }
 
 function PWTV_getLinkArray() {
