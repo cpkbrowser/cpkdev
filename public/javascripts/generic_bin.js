@@ -16,7 +16,7 @@ function get_GenericBin() {
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu0">
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this, 'false');" type="button" id="xyzPREFIXzyx_dropdownMenu0">
 								<div id="xyzPREFIXzyxItem_btnInfo0" class="btn-primary-txt">Info
 								</div>
 								<div id="xyzPREFIXzyxItem_hdnDiv0" style="display: none;">
@@ -52,7 +52,7 @@ function get_GenericBin() {
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu1">
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this, 'false');" type="button" id="xyzPREFIXzyx_dropdownMenu1">
 								<div id="xyzPREFIXzyxItem_btnInfo1" class="btn-primary-txt">Info
 								</div>
 								<div id="xyzPREFIXzyxItem_hdnDiv1" style="display: none;">
@@ -88,7 +88,7 @@ function get_GenericBin() {
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu2">
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this, 'false');" type="button" id="xyzPREFIXzyx_dropdownMenu2">
 								<div id="xyzPREFIXzyxItem_btnInfo2" class="btn-primary-txt">Info
 								</div>
 								<div id="xyzPREFIXzyxItem_hdnDiv2" style="display: none;">
@@ -124,7 +124,7 @@ function get_GenericBin() {
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu3">
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this, 'false');" type="button" id="xyzPREFIXzyx_dropdownMenu3">
 								<div id="xyzPREFIXzyxItem_btnInfo3" class="btn-primary-txt">Info
 								</div>
 								<div id="xyzPREFIXzyxItem_hdnDiv3" style="display: none;">
@@ -160,7 +160,7 @@ function get_GenericBin() {
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu4">
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this, 'false');" type="button" id="xyzPREFIXzyx_dropdownMenu4">
 								<div id="xyzPREFIXzyxItem_btnInfo4" class="btn-primary-txt">Info
 								</div>
 								<div id="xyzPREFIXzyxItem_hdnDiv4" style="display: none;">
@@ -196,7 +196,7 @@ function get_GenericBin() {
 					</div>
 					<div class="row">
 						<div class="col-xs-6 button-span">
-							<div class="btn-primary btn-props" onclick="open_mdlInfo(this);" type="button" id="xyzPREFIXzyx_dropdownMenu5">
+							<div class="btn-primary btn-props" onclick="open_mdlInfo(this, 'false');" type="button" id="xyzPREFIXzyx_dropdownMenu5">
 								<div id="xyzPREFIXzyxItem_btnInfo5" class="btn-primary-txt">Info
 								</div>
 								<div id="xyzPREFIXzyxItem_hdnDiv5" style="display: none;">

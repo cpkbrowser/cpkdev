@@ -158,7 +158,7 @@ $(document).ready(function() {
 function onClick_Img(t) {
 	var btn1 = t.parentNode.getElementsByClassName('row')[0].getElementsByTagName('div')[1].childNodes[1];
 	document.getElementById('hdnQuickLink').innerHTML = 'true';
-	open_mdlInfo(btn1);
+	open_mdlInfo(btn1, 'true');
 }
 
 function quickLink_Click() {
@@ -333,10 +333,15 @@ function onClick_Search() {
 	}); 
 }
 
-function open_mdlInfo(t) {
+function open_mdlInfo(t, type) {
 	document.getElementById('mdlActive_Div').innerHTML = t.id;
 	//var info = document.getElementById(t.id).getElementsByTagName('div')[1].getElementsByTagName('p');
-	var info = t.parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
+	var info;
+	if (type == 'false') {
+		info = t.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
+	} else {
+		info = t.parentNode.getElementsByTagName('div')[1].getElementsByTagName('p');
+	}
 	var fullName = "";
 	
 	//add conditional statement to allow for more plug-ins
