@@ -91,7 +91,7 @@
 			ga('create', 'UA-57404581-1', 'auto');
 			ga('send', 'pageview');
 
-		</script>
+		</script>	
 	
 	</head>
 	
@@ -1341,7 +1341,7 @@
 								<input type="text" name="username" id="username" value="username" />
 							</div>
 							<div class="col-sm-5">
-								<label for="username">At least 4 characters. Uppercase letters, lowercase letters and numbers only.</label>
+								<label id="sgnLblUsername" for="username">Username (required): At least 4 characters. Uppercase letters, lowercase letters and numbers only.</label>
 							</div>
 						</div>
 						<div class="row">
@@ -1349,7 +1349,7 @@
 								<input type="password" name="password" id="password" value="password" />
 							</div>
 							<div class="col-sm-5">
-								<label for="password">At least 4 characters. Use a mix of upper and lowercase for a strong password.</label>
+								<label id="sgnLblPassword" for="password">Password (required): At least 4 characters. Use a mix of upper and lowercase for a strong password.</label>
 							</div>
 						</div>
 						<div class="row">
@@ -1357,7 +1357,7 @@
 								<input type="password" name="cpassword" id="cpassword" value="password" />
 							</div>
 							<div class="col-sm-5">
-								<label for="cpassword">If your passwords aren’t equal, you won’t be able to continue with signup.</label>
+								<label id="sgnLblCPassword" for="cpassword">Password Check (required): If your passwords aren’t equal, you won’t be able to continue with signup.</label>
 							</div>
 						</div>
 						
@@ -1373,26 +1373,26 @@
 					<div class="form">
 						<div class="row">
 							<div class="col-sm-7">
-								<input type="text" name="firstname" id="firstname" value="first name" />
+								<input type="text" name="firstname" id="firstname" placeholder="first name" />
 							</div>
 							<div class="col-sm-5">
-								<label for="firstname">Your First Name. </label>
+								<label id="sgnLblFirstname" for="firstname">(required) Your First Name. </label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-7">
-								<input type="text" name="lastname" id="lastname" value="last name" />
+								<input type="text" name="lastname" id="lastname" placeholder="last name" />
 							</div>
 							<div class="col-sm-5">
-								<label for="lastname">Your Last Name. </label>
+								<label id="sgnLblLastname" for="lastname">(required) Your Last Name. </label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-7">
-								<input type="text" name="email" id="email" value="email address" />
+								<input type="text" name="email" id="email" placeholder="email address" />
 							</div>
 							<div class="col-sm-5">
-								<label for="email">Your email address. We send important administration notices to this address. </label>  
+								<label id="sgnLblEmail" for="email">(required) Your email address. We send important administration notices to this address. </label>  
 							</div>
 						</div>
 						<div class="row">
@@ -1402,7 +1402,7 @@
 								</form>
 							</div>
 							<div class="col-sm-5">
-								<label>Your birthdate is varified for access to mature content.</label>
+								<label id="sgnLblBday">(required) Your birthdate is verified for access to mature content.</label>
 							</div>
 						</div>
 						<div class="row">
@@ -1412,7 +1412,7 @@
 								</form>
 							</div>
 							<div class="col-sm-5">
-								<label>Your phone number is used for activation and to connect your computer to your phone. We promise we won't use it for any other reason.</label>
+								<label id="sgnLblPhone">(required) Your phone number is used for activation and to connect your computer to your phone. We promise we won't use it for any other reason.</label>
 							</div>
 						</div>
 										
@@ -1437,7 +1437,7 @@
 								</select>
 							</div>
 							<div class="col-sm-5">
-								<label for="age">Your age range. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+								<label id="sgnLblAge" for="age">Your age range. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
 							</div>
 						</div>
 						<div class="row">
@@ -1448,7 +1448,7 @@
 								</select>
 							</div>
 							<div class="col-sm-5">
-								<label for="gender">Your Gender. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+								<label id="sgnLblGender" for="gender">Your Gender. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
 							</div>
 						</div>
 						<div class="row">
@@ -1456,7 +1456,7 @@
 								<input TYPE="text" id="country-signup" NAME="country">
 							</div>
 							<div class="col-sm-5">
-								<label for="country">Your Country </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+								<label id="sgnLblCountry" for="country">Your Country (required, please choose from autocomplete options) </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
 							</div>
 						</div>
 						<div class="row">
@@ -1464,7 +1464,7 @@
 								<input TYPE="text" id="zip" NAME="zip" SIZE="5" MAXLENGTH="5">
 							</div>
 							<div class="col-sm-5">
-								<label for="country">Your Zip. </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+								<label id="sgnLblZip" for="country">Region Code (Zip / Postal Code). </label> <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
 							</div>
 						</div>
 						<div class="row">
@@ -1472,7 +1472,7 @@
 								<input type="text" name="referred-by" id="referred-by" value=" " />
 							</div>
 							<div class="col-sm-5">
-								<label for="firstname">How did you find us?</label>
+								<label id="sgnLblReferred" for="firstname">(required) How did you find us?</label>
 							</div>
 						</div>
 						
@@ -1493,10 +1493,9 @@
 							<tr><td>Username</td><td></td></tr>
 							<tr><td>Password</td><td></td></tr>
 							<tr><td>Email</td><td></td></tr>
-							<tr><td>Name</td><td></td></tr>
-							<tr><td>Age</td><td></td></tr>
-							<tr><td>Gender</td><td></td></tr>
-							<tr><td>Zip</td><td></td></tr>
+							<tr><td>Birthday</td><td></td></tr>
+							<tr><td>Phone</td><td></td></tr>
+							<tr><td>zip</td><td></td></tr>
 						</table>
 					</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
 					<p style="padding-right:25px; text-align:right;">
@@ -1669,5 +1668,6 @@
 				<iframe id="mdlVideoFrame" class="video-frame" style="width: 100%; height: 800px;" src="about:blank"></iframe>				
 			</div>
 		</div>
-    </body>
+    </body>	
+	
 </html>

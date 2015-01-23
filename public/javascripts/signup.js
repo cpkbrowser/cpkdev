@@ -48,7 +48,7 @@ $(function(){
         });        
         
         if(!error) {
-            if( $('#password').val() != $('#cpassword').val() ) {
+            if( $('#password').val() != $('#cpassword').val() || $('#password').val() == "password" ) {
                     $('#first_step input[type=password]').each(function(){
                         $(this).removeClass('valid').addClass('error');
                         $(this).effect("shake", { times:3 }, 50);
@@ -101,35 +101,65 @@ $(function(){
 
 
     $('#submit_third').click(function(){
-        //update progress bar
-        $('#progress_text').html('100% Complete');
-        $('#progress').css('width','339px');
-
-        //prepare the fourth step
-        var fields = new Array(
-            $('#username').val(),
-            $('#password').val(),
-            $('#email').val(),
-            $('#firstname').val() + ' ' + $('#lastname').val(),
-            $('#age').val(),
-            $('#gender').val(),
-            $('#country').val()                       
-        );
-        var tr = $('#fourth_step tr');
-        tr.each(function(){
-            //alert( fields[$(this).index()] )
-            $(this).children('td:nth-child(2)').html(fields[$(this).index()]);
-        });
-                
-        //slide steps
-        $('#third_step').slideUp();
-        $('#fourth_step').slideDown();            
+       		
+		var error = 0;
+		var lst = countryList();
+		var sel = $('#country-signup').val();
+		//errFlag start out true (error), but will change to false (no error) when country is validated
+		var errFlag = true;
+		for (i = 0; i < lst.length; i++) {
+			if (lst[i].label == sel) {
+				errFlag = false;
+			}
+		}
+		if (errFlag) {
+			$("#sgnLblCountry").css({
+				"color": "red"
+			});
+		}
+		
+		if ($('#referred-by').val().trim() == '') {
+			errFlag = true;
+			$("#sgnLblReferred").css({
+				"color": "red"
+			});
+		}
+		
+		if (errFlag) {
+			$(this).addClass('error');
+			$(this).effect("shake", { times:3 }, 50);			
+			error++;
+		} else {
+		
+			 //update progress bar
+			$('#progress_text').html('100% Complete');
+			$('#progress').css('width','339px');
+			
+			//prepare the fourth step
+			var fields = new Array(
+				$('#username').val(),
+				$('#password').val(),
+				$('#email').val(),
+				$('#bday').val(),
+				$('#phone').val(),
+				$('#zip').val()                      
+			);
+			var tr = $('#fourth_step tr');
+			tr.each(function(){
+				//alert( fields[$(this).index()] )
+				$(this).children('td:nth-child(2)').html(fields[$(this).index()]);
+			});
+					
+			//slide steps
+			$('#third_step').slideUp();
+			$('#fourth_step').slideDown();
+		}	            
     });
 
 
     $('#submit_fourth').click(function(){
         //send information to server
-        alert('Data sent');
+		createUser();
     });
 
 });

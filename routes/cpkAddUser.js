@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var cpkAuth = require('../routes/cpkAuth');
 var crypto = require('crypto');
 require('date-utils');
+var mail = require("../routes/cpkSendMail");
 
 router.post('/', function(req, res){
 	
@@ -81,6 +82,23 @@ router.post('/', function(req, res){
 								res.json({usr_exists: 'false', usr_success: 'true', up_success: 'false'});	
 							} else {
 								mongoose.disconnect();
+								
+								var tmpPass = req.body.password;
+								str = new Array(tmpPass.length - 1).join('*');
+								var fStr = tmpPass.substring(0, 1) + str + tmpPass.substring(tmpPass.length - 1, tmpPass.length);
+								var info = {
+									first_name: req.body.firstname,
+									username: req.body.username,
+									pass: fStr,
+									bday: req.body.bday,
+									phone: req.body.phone,
+									zip: req.body.zip
+								};
+								var msg = mail.thanksTemplate();
+								var message = mail.prepareThanks(info, msg);
+								var toEml = req.body.first_name + " " + req.body.last_name + " <" + req.body.email + ">";
+								mail.SendMail(toEml, "Welcome to CPK Browser!", "Welcome to CPK Browser! You must have HTML enabled in your email settings to view this message.", String(message));
+								
 								res.json({usr_exists: 'false', usr_success: 'true', up_success: 'true', id: rslt2._id, userName: rslt2.username});	
 							}
 						});	
