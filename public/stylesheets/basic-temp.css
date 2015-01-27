@@ -101,6 +101,26 @@ h4.primary {
 	}
 }
 
+h6.primary {
+	margin: 20px 0;
+	text-align: left;
+	color:red;
+	text-shadow: 3px 3px 4px rgba(0,0,0,0.91);
+}
+
+h6.primary {
+	margin-bottom: 5px;
+	font-size: 28px;
+	font-size: 2.8rem;
+}
+
+@media (max-width:480px) {
+	h6.primary {
+		font-size: 22px;
+		font-size: 2.2rem;
+	}
+}
+
 h5.primary {
 	font-size: 21px;
 	font-size: 2.1rem;

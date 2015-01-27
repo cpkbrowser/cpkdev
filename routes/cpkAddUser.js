@@ -71,7 +71,8 @@ router.post('/', function(req, res){
 							recently_watched: "",
 							Theme: "cpkStandard",
 							last_signon: String(Date.today()),
-							referred_by: req.body.referred
+							referred_by: req.body.referred,
+							cpk_points: 1
 						});
 						new_UserProfile.save(function(err3, rslt3) {
 							if (err3) {

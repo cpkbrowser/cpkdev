@@ -10,7 +10,8 @@ module.exports = function() {
 		recently_watched: String,
 		Theme: String,
 		last_signon: String,
-		referred_by: String
+		referred_by: String,
+		cpk_points: Number
 	});
 	mongoose.model('testUserProfile', userProfile);
 };

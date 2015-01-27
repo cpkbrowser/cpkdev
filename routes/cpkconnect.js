@@ -40,6 +40,9 @@ router.post('/', function(req, res){
 						res.json({rslt: valid});
 					} else {
 						rslt2.last_signon = String(Date.today());
+						var count = rslt2.cpk_points;
+						count = (count + 1);
+						rslt2.cpk_points = count;
 						rslt2.save(function(err3, rslt3) {
 							/* if (err3) {
 								console.log('not saved');
