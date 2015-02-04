@@ -314,3 +314,18 @@ li.sub-list {
 		max-width: 318px;
 	}
 }
+
+img.tutorial {
+	max-height: 95%;
+	max-width: 95%; 
+	margin-bottom: 15px; 
+	margin-top: 5px;
+}
+
+img.thanks {
+	max-height: 100%;
+	max-width: 100%; 
+	margin-left: auto;
+	margin-right: auto;	
+	display: block; 
+}

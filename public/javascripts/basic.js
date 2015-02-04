@@ -7,11 +7,11 @@ var redir1 = static_url + 'getBlank';
 $(document).ready(function() {	
 	var isMobile = window.mobilecheck();
 	
-	if(isMobile.Android()){ 
+	/* if(isMobile.Android()){ 
 		var ratio = 610 / screen.width;
 		viewport = document.querySelector("meta[name=viewport]");
 		viewport.setAttribute('content', 'width=device-width, initial-scale=' + ratio + ', maximum-scale=' + ratio + ', user-scalable=0');
-	}
+	} */
 	
 	$('.disruption-notice').marquee({speed: 10, leftToRight: false});
 	$("#btnSearch").bind('keypress', onEnter_Search);

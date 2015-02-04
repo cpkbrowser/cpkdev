@@ -11,6 +11,7 @@ module.exports = function() {
 		slt: String,
 		account_type: String,
 		email: String,
+		send_mail: String,
 		phone: String,
 		birthday: String,
 		country: String,

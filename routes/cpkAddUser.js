@@ -42,6 +42,7 @@ router.post('/', function(req, res){
 					slt: salt,
 					account_type: act_type,
 					email: req.body.email,
+					send_mail: 'true',
 					phone: req.body.phone,
 					birthday: req.body.bday,
 					country: req.body.country,
