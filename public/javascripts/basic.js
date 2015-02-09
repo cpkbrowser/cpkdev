@@ -492,7 +492,7 @@ function onClick_Link(flag1, obj1) {
 
 function ContinueShow() {
 	var tmpLink = document.getElementById('mdlInfo_Link').innerHTML;
-	var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(' ', '-*-') + '_cookie';
+	var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(/ /g, '-*-') + '_cookie';
 	var info = readCookie(fName).split('*');
 	//PWTV_getLinks(static_url + 'getPW_Links' + '?srch=' + tmpLink + '/season-' + tmpSsn + '-episode-' + tmpEp);
 	loadCurrentValues(info[0], info[1]);

@@ -25,6 +25,7 @@ var cpkLoadBins2 = require('./routes/cpkLoadBins2');
 var cpkAddFavorite = require('./routes/cpkAddFavorite');
 var cpkDropFavorite = require('./routes/cpkDropFavorite');
 var cpkUpdateRecent = require('./routes/cpkUpdateRecent');
+var unsubscribe = require('./routes/unsubscribe');
 
 var app = express();
 
@@ -66,6 +67,7 @@ app.use('/cpkLoadBins2', cpkLoadBins2);
 app.use('/cpkAddFavorite', cpkAddFavorite);
 app.use('/cpkDropFavorite', cpkDropFavorite);
 app.use('/cpkUpdateRecent', cpkUpdateRecent);
+app.use('/unsubscribe', unsubscribe);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
