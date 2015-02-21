@@ -230,8 +230,14 @@
                   <li class="divider-vertical"></li>
                   <li class="drop down">
                     <a id="btnMoreStuff" style="cursor: pointer;" data-toggle="dropdown" class="btn-primary sign-cred-btn">&nbsp;More <strong class="caret"></strong></a>
-                    <div id="ddlMoreStuff" class="dropdown-menu login" style="padding: 15px; padding-bottom: 10px;">
-						Coming Soon...
+                    <!-- <div id="ddlMoreStuff" class="dropdown-menu login" style="padding: 15px; padding-bottom: 10px;"> -->
+					<div id="ddlMoreStuff" class="dropdown-menu login">
+						<div style="height: 28px; width: 100%; text-align: center; border-top: 1px solid red; cursor: pointer;">
+							<p style="text-align: center; vertical-align: middle; padding-top: 6px;" onclick="openCPKLinks('cpkpoints1')">Earn Points!</p>						
+						</div>
+						<!-- <div style="height: 28px; width: 100%; text-align: center; border-top: 1px solid red; cursor: pointer;">
+							<p style="text-align: center; vertical-align: middle; padding-top: 4px;" onclick="openCPKLinks('cpkpoints1')">CPK Lens</p>						
+						</div> -->
                     </div>
                   </li>
                 </ul>
@@ -1542,8 +1548,10 @@
 			</div>
 		</div>
 		<div id="usrInfo" style="display: none;">
-			<p id="userInfo_ID">null</div>
-			<p id="userInfo_username">null</div>
+			<p id="userInfo_ID">null</p>
+			<p id="userInfo_username">null</p>
+			<p id="userInfo_gender">m</p>
+			<p id="userInfo_age">2</p>
 		</div>
 		<!-- #cpk_popShows - Popular On CPK -->
 		<div id="hdn_tblPopular" style="display: none;"></div>

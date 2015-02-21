@@ -51,7 +51,28 @@ router.post('/', function(req, res){
 							} */
 							var valid = 'false';
 							if (cpkAuth.cpkDecrypt(String(req.body.password).trim(), pass, salt)) {
-								valid = 'true?&' + String(rslt1._id) + '?&' + String(rslt1.username);
+								
+								var age;
+								console.log('age: ' + rslt1.age_range);
+								if (rslt1.age_range == '0-17') {
+									age = '1';
+								} else if (rslt1.age_range == '18-25') {
+									age = '1';
+								} else if (rslt1.age_range == '26-40') {
+									age = '2';
+								} else {
+									age = '3';
+								}
+								
+								var gender;
+								console.log('gender: ' + rslt1.gender);
+								if (rslt1.gender == 'male') {
+									gender = 'm';
+								} else {
+									gender = 'f';
+								}
+								
+								valid = 'true?&' + String(rslt1._id) + '?&' + String(rslt1.username) + '?&' + age + '?&' + gender;
 							} 
 							mongoose.disconnect();
 							res.json({rslt: valid});

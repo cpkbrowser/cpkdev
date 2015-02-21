@@ -198,6 +198,8 @@ function beginLogin() {
 			if (rslt.rslt.substring(0, 4) == 'true') {
 				document.getElementById('userInfo_ID').innerHTML = rslt.rslt.split('?&')[1];
 				document.getElementById('userInfo_username').innerHTML = rslt.rslt.split('?&')[2];
+				document.getElementById('userInfo_age').innerHTML = rslt.rslt.split('?&')[3];
+				document.getElementById('userInfo_gender').innerHTML = rslt.rslt.split('?&')[4];
 				loadCPKBins_Standard();
 				
 				document.getElementById('binCategoryContainer').style.display = 'block';
@@ -1309,7 +1311,13 @@ function openCPKLinks(t) {
 			window.onbeforeunload = function() {};
 			window.location.href = window.location.href;
 			return false;
-			break;			
+			break;		
+		case 'cpkpoints1':
+			var id = document.getElementById('userInfo_ID').innerHTML;
+			var age = document.getElementById('userInfo_age').innerHTML;
+			var gender = document.getElementById('userInfo_gender').innerHTML;
+			src = 'https://asmwall.com/adwall/publisher/29752/profile/1524?subid1=' + id + '&gender=' + gender + '&age_range_id=' + age + '&category=23';
+			break;
 	}
 	
 	document.getElementById('iframeCPK').src = src;
