@@ -32,16 +32,26 @@ router.get('/', function(req, res){
     if (data) {
 	  var $ = cheerio.load(data);
 	  var links = $('.movie_version_link');
+	  var obj = [];
 	  
 	  var table = '<div id="showLinks" style="display: none;">';  
 	  
 	  links.each(function(i, e) { 
-		table += String($(e));
+		//table += String($(e));
+		if (i != 0) {
+		    //table += String($(e));
+			var children = $(this).children();
+			lnk = children[0].attribs.href;
+			if (lnk != null) {
+				obj.push(lnk);
+				console.log(lnk);
+			}
+		  }
 	  });
 	  
 	  table += '</div>';
 	  
-	  res.end(String(table));
+	  res.end(JSON.stringify(obj));
 	  
 	} else {
 	  res.end('nothing');

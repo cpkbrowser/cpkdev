@@ -47,19 +47,21 @@ router.get('/', function(req, res){
 		
 	  } else {
 		
-		var table = '<div id="movieLinks" style="display: none;">';
-		
 		links = $('.movie_version_link');
+		var obj = [];
 		
 		links.each(function(i, e) { 
 		  if (i != 0) {
-		    table += String($(e));
+		    //table += String($(e));
+			var children = $(this).children();
+			lnk = children[0].attribs.href;
+			if (lnk != null) {
+				obj.push(lnk);
+			}
 		  }
 	    });
-	    
-	    table += '</div>';
-	    
-	    res.end(String(table));
+	        
+	    res.end(JSON.stringify(obj));
 		
 	  }
 	  

@@ -105,30 +105,33 @@ function PWTV_getEpisodes(src_url) {
 	$.ajax({
 		url: src_url,
 		success: function(rslt2) {
-			var rsltType = rslt2.childNodes[0].id;
-			if (rsltType == undefined) {
-				rsltType = rslt2.childNodes[0].attributes[1].nodeValue;
-			}
-			if (rsltType == "display: none;") {
-				//Workaround for Safari / Tablets / old browsers
-				rsltType = rslt2.childNodes[0].attributes.id.nodeValue;
-			}
-			if (rsltType == "showEpisodes") {
-				document.getElementById('hdnModalType').innerHTML = 'tv';
-				PWTV_getEpisodes_processResults(rslt2);
-				document.getElementById('mdlInfo_tabLinks').style.display = 'block';
-				var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(/ /g, '-*-') + '_cookie';
-				if (readCookie(fName) != null) {
-					document.getElementById('mdlKeepWatch').style.display = 'block';
-				}
-			} else if (rsltType == "movieLinks") {
+			if (typeof rslt2 == 'string') {
+				var links = JSON.parse(rslt2);
 				$('#hdnValues3').empty();
 				document.getElementById('hdnModalType').innerHTML = 'movie';
-				PWTV_getMovieLinks_processResults(rslt2);
+				PWTV_getMovieLinks_processResults(links);
 				document.getElementById('mdlInfo_tabLinks').style.display = 'none';
-			}
-			if (document.getElementById('hdnQuickLink').innerHTML == 'true') {
-				quickLink_Click();
+			} else {
+				var rsltType = rslt2.childNodes[0].id;
+				if (rsltType == undefined) {
+					rsltType = rslt2.childNodes[0].attributes[1].nodeValue;
+				}
+				if (rsltType == "display: none;") {
+					//Workaround for Safari / Tablets / old browsers
+					rsltType = rslt2.childNodes[0].attributes.id.nodeValue;
+				}
+				if (rsltType == "showEpisodes") {
+					document.getElementById('hdnModalType').innerHTML = 'tv';
+					PWTV_getEpisodes_processResults(rslt2);
+					document.getElementById('mdlInfo_tabLinks').style.display = 'block';
+					var fName = document.getElementById('mdlInfo_Name').innerHTML.trim().replace(/ /g, '-*-') + '_cookie';
+					if (readCookie(fName) != null) {
+						document.getElementById('mdlKeepWatch').style.display = 'block';
+					}
+				} 
+				if (document.getElementById('hdnQuickLink').innerHTML == 'true') {
+					quickLink_Click();
+				}
 			}
 		}
 	});
@@ -197,17 +200,18 @@ function PWTV_getLinks(lnkUrl) {
 	$.ajax({
 		url: lnkUrl,
 		success: function(rslt3) {
-			PWTV_getLinks_processResults(rslt3);
+			var links = JSON.parse(rslt3);
+			PWTV_getLinks_processResults(links);
 		}
 	});	
 }
 
 function PWTV_getMovieLinks_processResults(rslt2) {
-	$("#hdnValues7").empty();
-	$("#hdnValues7").append(rslt2.childNodes[0]);
+	//$("#hdnValues7").empty();
+	//$("#hdnValues7").append(rslt2.childNodes[0]);
 	
-	lnkList = PWTV_getLinkArray();
-	var topLink = PWTV_orderLinkList(lnkList);
+	//lnkList = PWTV_getLinkArray();
+	var topLink = PWTV_orderLinkList(rslt2);
 	
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
 	//document.getElementById('helpCntrlContainer').style.display = 'inline-block';
@@ -217,11 +221,11 @@ function PWTV_getMovieLinks_processResults(rslt2) {
 
 function PWTV_getLinks_processResults(rslt3) {
 	
-	$("#hdnValues4").empty();
-	$("#hdnValues4").append(rslt3.childNodes[0]);
+	//$("#hdnValues4").empty();
+	//$("#hdnValues4").append(rslt3.childNodes[0]);
 	
-	lnkList = PWTV_getLinkArray();
-	var topLink = PWTV_orderLinkList(lnkList);
+	//lnkList = PWTV_getLinkArray();
+	var topLink = PWTV_orderLinkList(rslt3);
 	
 	document.getElementById('mdlNavButtons').style.display = 'inline-block';
 	//document.getElementById('helpCntrlContainer').style.display = 'inline-block';
