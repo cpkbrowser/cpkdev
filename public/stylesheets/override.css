@@ -1560,3 +1560,8 @@ h1.tellem {
 		margin-top: 30px;
 	}
 }
+
+.moviepane-iframe-wrap {
+	-webkit-overflow-scrolling: touch;
+  	overflow: scroll;
+}
