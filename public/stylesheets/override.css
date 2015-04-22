@@ -1561,7 +1561,9 @@ h1.tellem {
 	}
 }
 
-.moviepane-iframe-wrap {
+.moviepane-iframe-wrap,
+.simplemodal-wrap,
+.simplemodal-data {
 	-webkit-overflow-scrolling: touch;
   	overflow: auto;
 }
