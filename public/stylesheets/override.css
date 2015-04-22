@@ -466,7 +466,7 @@ input.search:focus {
 	background: black;
 	max-width: 75px;
 	width: 100%;
-	position: fixed;
+	position: absolute;
 	min-height: 30px;
 	padding: 9px 0 0 0;
 	text-align: center !important;
@@ -540,7 +540,7 @@ span.nav-link-design {
 	color: white;
 	max-width: 75px;
 	width: 100%;
-	position: fixed;
+	position: absolute;
 	right:0;
 	min-height: 55px;
 	padding: 9px 0 0 0;
