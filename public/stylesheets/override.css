@@ -482,7 +482,8 @@ input.search:focus {
 		    border-top-right-radius: 10px;
 	border: 2px red solid;
 	border-left: none;
-	margin-top: 60px
+	margin-top: 60px;
+	z-index: 99999;
 }
 
 .nav-control:hover,
@@ -556,6 +557,7 @@ span.nav-link-design {
 	border: 2px red solid;
 	border-right: none;
 	margin-top: 60px;
+	z-index: 99999;
 }
 
 
