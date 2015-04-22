@@ -1563,5 +1563,5 @@ h1.tellem {
 
 .moviepane-iframe-wrap {
 	-webkit-overflow-scrolling: touch;
-  	overflow: scroll;
+  	overflow: auto;
 }
