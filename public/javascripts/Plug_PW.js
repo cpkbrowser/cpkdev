@@ -291,14 +291,7 @@ function PWTV_orderLinkList(lnkList) {
 		
 	for (i = 0; i < lnkList.length; i++) {
 		tmpString = String(lnkList[i]);
-		if (tmpString.indexOf('c2hhcmVyZXBvLmNvbQ') != -1) {
-			//ShareRepo
-			authLinks[a_count] = new Array(2);
-			authLinks[a_count][0] = 9;
-			authLinks[a_count][1] = lnkList[i];
-			authLinks[a_count][2] = 'ShareRepo*-*Click play button.';
-			a_count++;
-		} else if (tmpString.indexOf('dGhldmlkZW8ubWU') != -1) {
+		if (tmpString.indexOf('dGhldmlkZW8ubWU') != -1) {
 			//theVideo
 			authLinks[a_count] = new Array(2);
 			if (isMobile.iOS() != null) {
@@ -318,19 +311,19 @@ function PWTV_orderLinkList(lnkList) {
 			authLinks[a_count][1] = lnkList[i];
 			authLinks[a_count][2] = 'Gorillavid*-*Click orange "Continue to Video" Button. After page loads, click play button (ad may be covering button).';
 			a_count++;
-		} else if (tmpString.indexOf('bm93dmlkZW8uZXU') != -1) {
-			//Nowvideo
+		} else if (tmpString.indexOf('dmlkdXAubWU') != -1) {
+			//Vidup
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 6;
 			authLinks[a_count][1] = lnkList[i];
-			authLinks[a_count][2] = 'Nowvideo*-*Close ads that are on-top of video player. Click play button.';
+			authLinks[a_count][2] = 'Vidup*-*Click blue "Proceed to Video" button. After page loads, click play button (ads may be covering button)';
 			a_count++;
-		} else if (tmpString.indexOf('c29ja3NoYXJlLmNvbQ') != -1) {
-			//Sockshare
+		} else if (tmpString.indexOf('dmlkemkudHY') != -1) {
+			//Vidzi
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 5;
 			authLinks[a_count][1] = lnkList[i];
-			authLinks[a_count][2] = 'Sockshare*-*Click blue "Proceed to Video" button. After page loads, click play button';
+			authLinks[a_count][2] = 'Vidzi*-*Close ad covering video, then click play button';
 			a_count++;
 		} else if (tmpString.indexOf('cHJvbXB0ZmlsZS5jb20') != -1) {
 			//Promptfile
@@ -353,12 +346,12 @@ function PWTV_orderLinkList(lnkList) {
 			authLinks[a_count][1] = lnkList[i];
 			authLinks[a_count][2] = 'Nosvideo*-*Click orange "Proceed to Video" button. After page loads, click play button (ad may be covering button)';
 			a_count++;
-		} else if (tmpString.indexOf('cHV0bG9ja2VyLmNvbQ') != -1) {
-			//Putlocker
+		} else if (tmpString.indexOf('c2hhcmVyZXBvLmNvbQ') != -1) {
+			//ShareRepo
 			authLinks[a_count] = new Array(2);
 			authLinks[a_count][0] = 1;
 			authLinks[a_count][1] = lnkList[i];
-			authLinks[a_count][2] = 'Putlocker*-*Click blue "Proceed to Video" button. After page loads, click play button';
+			authLinks[a_count][2] = 'ShareRepo*-*Click play button.';
 			a_count++;
 		} else if (tmpString.indexOf('ZnJhbWVndGZv') != -1) {
 			//do nothing
